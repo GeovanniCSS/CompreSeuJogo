@@ -1,0 +1,24 @@
+package compreseujogo.model.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import compreseujogo.model.entity.Categoria;
+
+public class CategoriaDao {
+
+	public List<Categoria> listar(String parametro, Categoria categoria) throws Exception {
+		EntityManager em = Fabrica.getEntityManager();
+		Query q = null;
+		if (parametro.equals("novo")) {
+			q = em.createQuery("SELECT c FROM Categoria c WHERE c.nome= :nome");
+			q.setParameter("nome", categoria.getNome());
+		} else {
+			q = em.createQuery("SELECT c FROM Categoria c");
+		}
+		
+		return q.getResultList();
+	}
+}

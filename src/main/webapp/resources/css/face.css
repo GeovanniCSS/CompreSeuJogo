@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+h2 {
+	align: center;
+	color: black;
+}
+.centro{
+	align: center;
+}
+
+.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+
