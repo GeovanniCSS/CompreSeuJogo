@@ -1,5 +1,7 @@
 package compreseujogo.model.entity;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -13,11 +15,13 @@ public class ItemCarrinho extends Item {
 	@ManyToOne
 	private Carrinho carrinho;
 
-	public ItemCarrinho(int id, double valor, int quantidade, Produto produto, Carrinho carrinho) {
-		super(id, valor, quantidade, produto);
+	public ItemCarrinho(int id, LocalDate dataAdicionado, double valor, int quantidade, Produto produto,
+			Carrinho carrinho) {
+		super(id, dataAdicionado, valor, quantidade, produto);
 		this.carrinho = carrinho;
 		this.setValor(getProduto().getValor() * getQuantidade());
 	}
+
 
 	public ItemCarrinho() {
 		super();

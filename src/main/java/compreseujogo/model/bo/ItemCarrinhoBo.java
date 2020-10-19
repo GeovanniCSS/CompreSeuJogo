@@ -6,10 +6,8 @@ import compreseujogo.model.dao.GenericDao;
 import compreseujogo.model.dao.ItemCarrinhoDao;
 import compreseujogo.model.entity.ItemCarrinho;
 
-
-
 public class ItemCarrinhoBo extends ItemBo {
-	
+
 	private ItemCarrinhoDao dao;
 
 	public List<ItemCarrinho> listar(String parameter, ItemCarrinho itemCarrinho) throws Exception {
@@ -28,10 +26,17 @@ public class ItemCarrinhoBo extends ItemBo {
 	}
 
 	public String novo(ItemCarrinho item) throws Exception {
-		if(item.getProduto().getQuantEstoque() < item.getQuantidade()) {
-			throw new Exception("No momento não temos esse quantidade do produto em estoque");
+		if (item.getProduto().getQuantEstoque() < item.getQuantidade()) {
+			throw new Exception("No momento não temos essa quantidade do produto em estoque");
 		}
 		return saveOrUpdate(item);
 	}
-
+	
+	public void validarQuantidade(List<ItemCarrinho> lista) throws Exception {
+		for(ItemCarrinho item: lista) {
+			if(item.getProduto().getQuantEstoque()<item.getQuantidade()){
+				throw new Exception("No momento não temos essa quantidade do produto: "+ item.getProduto().getNome()+" em estoque");
+			}
+		}
+	}
 }

@@ -1,5 +1,7 @@
 package compreseujogo.model.bo;
 
+import java.time.LocalDate;
+
 import compreseujogo.model.dao.GenericDao;
 import compreseujogo.model.entity.Venda;
 
@@ -30,5 +32,9 @@ public class VendaBo {
 		} else if (venda.getValor() < 0) {
 			throw new Exception("O valor total n�o pode ser negativo");
 		}
+	}
+	public void novaVenda(Venda venda) throws Exception {
+		venda.setDataCadastro(LocalDate.now());
+		saveOrUpdate(venda);
 	}
 }

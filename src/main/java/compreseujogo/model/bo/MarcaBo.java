@@ -3,6 +3,7 @@ package compreseujogo.model.bo;
 import java.util.List;
 
 import compreseujogo.model.dao.GenericDao;
+import compreseujogo.model.dao.MarcaDao;
 import compreseujogo.model.dao.PlataformaDao;
 import compreseujogo.model.entity.Marca;
 import compreseujogo.model.entity.Plataforma;
@@ -10,14 +11,14 @@ import compreseujogo.model.entity.Produto;
 
 public class MarcaBo extends TipoBo<Marca> {
 
-	public List<Plataforma> listar(String parameter, Plataforma plataforma) throws Exception {
+	public List<Marca> listar(String parameter, Marca marca) throws Exception {
 		try {
 			if (parameter.equals("")) {
-				GenericDao<Plataforma> tcDao = new GenericDao<Plataforma>();
-				return tcDao.list(Plataforma.class);
+				GenericDao<Marca> gDao = new GenericDao<Marca>();
+				return gDao.list(Marca.class);
 			} else {
-				PlataformaDao plataformaDao = new PlataformaDao();
-				return plataformaDao.ListaPlataforma(parameter, plataforma);
+				MarcaDao dao = new MarcaDao();
+				return dao.list(parameter, marca);
 			}
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());

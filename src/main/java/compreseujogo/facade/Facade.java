@@ -1,5 +1,6 @@
 package compreseujogo.facade;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import compreseujogo.model.bo.AdministradorBo;
@@ -29,6 +30,7 @@ import compreseujogo.model.entity.ItemCarrinho;
 import compreseujogo.model.entity.Marca;
 import compreseujogo.model.entity.Tipo;
 import compreseujogo.model.entity.Transporte;
+import compreseujogo.model.entity.Venda;
 import compreseujogo.model.entity.Vendedor;
 
 public class Facade {
@@ -96,7 +98,18 @@ public class Facade {
 		carrinhoBo.aumentorValor(item, carrinho);
 		return "";
 	}
-	public List<Tipo> listaMarca(Marca marca) throws Exception{
-		return marcaBo.list("organizada", marca, Marca.class);
+	public List<Marca> listaMarca(Marca marca) throws Exception{
+		ArrayList <Marca> lista = new ArrayList<Marca>();;
+		for(Tipo tipo : marcaBo.list("organizada", marca, Marca.class)) {
+			lista.add((Marca) tipo);
+		}
+		return lista;
+	}
+	public String novaVenda(Venda venda, List<ItemCarrinho> lista) throws Exception {
+		itemCarrinhoBo.validarQuantidade(lista);
+		vendaBo.novaVenda(venda);
+		itemVendaBo.novaVenda(venda, lista);
+		return "vendido";
+		
 	}
 }

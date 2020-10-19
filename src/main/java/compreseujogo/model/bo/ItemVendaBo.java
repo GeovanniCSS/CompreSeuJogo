@@ -1,5 +1,26 @@
 package compreseujogo.model.bo;
 
-public class ItemVendaBo extends ItemBo {
+import java.util.List;
+
+import compreseujogo.model.entity.ItemCarrinho;
+import compreseujogo.model.entity.ItemVenda;
+import compreseujogo.model.entity.Venda;
+
+public class ItemVendaBo extends ItemBo<ItemVenda> {
+
+	private ItemVendaDao dao;
+
+	public void novaVenda(Venda venda, List<ItemCarrinho> lista) throws Exception {
+		for (ItemCarrinho itemCarrinho : lista) {
+			ItemVenda item = new ItemVenda(0, venda.getDataCadastro(), itemCarrinho.getValor(), itemCarrinho.getQuantidade(),
+					itemCarrinho.getProduto(), venda);
+			try {
+				saveOrUpdate(item);
+			} catch (Exception e) {
+				throw new Exception("Erro ao salvar na venda ao salvar o produto: "+item.getProduto());
+			}
+		}
+
+	}
 
 }

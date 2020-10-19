@@ -30,10 +30,10 @@ public abstract class Item implements EntityBase, Serializable {
 	@ManyToOne
 	private Produto produto;
 
-	public Item(int id, double valor, int quantidade, Produto produto) {
+	public Item(int id, LocalDate dataAdicionado, double valor, int quantidade, Produto produto) {
 		super();
 		this.id = id;
-		this.dataAdicionado = LocalDate.now();
+		this.dataAdicionado = dataAdicionado;
 		this.valor = valor;
 		this.quantidade = quantidade;
 		this.produto = produto;

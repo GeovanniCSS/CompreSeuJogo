@@ -1,5 +1,7 @@
 package compreseujogo.model.entity;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -13,8 +15,8 @@ public class ItemVenda extends Item {
 	@ManyToOne
 	private Venda venda;
 
-	public ItemVenda(int id, double valor, int quantidade, Produto produto, Venda venda) {
-		super(id, valor, quantidade, produto);
+	public ItemVenda(int id, LocalDate dataAdicionado, double valor, int quantidade, Produto produto, Venda venda) {
+		super(id, dataAdicionado, valor, quantidade, produto);
 		this.venda = venda;
 	}
 
