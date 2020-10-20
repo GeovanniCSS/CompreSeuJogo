@@ -1,5 +1,6 @@
 package compreseujogo.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +11,10 @@ import compreseujogo.model.entity.Cliente;
 
 @SessionScoped
 @ManagedBean(name = "clienteBean")
-public class ClienteController {
+public class ClienteController implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Cliente cliente;
 	private List<Cliente> lista;
 

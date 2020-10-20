@@ -1,5 +1,6 @@
 package compreseujogo.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +14,10 @@ import compreseujogo.model.entity.Administrador;
 
 @SessionScoped
 @ManagedBean(name = "administradorBean")
-public class AdministradorController {
+public class AdministradorController implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Administrador administrador;
 	private List<Administrador> lista;
 
@@ -35,6 +38,10 @@ public class AdministradorController {
 			context.addMessage(null, message);
 		}
 	}
+	public String logout() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "/home.xhtml?faces-redirect=true";
+    }
 	public Administrador getAdministrador() {
 		return administrador;
 	}

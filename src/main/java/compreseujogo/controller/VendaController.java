@@ -1,5 +1,6 @@
 package compreseujogo.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +11,10 @@ import compreseujogo.model.entity.Venda;
 
 @RequestScoped
 @ManagedBean(name = "vendaBean")
-public class VendaController {
+public class VendaController implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	private Venda venda;
 	private List<Venda> lista;
 

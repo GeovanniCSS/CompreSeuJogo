@@ -1,5 +1,6 @@
 package compreseujogo.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +11,10 @@ import compreseujogo.model.entity.Carrinho;
 
 @RequestScoped
 @ManagedBean(name = "carrinhoBean")
-public class CarrinhoController {
+public class CarrinhoController implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	private Carrinho carrinho;
 	private List<Carrinho> lista;
 
