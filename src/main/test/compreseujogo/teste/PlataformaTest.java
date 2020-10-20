@@ -1,17 +1,16 @@
 package compreseujogo.teste;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.Test;
-
 import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Plataforma;
+
 
 public class PlataformaTest {
 	
 	@Test
 	public void inserirPlataforma() throws Exception {
-		Plataforma plataforma = new Plataforma(0, "Playstation", true,"PS4");
+		Plataforma plataforma = new Plataforma(0, "Xbox One", true,"ONE");
 		Facade facade = new Facade();
 		facade.inserirPlataforma(plataforma);
 		int i = plataforma.getId();

@@ -11,7 +11,7 @@ public class PlataformaTeste {
 		
 		plataforma.setCodigoSku("asdadsadd");
 		plataforma.setNome("PS4");
-		;
+	
 		
 
 		try {
