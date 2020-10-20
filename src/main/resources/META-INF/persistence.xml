@@ -16,7 +16,7 @@
 				value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=compreseujogo"/>
 			<property name="javax.persistence.jdbc.user" value="sa" ></property>
-			<property name="javax.persistence.jdbc.password" value="geovanni" />
+			<property name="javax.persistence.jdbc.password" value="1234" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />			
