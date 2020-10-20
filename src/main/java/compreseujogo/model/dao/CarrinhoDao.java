@@ -4,6 +4,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import compreseujogo.model.entity.Carrinho;
+import compreseujogo.util.Fabrica;
 
 
 public class CarrinhoDao {

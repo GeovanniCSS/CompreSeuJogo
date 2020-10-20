@@ -7,6 +7,12 @@
 	<ui:define name="corpo">
 		<p:growl autoUpdate="true" life="1000" />
 		<h:form>
+			<p:selectOneMenu id="marca" value="#{marcaBean.lista}"
+				style="width:125px">
+				<f:selectItem itemLabel="Marcas" noSelectionOption="true" />
+				<f:selectItems var="m" value="#{marcaBean.lista}" itemLabel="#{m.nome}" itemValue="#{m.nome}"  />
+			</p:selectOneMenu>
+
 			<p:dataTable var="m" value="#{marcaBean.lista}">
 				<p:column headerText="Id">
 					<h:outputText value="#{m.id}" />

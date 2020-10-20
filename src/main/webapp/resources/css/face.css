@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+#header{
+	padding: 200px, 10px
+}
+
+
 h2 {
 	align: center;
 	color: black;

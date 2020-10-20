@@ -1,4 +1,4 @@
-package compreseujogo.model.dao;
+package compreseujogo.util;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

@@ -1,12 +1,12 @@
 package compreseujogo.model.bo;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import compreseujogo.model.dao.GenericDao;
 import compreseujogo.model.dao.ProdutoDao;
+import compreseujogo.model.entity.Plataforma;
 import compreseujogo.model.entity.Produto;
-
-
 
 public class ProdutoBo {
 
@@ -56,6 +56,8 @@ public class ProdutoBo {
 			throw new Exception("O SKU n�o pode ficar em branco!");
 		} else if (produto.getEAN() < 0) {
 			throw new Exception("O EAN n�o pode ser negativo!");
+		} else if (produto.getDataLancamento().isAfter(LocalDate.now())) {
+			throw new Exception("Data de lançamento inválida!");
 		}
 	}
 
@@ -88,8 +90,32 @@ public class ProdutoBo {
 		} else if (list("EAN", produto).size() > 0) {
 			throw new Exception("J� existe um produto cadastrado com esse EAN!");
 		} else {
+			produto.setSku(gerarSku(produto));
 			return saveOrUpdate(produto);
 		}
 
+	}
+
+	private String gerarSku(Produto produto) throws Exception {
+		int size = list("Plataforma", produto).size();
+		try {
+			return produto.getPlataforma().getCodigoSku()+"-" + gerarNumeroSku(size);
+		} catch (Exception e) {
+			throw new Exception("Falha ao criar o SKU do produto");
+		}
+	}
+
+	private String gerarNumeroSku(int size) {
+		if (size < 1) {
+			return "0001";
+		} else if (size < 10) {
+			return "000" + size;
+		} else if (size < 100) {
+			return "00" + size;
+		} else if (size < 1000) {
+			return "0" + size;
+		} else {
+			return "falha";
+		}
 	}
 }

@@ -8,7 +8,7 @@ public class PlataformaTeste {
 
 	public static void main(String[] args) {
 		PlataformaBo pBo = new PlataformaBo();
-		Plataforma plataforma = new Plataforma(0,"Xbox",true);
+		Plataforma plataforma = new Plataforma(0,"Xbox",true,"");
 		WebServiceCep w = WebServiceCep.searchCep("83701030");
 		
 		w.getCidade();

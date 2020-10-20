@@ -1,6 +1,7 @@
 package compreseujogo.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -20,6 +21,7 @@ public class AvaliacaoController implements Serializable{
 
 	public AvaliacaoController() {
 		this.avaliacao = new Avaliacao();
+		this.lista = new ArrayList<Avaliacao>();
 	}
 
 	public Avaliacao getAvaliacao() {

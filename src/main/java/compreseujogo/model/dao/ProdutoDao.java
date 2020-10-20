@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import compreseujogo.model.entity.Produto;
+import compreseujogo.util.Fabrica;
 
 public class ProdutoDao {
 

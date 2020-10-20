@@ -1,11 +1,16 @@
 package compreseujogo.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
+import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Plataforma;
 
 @RequestScoped
@@ -19,6 +24,18 @@ public class PlataformaController implements Serializable{
 	
 	public PlataformaController() {
 		this.plataforma = new Plataforma();
+		this.lista = new ArrayList<Plataforma>();
+	}
+	
+	@PostConstruct
+	public void carregarLista() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			lista = facade.listaPlataforma(plataforma);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
 	}
 
 	public Plataforma getPlataforma() {

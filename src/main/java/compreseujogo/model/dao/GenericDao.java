@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import compreseujogo.model.entity.EntityBase;
+import compreseujogo.util.Fabrica;
 
 public class GenericDao <T extends EntityBase> {
 	

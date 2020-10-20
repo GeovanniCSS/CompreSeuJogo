@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import compreseujogo.model.entity.Transporte;
+import compreseujogo.util.Fabrica;
 
 public class TransporteDao {
 

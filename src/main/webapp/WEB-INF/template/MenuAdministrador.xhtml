@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -8,11 +8,13 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<h:outputStylesheet library="css" name="face.css" />
-	<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
 	<title>Site de jogos</title>
 </h:head>
-<h:body>
-	<header>
+<body>
+	<ui:composition>
+
 		<h2 align="center">Seus jogos aqui</h2>
 		<div align="center">
 			<h:graphicImage library="imagem" alt="Logo da empresa"
@@ -42,18 +44,6 @@
 				<p:growl id="messages" showDetail="true" />
 			</div>
 		</h:form>
-		<p:confirmDialog global="true">
-			<p:commandButton value="sim" styleClass="ui-confirmdialog-yes"
-				icon="ui-icon-check" />
-			<p:commandButton value="Não" styleClass="ui-confirmdialog-no"
-				icon="ui-icon-close" />
-		</p:confirmDialog>
-	</header>
-	<ui:insert name="corpo" />
-	<div align="center">
-	<footer>
-		<h2>-------------Só produto de qualidade------------------</h2>
-	</footer>
-	</div>
-</h:body>
+	</ui:composition>
+</body>
 </html>

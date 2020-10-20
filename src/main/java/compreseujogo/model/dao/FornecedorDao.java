@@ -7,6 +7,7 @@ import javax.persistence.Query;
 
 import compreseujogo.model.entity.EntityBase;
 import compreseujogo.model.entity.Fornecedor;
+import compreseujogo.util.Fabrica;
 
 public class FornecedorDao {
 	

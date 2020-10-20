@@ -15,7 +15,7 @@ public class ItemCarrinhoTeste {
 		GenericDao<Carrinho> genericC = new GenericDao<Carrinho>();
 		Carrinho carrinho = genericC.findById(Carrinho.class, 1);
 
-		ItemCarrinho item = new ItemCarrinho(0, 0.0, 1, produto, carrinho);
+		ItemCarrinho item = new ItemCarrinho();
 
 		try {
 			// System.out.println(bo.novo(itemCarrinho));

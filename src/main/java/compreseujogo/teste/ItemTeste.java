@@ -19,7 +19,7 @@ public class ItemTeste {
 		Item item = new ItemVenda();
 
 		Categoria categoria = new Categoria(2, "RPG", true);
-		Plataforma plataforma = new Plataforma(1, "Playstation", true);
+		Plataforma plataforma = new Plataforma(1, "Playstation",true,"PS4-");
 		Marca marca = new Marca (1 ,"A",true);
 		Fornecedor fornecedor = new Fornecedor();
 		fornecedor.setId(1);

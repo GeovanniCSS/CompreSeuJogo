@@ -7,6 +7,7 @@ import javax.persistence.Query;
 
 import compreseujogo.model.entity.Item;
 import compreseujogo.model.entity.ItemCarrinho;
+import compreseujogo.util.Fabrica;
 
 public class ItemCarrinhoDao {
 	private static EntityManager em = Fabrica.getEntityManager();

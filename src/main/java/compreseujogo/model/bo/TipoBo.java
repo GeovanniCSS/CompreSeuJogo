@@ -70,6 +70,7 @@ public class TipoBo<T extends Tipo> {
 		if (list("novo", tipo, classe).size() >= 1) {
 			throw new Exception("J� est� cadastrado esse nome");
 		} else {
+			tipo.setAtivo(true);
 			return saveOrUpdate(tipo);
 		}
 	}

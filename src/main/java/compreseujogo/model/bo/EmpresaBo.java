@@ -21,21 +21,21 @@ public class EmpresaBo<T extends Empresa> {
 	private void validarDados(Empresa empresa) throws Exception {
 		if (empresa.getId() > 0) {
 			throw new Exception("O id n�o pode ser negativo");
-		} else if(empresa.getNome().equals("")) {
+		} else if (empresa.getNome().equals("")) {
 			throw new Exception("O nome n�o pode ficar em branco");
-		} else if(empresa.getEmail().equals("")) {
+		} else if (empresa.getEmail().equals("")) {
 			throw new Exception("O e-mail n�o pode ficar em branco");
-		} else if(empresa.getEstado().equals("")) {
+		} else if (empresa.getEstado().equals("")) {
 			throw new Exception("O estado n�o pode ficar em branco");
-		} else if(empresa.getUrl().equals("")) {
+		} else if (empresa.getUrl().equals("")) {
 			throw new Exception("A url n�o pode ficar em branco");
-	    } else if(empresa.getCnpj().equals("")) {
+		} else if (empresa.getCnpj().equals("")) {
 			throw new Exception("O cnpj n�o pode ficar em branco");
-	    } else if(empresa.getCep().equals("")) {
+		} else if (empresa.getCep().equals("")) {
 			throw new Exception("O cep n�o pode ficar em branco");
-	    } else if(empresa.getEndereco().equals("")) {
+		} else if (empresa.getEndereco().equals("")) {
 			throw new Exception("O endere�o n�o pode ficar em branco");
-	    } else if(empresa.getTelefone().equals("")) {
+		} else if (empresa.getTelefone().equals("")) {
 			throw new Exception("O telefone n�o pode ficar em branco");
 		}
 	}
@@ -73,6 +73,16 @@ public class EmpresaBo<T extends Empresa> {
 			empresa.setAtivo(true);
 			saveOrUpdate(empresa);
 			return "Foi ativado" + empresa.getEmail();
+		}
+	}
+
+	public String novaEmpresa(Empresa empresa, Class<T> classe) throws Exception {
+		if (list("email", empresa, classe).size() > 0) {
+			throw new Exception("Esse e-mail já está cadastrado no sistema");
+		} else if (list("cnpj", empresa, classe).size() > 0) {
+			throw new Exception("Esse cnpj já está cadastrado no sistema");
+		} else {
+			return saveOrUpdate(empresa);
 		}
 	}
 }

@@ -1,6 +1,5 @@
 package compreseujogo.model.bo;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -11,8 +10,6 @@ import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.EntityBase;
 import compreseujogo.model.entity.Pessoa;
 import compreseujogo.model.entity.Vendedor;
-
-
 
 public class PessoaBo<T extends Pessoa> {
 
@@ -85,9 +82,10 @@ public class PessoaBo<T extends Pessoa> {
 		} else if (pessoa.getCpf().equals("")) {
 			throw new Exception("O cpf n�o pode ficar em branco!");
 		}
-		/*} else if (pessoa.getDataNascimento().isAfter(LocalDate.now())) {
-			throw new Exception("A data de nascimento est� incorreta!");
-		}*/
+		/*
+		 * } else if (pessoa.getDataNascimento().isAfter(LocalDate.now())) { throw new
+		 * Exception("A data de nascimento est� incorreta!"); }
+		 */
 	}
 
 	public String newUser(Pessoa pessoa, Class<T> classe) throws Exception {
@@ -117,11 +115,12 @@ public class PessoaBo<T extends Pessoa> {
 		return "ErroSalvar";
 	}
 
-	public Pessoa login(Pessoa pessoa, Class<T> classe) throws Exception {
+	public String login(Pessoa pessoa, Class<T> classe) throws Exception {
 		if (list("login", pessoa, classe).size() == 1) {
-			return list("login", pessoa, classe).get(0);
+		    pessoa = list("login", pessoa, classe).get(0);
+			return "Olá "+ pessoa.getNome();
 		} else {
-			throw new Exception("E-mail ou senha est� incorreto");
+			throw new Exception("E-mail ou senha está incorreto");
 		}
 	}
 

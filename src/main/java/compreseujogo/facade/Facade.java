@@ -25,9 +25,15 @@ import compreseujogo.model.bo.TipoBo;
 import compreseujogo.model.bo.TransporteBo;
 import compreseujogo.model.bo.VendaBo;
 import compreseujogo.model.bo.VendedorBo;
+import compreseujogo.model.entity.Administrador;
 import compreseujogo.model.entity.Carrinho;
+import compreseujogo.model.entity.Categoria;
+import compreseujogo.model.entity.Empresa;
+import compreseujogo.model.entity.Fornecedor;
 import compreseujogo.model.entity.ItemCarrinho;
 import compreseujogo.model.entity.Marca;
+import compreseujogo.model.entity.Plataforma;
+import compreseujogo.model.entity.Produto;
 import compreseujogo.model.entity.Tipo;
 import compreseujogo.model.entity.Transporte;
 import compreseujogo.model.entity.Venda;
@@ -83,9 +89,41 @@ public class Facade {
 		vendedorBo = new VendedorBo();
 	}
 
+	public String novaVenda(Venda venda, List<ItemCarrinho> lista) throws Exception {
+		itemCarrinhoBo.validarQuantidade(lista);
+		vendaBo.novaVenda(venda);
+		itemVendaBo.novaVenda(venda, lista);
+		return "vendido";
+
+	}
+
+	public String loginAdminstrador(Administrador administrador) throws Exception {
+		return administradorBo.login(administrador, Administrador.class);
+	}
+
 	public void inserirVendedor(Vendedor vendedor) throws Exception {
 		vendedorBo = new VendedorBo();
 		vendedorBo.saveOrUpdate(vendedor);
+	}
+
+	public String inserirCategoria(Categoria categoria) throws Exception {
+		return categoriaBo.nova(categoria, Categoria.class);
+	}
+
+	public String inserirPlataforma(Plataforma plataforma) throws Exception {
+		return plataformaBo.nova(plataforma, Plataforma.class);
+	}
+
+	public String inserirProduto(Produto produto) throws Exception {
+		return produtoBo.novo(produto);
+	}
+
+	public String inserirMarca(Marca marca) throws Exception {
+		return marcaBo.nova(marca, Marca.class);
+	}
+
+	public String inserirFornecedor(Fornecedor fornecedor) throws Exception {
+		return fornecedorBo.novaEmpresa(fornecedor, Fornecedor.class);
 	}
 
 	public void inserirTransporte(Transporte transporte) throws Exception {
@@ -98,18 +136,42 @@ public class Facade {
 		carrinhoBo.aumentorValor(item, carrinho);
 		return "";
 	}
-	public List<Marca> listaMarca(Marca marca) throws Exception{
-		ArrayList <Marca> lista = new ArrayList<Marca>();;
-		for(Tipo tipo : marcaBo.list("organizada", marca, Marca.class)) {
+
+	public List<Marca> listaMarca(Marca marca) throws Exception {
+		ArrayList<Marca> lista = new ArrayList<Marca>();
+		for (Tipo tipo : marcaBo.list("organizada", marca, Marca.class)) {
 			lista.add((Marca) tipo);
 		}
 		return lista;
 	}
-	public String novaVenda(Venda venda, List<ItemCarrinho> lista) throws Exception {
-		itemCarrinhoBo.validarQuantidade(lista);
-		vendaBo.novaVenda(venda);
-		itemVendaBo.novaVenda(venda, lista);
-		return "vendido";
-		
+
+	public List<Plataforma> listaPlataforma(Plataforma plataforma) throws Exception {
+		ArrayList<Plataforma> lista = new ArrayList<Plataforma>();
+		for (Tipo tipo : plataformaBo.list("organizada", plataforma, Plataforma.class)) {
+			lista.add((Plataforma) tipo);
+		}
+		return lista;
+	}
+
+	public List<Categoria> listaCategoria(Categoria categoria) throws Exception {
+		ArrayList<Categoria> lista = new ArrayList<Categoria>();
+		for (Tipo tipo : categoriaBo.list("organizada", categoria, Categoria.class)) {
+			lista.add((Categoria) tipo);
+		}
+		return lista;
+	}
+
+	public List<Fornecedor> listarFornecedorNome(Fornecedor fornecedor) throws Exception {
+		ArrayList<Fornecedor> lista = new ArrayList<Fornecedor>();
+
+		try {
+			for (Empresa empresa : fornecedorBo.list("organizada", fornecedor, Fornecedor.class)) {
+				lista.add((Fornecedor) empresa);
+			}
+		} catch (Exception e) {
+			throw new Exception("Falha ao listar os fornecedores");
+
+		}
+		return lista;
 	}
 }

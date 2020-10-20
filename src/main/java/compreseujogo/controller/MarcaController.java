@@ -27,6 +27,7 @@ public class MarcaController implements Serializable {
 
 	public MarcaController() {
 		this.marca = new Marca();
+		this.lista = new ArrayList<Marca>();
 	}
 
 	@PostConstruct

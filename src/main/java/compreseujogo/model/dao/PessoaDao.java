@@ -7,6 +7,7 @@ import javax.persistence.Query;
 
 import compreseujogo.model.entity.EntityBase;
 import compreseujogo.model.entity.Pessoa;
+import compreseujogo.util.Fabrica;
 
 public class PessoaDao <T extends Pessoa > {
 	
