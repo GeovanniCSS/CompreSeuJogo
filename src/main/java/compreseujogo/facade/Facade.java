@@ -31,6 +31,7 @@ import compreseujogo.model.entity.Categoria;
 import compreseujogo.model.entity.Empresa;
 import compreseujogo.model.entity.Fornecedor;
 import compreseujogo.model.entity.ItemCarrinho;
+import compreseujogo.model.entity.Loja;
 import compreseujogo.model.entity.Marca;
 import compreseujogo.model.entity.Plataforma;
 import compreseujogo.model.entity.Produto;
@@ -89,12 +90,14 @@ public class Facade {
 		vendedorBo = new VendedorBo();
 	}
 
-	public String novaVenda(Venda venda, List<ItemCarrinho> lista) throws Exception {
-		itemCarrinhoBo.validarQuantidade(lista);
+	public String novaVenda(Venda venda) throws Exception {
+		itemCarrinhoBo.validarQuantidade(venda.getCliente().getCarrinho().getItem());
 		vendaBo.novaVenda(venda);
-		itemVendaBo.novaVenda(venda, lista);
+		itemVendaBo.novaVenda(venda);
+		carrinhoBo.zerar(venda.getCliente().getCarrinho());
+		produtoBo.dimuirQuantidade(venda.getCliente().getCarrinho().getItem());
+		itemCarrinhoBo.apagarItems(venda.getCliente().getCarrinho().getItem());
 		return "vendido";
-
 	}
 
 	public String loginAdminstrador(Administrador administrador) throws Exception {
@@ -102,8 +105,7 @@ public class Facade {
 	}
 
 	public void inserirVendedor(Vendedor vendedor) throws Exception {
-		vendedorBo = new VendedorBo();
-		vendedorBo.saveOrUpdate(vendedor);
+		vendedorBo.newUser(vendedor, Vendedor.class);
 	}
 
 	public String inserirCategoria(Categoria categoria) throws Exception {
@@ -115,6 +117,7 @@ public class Facade {
 	}
 
 	public String inserirProduto(Produto produto) throws Exception {
+		produto.setLoja((Loja) lojaBo.list("", produto.getLoja(), Loja.class).get(0));
 		return produtoBo.novo(produto);
 	}
 
@@ -164,13 +167,8 @@ public class Facade {
 	public List<Fornecedor> listarFornecedorNome(Fornecedor fornecedor) throws Exception {
 		ArrayList<Fornecedor> lista = new ArrayList<Fornecedor>();
 
-		try {
-			for (Empresa empresa : fornecedorBo.list("organizada", fornecedor, Fornecedor.class)) {
-				lista.add((Fornecedor) empresa);
-			}
-		} catch (Exception e) {
-			throw new Exception("Falha ao listar os fornecedores");
-
+		for (Empresa empresa : fornecedorBo.list("organizada", fornecedor, Fornecedor.class)) {
+			lista.add((Fornecedor) empresa);
 		}
 		return lista;
 	}

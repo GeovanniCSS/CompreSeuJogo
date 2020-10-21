@@ -5,6 +5,7 @@ import java.util.List;
 
 import compreseujogo.model.dao.GenericDao;
 import compreseujogo.model.dao.ProdutoDao;
+import compreseujogo.model.entity.ItemCarrinho;
 import compreseujogo.model.entity.Plataforma;
 import compreseujogo.model.entity.Produto;
 
@@ -61,13 +62,11 @@ public class ProdutoBo {
 		}
 	}
 
-	public void dimuirQuantidade(Produto produto) throws Exception {
-		if (produto.getQuantEstoque() >= 1) {
-			produto.setQuantEstoque(produto.getQuantEstoque() - 1);
-		} else {
-			throw new Exception("N�o � possivel essa a��o no " + produto.getNome());
+	public void dimuirQuantidade(List<ItemCarrinho> list) throws Exception {
+		for (ItemCarrinho item : list) {
+			item.getProduto().setQuantEstoque(-item.getQuantidade());
+			saveOrUpdate(item.getProduto());
 		}
-
 	}
 
 	public String desativarAtivar(Produto produto) throws Exception {
@@ -83,14 +82,15 @@ public class ProdutoBo {
 	}
 
 	public String novo(Produto produto) throws Exception {
+		produto.setSku(gerarSku(produto));
+		produto.setDataCadastro(LocalDate.now());
 		if (list("nome", produto).size() > 0) {
-			throw new Exception("J� existe um produto cadastrado com esse nome!");
+			throw new Exception("Já existe um produto cadastrado com esse nome!");
 		} else if (list("SKU", produto).size() > 0) {
-			throw new Exception("J� existe um produto cadastrado com esse SKU!");
+			throw new Exception("Já existe um produto cadastrado com esse SKU!");
 		} else if (list("EAN", produto).size() > 0) {
-			throw new Exception("J� existe um produto cadastrado com esse EAN!");
+			throw new Exception("Já existe um produto cadastrado com esse EAN!");
 		} else {
-			produto.setSku(gerarSku(produto));
 			return saveOrUpdate(produto);
 		}
 
@@ -99,7 +99,7 @@ public class ProdutoBo {
 	private String gerarSku(Produto produto) throws Exception {
 		int size = list("Plataforma", produto).size();
 		try {
-			return produto.getPlataforma().getCodigoSku()+"-" + gerarNumeroSku(size);
+			return produto.getPlataforma().getCodigoSku() + "-" + gerarNumeroSku(size);
 		} catch (Exception e) {
 			throw new Exception("Falha ao criar o SKU do produto");
 		}

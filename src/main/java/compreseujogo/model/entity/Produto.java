@@ -73,7 +73,6 @@ public class Produto implements EntityBase, Serializable {
 		this.sku = sku;
 		this.ativo = ativo;
 		this.quantConsulta = quantConsulta;
-		this.dataCadastro = LocalDate.now();
 		this.dataLancamento = dataLancamento;
 		this.categoria = categoria;
 		this.plataforma = plataforma;

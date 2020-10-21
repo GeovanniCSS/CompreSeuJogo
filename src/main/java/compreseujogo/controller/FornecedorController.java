@@ -22,12 +22,11 @@ public class FornecedorController implements Serializable {
 	private Fornecedor fornecedor;
 	private List<Fornecedor> lista;
 
-	
 	public FornecedorController() {
 		this.fornecedor = new Fornecedor();
 		this.lista = new ArrayList<Fornecedor>();
 	}
-	
+
 	@PostConstruct
 	public void carregarLista() {
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -37,6 +36,18 @@ public class FornecedorController implements Serializable {
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
+	}
+
+	public String salvar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			context.addMessage(null, new FacesMessage(facade.inserirFornecedor(fornecedor), FacesMessage.FACES_MESSAGES));
+			return "";
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		return null;
 	}
 
 	public Fornecedor getFornecedor() {

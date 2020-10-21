@@ -16,7 +16,8 @@ public class FornecedorTeste {
 		try {	
 			//System.out.println(fornecedorBo.saveOrUpdate(fornecedor));
 			//fornecedorBo.list("", fornecedor).forEach(System.out::println);
-			facade.listarFornecedorNome(fornecedor).forEach(System.out::println);
+			//facade.listarFornecedorNome(fornecedor).forEach(System.out::println);
+			facade.inserirFornecedor(fornecedor);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

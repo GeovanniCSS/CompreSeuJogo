@@ -7,7 +7,6 @@ import compreseujogo.model.dao.GenericDao;
 import compreseujogo.model.entity.Carrinho;
 import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.Item;
-import compreseujogo.model.entity.ItemCarrinho;
 
 
 
@@ -62,5 +61,15 @@ public class CarrinhoBo {
 	public void aumentorValor(Item item, Carrinho carrinho) throws Exception {
 		carrinho.setValor(+item.getValor());
 		saveOrUpdate(carrinho);
+	}
+
+	public void zerar(Carrinho carrinho) throws Exception {
+		try {
+			carrinho.setValor(0.0);
+			saveOrUpdate(carrinho);
+		} catch (Exception e) {
+			throw new Exception("Falha ao zerar o valor do carrinho!");
+		}
+		
 	}
 }

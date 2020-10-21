@@ -39,4 +39,15 @@ public class ItemCarrinhoBo extends ItemBo {
 			}
 		}
 	}
+
+	public void apagarItems(List<ItemCarrinho> item) throws Exception {
+		for(ItemCarrinho items : item) {
+			try {
+				remove(items);
+			} catch (Exception e) {
+				throw new Exception("Falha ao apagar os item do carrinho");
+			}
+		}
+		
+	}
 }

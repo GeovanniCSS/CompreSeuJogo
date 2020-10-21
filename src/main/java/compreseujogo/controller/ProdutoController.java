@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
+import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Produto;
 
 @RequestScoped
@@ -22,7 +25,19 @@ public class ProdutoController implements Serializable {
 		this.produto = new Produto();
 		this.lista = new ArrayList<Produto>();
 	}
-
+	
+	public String salvar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		
+		try {
+			context.addMessage(null, new FacesMessage(facade.inserirProduto(produto),FacesMessage.FACES_MESSAGES));
+			return "";
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		return null;
+	}
 	public Produto getProduto() {
 		return produto;
 	}

@@ -37,6 +37,19 @@ public class PlataformaController implements Serializable{
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
 	}
+	
+	public String salvar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		
+		try {
+			context.addMessage(null, new FacesMessage(facade.inserirPlataforma(plataforma),FacesMessage.FACES_MESSAGES));
+			return "";
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		return null;
+	}
 
 	public Plataforma getPlataforma() {
 		return plataforma;

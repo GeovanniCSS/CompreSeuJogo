@@ -19,7 +19,7 @@ import compreseujogo.model.entity.Marca;
 public class MarcaController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
 	private Marca marca;
 	@Inject
@@ -39,6 +39,19 @@ public class MarcaController implements Serializable {
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
+	}
+
+	public String salvar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		
+		try {
+			context.addMessage(null, new FacesMessage(facade.inserirMarca(marca),FacesMessage.FACES_MESSAGES));
+			return "";
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		return null;
 	}
 
 	public Marca getMarca() {

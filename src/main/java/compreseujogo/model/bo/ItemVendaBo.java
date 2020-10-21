@@ -1,7 +1,5 @@
 package compreseujogo.model.bo;
 
-import java.util.List;
-
 import compreseujogo.model.entity.ItemCarrinho;
 import compreseujogo.model.entity.ItemVenda;
 import compreseujogo.model.entity.Venda;
@@ -10,8 +8,8 @@ public class ItemVendaBo extends ItemBo<ItemVenda> {
 
 	private ItemVendaDao dao;
 
-	public void novaVenda(Venda venda, List<ItemCarrinho> lista) throws Exception {
-		for (ItemCarrinho itemCarrinho : lista) {
+	public void novaVenda(Venda venda) throws Exception {
+		for (ItemCarrinho itemCarrinho : venda.getCliente().getCarrinho().getItem()) {
 			ItemVenda item = new ItemVenda(0, venda.getDataCadastro(), itemCarrinho.getValor(), itemCarrinho.getQuantidade(),
 					itemCarrinho.getProduto(), venda);
 			try {

@@ -27,16 +27,16 @@ public class AdministradorController implements Serializable {
 		this.lista = new ArrayList<Administrador>();
 	}
 	
-	public void login() {
+	public String login() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		try {
-			FacesMessage message = new FacesMessage(facade.loginAdminstrador(administrador), FacesMessage.FACES_MESSAGES);
-			context.addMessage(null, message);
+			context.addMessage(null, new FacesMessage(facade.loginAdminstrador(administrador), FacesMessage.FACES_MESSAGES));
+			return "cadastroProduto.xhtml?faces-redirect=true";
 		} catch (Exception e) {
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null);
-			context.addMessage(null, message);
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null));
 		}
+		return null;
 	}
 	public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();

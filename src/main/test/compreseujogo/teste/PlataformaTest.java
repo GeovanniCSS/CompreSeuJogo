@@ -10,7 +10,7 @@ public class PlataformaTest {
 	
 	@Test
 	public void inserirPlataforma() throws Exception {
-		Plataforma plataforma = new Plataforma(0, "gegerg", true,"Odd");
+		Plataforma plataforma = new Plataforma(0, "gGg", true,"Odd");
 		Facade facade = new Facade();
 		facade.inserirPlataforma(plataforma);
 		System.out.println(plataforma);
