@@ -28,19 +28,18 @@ public class Vendedor extends Pessoa {
 	List<Venda> venda;
 
 	public Vendedor(int id, String nome, String sobrenome, String email, String senha, Date dataNascimento,
-			LocalDate dataCadastro, String endereco, String telefone, String cep, String cpf, boolean ativo, String estado,
-			String cidade, String bairro, Sexo sexo, Comissao comissao, Loja loja, List<Venda> venda) {
-		super(id, nome, sobrenome, email, senha, dataNascimento, dataCadastro, endereco, telefone, cep, cpf, ativo,
-				estado, cidade, bairro, sexo);
+			String endereco, String telefone, String cep, String cpf, boolean ativo, String estado, String cidade,
+			String bairro, Sexo sexo, Comissao comissao, Loja loja) {
+		super(id, nome, sobrenome, email, senha, dataNascimento, endereco, telefone, cep, cpf, ativo, estado, cidade,
+				bairro, sexo);
 		this.comissao = comissao;
 		this.loja = loja;
-		this.venda = venda;
+		this.venda = new ArrayList<Venda>();
 	}
 
 	public Vendedor() {
 		super();
 	}
-
 	public List<Venda> getVenda() {
 		return venda;
 	}

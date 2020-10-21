@@ -35,7 +35,7 @@ public class VendedorBo extends PessoaBo {
 		vendedor.setLoja(bo.list("", null).get(0));
 		vendedor.setComissao(comissao);
 		try {
-			return saveOrUpdate(vendedor) + "_vendedor";
+			return saveOrUpdate(vendedor);
 		} catch (Exception e) {
 			remove(vendedor);
 			throw new Exception("Erro no cadastro de " + vendedor.getNome());

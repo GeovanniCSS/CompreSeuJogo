@@ -29,7 +29,7 @@ public class VendaTeste {
 		
 		try {
 			//System.out.println(bo.saveOrUpdate(venda));
-			System.out.println(facade.novaVenda(venda, carrinho.getItem()));
+			System.out.println(facade.novaVenda(venda));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

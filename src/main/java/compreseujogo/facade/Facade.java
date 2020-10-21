@@ -105,12 +105,8 @@ public class Facade {
 	}
 
 	public void inserirVendedor(Vendedor vendedor) throws Exception {
-<<<<<<< HEAD
 		vendedorBo.newUser(vendedor, Vendedor.class);
-=======
-		vendedorBo = new VendedorBo();
-		vendedorBo.newUser(vendedor,Vendedor.class);
->>>>>>> cddf730d92294cffe9d7506740fb63648048aea2
+		vendedorBo.createDepency(vendedor);
 	}
 
 	public String inserirCategoria(Categoria categoria) throws Exception {

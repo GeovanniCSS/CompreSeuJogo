@@ -31,14 +31,13 @@ public class Cliente extends Pessoa {
 
 	public Cliente(int id, String nome, String sobrenome, String email, String senha, Date dataNascimento,
 			LocalDate dataCadastro, String endereco, String telefone, String cep, String cpf, boolean ativo, String estado,
-			String cidade, String bairro, Sexo sexo, Carrinho carrinho, ListaDesejos listaDesejos,
-			List<Avaliacao> avaliacao, List<Venda> venda) {
-		super(id, nome, sobrenome, email, senha, dataNascimento, dataCadastro, endereco, telefone, cep, cpf, ativo,
+			String cidade, String bairro, Sexo sexo, Carrinho carrinho, ListaDesejos listaDesejos) {
+		super(id, nome, sobrenome, email, senha, dataNascimento, endereco, telefone, cep, cpf, ativo,
 				estado, cidade, bairro, sexo);
 		this.carrinho = carrinho;
 		this.listaDesejos = listaDesejos;
-		this.avaliacao = avaliacao;
-		this.venda = venda;
+		this.avaliacao = new ArrayList<Avaliacao>();
+		this.venda = new ArrayList<Venda>();
 	}
 
 	public Cliente() {

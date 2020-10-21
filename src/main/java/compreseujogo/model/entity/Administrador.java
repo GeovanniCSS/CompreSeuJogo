@@ -16,10 +16,10 @@ public class Administrador extends Pessoa {
 	private Loja loja;
 
 	public Administrador(int id, String nome, String sobrenome, String email, String senha, Date dataNascimento,
-			LocalDate dataCadastro, String endereco, String telefone, String cep, String cpf, boolean ativo, String estado,
-			String cidade, String bairro, Sexo sexo, Loja loja) {
-		super(id, nome, sobrenome, email, senha, dataNascimento, dataCadastro, endereco, telefone, cep, cpf, ativo,
-				estado, cidade, bairro, sexo);
+			String endereco, String telefone, String cep, String cpf, boolean ativo, String estado, String cidade,
+			String bairro, Sexo sexo, Loja loja) {
+		super(id, nome, sobrenome, email, senha, dataNascimento, endereco, telefone, cep, cpf, ativo, estado, cidade,
+				bairro, sexo);
 		this.loja = loja;
 	}
 
