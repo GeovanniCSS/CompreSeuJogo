@@ -7,27 +7,25 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Cadastro de Plataforma</title>
+	<title>Login cliente</title>
 </h:head>
 <h:body>
-	<div id="header">
-		<ui:insert name="header">
-			<ui:include src="/WEB-INF/template/menuVendedor.xhtml" />
-		</ui:insert>
-	</div>
+	<h3 align="center">Fazer login</h3>
 	<h:form>
 		<p:growl autoUpdate="true" life="3000" />
 		<div id="main" align="center">
 			<p:panelGrid columns="2" layout="grid"
 				styleClass="showcase-text-align-center">
-				<p:outputLabel value="Nome" for="nome" />
-				<p:inputText id="nome" value="#{plataformaBean.plataforma.nome}"
-					placeholder="Digite o nome da plataforma" />
-				<p:outputLabel value="Sigla SKU" for="sku" />
-				<p:inputText id="sku" value="#{plataformaBean.plataforma.codigoSku}"
-					placeholder="Digite a sigla do sku" />
+				<p:outputLabel value="E-mail" for="email" />
+				<p:inputText id="email"
+					value="#{administradorBean.administrador.email}"
+					placeholder="Digite seu e-mail" required="true" />
+				<p:outputLabel value="Senha" for="senha" />
+				<p:password id="senha"
+					value="#{administradorBean.administrador.senha}"
+					placeholder="Digite sua senha" required="true" />
 			</p:panelGrid>
-			<p:commandButton value="Salvar" action="#{plataformaBean.salvar()}"
+			<p:commandButton value="Entrar" action="#{administradorBean.login()}"
 				update="@form" />
 		</div>
 	</h:form>

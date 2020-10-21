@@ -7,9 +7,10 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Login Administrador</title>
+	<title>Login administrador</title>
 </h:head>
 <h:body>
+	<h3 align="center">Fazer login</h3>
 	<h:form>
 		<p:growl autoUpdate="true" life="3000" />
 		<div id="main" align="center">
@@ -22,7 +23,7 @@
 				<p:outputLabel value="Senha" for="senha" />
 				<p:password id="senha"
 					value="#{administradorBean.administrador.senha}"
-					placeholder="Digite sua senha" required="true"/>
+					placeholder="Digite sua senha" required="true" />
 			</p:panelGrid>
 			<p:commandButton value="Entrar" action="#{administradorBean.login()}"
 				update="@form" />
