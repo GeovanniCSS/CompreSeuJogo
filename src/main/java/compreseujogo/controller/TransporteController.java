@@ -1,7 +1,6 @@
 package compreseujogo.controller;
 
 import java.io.Serializable;
-import java.time.format.DateTimeFormatter;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -31,8 +30,9 @@ public class TransporteController implements Serializable {
 	public TransporteController() {
 		transporte = new Transporte();
 	}
+	
 
-	public String salvar() {
+	public void salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		
 		TransporteBo transporteBo;		
@@ -48,12 +48,12 @@ public class TransporteController implements Serializable {
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 				e.getMessage(),""));
-			return "transporte";
+			//return "transporte";
 		}	
 		
 		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
 			"Atendimento salvo com sucesso!", "SUCESSO"));		
-		return "sucesso";
+		//return "sucesso";
 	}
 
 }

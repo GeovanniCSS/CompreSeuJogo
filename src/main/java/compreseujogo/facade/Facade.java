@@ -103,7 +103,7 @@ public class Facade {
 
 	public void inserirVendedor(Vendedor vendedor) throws Exception {
 		vendedorBo = new VendedorBo();
-		vendedorBo.saveOrUpdate(vendedor);
+		vendedorBo.newUser(vendedor,Vendedor.class);
 	}
 
 	public String inserirCategoria(Categoria categoria) throws Exception {
