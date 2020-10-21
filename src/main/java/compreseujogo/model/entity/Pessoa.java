@@ -30,7 +30,7 @@ public abstract class Pessoa implements EntityBase, Serializable {
 	private String email;
 	private String senha;
 	private Date dataNascimento;
-	private Date dataCadastro;
+	private LocalDate dataCadastro;
 	private String endereco;
 	private String telefone;
 	private String cep;
@@ -44,7 +44,7 @@ public abstract class Pessoa implements EntityBase, Serializable {
 	private Sexo sexo;
 
 	public Pessoa(int id, String nome, String sobrenome, String email, String senha, Date dataNascimento,
-			Date dataCadastro, String endereco, String telefone, String cep, String cpf, boolean ativo, String estado,
+			LocalDate dataCadastro, String endereco, String telefone, String cep, String cpf, boolean ativo, String estado,
 			String cidade, String bairro, Sexo sexo) {
 		super();
 		this.id = id;
@@ -117,11 +117,11 @@ public abstract class Pessoa implements EntityBase, Serializable {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public Date getDataCadastro() {
+	public LocalDate getDataCadastro() {
 		return dataCadastro;
 	}
 
-	public void setDataCadastro(Date dataCadastro) {
+	public void setDataCadastro(LocalDate dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 

@@ -21,12 +21,12 @@ public class PlataformaTest {
 		}
 		assertEquals(true, teste);
 	}
-	/*
+	
 	@Test
 	public void listar() throws Exception {
 		Plataforma plataforma = new Plataforma(0, "Corrida", true,"");
 		Facade facade = new Facade();
 		facade.listaPlataforma(plataforma).forEach(System.out::println);;
 	}
-	*/
+	
 }

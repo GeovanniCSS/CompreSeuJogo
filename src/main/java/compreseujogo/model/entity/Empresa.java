@@ -25,12 +25,14 @@ public abstract class Empresa implements EntityBase, Serializable {
 	private String email;
 	private String endereco;
 	private String cep;
+	private String bairro;
+	private String cidade;
 	private String estado;
 	private String telefone;
 	private String url;
 	private Boolean ativo;
 
-	public Empresa(int id, String nome, String cnpj, String email, String endereco, String cep, String estado,
+	public Empresa(int id, String nome, String cnpj, String email, String endereco, String cep, String bairro, String cidade, String estado,
 			String telefone, String url, Boolean ativo) {
 		super();
 		this.id = id;
@@ -39,11 +41,34 @@ public abstract class Empresa implements EntityBase, Serializable {
 		this.email = email;
 		this.endereco = endereco;
 		this.cep = cep;
+		this.bairro = bairro;
+		this.cidade = cidade;
 		this.estado = estado;
 		this.telefone = telefone;
 		this.url = url;
 		this.ativo = ativo;
 	}
+
+	
+	public String getBairro() {
+		return bairro;
+	}
+
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+
+	public String getCidade() {
+		return cidade;
+	}
+
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
 
 	public Empresa() {
 		super();
@@ -129,12 +154,15 @@ public abstract class Empresa implements EntityBase, Serializable {
 		this.ativo = ativo;
 	}
 
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((ativo == null) ? 0 : ativo.hashCode());
+		result = prime * result + ((bairro == null) ? 0 : bairro.hashCode());
 		result = prime * result + ((cep == null) ? 0 : cep.hashCode());
+		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
 		result = prime * result + ((cnpj == null) ? 0 : cnpj.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
@@ -145,6 +173,7 @@ public abstract class Empresa implements EntityBase, Serializable {
 		result = prime * result + ((url == null) ? 0 : url.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -160,10 +189,20 @@ public abstract class Empresa implements EntityBase, Serializable {
 				return false;
 		} else if (!ativo.equals(other.ativo))
 			return false;
+		if (bairro == null) {
+			if (other.bairro != null)
+				return false;
+		} else if (!bairro.equals(other.bairro))
+			return false;
 		if (cep == null) {
 			if (other.cep != null)
 				return false;
 		} else if (!cep.equals(other.cep))
+			return false;
+		if (cidade == null) {
+			if (other.cidade != null)
+				return false;
+		} else if (!cidade.equals(other.cidade))
 			return false;
 		if (cnpj == null) {
 			if (other.cnpj != null)
@@ -204,4 +243,14 @@ public abstract class Empresa implements EntityBase, Serializable {
 			return false;
 		return true;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Empresa [id=" + id + ", nome=" + nome + ", cnpj=" + cnpj + ", email=" + email + ", endereco=" + endereco
+				+ ", cep=" + cep + ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", telefone="
+				+ telefone + ", url=" + url + ", ativo=" + ativo + "]";
+	}
+
+	
 }

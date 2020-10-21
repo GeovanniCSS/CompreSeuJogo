@@ -17,9 +17,9 @@ public class Fornecedor extends Empresa {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fornecedor")
 	private List<Produto> produto;
 
-	public Fornecedor(int id, String nome, String cnpj, String email, String endereco, String cep, String estado,
+	public Fornecedor(int id, String nome, String cnpj, String email, String bairro, String cidade,String endereco, String cep, String estado,
 			String telefone, String url, Boolean ativo) {
-		super(id, nome, cnpj, email, endereco, cep, estado, telefone, url, ativo);
+		super(id, nome, cnpj, email, bairro, cidade, endereco, cep, estado, telefone, url, ativo);
 		produto = new ArrayList<Produto>();
 	}
 

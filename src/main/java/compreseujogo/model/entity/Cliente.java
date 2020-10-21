@@ -1,5 +1,6 @@
 package compreseujogo.model.entity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,7 +30,7 @@ public class Cliente extends Pessoa {
 	private List<Venda> venda;
 
 	public Cliente(int id, String nome, String sobrenome, String email, String senha, Date dataNascimento,
-			Date dataCadastro, String endereco, String telefone, String cep, String cpf, boolean ativo, String estado,
+			LocalDate dataCadastro, String endereco, String telefone, String cep, String cpf, boolean ativo, String estado,
 			String cidade, String bairro, Sexo sexo, Carrinho carrinho, ListaDesejos listaDesejos,
 			List<Avaliacao> avaliacao, List<Venda> venda) {
 		super(id, nome, sobrenome, email, senha, dataNascimento, dataCadastro, endereco, telefone, cep, cpf, ativo,

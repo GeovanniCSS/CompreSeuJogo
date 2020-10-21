@@ -1,5 +1,6 @@
 package compreseujogo.model.bo;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -89,12 +90,14 @@ public class PessoaBo<T extends Pessoa> {
 	}
 
 	public String newUser(Pessoa pessoa, Class<T> classe) throws Exception {
+		System.out.println("hahahaha");
 		if (list("email", pessoa, classe).size() >= 1) {
-			throw new Exception("Esse e-mail j� est� registrado!");
+			throw new Exception("Esse e-mail já está registrado!");
 		} else if (list("cpf", pessoa, classe).size() >= 1) {
-			throw new Exception("Esse cpf j� est� registrado!");
+			throw new Exception("Esse cpf já está registrado!");
 		} else {
-			pessoa.setDataCadastro(Date.from(null));
+			System.out.println("hahahaha2");
+			pessoa.setDataCadastro(LocalDate.now());
 			saveOrUpdate(pessoa);
 			return createDependency(pessoa, classe);
 		}
