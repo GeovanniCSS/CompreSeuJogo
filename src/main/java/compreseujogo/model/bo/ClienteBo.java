@@ -37,5 +37,7 @@ public class ClienteBo extends PessoaBo<Cliente> {
 			throw new Exception("Erro ao executar o cadastro" + cliente.getNome());
 		}
 	}
+	
+	
 
 }

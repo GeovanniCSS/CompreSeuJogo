@@ -28,6 +28,7 @@ import compreseujogo.model.bo.VendedorBo;
 import compreseujogo.model.entity.Administrador;
 import compreseujogo.model.entity.Carrinho;
 import compreseujogo.model.entity.Categoria;
+import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.Empresa;
 import compreseujogo.model.entity.Fornecedor;
 import compreseujogo.model.entity.ItemCarrinho;
@@ -107,6 +108,11 @@ public class Facade {
 	public void inserirVendedor(Vendedor vendedor) throws Exception {
 		vendedorBo.newUser(vendedor, Vendedor.class);
 		vendedorBo.createDepency(vendedor);
+	}
+	
+	public void inserirCliente(Cliente cliente) throws Exception {
+		clienteBo.newUser(cliente, Cliente.class);
+		clienteBo.saveOrUpdate(cliente);
 	}
 
 	public String inserirCategoria(Categoria categoria) throws Exception {
