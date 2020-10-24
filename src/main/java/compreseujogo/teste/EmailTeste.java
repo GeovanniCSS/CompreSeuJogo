@@ -8,7 +8,7 @@ public class EmailTeste {
 	public static void main(String[] args) {
 		try {
 
-			final String emailP = "leonardopires-1997@hotmail.com";
+			final String emailP = "ander.lemos.jr@gmail.com";
 			final String emailI = "java.compreseujogo@gmail.com";
 			final String senha = "geovann!1";
 
@@ -46,38 +46,4 @@ public class EmailTeste {
 			e.printStackTrace();
 		}
 	}
-
-	public static void sendEmail() throws EmailException {
-
-		SimpleEmail email = new SimpleEmail();
-		// Utilize o hostname do seu provedor de email
-		System.out.println("alterando hostname...");
-		email.setDebug(true);
-		email.setHostName("smtp.gmail.com");
-
-		// Quando a porta utilizada não é a padrão (gmail = 465)
-		email.setSmtpPort(587);
-
-		// Adicione os destinatários
-		email.addTo("geovannicorsino@gmail.com");
-
-		// Configure o seu email do qual enviará
-		email.setFrom("java.compreseujogo@gmail.com");
-
-		// Adicione um assunto
-		email.setSubject("Venda");
-
-		// Adicione a mensagem do email
-		email.setMsg("Detalhes da venda");
-
-		// Para autenticar no servidor é necessário chamar os dois métodos abaixo
-		System.out.println("autenticando...");
-		email.setSSL(true);
-		email.setTLS(true);
-		email.setAuthentication("java.compreseujogo@gmail.com", "L&onard0");
-		System.out.println("enviando...");
-		email.send();
-		System.out.println("Email enviado!");
-	}
-
 }

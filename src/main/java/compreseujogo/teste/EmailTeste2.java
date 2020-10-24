@@ -41,7 +41,7 @@ public class EmailTeste2 {
 	      //Remetente
 
 	      Address[] toUser = InternetAddress //Destinatário(s)
-	                 .parse("geovannicorsino@gmail.com");
+	                 .parse("ander.lemos.jr@gmail.com");
 
 	      message.setRecipients(Message.RecipientType.TO, toUser);
 	      message.setSubject("Enviando email com JavaMail");//Assunto
