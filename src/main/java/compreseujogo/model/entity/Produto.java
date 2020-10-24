@@ -28,6 +28,7 @@ public class Produto implements EntityBase, Serializable {
 	private int id;
 	private String nome;
 	private String descricao;
+	private String imagem;
 	private double valor;
 	@Column(name = "quantidadeEstoque")
 	private int quantEstoque;
@@ -60,13 +61,14 @@ public class Produto implements EntityBase, Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "produto")
 	private List<Item> item;
 
-	public Produto(int id, String nome, String descricao, double valor, int quantEstoque, int eAN, String sku,
+	public Produto(int id, String nome, String descricao, String imagem, double valor, int quantEstoque, int eAN, String sku,
 			boolean ativo, int quantConsulta, LocalDate dataLancamento, Categoria categoria,
 			Plataforma plataforma, Marca marca, Fornecedor fornecedor, Loja loja) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
+		this.imagem = imagem;
 		this.valor = valor;
 		this.quantEstoque = quantEstoque;
 		this.EAN = eAN;
@@ -105,6 +107,14 @@ public class Produto implements EntityBase, Serializable {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 
 	public void setNome(String nome) {

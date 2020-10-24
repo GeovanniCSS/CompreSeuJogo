@@ -47,7 +47,10 @@
 			<h:outputText value="#{produtoBean.produto.dataLancamento}">
 				<f:convertDateTime pattern="dd/MM/yyyy" />
 			</h:outputText>
-
+			<p:fileUpload value="#{fileUploadView.file}" mode="simple"
+				skinSimple="true" />
+			<p:commandButton value="Submit" ajax="false"
+				action="#{fileUploadView.upload}" disabled="true" />
 			<p:outputLabel for="categoria" value="Categoria" />
 			<p:selectOneMenu id="categoria" value="#{categoriaBean.lista}"
 				style="width:200px">
