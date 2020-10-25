@@ -26,37 +26,46 @@
     			<p:panel header="Dados Pessoais"> 
     				<h:panelGrid columns="4" cellpadding="8" style="margin:100px"> 
 						<p:outputLabel value="Nome" />
-						<p:inputText id="nome" value="#{vendedorBean.vendedor.nome}" required="true" />
+						<p:inputText id="nome" value="#{vendedorBean.vendedor.nome}" required="true" 
+						requiredMessage="O campo nome é obrigatório"/>
 
 						<p:outputLabel value="Sobrenome" />
 						<p:inputText id="sobrenome"
-							value="#{vendedorBean.vendedor.sobrenome}" required="true" />
+							value="#{vendedorBean.vendedor.sobrenome}" required="true"
+							requiredMessage="O campo sobrenome é obrigatório"/>
 
 						<p:outputLabel value="CPF" />
 						<p:inputMask id="cpf" value="#{vendedorBean.vendedor.cpf}"
-							mask="999.999.999-99" required="true"/>
+							mask="999.999.999-99" required="true" 
+							requiredMessage="O campo CPF é obrigatório"/>
 	
 						<p:outputLabel value="Telefone" />
 						<p:inputMask id="telefone" value="#{vendedorBean.vendedor.telefone}"
-							mask="(99)99999-9999" required="true"/>
+							mask="(99)99999-9999" required="true"
+							requiredMessage="O campo telefone é obrigatório"/>
 	
 						<p:outputLabel value="Data de Nascimento" />
 						<p:calendar id="mask" value="#{vendedorBean.vendedor.dataNascimento}"
-							pattern="dd-MM-yyyy" mask="true" required="true"/>
+							pattern="dd-MM-yyyy" mask="true" required="true"
+							requiredMessage="O campo data de nascimento é obrigatório"/>
 	
 						<p:outputLabel value="CEP" />
 						<p:inputMask id="cep" value="#{vendedorBean.vendedor.cep}"
-							mask="99999-999" required="true"/>
+							mask="99999-999" required="true"
+							requiredMessage="O campo CEP é obrigatório"/>
 	
 						<p:outputLabel for="address" value="Endereço" />
 						<p:inputText id="address" rows="1"
-							value="#{vendedorBean.vendedor.endereco}" required="true"/>
+							value="#{vendedorBean.vendedor.endereco}" required="true"
+							requiredMessage="O campo endereço é obrigatório"/>
 			
 						<p:outputLabel for="city" value="Cidade" />
-						<p:inputText id="city" value="#{vendedorBean.vendedor.cidade}" required="true"/>
+						<p:inputText id="city" value="#{vendedorBean.vendedor.cidade}" required="true"
+							requiredMessage="O campo cidade é obrigatório"/>
 			
 						<p:outputLabel for="bairro" value="Bairro" />
-						<p:inputText id="bairro" value="#{vendedorBean.vendedor.bairro}" required="true"/>
+						<p:inputText id="bairro" value="#{vendedorBean.vendedor.bairro}" required="true"
+							requiredMessage="O campo bairro é obrigatório"/>
 			
 						<p:outputLabel for="state" value="Estado" />
 						<p:selectOneMenu id="state">
@@ -68,10 +77,19 @@
 						</p:selectOneMenu>
 			
 						<p:outputLabel for="email" value="Email" />
-						<p:inputText id="email" value="#{vendedorBean.vendedor.email}" required="true"/>
+						<p:inputText id="email" value="#{vendedorBean.vendedor.email}" required="true"
+							requiredMessage="O campo e-mail é obrigatório"/>
 	
 						<p:outputLabel for="senha" value="Senha" />
-						<p:password id="senha" value="#{vendedorBean.vendedor.senha}" required="true" />
+						<p:password id="senha" value="#{vendedorBean.vendedor.senha}" required="true"
+							requiredMessage="O campo senha é obrigatório"/>
+						
+        				<p:outputLabel value="Sexo" />
+        				<p:selectOneRadio id="console" value="#{vendedorBean.vendedor.sexo}" unselectable="true">
+            				<f:selectItem itemLabel="Masculino" itemValue="true" />
+            				<f:selectItem itemLabel="Feminino" itemValue="false" />
+        				</p:selectOneRadio>
+    		
 	
 						<p:commandButton value="Salvar" id="salvar"
 							action="#{vendedorBean.salvar}"  style="margin-center:20px;" update="form1"/>
