@@ -28,10 +28,10 @@ public class Vendedor extends Pessoa {
 	List<Venda> venda;
 
 	public Vendedor(int id, String nome, String sobrenome, String email, String senha, Date dataNascimento,
-			String endereco, String telefone, String cep, String cpf, boolean ativo, String estado, String cidade,
-			String bairro, Sexo sexo, Comissao comissao, Loja loja) {
-		super(id, nome, sobrenome, email, senha, dataNascimento, endereco, telefone, cep, cpf, ativo, estado, cidade,
-				bairro, sexo);
+			String endereco, String telefone, String cep, String cpf, boolean ativo, String cidade,
+			String bairro, Sexo sexo, Comissao comissao, Loja loja, Estado estado) {
+		super(id, nome, sobrenome, email, senha, dataNascimento, endereco, telefone, cep, cpf, ativo, cidade,
+				bairro, sexo, estado);
 		this.comissao = comissao;
 		this.loja = loja;
 		this.venda = new ArrayList<Venda>();
@@ -97,11 +97,15 @@ public class Vendedor extends Pessoa {
 
 	@Override
 	public String toString() {
-		return "Vendedor [comissao=" + comissao + ", loja=" + loja + ", getId()=" + getId() + ", getNome()=" + getNome()
-				+ ", getSobrenome()=" + getSobrenome() + ", getEmail()=" + getEmail() + ", getSenha()=" + getSenha()
-				+ ", getDataNascimento()=" + getDataNascimento() + ", getDataCadastro()=" + getDataCadastro()
-				+ ", getEndereco()=" + getEndereco() + ", getTelefone()=" + getTelefone() + ", getCep()=" + getCep()
-				+ ", getCpf()=" + getCpf() + ", isAtivo()=" + isAtivo() + "]";
+		return "Vendedor [comissao=" + comissao + ", loja=" + loja + ", venda=" + venda + ", getId()=" + getId()
+				+ ", getNome()=" + getNome() + ", getSobrenome()=" + getSobrenome() + ", getEmail()=" + getEmail()
+				+ ", getSenha()=" + getSenha() + ", getDataNascimento()=" + getDataNascimento() + ", getDataCadastro()="
+				+ getDataCadastro() + ", getEndereco()=" + getEndereco() + ", getTelefone()=" + getTelefone()
+				+ ", getCep()=" + getCep() + ", getCpf()=" + getCpf() + ", isAtivo()=" + isAtivo() + ", getCidade()="
+				+ getCidade() + ", getBairro()=" + getBairro() + ", getSexo()=" + getSexo() + ", getEstado()="
+				+ getEstado() + ", toString()=" + super.toString() + ", getClass()=" + getClass() + "]";
 	}
+
+	
 
 }

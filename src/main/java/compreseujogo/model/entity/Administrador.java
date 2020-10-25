@@ -1,6 +1,5 @@
 package compreseujogo.model.entity;
 
-import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -16,10 +15,10 @@ public class Administrador extends Pessoa {
 	private Loja loja;
 
 	public Administrador(int id, String nome, String sobrenome, String email, String senha, Date dataNascimento,
-			String endereco, String telefone, String cep, String cpf, boolean ativo, String estado, String cidade,
-			String bairro, Sexo sexo, Loja loja) {
-		super(id, nome, sobrenome, email, senha, dataNascimento, endereco, telefone, cep, cpf, ativo, estado, cidade,
-				bairro, sexo);
+			String endereco, String telefone, String cep, String cpf, boolean ativo, String cidade,
+			String bairro, Sexo sexo, Loja loja, Estado estado) {
+		super(id, nome, sobrenome, email, senha, dataNascimento, endereco, telefone, cep, cpf, ativo, cidade,
+				bairro, sexo, estado);
 		this.loja = loja;
 	}
 
@@ -62,10 +61,14 @@ public class Administrador extends Pessoa {
 
 	@Override
 	public String toString() {
-		return "Administrador [loja=" + loja + ", getId()=" + getId() + ", getNome()=" + getNome() + ", getSobrenome()="
-				+ getSobrenome() + ", getEmail()=" + getEmail() + ", getSenha()=" + getSenha()
-				+ ", getDataNascimento()=" + getDataNascimento() + ", getDataCadastro()=" + getDataCadastro()
-				+ ", getEndereco()=" + getEndereco() + ", getTelefone()=" + getTelefone() + ", getCep()=" + getCep()
-				+ ", getCpf()=" + getCpf() + ", isAtivo()=" + isAtivo() + "]";
+		return "Administrador [loja=" + loja + ", getLoja()=" + getLoja() + ", hashCode()=" + hashCode() + ", getId()="
+				+ getId() + ", getNome()=" + getNome() + ", getSobrenome()=" + getSobrenome() + ", getEmail()="
+				+ getEmail() + ", getSenha()=" + getSenha() + ", getDataNascimento()=" + getDataNascimento()
+				+ ", getDataCadastro()=" + getDataCadastro() + ", getEndereco()=" + getEndereco() + ", getTelefone()="
+				+ getTelefone() + ", getCep()=" + getCep() + ", getCpf()=" + getCpf() + ", isAtivo()=" + isAtivo()
+				+ ", getCidade()=" + getCidade() + ", getBairro()=" + getBairro() + ", getSexo()=" + getSexo()
+				+ ", getEstado()=" + getEstado() + ", toString()=" + super.toString() + ", getClass()=" + getClass()
+				+ "]";
 	}
+
 }

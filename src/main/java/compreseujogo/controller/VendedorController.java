@@ -10,6 +10,8 @@ import javax.faces.context.FacesContext;
 
 import compreseujogo.facade.Facade;
 import compreseujogo.model.bo.VendedorBo;
+import compreseujogo.model.entity.Estado;
+import compreseujogo.model.entity.Sexo;
 import compreseujogo.model.entity.Vendedor;
 import compreseujogo.viacep.WebServiceCep;
 
@@ -37,7 +39,7 @@ public class VendedorController implements Serializable {
 				
 		vendedor.setCidade(w.getCidade());
 		vendedor.setEndereco(w.getLogradouro());
-		vendedor.setEstado(w.getUf());
+		//vendedor.setEstado(w.getUf());
 		vendedor.setBairro(w.getBairro());
 		
 		System.out.println(w.getCidade());
@@ -46,13 +48,8 @@ public class VendedorController implements Serializable {
 	public String salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		
-		VendedorBo vendedorBo;		
-		
-;
+
 		try {
-			vendedorBo = new VendedorBo();
-			vendedorBo.saveOrUpdate(vendedor);
-			System.out.println(this.vendedor);
 			Facade facade = new Facade();
 			facade.inserirVendedor(this.vendedor);
 				
@@ -66,5 +63,12 @@ public class VendedorController implements Serializable {
 			"Atendimento salvo com sucesso!", "SUCESSO"));		
 		return "sucesso";
 	}
-
+	
+	public Sexo[] getSexo() {
+		return Sexo.values();
+	}
+	
+	public Estado[] getEstado() {
+		return Estado.values();
+	}
 }

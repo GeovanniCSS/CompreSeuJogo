@@ -36,16 +36,18 @@ public abstract class Pessoa implements EntityBase, Serializable {
 	private String cep;
 	private String cpf;
 	private boolean ativo;
-	private String estado;
 	private String cidade;
 	private String bairro;
 
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
+	
+	@Enumerated(EnumType.STRING)
+	private Estado estado;
 
 	public Pessoa(int id, String nome, String sobrenome, String email, String senha, Date dataNascimento,
-			String endereco, String telefone, String cep, String cpf, boolean ativo, String estado, String cidade,
-			String bairro, Sexo sexo) {
+			String endereco, String telefone, String cep, String cpf, boolean ativo, String cidade,
+			String bairro, Sexo sexo, Estado estado) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -62,6 +64,7 @@ public abstract class Pessoa implements EntityBase, Serializable {
 		this.cidade = cidade;
 		this.bairro = bairro;
 		this.sexo = sexo;
+		this.estado = estado;
 	}
 
 	public Pessoa() {
@@ -164,14 +167,6 @@ public abstract class Pessoa implements EntityBase, Serializable {
 		this.ativo = ativo;
 	}
 
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
 	public String getCidade() {
 		return cidade;
 	}
@@ -194,6 +189,14 @@ public abstract class Pessoa implements EntityBase, Serializable {
 
 	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
+	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
 	}
 
 	@Override
@@ -270,10 +273,7 @@ public abstract class Pessoa implements EntityBase, Serializable {
 				return false;
 		} else if (!endereco.equals(other.endereco))
 			return false;
-		if (estado == null) {
-			if (other.estado != null)
-				return false;
-		} else if (!estado.equals(other.estado))
+		if (estado != other.estado)
 			return false;
 		if (id != other.id)
 			return false;
@@ -307,7 +307,6 @@ public abstract class Pessoa implements EntityBase, Serializable {
 		return "Pessoa [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", email=" + email + ", senha="
 				+ senha + ", dataNascimento=" + dataNascimento + ", dataCadastro=" + dataCadastro + ", endereco="
 				+ endereco + ", telefone=" + telefone + ", cep=" + cep + ", cpf=" + cpf + ", ativo=" + ativo
-				+ ", estado=" + estado + ", cidade=" + cidade + ", bairro=" + bairro + ", sexo=" + sexo + "]";
+				+ ", cidade=" + cidade + ", bairro=" + bairro + ", sexo=" + sexo + ", estado=" + estado + "]";
 	}
-
 }
