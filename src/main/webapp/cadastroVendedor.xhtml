@@ -18,64 +18,70 @@
 			<ui:include src="/WEB-INF/template/MenuAdministrador.xhtml" />
 		</ui:insert>
 	</div>
-	<h3>Cadastro de Vendedor</h3>
-	<div class="ui-fluid p-formgrid p-grid">
-		<h:form>
+	<hr/>
+	<p:panel header="CADASTRO DE CLIENTES" >
+		<h:form id="form1">
+    		<p:growl id="msgs" showDetail="true" showSummary="true" autoUpdate="true" life="3000"/>
+    		<div align = "center">
+    			<p:panel header="Dados Pessoais"> 
+    				<h:panelGrid columns="4" cellpadding="8" style="margin:100px"> 
+						<p:outputLabel value="Nome" />
+						<p:inputText id="nome" value="#{vendedorBean.vendedor.nome}" required="true" />
 
-			<p:outputLabel value="Nome" />
-			<p:inputText id="nome" value="#{vendedorBean.vendedor.nome}" />
+						<p:outputLabel value="Sobrenome" />
+						<p:inputText id="sobrenome"
+							value="#{vendedorBean.vendedor.sobrenome}" required="true" />
 
-			<p:outputLabel value="Sobrenome" />
-			<p:inputText id="sobrenome"
-				value="#{vendedorBean.vendedor.sobrenome}" />
-
-			<p:outputLabel value="CPF" />
-			<p:inputMask id="cpf" value="#{vendedorBean.vendedor.cpf}"
-				mask="999.999.999-99" />
-
-			<p:outputLabel value="Telefone" />
-			<p:inputMask id="telefone" value="#{vendedorBean.vendedor.telefone}"
-				mask="(99)99999-9999" />
-
-			<p:outputLabel value="Data de Nascimento" />
-			<p:calendar id="mask" value="#{vendedorBean.vendedor.dataNascimento}"
-				pattern="dd-MM-yyyy" mask="true" />
-
-			<p:outputLabel value="CEP" />
-			<p:inputMask id="cep" value="#{vendedorBean.vendedor.cep}"
-				mask="99999-999" />
-
-			<p:outputLabel for="address" value="Endereço" />
-			<p:inputTextarea id="address" rows="1"
-				value="#{vendedorBean.vendedor.endereco}" />
-
-			<p:outputLabel for="city" value="Cidade" />
-			<p:inputText id="city" value="#{vendedorBean.vendedor.cidade}" />
-
-			<p:outputLabel for="bairro" value="Bairro" />
-			<p:inputText id="bairro" value="#{vendedorBean.vendedor.bairro}" />
-
-			<p:outputLabel for="state" value="Estado" />
-			<p:selectOneMenu id="state">
-				<f:selectItem itemLabel="Selecione um" itemValue="#{null}"
-					noSelectionOption="true" />
-				<f:selectItem itemLabel="Option 1" itemValue="Option 1" />
-				<f:selectItem itemLabel="Option 2" itemValue="Option 2" />
-				<f:selectItem itemLabel="Option 3" itemValue="Option 3" />
-			</p:selectOneMenu>
-
-			<p:outputLabel for="email" value="Email" />
-			<p:inputText id="email" value="#{vendedorBean.vendedor.email}" />
-
-			<p:outputLabel for="senha" value="Senha" />
-			<p:password id="senha" value="#{vendedorBean.vendedor.senha}" />
-
-			<p:commandButton value="Salvar" id="salvar"
-				action="#{vendedorBean.salvar}" style="margin-center:20px;" />
-
-		</h:form>
-	</div>
-
-</h:body>
+						<p:outputLabel value="CPF" />
+						<p:inputMask id="cpf" value="#{vendedorBean.vendedor.cpf}"
+							mask="999.999.999-99" required="true"/>
+	
+						<p:outputLabel value="Telefone" />
+						<p:inputMask id="telefone" value="#{vendedorBean.vendedor.telefone}"
+							mask="(99)99999-9999" required="true"/>
+	
+						<p:outputLabel value="Data de Nascimento" />
+						<p:calendar id="mask" value="#{vendedorBean.vendedor.dataNascimento}"
+							pattern="dd-MM-yyyy" mask="true" required="true"/>
+	
+						<p:outputLabel value="CEP" />
+						<p:inputMask id="cep" value="#{vendedorBean.vendedor.cep}"
+							mask="99999-999" required="true"/>
+	
+						<p:outputLabel for="address" value="Endereço" />
+						<p:inputText id="address" rows="1"
+							value="#{vendedorBean.vendedor.endereco}" required="true"/>
+			
+						<p:outputLabel for="city" value="Cidade" />
+						<p:inputText id="city" value="#{vendedorBean.vendedor.cidade}" required="true"/>
+			
+						<p:outputLabel for="bairro" value="Bairro" />
+						<p:inputText id="bairro" value="#{vendedorBean.vendedor.bairro}" required="true"/>
+			
+						<p:outputLabel for="state" value="Estado" />
+						<p:selectOneMenu id="state">
+							<f:selectItem itemLabel="Selecione um" itemValue="#{null}"
+								noSelectionOption="true" />
+							<f:selectItem itemLabel="Option 1" itemValue="Option 1" />
+							<f:selectItem itemLabel="Option 2" itemValue="Option 2" />
+							<f:selectItem itemLabel="Option 3" itemValue="Option 3" />
+						</p:selectOneMenu>
+			
+						<p:outputLabel for="email" value="Email" />
+						<p:inputText id="email" value="#{vendedorBean.vendedor.email}" required="true"/>
+	
+						<p:outputLabel for="senha" value="Senha" />
+						<p:password id="senha" value="#{vendedorBean.vendedor.senha}" required="true" />
+	
+						<p:commandButton value="Salvar" id="salvar"
+							action="#{vendedorBean.salvar}"  style="margin-center:20px;" update="form1"/>
+														
+						<p:commandButton value="Limpar" ajax="true" immediate="true" type="reset"/>												
+					</h:panelGrid>				
+				</p:panel>
+			</div>
+        </h:form>
+     </p:panel>
+   </h:body>
 
 </html>
