@@ -5,79 +5,65 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition template="/WEB-INF/template/template.xhtml">
+	<ui:define name="tituloJanela">Compre Seu Jogo - Cliente</ui:define>
+	<ui:define name="conteudo">
 
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<h3>Cadastro de Cliente</h3>
+		<div class="ui-fluid p-formgrid p-grid">
+			<h:form>
+				<p:outputLabel value="Nome" />
+				<p:inputText id="nome" value="#{clienteBean.cliente.nome}" />
 
-	<title>Compre Seu Jogo - Cliente</title>
+				<p:outputLabel value="Sobrenome" />
+				<p:inputText id="sobrenome" value="#{clienteBean.cliente.sobrenome}" />
 
-</h:head>
-<h:body>
-	<div id="header">
-		<ui:insert name="header">
-			<ui:include src="/WEB-INF/template/MenuAdministrador.xhtml" />
-		</ui:insert>
-	</div>
+				<p:outputLabel value="CPF" />
+				<p:inputMask id="cpf" value="#{clienteBean.cliente.cpf}"
+					mask="999.999.999-99" />
 
-	<h3>Cadastro de Cliente</h3>
-	<div class="ui-fluid p-formgrid p-grid">
-		<h:form>
-			<p:outputLabel value="Nome" />
-			<p:inputText id="nome" value="#{clienteBean.cliente.nome}" />
+				<p:outputLabel value="Telefone" />
+				<p:inputMask id="telefone" value="#{clienteBean.cliente.telefone}"
+					mask="(99)99999-9999" />
 
-			<p:outputLabel value="Sobrenome" />
-			<p:inputText id="sobrenome" value="#{clienteBean.cliente.sobrenome}" />
+				<p:outputLabel value="Data de Nascimento" />
+				<p:calendar id="mask" value="#{clienteBean.cliente.dataNascimento}"
+					pattern="dd-MM-yyyy" mask="true" />
 
-			<p:outputLabel value="CPF" />
-			<p:inputMask id="cpf" value="#{clienteBean.cliente.cpf}"
-				mask="999.999.999-99" />
+				<p:outputLabel value="CEP" />
+				<p:inputMask id="cep" value="#{clienteBean.cliente.cep}"
+					mask="99999-999" />
 
-			<p:outputLabel value="Telefone" />
-			<p:inputMask id="telefone" value="#{clienteBean.cliente.telefone}"
-				mask="(99)99999-9999" />
+				<p:outputLabel for="address" value="Endereço" />
+				<p:inputTextarea id="address" rows="1"
+					value="#{clienteBean.cliente.endereco}" />
 
-			<p:outputLabel value="Data de Nascimento" />
-			<p:calendar id="mask" value="#{clienteBean.cliente.dataNascimento}"
-				pattern="dd-MM-yyyy" mask="true" />
+				<p:outputLabel for="city" value="Cidade" />
+				<p:inputText id="city" value="#{clienteBean.cliente.cidade}" />
 
-			<p:outputLabel value="CEP" />
-			<p:inputMask id="cep" value="#{clienteBean.cliente.cep}"
-				mask="99999-999" />
+				<p:outputLabel for="bairro" value="Bairro" />
+				<p:inputText id="bairro" value="#{clienteBean.cliente.bairro}" />
 
-			<p:outputLabel for="address" value="Endereço" />
-			<p:inputTextarea id="address" rows="1"
-				value="#{clienteBean.cliente.endereco}" />
+				<p:outputLabel for="state" value="Estado" />
+				<p:selectOneMenu id="state">
+					<f:selectItem itemLabel="Selecione um" itemValue="#{null}"
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="Option 1" itemValue="Option 1" />
+					<f:selectItem itemLabel="Option 2" itemValue="Option 2" />
+					<f:selectItem itemLabel="Option 3" itemValue="Option 3" />
+				</p:selectOneMenu>
 
-			<p:outputLabel for="city" value="Cidade" />
-			<p:inputText id="city" value="#{clienteBean.cliente.cidade}" />
+				<p:outputLabel for="email" value="Email" />
+				<p:inputText id="email" value="#{clienteBean.cliente.email}" />
 
-			<p:outputLabel for="bairro" value="Bairro" />
-			<p:inputText id="bairro" value="#{clienteBean.cliente.bairro}" />
+				<p:outputLabel for="senha" value="Senha" />
+				<p:password id="senha" required="true"
+					value="#{clienteBean.cliente.senha}" />
 
-			<p:outputLabel for="state" value="Estado" />
-			<p:selectOneMenu id="state">
-				<f:selectItem itemLabel="Selecione um" itemValue="#{null}"
-					noSelectionOption="true" />
-				<f:selectItem itemLabel="Option 1" itemValue="Option 1" />
-				<f:selectItem itemLabel="Option 2" itemValue="Option 2" />
-				<f:selectItem itemLabel="Option 3" itemValue="Option 3" />
-			</p:selectOneMenu>
-
-			<p:outputLabel for="email" value="Email" />
-			<p:inputText id="email" value="#{clienteBean.cliente.email}" />
-
-			<p:outputLabel for="senha" value="Senha" />
-			<p:password id="senha" required="true"
-				value="#{clienteBean.cliente.senha}" />
-
-			<p:commandButton value="Salvar" id="salvar"
-				action="#{clienteBean.salvar}" style="margin-center:20px;" />
-		</h:form>
-	</div>
-	<div id="footer">
-		<ui:insert name="footer">
-			<ui:include src="/WEB-INF/template/footerPagina.xhtml" />
-		</ui:insert>
-	</div>
-</h:body>
+				<p:commandButton value="Salvar" id="salvar"
+					action="#{clienteBean.salvar}" style="margin-center:20px;" />
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
 </html>

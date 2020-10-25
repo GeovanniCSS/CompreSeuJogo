@@ -17,10 +17,14 @@
 <body>
 	<ui:composition>
 		<div id="header" style="padding: 200px, 10px">
-			<h2 align="center">Seus jogos aqui</h2>
 			<h:form>
 				<p:growl id="messages" />
-
+				<p:menubar>
+					<f:facet name="options">
+						<p:inputText style="margin:1px 10px 1px 1px;" placeholder="digite o nome do produto" />
+						<p:commandButton style="float:center" type="button" value="Pesquisar" icon="pi pi-search" />
+					</f:facet>
+				</p:menubar>
 				<p:menubar>
 					<p:submenu label="Adicionar" icon="pi pi-file">
 						<p:menuitem value="Categoria"
@@ -42,7 +46,7 @@
 						<p:menuitem value="Redo" url="#" icon="pi pi-angle-double-right" />
 					</p:submenu>
 
-					<p:submenu label="Administrar" icon="pi pi-question">
+					<p:submenu label="Administrar" icon="pi pi-user">
 						<p:menuitem value="Administrador"
 							url="cadastroAdministrador.xhtml?faces-redirect=true" />
 						<p:separator />
@@ -51,13 +55,7 @@
 						<p:separator />
 						<p:menuitem value="Cliente"
 							url="cadastroCliente.xhtml?faces-redirect=true" />
-						</p:submenu>
-						
-						<f:facet name="options">
-							<p:inputText style="margin:1px 10px 1px 1px;"
-								placeholder="Search" />
-							<p:commandButton type="button" value="Logout" icon="pi pi-home" />
-						</f:facet>
+					</p:submenu>
 				</p:menubar>
 			</h:form>
 		</div>

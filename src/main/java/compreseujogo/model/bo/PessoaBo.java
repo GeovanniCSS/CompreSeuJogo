@@ -117,8 +117,8 @@ public class PessoaBo<T extends Pessoa> {
 
 	public String login(Pessoa pessoa, Class<T> classe) throws Exception {
 		if (list("login", pessoa, classe).size() == 1) {
-		    pessoa = list("login", pessoa, classe).get(0);
-			return "Olá "+ pessoa.getNome();
+			pessoa = list("login", pessoa, classe).get(0);
+			return "Olá " + pessoa.getNome();
 		} else {
 			throw new Exception("E-mail ou senha está incorreto");
 		}

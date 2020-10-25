@@ -6,19 +6,13 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Cadastro de Categoria</title>
 </h:head>
-<h:body>
-	<div id="header">
-		<ui:insert name="header">
-			<ui:include src="/WEB-INF/template/MenuAdministrador.xhtml" />
-		</ui:insert>
-	</div>
-	<div id="footer">
-		<ui:insert name="footer">
-			<ui:include src="/WEB-INF/template/footerPagina.xhtml" />
-		</ui:insert>
-	</div>
-</h:body>
+<ui:composition template="/WEB-INF/template/template.xhtml">
+	<ui:define name="tituloJanela">Cadastro administrador</ui:define>
+	<ui:define name="conteudo">
+		<h:form>
+			<p:growl autoUpdate="true" life="3000" />
+		</h:form>
+	</ui:define>
+</ui:composition>
 </html>

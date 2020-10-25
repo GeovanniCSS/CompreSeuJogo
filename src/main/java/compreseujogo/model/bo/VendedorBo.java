@@ -10,7 +10,7 @@ import compreseujogo.model.entity.Vendedor;
 
 
 
-public class VendedorBo extends PessoaBo {
+public class VendedorBo extends PessoaBo<Vendedor> {
 
 	public List<Vendedor> list(String parameter, Vendedor vendedor) throws Exception {
 		try {
