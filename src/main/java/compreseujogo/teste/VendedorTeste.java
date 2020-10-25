@@ -8,8 +8,10 @@ public class VendedorTeste {
 
 	public static void main(String[] args) {
 		VendedorBo bo = new VendedorBo();
-		Vendedor vendedor = new Vendedor(0,"Vendedor","Vendas","vendedor@gmail.com","1234",null,"Rua vendedor"
-				,"95858585","45465456","152",true,"PR","Curitiba","Portão",Sexo.Masculino,null,null);
+		Vendedor vendedor = new Vendedor(0, "Jennifer", "Luciana Isabela Duarte",
+				"jjenniferlucianaisabeladuarte@vnews.com.br", "1234", null, "Praça General Osório 45",
+				"(41) 99108-8676", "80020-930", "296.416.029-50", true, "PR", "Curitiba", "Centro", Sexo.Masculino,
+				null, null);
 
 		try {
 			System.out.println(bo.newUser(vendedor, Vendedor.class));

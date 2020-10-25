@@ -104,10 +104,14 @@ public class Facade {
 	public String loginAdminstrador(Administrador administrador) throws Exception {
 		return administradorBo.login(administrador, Administrador.class);
 	}
-
-	public void inserirVendedor(Vendedor vendedor) throws Exception {
+	public String inserirAdministrador(Administrador administrador) throws Exception {
+		administradorBo.newUser(administrador, Administrador.class);
+		return administradorBo.createDepency(administrador);
+		
+	}
+	public String inserirVendedor(Vendedor vendedor) throws Exception {
 		vendedorBo.newUser(vendedor, Vendedor.class);
-		vendedorBo.createDepency(vendedor);
+		return vendedorBo.createDepency(vendedor);
 	}
 	
 	public void inserirCliente(Cliente cliente) throws Exception {
