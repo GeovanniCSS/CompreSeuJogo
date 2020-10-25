@@ -1,60 +1,61 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://xmlns.jcp.org/jsf/html"
-	  xmlns:f="http://xmlns.jcp.org/jsf/core"
-	  xmlns:p="http://primefaces.org/ui"
-	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-	  
-<h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-<title>Compre Seu Jogo - Transportadora</title>
+<ui:composition template="/WEB-INF/template/template.xhtml">
+	<ui:define name="tituloJanela">Cadastro transportadora</ui:define>
+	<ui:define name="conteudo">
+		<h3>Cadastro de Transportadora</h3>
+		<div class="ui-fluid p-formgrid p-grid">
+			<h:form>
+				<p:outputLabel value="Nome" />
+				<p:inputText id="nome" value="#{transporteBean.transporte.nome}" />
 
-</h:head>
-<h:body>
-	
-	
-    <h3>Cadastro de Transportadora</h3>
-    <div class="ui-fluid p-formgrid p-grid">
-    	<h:form>
-            <p:outputLabel  value="Nome" />
-            <p:inputText id="nome" value="#{transporteBean.transporte.nome}"/>
+				<p:outputLabel value="CNPJ" />
+				<p:inputMask id="cpf" value="#{transporteBean.transporte.cnpj}"
+					mask="99.999.999/9999-99" />
 
-            <p:outputLabel value="CNPJ"/>
-            <p:inputMask id="cpf" value="#{transporteBean.transporte.cnpj}" mask="99.999.999/9999-99"/>
+				<p:outputLabel value="Telefone" />
+				<p:inputMask id="telefone"
+					value="#{transporteBean.transporte.telefone}" mask="(99)99999-9999" />
 
-            <p:outputLabel  value="Telefone"/>
-            <p:inputMask id="telefone" value="#{transporteBean.transporte.telefone}" mask="(99)99999-9999"/>
-            
-            <p:outputLabel  value="Site" />
-            <p:inputText id="site" value="#{transporteBean.transporte.url}"/>
+				<p:outputLabel value="Site" />
+				<p:inputText id="site" value="#{transporteBean.transporte.url}" />
 
-            <p:outputLabel  value="CEP"/>
-            <p:inputMask id="cep" value="#{transporteBean.transporte.cep}" mask="99999-999" />
+				<p:outputLabel value="CEP" />
+				<p:inputMask id="cep" value="#{transporteBean.transporte.cep}"
+					mask="99999-999" />
 
-            <p:outputLabel for="address" value="Endereço" />
-            <p:inputTextarea id="address" rows="1" value="#{transporteBean.transporte.endereco}" />
-     
-            <p:outputLabel for="city" value="Cidade" />
-            <p:inputText id="city" value="#{transporteBean.transporte.cidade}" />
-            
-            <p:outputLabel for="bairro" value="Bairro" />
-            <p:inputText id="bairro" value="#{transporteBean.transporte.bairro}" />
-      
-            <p:outputLabel for="state" value="Estado" />
-            <p:selectOneMenu id="state">
-                <f:selectItem itemLabel="Selecione um" itemValue="#{null}" noSelectionOption="true"/>
-                <f:selectItem itemLabel="Option 1" itemValue="Option 1" />
-                <f:selectItem itemLabel="Option 2" itemValue="Option 2" />
-                <f:selectItem itemLabel="Option 3" itemValue="Option 3" />
-            </p:selectOneMenu>
+				<p:outputLabel for="address" value="Endereço" />
+				<p:inputTextarea id="address" rows="1"
+					value="#{transporteBean.transporte.endereco}" />
 
-            	<p:outputLabel for="email" value="Emaail"/>
-            	<p:inputText id="email" value="#{transporteBean.transporte.email}"/>
+				<p:outputLabel for="city" value="Cidade" />
+				<p:inputText id="city" value="#{transporteBean.transporte.cidade}" />
 
-        		<p:commandButton value="Salvar" id="salvar" action="#{transporteBean.salvar}" style="margin-center:20px;"/>
-		</h:form>
-    </div>
-</h:body>
+				<p:outputLabel for="bairro" value="Bairro" />
+				<p:inputText id="bairro" value="#{transporteBean.transporte.bairro}" />
+
+				<p:outputLabel for="state" value="Estado" />
+				<p:selectOneMenu id="state">
+					<f:selectItem itemLabel="Selecione um" itemValue="#{null}"
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="Option 1" itemValue="Option 1" />
+					<f:selectItem itemLabel="Option 2" itemValue="Option 2" />
+					<f:selectItem itemLabel="Option 3" itemValue="Option 3" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="email" value="Emaail" />
+				<p:inputText id="email" value="#{transporteBean.transporte.email}" />
+
+				<p:commandButton value="Salvar" id="salvar"
+					action="#{transporteBean.salvar}" style="margin-center:20px;" />
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
 </html>

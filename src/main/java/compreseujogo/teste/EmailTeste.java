@@ -8,7 +8,7 @@ public class EmailTeste {
 	public static void main(String[] args) {
 		try {
 
-			final String emailP = "ander.lemos.jr@gmail.com";
+			final String emailP = "jaye9112@uorak.com";
 			final String emailI = "java.compreseujogo@gmail.com";
 			final String senha = "geovann!1";
 
@@ -28,7 +28,7 @@ public class EmailTeste {
 			email.setAuthentication(emailI, senha);
 			System.out.println("+ Informações");
 			// Adicione os destinatários
-			email.addTo(emailP);
+			email.addTo(emailP,"faxodi4594@sekris.com");
 
 			// Configure o seu email do qual enviará
 			email.setFrom(emailI);

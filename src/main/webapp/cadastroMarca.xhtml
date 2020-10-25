@@ -5,34 +5,24 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Cadastro de Marca</title>
-
-</h:head>
-<h:body>
-	<div id="header">
-		<ui:insert name="header">
-			<ui:include src="/WEB-INF/template/menuVendedor.xhtml" />
-		</ui:insert>
-	</div>
-	<h:form>
-		<p:growl autoUpdate="true" life="3000" />
-		<div id="main" align="center">
-			<p:panelGrid columns="2" layout="grid"
-				styleClass="showcase-text-align-center">
-				<p:outputLabel value="Nome" for="nome" />
-				<p:inputText id="nome" value="#{marcaBean.marca.nome}"
-					placeholder="Digite o nome da marca" />
-			</p:panelGrid>
-			<p:commandButton value="Salvar" action="#{marcaBean.salvar()}"
-				update="@form" />
-		</div>
-	</h:form>
-	<div id="footer">
-		<ui:insert name="footer">
-			<ui:include src="/WEB-INF/template/footerPagina.xhtml" />
-		</ui:insert>
-	</div>
-</h:body>
+<ui:composition template="/WEB-INF/template/template.xhtml">
+	<ui:define name="tituloJanela">Cadastro marca</ui:define>
+	<ui:define name="conteudo">
+		<h:form>
+			<h:form>
+				<p:growl autoUpdate="true" life="3000" />
+				<div id="main" align="center">
+					<p:panelGrid columns="2" layout="grid"
+						styleClass="showcase-text-align-center">
+						<p:outputLabel value="Nome" for="nome" />
+						<p:inputText id="nome" value="#{marcaBean.marca.nome}"
+							placeholder="Digite o nome da marca" />
+					</p:panelGrid>
+					<p:commandButton value="Salvar" action="#{marcaBean.salvar()}"
+						update="@form" />
+				</div>
+			</h:form>
+		</h:form>
+	</ui:define>
+</ui:composition>
 </html>

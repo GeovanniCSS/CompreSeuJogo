@@ -104,6 +104,10 @@ public class Facade {
 	public String loginAdminstrador(Administrador administrador) throws Exception {
 		return administradorBo.login(administrador, Administrador.class);
 	}
+	public String loginVendedor(Vendedor vendedor) throws Exception {
+		return vendedorBo.login(vendedor, Vendedor.class);
+		
+	}
 	public String inserirAdministrador(Administrador administrador) throws Exception {
 		administradorBo.newUser(administrador, Administrador.class);
 		return administradorBo.createDepency(administrador);
@@ -183,4 +187,5 @@ public class Facade {
 		}
 		return lista;
 	}
+
 }

@@ -17,7 +17,7 @@ public class ProdutoTest {
 	public void novoProduto() throws Exception {
 		Facade facade = new Facade();
 		
-		Produto produto = new Produto(0, "Teste", "Deve ser apagado", 150.0, 15, 0, "", true, 0,
+		Produto produto = new Produto(0, "Teste", "Deve ser apagado", null, 150.0, 15, 0, "", true, 0,
 				LocalDate.now(), null, null, null, null, null);
 		facade.inserirProduto(produto);
 		boolean teste = false;
