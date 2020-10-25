@@ -1,26 +1,64 @@
 package compreseujogo.controller;
 
 import java.io.Serializable;
-import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import compreseujogo.facade.Facade;
-import compreseujogo.model.bo.VendedorBo;
 import compreseujogo.model.entity.Estado;
 import compreseujogo.model.entity.Sexo;
 import compreseujogo.model.entity.Vendedor;
 import compreseujogo.viacep.WebServiceCep;
 
-
-@ManagedBean(name="vendedorBean")
-@RequestScoped
+@ManagedBean(name = "vendedorBean")
+@SessionScoped
 public class VendedorController implements Serializable {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	private Vendedor vendedor;
+	private List<Vendedor> lista;
+
+	public VendedorController() {
+		vendedor = new Vendedor();
+		lista = new ArrayList<Vendedor>();
+	}
+
+	public void buscaCep() {
+		WebServiceCep w = WebServiceCep.searchCep(vendedor.getCep());
+
+		vendedor.setCidade(w.getCidade());
+		vendedor.setEndereco(w.getLogradouro());
+		// vendedor.setEstado(w.getUf());
+		vendedor.setBairro(w.getBairro());
+
+		System.out.println(w.getCidade());
+	}
+
+	public void salvar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			context.addMessage(null,
+					new FacesMessage(facade.inserirVendedor(this.vendedor), FacesMessage.FACES_MESSAGES));
+			vendedor = new Vendedor();
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+	}
+
+	public Sexo[] getSexo() {
+		return Sexo.values();
+	}
+
+	public Estado[] getEstado() {
+		return Estado.values();
+	}
 
 	public Vendedor getVendedor() {
 		return vendedor;
@@ -29,46 +67,13 @@ public class VendedorController implements Serializable {
 	public void setVendedor(Vendedor vendedor) {
 		this.vendedor = vendedor;
 	}
-	
-	public VendedorController(){
-		vendedor = new Vendedor();
-	}
-	
-	public void buscaCep() {
-		WebServiceCep w = WebServiceCep.searchCep(vendedor.getCep());
-				
-		vendedor.setCidade(w.getCidade());
-		vendedor.setEndereco(w.getLogradouro());
-		//vendedor.setEstado(w.getUf());
-		vendedor.setBairro(w.getBairro());
-		
-		System.out.println(w.getCidade());
+
+	public List<Vendedor> getLista() {
+		return lista;
 	}
 
-	public String salvar() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		
+	public void setLista(List<Vendedor> lista) {
+		this.lista = lista;
+	}
 
-		try {
-			Facade facade = new Facade();
-			facade.inserirVendedor(this.vendedor);
-				
-		} catch (Exception e) {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-				e.getMessage(),""));
-			return "vendedor";
-		}	
-		
-		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-			"Atendimento salvo com sucesso!", "SUCESSO"));		
-		return "sucesso";
-	}
-	
-	public Sexo[] getSexo() {
-		return Sexo.values();
-	}
-	
-	public Estado[] getEstado() {
-		return Estado.values();
-	}
 }
