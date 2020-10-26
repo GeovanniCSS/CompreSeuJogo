@@ -9,61 +9,88 @@
 	<ui:define name="tituloJanela">Compre Seu Jogo - Cliente</ui:define>
 	<ui:define name="conteudo">
 
-		<h3>Cadastro de Cliente</h3>
-		<div class="ui-fluid p-formgrid p-grid">
-			<h:form>
-				<p:outputLabel value="Nome" />
-				<p:inputText id="nome" value="#{clienteBean.cliente.nome}" />
-
-				<p:outputLabel value="Sobrenome" />
-				<p:inputText id="sobrenome" value="#{clienteBean.cliente.sobrenome}" />
-
-				<p:outputLabel value="CPF" />
-				<p:inputMask id="cpf" value="#{clienteBean.cliente.cpf}"
-					mask="999.999.999-99" />
-
-				<p:outputLabel value="Telefone" />
-				<p:inputMask id="telefone" value="#{clienteBean.cliente.telefone}"
-					mask="(99)99999-9999" />
-
-				<p:outputLabel value="Data de Nascimento" />
-				<p:calendar id="mask" value="#{clienteBean.cliente.dataNascimento}"
-					pattern="dd-MM-yyyy" mask="true" />
-
-				<p:outputLabel value="CEP" />
-				<p:inputMask id="cep" value="#{clienteBean.cliente.cep}"
-					mask="99999-999" />
-
-				<p:outputLabel for="address" value="Endereço" />
-				<p:inputTextarea id="address" rows="1"
-					value="#{clienteBean.cliente.endereco}" />
-
-				<p:outputLabel for="city" value="Cidade" />
-				<p:inputText id="city" value="#{clienteBean.cliente.cidade}" />
-
-				<p:outputLabel for="bairro" value="Bairro" />
-				<p:inputText id="bairro" value="#{clienteBean.cliente.bairro}" />
-
-				<p:outputLabel for="state" value="Estado" />
-				<p:selectOneMenu id="state">
-					<f:selectItem itemLabel="Selecione um" itemValue="#{null}"
-						noSelectionOption="true" />
-					<f:selectItem itemLabel="Option 1" itemValue="Option 1" />
-					<f:selectItem itemLabel="Option 2" itemValue="Option 2" />
-					<f:selectItem itemLabel="Option 3" itemValue="Option 3" />
-				</p:selectOneMenu>
-
-				<p:outputLabel for="email" value="Email" />
-				<p:inputText id="email" value="#{clienteBean.cliente.email}" />
-
-				<p:outputLabel for="senha" value="Senha" />
-				<p:password id="senha" required="true"
-					value="#{clienteBean.cliente.senha}" />
-
-				<p:commandButton value="Salvar" id="salvar"
-					action="#{clienteBean.salvar}" style="margin-center:20px;" />
+		<p:panel header="CADASTRO DE CLIENTES">
+			<h:form id="form1">
+				<p:growl id="msgs" autoUpdate="true" life="3000" />
+				<div align="center">
+					<p:panel header="Dados Pessoais">
+						<h2 align="center">Novo Cliente</h2>
+						<h:panelGrid columns="4" cellpadding="8" style="margin:100px">
+			
+							<p:outputLabel value="Nome" />
+							<p:inputText id="nome" value="#{clienteBean.cliente.nome}" 
+								requiredMessage="O campo nome é obrigatório"/>
+			
+							<p:outputLabel value="Sobrenome" />
+							<p:inputText id="sobrenome" value="#{clienteBean.cliente.sobrenome}" 
+								requiredMessage="O campo sobrenome é obrigatório"/>
+			
+							<p:outputLabel value="CPF" />
+							<p:inputMask id="cpf" value="#{clienteBean.cliente.cpf}"
+								mask="999.999.999-99"
+								requiredMessage="O campo CPF é obrigatório" />
+			
+							<p:outputLabel value="Telefone" />
+							<p:inputMask id="telefone" value="#{clienteBean.cliente.telefone}"
+								mask="(99)99999-9999"
+								requiredMessage="O campo telefone é obrigatório" />
+			
+							<p:outputLabel value="Data de Nascimento" />
+							<p:calendar id="mask" value="#{clienteBean.cliente.dataNascimento}"
+								pattern="dd-MM-yyyy" mask="true"
+								requiredMessage="O campo data de nascimento é obrigatório" />
+			
+							<p:outputLabel value="CEP" />
+							<p:inputMask id="cep" value="#{clienteBean.cliente.cep}"
+								mask="99999-999"
+								requiredMessage="O campo CEP é obrigatório" />
+			
+							<p:outputLabel for="address" value="Endereço" />
+							<p:inputTextarea id="address" rows="1"
+								value="#{clienteBean.cliente.endereco}" 
+								requiredMessage="O campo endereço é obrigatório"/>
+			
+							<p:outputLabel for="city" value="Cidade" />
+							<p:inputText id="city" value="#{clienteBean.cliente.cidade}" 
+								requiredMessage="O campo cidade é obrigatório" />
+			
+							<p:outputLabel for="bairro" value="Bairro" />
+							<p:inputText id="bairro" value="#{clienteBean.cliente.bairro}" 
+								requiredMessage="O campo bairro é obrigatório"/>
+			
+							<p:outputLabel for="state" value="Estado" />
+							<p:selectOneMenu id="state"
+								value="#{clienteBean.cliente.estado}" unselectable="true">
+								<f:selectItem itemLabel="---------" />
+								<f:selectItems value="#{clienteBean.estado}" />
+							</p:selectOneMenu>
+			
+							<p:outputLabel for="email" value="Email" />
+							<p:inputText id="email" value="#{clienteBean.cliente.email}" 
+							 	requiredMessage="O campo e-mail é obrigatório" />
+			
+							<p:outputLabel for="senha" value="Senha" />
+							<p:password id="senha" required="true"
+								value="#{clienteBean.cliente.senha}" 
+								requiredMessage="O campo senha é obrigatório"/>
+							
+							<p:outputLabel value="Sexo" />
+							<p:selectOneMenu id="console"
+								value="#{clienteBean.cliente.sexo}" unselectable="true">
+								<f:selectItem itemLabel="-------" />
+								<f:selectItems value="#{clienteBean.sexo}" />
+							</p:selectOneMenu>
+			
+							<p:commandButton value="Salvar" id="salvar"
+								action="#{clienteBean.salvar}" style="margin-center:20px;" />
+								
+							<p:commandButton value="Limpar" ajax="true" immediate="true"
+								type="reset" />	
+					</h:panelGrid>
+					</p:panel>
+				</div>
 			</h:form>
-		</div>
+		</p:panel>
 	</ui:define>
 </ui:composition>
 </html>

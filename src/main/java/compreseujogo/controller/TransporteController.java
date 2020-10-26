@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 
 import compreseujogo.facade.Facade;
 import compreseujogo.model.bo.TransporteBo;
+import compreseujogo.model.entity.Estado;
 import compreseujogo.model.entity.Transporte;
 
 
@@ -35,13 +36,8 @@ public class TransporteController implements Serializable {
 	public void salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		
-		TransporteBo transporteBo;		
-		
-;
 		try {
-			transporteBo = new TransporteBo();
-			transporteBo.saveOrUpdate(transporte);
-			System.out.println(this.transporte);
+
 			Facade facade = new Facade();
 			facade.inserirTransporte(this.transporte);
 				
@@ -54,6 +50,10 @@ public class TransporteController implements Serializable {
 		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
 			"Atendimento salvo com sucesso!", "SUCESSO"));		
 		//return "sucesso";
+	}
+	
+	public Estado[] getEstado() {
+		return Estado.values();
 	}
 
 }

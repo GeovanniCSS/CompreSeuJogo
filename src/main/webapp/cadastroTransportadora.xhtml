@@ -9,53 +9,70 @@
 <ui:composition template="/WEB-INF/template/template.xhtml">
 	<ui:define name="tituloJanela">Cadastro transportadora</ui:define>
 	<ui:define name="conteudo">
-		<h3>Cadastro de Transportadora</h3>
-		<div class="ui-fluid p-formgrid p-grid">
-			<h:form>
-				<p:outputLabel value="Nome" />
-				<p:inputText id="nome" value="#{transporteBean.transporte.nome}" />
-
-				<p:outputLabel value="CNPJ" />
-				<p:inputMask id="cpf" value="#{transporteBean.transporte.cnpj}"
-					mask="99.999.999/9999-99" />
-
-				<p:outputLabel value="Telefone" />
-				<p:inputMask id="telefone"
-					value="#{transporteBean.transporte.telefone}" mask="(99)99999-9999" />
-
-				<p:outputLabel value="Site" />
-				<p:inputText id="site" value="#{transporteBean.transporte.url}" />
-
-				<p:outputLabel value="CEP" />
-				<p:inputMask id="cep" value="#{transporteBean.transporte.cep}"
-					mask="99999-999" />
-
-				<p:outputLabel for="address" value="Endereço" />
-				<p:inputTextarea id="address" rows="1"
-					value="#{transporteBean.transporte.endereco}" />
-
-				<p:outputLabel for="city" value="Cidade" />
-				<p:inputText id="city" value="#{transporteBean.transporte.cidade}" />
-
-				<p:outputLabel for="bairro" value="Bairro" />
-				<p:inputText id="bairro" value="#{transporteBean.transporte.bairro}" />
-
-				<p:outputLabel for="state" value="Estado" />
-				<p:selectOneMenu id="state">
-					<f:selectItem itemLabel="Selecione um" itemValue="#{null}"
-						noSelectionOption="true" />
-					<f:selectItem itemLabel="Option 1" itemValue="Option 1" />
-					<f:selectItem itemLabel="Option 2" itemValue="Option 2" />
-					<f:selectItem itemLabel="Option 3" itemValue="Option 3" />
-				</p:selectOneMenu>
-
-				<p:outputLabel for="email" value="Emaail" />
-				<p:inputText id="email" value="#{transporteBean.transporte.email}" />
-
-				<p:commandButton value="Salvar" id="salvar"
-					action="#{transporteBean.salvar}" style="margin-center:20px;" />
+		<p:panel header="CADASTRO DE TRANSPORTADORA">
+			<h:form id="form1">
+				<p:growl id="msgs" autoUpdate="true" life="3000" />
+				<div align="center">
+					<p:panel header="Dados da empresa">
+						<h2 align="center">Nova Transportadora</h2>
+						<h:panelGrid columns="4" cellpadding="8" style="margin:100px">
+							<p:outputLabel value="Nome" />
+							<p:inputText id="nome" value="#{transporteBean.transporte.nome}"
+							requiredMessage="O campo nome é obrigatório" />
+			
+							<p:outputLabel value="CNPJ" />
+							<p:inputMask id="cpf" value="#{transporteBean.transporte.cnpj}"
+								mask="99.999.999/9999-99"
+								requiredMessage="O campo CNPJ é obrigatório" />
+			
+							<p:outputLabel value="Telefone" />
+							<p:inputMask id="telefone"
+								value="#{transporteBean.transporte.telefone}" mask="(99)99999-9999"
+								requiredMessage="O campo telefone é obrigatório" />
+			
+							<p:outputLabel value="Site" />
+							<p:inputText id="site" value="#{transporteBean.transporte.url}" 
+								requiredMessage="O campo site é obrigatório"/>
+			
+							<p:outputLabel value="CEP" />
+							<p:inputMask id="cep" value="#{transporteBean.transporte.cep}"
+								mask="99999-999"
+								requiredMessage="O campo CEP é obrigatório" />
+			
+							<p:outputLabel for="address" value="Endereço" />
+							<p:inputTextarea id="address" rows="1"
+								value="#{transporteBean.transporte.endereco}" 
+								requiredMessage="O campo endereço é obrigatório"/>
+			
+							<p:outputLabel for="city" value="Cidade" />
+							<p:inputText id="city" value="#{transporteBean.transporte.cidade}" 
+								requiredMessage="O campo cidade é obrigatório"/>
+			
+							<p:outputLabel for="bairro" value="Bairro" />
+							<p:inputText id="bairro" value="#{transporteBean.transporte.bairro}"
+								requiredMessage="O campo bairro é obrigatório" />
+			
+							<p:outputLabel for="state" value="Estado" />
+							<p:selectOneMenu id="state"
+								value="#{transporteBean.transporte.estado}" unselectable="true">
+								<f:selectItem itemLabel="---------" />
+								<f:selectItems value="#{transporteBean.estado}" />
+							</p:selectOneMenu>
+			
+							<p:outputLabel for="email" value="Email" />
+							<p:inputText id="email" value="#{transporteBean.transporte.email}"
+								requiredMessage="O campo e-mail é obrigatório" />
+			
+							<p:commandButton value="Salvar" id="salvar"
+								action="#{transporteBean.salvar}" style="margin-center:20px;" />
+							
+							<p:commandButton value="Limpar" ajax="true" immediate="true"
+								type="reset" />
+						</h:panelGrid>
+					</p:panel>
+				</div>
 			</h:form>
-		</div>
+		</p:panel>
 	</ui:define>
 </ui:composition>
 </html>
