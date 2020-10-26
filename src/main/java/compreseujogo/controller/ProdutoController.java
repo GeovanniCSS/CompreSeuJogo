@@ -20,24 +20,22 @@ public class ProdutoController implements Serializable {
 
 	private Produto produto;
 	private List<Produto> lista;
-	
+
 	public ProdutoController() {
 		this.produto = new Produto();
 		this.lista = new ArrayList<Produto>();
 	}
-	
-	public String salvar() {
+
+	public void salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
-		
 		try {
-			context.addMessage(null, new FacesMessage(facade.inserirProduto(produto),FacesMessage.FACES_MESSAGES));
-			return "";
+			context.addMessage(null, new FacesMessage(facade.inserirProduto(produto), FacesMessage.FACES_MESSAGES));
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
-		return null;
 	}
+
 	public Produto getProduto() {
 		return produto;
 	}
