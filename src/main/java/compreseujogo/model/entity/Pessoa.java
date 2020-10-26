@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -34,6 +35,7 @@ public abstract class Pessoa implements EntityBase, Serializable {
 	private String endereco;
 	private String telefone;
 	private String cep;
+	@Column(name = "cpf", length = 14, nullable = false, unique = true)
 	private String cpf;
 	private boolean ativo;
 	private String cidade;
@@ -41,13 +43,13 @@ public abstract class Pessoa implements EntityBase, Serializable {
 
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
-	
+
 	@Enumerated(EnumType.STRING)
 	private Estado estado;
 
 	public Pessoa(int id, String nome, String sobrenome, String email, String senha, Date dataNascimento,
-			String endereco, String telefone, String cep, String cpf, boolean ativo, String cidade,
-			String bairro, Sexo sexo, Estado estado) {
+			String endereco, String telefone, String cep, String cpf, boolean ativo, String cidade, String bairro,
+			Sexo sexo, Estado estado) {
 		super();
 		this.id = id;
 		this.nome = nome;

@@ -1,6 +1,8 @@
 package compreseujogo.model.bo;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import compreseujogo.model.dao.GenericDao;
 import compreseujogo.model.entity.Venda;
@@ -33,8 +35,18 @@ public class VendaBo {
 			throw new Exception("O valor total n�o pode ser negativo");
 		}
 	}
+
 	public void novaVenda(Venda venda) throws Exception {
 		venda.setDataCadastro(LocalDate.now());
 		saveOrUpdate(venda);
+	}
+
+	public List<String> mensagemVenda(Venda venda) {
+		ArrayList<String> email = new ArrayList<String>();
+		String tituto = "Nova venda - "+venda.getCliente();
+		String mensagem = "<h3>Detalhes da venda</h3> <br>";
+		email.add(tituto);
+		email.add(mensagem);
+		return email;
 	}
 }
