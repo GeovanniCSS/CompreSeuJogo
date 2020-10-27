@@ -2,6 +2,7 @@ package compreseujogo.model.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,6 +22,7 @@ public abstract class Empresa implements EntityBase, Serializable {
 	@GenericGenerator(name = "inc", strategy = "increment")
 	private int id;
 	private String nome;
+	@Column(name = "cnpj", length = 14, nullable = false, unique = true)
 	private String cnpj;
 	private String email;
 	private String endereco;
@@ -32,8 +34,8 @@ public abstract class Empresa implements EntityBase, Serializable {
 	private String url;
 	private Boolean ativo;
 
-	public Empresa(int id, String nome, String cnpj, String email, String endereco, String cep, String bairro, String cidade, String estado,
-			String telefone, String url, Boolean ativo) {
+	public Empresa(int id, String nome, String cnpj, String email, String endereco, String cep, String bairro,
+			String cidade, String estado, String telefone, String url, Boolean ativo) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -49,26 +51,21 @@ public abstract class Empresa implements EntityBase, Serializable {
 		this.ativo = ativo;
 	}
 
-	
 	public String getBairro() {
 		return bairro;
 	}
-
 
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
 
-
 	public String getCidade() {
 		return cidade;
 	}
 
-
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-
 
 	public Empresa() {
 		super();
@@ -154,7 +151,6 @@ public abstract class Empresa implements EntityBase, Serializable {
 		this.ativo = ativo;
 	}
 
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -173,7 +169,6 @@ public abstract class Empresa implements EntityBase, Serializable {
 		result = prime * result + ((url == null) ? 0 : url.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -244,7 +239,6 @@ public abstract class Empresa implements EntityBase, Serializable {
 		return true;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Empresa [id=" + id + ", nome=" + nome + ", cnpj=" + cnpj + ", email=" + email + ", endereco=" + endereco
@@ -252,5 +246,4 @@ public abstract class Empresa implements EntityBase, Serializable {
 				+ telefone + ", url=" + url + ", ativo=" + ativo + "]";
 	}
 
-	
 }

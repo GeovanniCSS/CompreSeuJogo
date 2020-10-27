@@ -13,7 +13,7 @@ public class MarcaTest {
 	public void inserirMarca() throws Exception {
 		Marca marca = new Marca(0, "Corrida", true);
 		Facade facade = new Facade();
-		facade.inserirMarca(marca);
+		facade.salvarMarca(marca);
 		int i = marca.getId();
 		boolean teste = false;
 		if(i > 0 ) {

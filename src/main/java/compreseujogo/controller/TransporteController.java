@@ -39,7 +39,7 @@ public class TransporteController implements Serializable {
 		try {
 
 			Facade facade = new Facade();
-			facade.inserirTransporte(this.transporte);
+			facade.salvarTransporte(this.transporte);
 				
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,

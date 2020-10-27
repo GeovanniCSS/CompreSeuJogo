@@ -41,9 +41,8 @@ public class PlataformaController implements Serializable{
 	public String salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
-		
 		try {
-			context.addMessage(null, new FacesMessage(facade.inserirPlataforma(plataforma),FacesMessage.FACES_MESSAGES));
+			context.addMessage(null, new FacesMessage(facade.salvarPlataforma(plataforma),FacesMessage.FACES_MESSAGES));
 			return "";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));

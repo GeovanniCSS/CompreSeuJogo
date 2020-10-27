@@ -15,7 +15,7 @@ public class VendedorTeste {
 				null, null, Estado.PR);
 
 		try {
-			System.out.println(bo.newUser(vendedor, Vendedor.class));
+			
 		} catch (Exception e) {
 
 		}

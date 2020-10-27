@@ -101,50 +101,53 @@ public class Facade {
 		return "vendido";
 	}
 
-	public String loginAdminstrador(Administrador administrador) throws Exception {
-		return administradorBo.login(administrador, Administrador.class);
+	public Administrador loginAdminstrador(Administrador administrador) throws Exception {
+		return (Administrador) administradorBo.login(administrador, Administrador.class);
 	}
-	public String loginVendedor(Vendedor vendedor) throws Exception {
-		return vendedorBo.login(vendedor, Vendedor.class);
-		
+
+	public Vendedor loginVendedor(Vendedor vendedor) throws Exception {
+		return (Vendedor) vendedorBo.login(vendedor, Vendedor.class);
+
 	}
-	public String inserirAdministrador(Administrador administrador) throws Exception {
-		administradorBo.newUser(administrador, Administrador.class);
-		return administradorBo.createDepency(administrador);
-		
+
+	public String salvarAdministrador(Administrador administrador) throws Exception {
+		return administradorBo.salvar(administrador, (Loja) lojaBo.list("", null, Loja.class).get(0));
 	}
-	public String inserirVendedor(Vendedor vendedor) throws Exception {
-		vendedorBo.newUser(vendedor, Vendedor.class);
+
+	public String salvarVendedor(Vendedor vendedor) throws Exception {
+		vendedorBo.novaPessoa(vendedor, Vendedor.class);
 		return vendedorBo.createDepency(vendedor);
 	}
-	
-	public void inserirCliente(Cliente cliente) throws Exception {
-		clienteBo.newUser(cliente, Cliente.class);
-		clienteBo.saveOrUpdate(cliente);
+
+	public String salvarCliente(Cliente cliente) throws Exception {
+		clienteBo.novaPessoa(cliente, Cliente.class);
+		return clienteBo.saveOrUpdate(cliente);
 	}
 
-	public String inserirCategoria(Categoria categoria) throws Exception {
-		return categoriaBo.nova(categoria, Categoria.class);
+	public String salvarCategoria(Categoria categoria) throws Exception {
+		return categoriaBo.salvar(categoria);
 	}
 
-	public String inserirPlataforma(Plataforma plataforma) throws Exception {
+	public String salvarPlataforma(Plataforma plataforma) throws Exception {
 		return plataformaBo.nova(plataforma, Plataforma.class);
 	}
 
-	public String inserirProduto(Produto produto) throws Exception {
-		produto.setLoja((Loja) lojaBo.list("", produto.getLoja(), Loja.class).get(0));
+	public String salvarProduto(Produto produto) throws Exception {
+		Loja loja = new Loja();
+		loja.setId(3);
+		produto.setLoja(loja);
 		return produtoBo.novo(produto);
 	}
 
-	public String inserirMarca(Marca marca) throws Exception {
+	public String salvarMarca(Marca marca) throws Exception {
 		return marcaBo.nova(marca, Marca.class);
 	}
 
-	public String inserirFornecedor(Fornecedor fornecedor) throws Exception {
+	public String salvarFornecedor(Fornecedor fornecedor) throws Exception {
 		return fornecedorBo.novaEmpresa(fornecedor, Fornecedor.class);
 	}
 
-	public void inserirTransporte(Transporte transporte) throws Exception {
+	public void salvarTransporte(Transporte transporte) throws Exception {
 		transporteBo = new TransporteBo();
 		transporteBo.saveOrUpdate(transporte);
 	}

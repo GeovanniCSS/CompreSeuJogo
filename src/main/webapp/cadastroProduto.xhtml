@@ -6,84 +6,81 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="/WEB-INF/template/template.xhtml">
-	<ui:define name="tituloJanela">Cadastro categoria</ui:define>
+	<ui:define name="tituloJanela">Cadastro produto</ui:define>
 	<ui:define name="conteudo">
-		<h:form>
-			<h:form>
-				<p:growl autoUpdate="true" life="3000" />
-				<p:panelGrid columns="2" layout="grid">
-					<p:outputLabel for="nome" value="Nome" />
-					<p:inputText id="nome" value="#{produtoBean.produto.nome}"
-						required="true" />
-					<p:outputLabel for="descricao" value="Descrição" />
-					<p:inputTextarea id="descricao"
-						value="#{produtoBean.produto.descricao}" rows="4" cols="50"
-						required="true" />
-					<p:outputLabel for="ean" value="Código EAN" />
-					<p:inputText id="ean" value="#{produtoBean.produto.EAN}"
-						required="true" />
-					<p:outputLabel for="estoque" value="Quantidade no estoque" />
-					<p:inputText id="estoque"
-						value="#{produtoBean.produto.quantEstoque}" required="true" />
-					<p:outputLabel for="valor" value="Valor" />
-					<p:inputText id="valor" value="#{produtoBean.produto.valor}"
-						required="true" />
 
-					<h:outputLabel for="localDate" value="Data de lançamento"
-						style="font-weight:bold" />
-					<p:inputText id="localDate"
-						value="#{produtoBean.produto.dataLancamento}"
-						label="Data de lançamento">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</p:inputText>
-					<p:message for="localDate" />
-					<h:outputText value="#{produtoBean.produto.dataLancamento}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
-					<p:fileUpload value="#{fileUploadView.file}" mode="simple"
-						skinSimple="true" />
-					<p:commandButton value="Submit" ajax="false"
-						action="#{fileUploadView.upload}" disabled="true" />
-					<p:outputLabel for="categoria" value="Categoria" />
-					<p:selectOneMenu id="categoria" value="#{categoriaBean.lista}"
-						style="width:200px">
-						<f:selectItem itemLabel="Selecione uma opção"
-							noSelectionOption="true" />
-						<f:selectItems var="c" value="#{categoriaBean.lista}"
-							itemLabel="#{c.nome}" itemValue="#{c}" />
-					</p:selectOneMenu>
-					<p:outputLabel for="fornecedor" value="Fornecedor" />
-					<p:selectOneMenu id="fornecedor" value="#{fornecedorBean.lista}"
-						style="width:200px">
-						<f:selectItem itemLabel="Selecione uma opção"
-							noSelectionOption="true" />
-						<f:selectItems var="f" value="#{fornecedorBean.lista}"
-							itemLabel="#{f.nome}" itemValue="#{f}" />
-					</p:selectOneMenu>
-					<p:outputLabel for="marca" value="Marca" />
-					<p:selectOneMenu id="marca" value="#{marcaBean.lista}"
-						style="width:200px">
-						<f:selectItem itemLabel="Selecione uma opção"
-							noSelectionOption="true" />
-						<f:selectItems var="m" value="#{marcaBean.lista}"
-							itemLabel="#{m.nome}" itemValue="#{m}" />
-					</p:selectOneMenu>
-					<p:outputLabel for="plataforma" value="Plataforma" />
-					<p:selectOneMenu id="plataforma" value="#{plataformaBean.lista}"
-						style="width:200px">
-						<f:selectItem itemLabel="Selecione uma opção"
-							noSelectionOption="true" />
-						<f:selectItems var="p" value="#{plataformaBean.lista}"
-							itemLabel="#{p.nome}" itemValue="#{p}" />
-					</p:selectOneMenu>
-				</p:panelGrid>
-				<p:panelGrid columns="2" layout="grid">
-					<p:commandButton value="Cancelar" id="btnCancelar"
-						icon="pi pi-save" />
-					<p:commandButton value="Salvar" id="btnSalvar"
-						action="#{produtoBean.salvar()}" update="@form" icon="pi pi-save" />
-				</p:panelGrid>
-			</h:form>
+		<h:form>
+			<p:growl autoUpdate="true" life="3000" />
+			<p:panelGrid columns="2" layout="grid">
+				<p:outputLabel for="nome" value="Nome" />
+				<p:inputText id="nome" value="#{produtoBean.produto.nome}"
+					required="true" />
+				<p:outputLabel for="descricao" value="Descrição" />
+				<p:inputTextarea id="descricao"
+					value="#{produtoBean.produto.descricao}" rows="4" cols="50"
+					required="true" />
+				<p:outputLabel for="ean" value="Código EAN" />
+				<p:inputText id="ean" value="#{produtoBean.produto.EAN}"
+					required="true" />
+				<p:outputLabel for="estoque" value="Quantidade no estoque" />
+				<p:inputText id="estoque"
+					value="#{produtoBean.produto.quantEstoque}" required="true" />
+				<p:outputLabel for="valor" value="Valor" />
+				<p:inputText id="valor" value="#{produtoBean.produto.valor}"
+					required="true" />
+				<h:outputLabel for="date" value="Date (java.util.Date)"
+					style="font-weight:bold" />
+				<p:inputText id="date" value="#{produtoBean.produto.dataLancamento}"
+					label="Date (java.util.Date)">
+					<f:convertDateTime pattern="MM/dd/yyyy" />
+				</p:inputText>
+				<p:message for="date" />
+				<h:outputText value="#{produtoBean.produto.dataLancamento}">
+					<f:convertDateTime pattern="MM/dd/yyyy" />
+				</h:outputText>
+				<p:fileUpload value="#{fileUploadView.file}" mode="simple"
+					skinSimple="true" />
+				<p:commandButton value="Submit" ajax="false"
+					action="#{fileUploadView.upload}" disabled="true" />
+				<p:outputLabel for="categoria" value="Categoria" />
+				<p:selectOneMenu id="categoria"
+					value="#{produtoBean.produto.categoria.id}" style="width:200px"
+					required="true">
+					<f:selectItem itemLabel="Selecione uma opção" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItems var="c" value="#{produtoBean.categorias}"
+						itemLabel="#{c.nome}" itemValue="#{c.id}" />
+				</p:selectOneMenu>
+				<p:outputLabel for="fornecedor" value="Fornecedor" />
+				<p:selectOneMenu id="fornecedor"
+					value="#{produtoBean.produto.fornecedor.id}" style="width:200px">
+					<f:selectItem itemLabel="Selecione uma opção"
+						noSelectionOption="true" />
+					<f:selectItems var="f" value="#{produtoBean.fornecedores}"
+						itemLabel="#{f.nome}" itemValue="#{f.id}" />
+				</p:selectOneMenu>
+				<p:outputLabel for="marca" value="Marca" />
+				<p:selectOneMenu id="marca" value="#{produtoBean.produto.marca.id}"
+					style="width:200px">
+					<f:selectItem itemLabel="Selecione uma opção"
+						noSelectionOption="true" />
+					<f:selectItems var="m" value="#{produtoBean.marcas}"
+						itemLabel="#{m.nome}" itemValue="#{m.id}" />
+				</p:selectOneMenu>
+				<p:outputLabel for="plataforma" value="Plataforma" />
+				<p:selectOneMenu id="plataforma"
+					value="#{produtoBean.produto.plataforma.id}" style="width:200px">
+					<f:selectItem itemLabel="Selecione uma opção"
+						noSelectionOption="true" />
+					<f:selectItems var="p" value="#{produtoBean.plataformas}"
+						itemLabel="#{p.nome}" itemValue="#{p.id}" />
+				</p:selectOneMenu>
+			</p:panelGrid>
+			<p:panelGrid columns="2" layout="grid">
+				<p:commandButton value="Cancelar" id="btnCancelar" icon="pi pi-save" />
+				<p:commandButton value="Salvar" id="btnSalvar"
+					action="#{produtoBean.salvar()}" update="@form" icon="pi pi-save" />
+			</p:panelGrid>
 		</h:form>
 	</ui:define>
 </ui:composition>

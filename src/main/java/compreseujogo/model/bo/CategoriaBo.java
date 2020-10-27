@@ -6,6 +6,7 @@ import compreseujogo.model.dao.CategoriaDao;
 import compreseujogo.model.dao.GenericDao;
 import compreseujogo.model.entity.Categoria;
 import compreseujogo.model.entity.Produto;
+import compreseujogo.model.entity.Tipo;
 
 
 public class CategoriaBo extends TipoBo<Categoria> {
@@ -35,5 +36,11 @@ public class CategoriaBo extends TipoBo<Categoria> {
 			return remove(categoria);
 		}
 	}
-
+	public String salvar(Categoria categoria) throws Exception {
+		if(categoria.getId() > 0) {
+			return atualizar(categoria , Categoria.class);
+		}else {
+			return nova(categoria, Categoria.class);
+		}
+	}
 }

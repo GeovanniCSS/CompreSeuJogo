@@ -7,8 +7,6 @@ import compreseujogo.model.dao.TipoDao;
 import compreseujogo.model.entity.EntityBase;
 import compreseujogo.model.entity.Tipo;
 
-
-
 public class TipoBo<T extends Tipo> {
 
 	public String saveOrUpdate(EntityBase obj) throws Exception {
@@ -73,6 +71,10 @@ public class TipoBo<T extends Tipo> {
 			tipo.setAtivo(true);
 			return saveOrUpdate(tipo);
 		}
+	}
+
+	public String atualizar(Tipo tipo, Class<T> classe) throws Exception {
+		return saveOrUpdate(tipo);
 	}
 
 }

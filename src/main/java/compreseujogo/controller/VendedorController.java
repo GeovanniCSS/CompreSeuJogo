@@ -45,7 +45,7 @@ public class VendedorController implements Serializable {
 		Facade facade = new Facade();
 		try {
 			context.addMessage(null,
-					new FacesMessage(facade.inserirVendedor(this.vendedor), FacesMessage.FACES_MESSAGES));
+					new FacesMessage(facade.salvarVendedor(this.vendedor), FacesMessage.FACES_MESSAGES));
 			vendedor = new Vendedor();
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));

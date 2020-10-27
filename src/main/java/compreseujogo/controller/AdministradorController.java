@@ -22,7 +22,6 @@ public class AdministradorController implements Serializable {
 	private List<Administrador> lista;
 
 	public AdministradorController() {
-		super();
 		this.administrador = new Administrador();
 		this.lista = new ArrayList<Administrador>();
 	}
@@ -31,8 +30,9 @@ public class AdministradorController implements Serializable {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		try {
-			context.addMessage(null, new FacesMessage(facade.loginAdminstrador(administrador), FacesMessage.FACES_MESSAGES));
-			return "cadastroProduto.xhtml?faces-redirect=true";
+			administrador = facade.loginAdminstrador(administrador);
+			context.addMessage(null, new FacesMessage("Olá "+administrador, FacesMessage.FACES_MESSAGES));
+			return "testeLogin.xhtml?faces-redirect=true";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null));
 		}

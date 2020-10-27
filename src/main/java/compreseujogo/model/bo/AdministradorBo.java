@@ -5,9 +5,7 @@ import java.util.List;
 import compreseujogo.model.dao.AdministradorDao;
 import compreseujogo.model.dao.GenericDao;
 import compreseujogo.model.entity.Administrador;
-
-
-
+import compreseujogo.model.entity.Loja;
 
 public class AdministradorBo extends PessoaBo<Administrador> {
 
@@ -26,13 +24,12 @@ public class AdministradorBo extends PessoaBo<Administrador> {
 		}
 	}
 
-	public String createDepency(Administrador administrador) throws Exception {
-		LojaBo bo = new LojaBo();
-		administrador.setLoja(bo.list("", null).get(0));
-		try {
-			return saveOrUpdate(administrador) + "_administrador";
-		} catch (Exception e) {
-			throw new Exception("Erro ao vincular a loja ao " + administrador.getNome());
+	public String salvar(Administrador administrador, Loja loja) throws Exception {
+		if (administrador.getId() > 0) {
+			return atualizar(administrador, Administrador.class);
+		} else {
+			administrador.setLoja(loja);
+			return novaPessoa(administrador, Administrador.class);
 		}
 	}
 }
