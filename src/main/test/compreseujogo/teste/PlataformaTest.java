@@ -1,7 +1,9 @@
 package compreseujogo.teste;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.jupiter.api.Test;
+
 import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Plataforma;
 

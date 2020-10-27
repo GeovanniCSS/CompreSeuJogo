@@ -45,12 +45,12 @@
 					<p:commandButton value="Submit" ajax="false"
 						action="#{fileUploadView.upload}" disabled="true" />
 					<p:outputLabel for="categoria" value="Categoria" />
-					<p:selectOneMenu id="categoria" value="#{produtoBean.produto.categoria}"
-						style="width:200px">
+					<p:selectOneMenu id="categoria" value="#{produtoBean.produto.categoria.id}"
+						style="width:200px" required="true">
 						<f:selectItem itemLabel="Selecione uma opção"
-							noSelectionOption="true" />
+							itemValue="" noSelectionOption="true" />
 						<f:selectItems var="c" value="#{categoriaBean.lista}"
-							itemLabel="#{c.nome}" itemValue="#{c}" />
+							itemLabel="#{c.nome}" itemValue="#{c.id}" />
 					</p:selectOneMenu>
 					<p:outputLabel for="fornecedor" value="Fornecedor" />
 					<p:selectOneMenu id="fornecedor" value="#{fornecedorBean.lista}"
