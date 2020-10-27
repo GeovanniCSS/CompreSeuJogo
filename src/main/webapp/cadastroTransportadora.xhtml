@@ -62,6 +62,15 @@
 							<p:outputLabel for="email" value="Email" />
 							<p:inputText id="email" value="#{transporteBean.transporte.email}"
 								requiredMessage="O campo e-mail é obrigatório" />
+								
+							<p:selectBooleanCheckbox value="#{transporteBean.transporte.ativo}" itemLabel="Ativo"/>
+							
+							<p:dialog header="Values" modal="true" resizable="false" showEffect="fade" widgetVar="dlg">
+        						<h:panelGrid columns="1" id="display">
+            						<h:outputText value="Value 1: #{transporteBean.transporte.ativo}" />
+        						</h:panelGrid>
+    						</p:dialog>
+								
 			
 							<p:commandButton value="Salvar" id="salvar"
 								action="#{transporteBean.salvar}" style="margin-center:20px;" />
