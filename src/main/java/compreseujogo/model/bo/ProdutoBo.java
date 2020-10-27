@@ -57,9 +57,7 @@ public class ProdutoBo {
 			throw new Exception("O SKU n�o pode ficar em branco!");
 		} else if (produto.getEAN() < 0) {
 			throw new Exception("O EAN n�o pode ser negativo!");
-		} else if (produto.getDataLancamento().isAfter(LocalDate.now())) {
-			throw new Exception("Data de lançamento inválida!");
-		}
+		} 
 	}
 
 	public void dimuirQuantidade(List<ItemCarrinho> list) throws Exception {

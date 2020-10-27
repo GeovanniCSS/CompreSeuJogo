@@ -15,7 +15,7 @@ public class CategoriaTest {
 	public void inserirCategoria() throws Exception {
 		Categoria categoria = new Categoria(0, "Corrida", true);
 		Facade facade = new Facade();
-		facade.inserirCategoria(categoria);
+		facade.salvarCategoria(categoria);
 		int i = categoria.getId();
 		boolean teste = false;
 		if(i > 0 ) {

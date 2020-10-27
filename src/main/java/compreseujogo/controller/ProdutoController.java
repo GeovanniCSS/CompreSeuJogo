@@ -10,6 +10,11 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import compreseujogo.facade.Facade;
+import compreseujogo.model.entity.Categoria;
+import compreseujogo.model.entity.Fornecedor;
+import compreseujogo.model.entity.Loja;
+import compreseujogo.model.entity.Marca;
+import compreseujogo.model.entity.Plataforma;
 import compreseujogo.model.entity.Produto;
 
 @RequestScoped
@@ -20,17 +25,30 @@ public class ProdutoController implements Serializable {
 
 	private Produto produto;
 	private List<Produto> lista;
+	private List<Categoria> categorias;
+	private List<Fornecedor> fornecedores;
+	private List<Marca> marcas;
+	private List<Plataforma> plataformas;
 
 	public ProdutoController() {
 		this.produto = new Produto();
+		this.produto.setCategoria(new Categoria());
+		this.produto.setFornecedor(new Fornecedor());
+		this.produto.setLoja(new Loja());
+		this.produto.setMarca(new Marca());
+		this.produto.setPlataforma(new Plataforma());
 		this.lista = new ArrayList<Produto>();
+		this.categorias = new ArrayList<Categoria>();
+		this.fornecedores = new ArrayList<Fornecedor>();
+		this.marcas = new ArrayList<Marca>();
+		this.plataformas = new ArrayList<Plataforma>();
 	}
 
 	public void salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		try {
-			context.addMessage(null, new FacesMessage(facade.inserirProduto(produto), FacesMessage.FACES_MESSAGES));
+			context.addMessage(null, new FacesMessage(facade.salvarProduto(produto), FacesMessage.FACES_MESSAGES));
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
@@ -50,5 +68,65 @@ public class ProdutoController implements Serializable {
 
 	public void setLista(List<Produto> lista) {
 		this.lista = lista;
+	}
+
+	public List<Categoria> getCategorias() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			categorias = facade.listaCategoria(null);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+
+	public List<Fornecedor> getFornecedores() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			fornecedores = facade.listarFornecedorNome(null);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		return fornecedores;
+	}
+
+	public void setFornecedores(List<Fornecedor> fornecedores) {
+		this.fornecedores = fornecedores;
+	}
+
+	public List<Marca> getMarcas() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			marcas = facade.listaMarca(null);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		return marcas;
+	}
+
+	public void setMarcas(List<Marca> marcas) {
+		this.marcas = marcas;
+	}
+
+	public List<Plataforma> getPlataformas() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			plataformas = facade.listaPlataforma(null);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		return plataformas;
+	}
+
+	public void setPlataformas(List<Plataforma> plataformas) {
+		this.plataformas = plataformas;
 	}
 }

@@ -42,7 +42,7 @@ public class FornecedorController implements Serializable {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		try {
-			context.addMessage(null, new FacesMessage(facade.inserirFornecedor(fornecedor), FacesMessage.FACES_MESSAGES));
+			context.addMessage(null, new FacesMessage(facade.salvarFornecedor(fornecedor), FacesMessage.FACES_MESSAGES));
 			return "";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));

@@ -29,7 +29,7 @@ public class ProdutoTeste {
 		fornecedor.setId(1);
 
 		Produto produto = new Produto(1, "Cod", "Jogo dublado em portugu�s", 150.0, 15, 55465465, "Xbox-001", true, 0,
-				LocalDate.now(), categoria, plataforma, marca, fornecedor, loja);
+				null, categoria, plataforma, marca, fornecedor, loja);
 
 		try {
 			//System.out.println(produtoBo.novo(produto));

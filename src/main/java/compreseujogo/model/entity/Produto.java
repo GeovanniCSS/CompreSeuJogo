@@ -3,6 +3,7 @@ package compreseujogo.model.entity;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -38,7 +39,7 @@ public class Produto implements EntityBase, Serializable {
 	@Column(name = "quantidadeConsulta")
 	private int quantConsulta;
 	private LocalDate dataCadastro;
-	private LocalDate dataLancamento;
+	private Date dataLancamento;
 
 	@ManyToOne
 	private Categoria categoria;
@@ -61,14 +62,13 @@ public class Produto implements EntityBase, Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "produto")
 	private List<Item> item;
 
-	public Produto(int id, String nome, String descricao, String imagem, double valor, int quantEstoque, int eAN, String sku,
-			boolean ativo, int quantConsulta, LocalDate dataLancamento, Categoria categoria,
-			Plataforma plataforma, Marca marca, Fornecedor fornecedor, Loja loja) {
+	public Produto(int id, String nome, String descricao, double valor, int quantEstoque, int eAN, String sku,
+			boolean ativo, int quantConsulta, Date dataLancamento, Categoria categoria, Plataforma plataforma,
+			Marca marca, Fornecedor fornecedor, Loja loja) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.imagem = imagem;
 		this.valor = valor;
 		this.quantEstoque = quantEstoque;
 		this.EAN = eAN;
@@ -217,11 +217,11 @@ public class Produto implements EntityBase, Serializable {
 		this.dataCadastro = dataCadastro;
 	}
 
-	public LocalDate getDataLancamento() {
+	public Date getDataLancamento() {
 		return dataLancamento;
 	}
 
-	public void setDataLancamento(LocalDate dataLancamento) {
+	public void setDataLancamento(Date dataLancamento) {
 		this.dataLancamento = dataLancamento;
 	}
 
@@ -346,7 +346,7 @@ public class Produto implements EntityBase, Serializable {
 				+ EAN + ", sku=" + sku + ", ativo=" + ativo + ", quantConsulta=" + quantConsulta + ", dataCadastro="
 				+ dataCadastro + ", dataLancamento=" + dataLancamento + ", categoria=" + categoria.getNome()
 				+ ", plataforma=" + plataforma.getNome() + ", marca=" + marca.getNome() + ", fornecedor= "
-				+ fornecedor.getNome()+ ", Loja="+ loja;
+				+ fornecedor.getNome() + ", Loja=" + loja;
 	}
 
 }

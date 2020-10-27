@@ -14,27 +14,27 @@ import compreseujogo.model.entity.Vendedor;
 
 public class PessoaBo<T extends Pessoa> {
 
-	public String saveOrUpdate(EntityBase obj) throws Exception {
-		validarDados((Pessoa) obj);
+	public String saveOrUpdate(Pessoa pessoa) throws Exception {
+		validarDados(pessoa);
 		GenericDao<Pessoa> tcDao = new GenericDao<Pessoa>();
 		try {
-			return tcDao.saveOrUpdate((Pessoa) obj);
+			return tcDao.saveOrUpdate(pessoa);
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
 	}
 
-	public String remove(EntityBase obj) throws Exception {
+	public String remove(Pessoa pessoa) throws Exception {
 		GenericDao<Pessoa> tcDao = new GenericDao<Pessoa>();
 		try {
-			return tcDao.remove(Pessoa.class, obj.getId());
+			return tcDao.remove(Pessoa.class, pessoa.getId());
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
 	}
 
-	public List<Pessoa> list(String parameter, EntityBase obj, Class<T> classe) throws Exception {
-		Pessoa pessoa = (Pessoa) obj;
+	public List<Pessoa> list(String parameter, Pessoa pessoa, Class<T> classe) throws Exception {
+		;
 		try {
 			if (parameter.equals("")) {
 				GenericDao<Pessoa> pDao = new GenericDao<Pessoa>();
@@ -83,13 +83,9 @@ public class PessoaBo<T extends Pessoa> {
 		} else if (pessoa.getCpf().equals("")) {
 			throw new Exception("O cpf n�o pode ficar em branco!");
 		}
-		/*
-		 * } else if (pessoa.getDataNascimento().isAfter(LocalDate.now())) { throw new
-		 * Exception("A data de nascimento est� incorreta!"); }
-		 */
 	}
 
-	public String newUser(Pessoa pessoa, Class<T> classe) throws Exception {
+	public String novaPessoa(Pessoa pessoa, Class<T> classe) throws Exception {
 		if (list("email", pessoa, classe).size() >= 1) {
 			throw new Exception("Esse e-mail já está registrado!");
 		} else if (list("cpf", pessoa, classe).size() >= 1) {
@@ -101,24 +97,13 @@ public class PessoaBo<T extends Pessoa> {
 
 	}
 
-	public String createDependency(Pessoa pessoa, Class<T> classe) throws Exception {
-		if (classe.equals(Cliente.class)) {
-			ClienteBo bo = new ClienteBo();
-			return bo.createDepency((Cliente) pessoa);
-		} else if (classe.equals(Vendedor.class)) {
-			VendedorBo bo = new VendedorBo();
-			return bo.createDepency((Vendedor) pessoa);
-		} else if (classe.equals(Administrador.class)) {
-			AdministradorBo bo = new AdministradorBo();
-			return bo.createDepency((Administrador) pessoa);
-		}
-		return "ErroSalvar";
+	public String atualizar(Pessoa pessoa, Class<T> classe) throws Exception {
+		return saveOrUpdate(pessoa);
 	}
 
-	public String login(Pessoa pessoa, Class<T> classe) throws Exception {
+	public Pessoa login(Pessoa pessoa, Class<T> classe) throws Exception {
 		if (list("login", pessoa, classe).size() == 1) {
-			pessoa = list("login", pessoa, classe).get(0);
-			return "Olá " + pessoa.getNome();
+			return list("login", pessoa, classe).get(0);
 		} else {
 			throw new Exception("E-mail ou senha está incorreto");
 		}

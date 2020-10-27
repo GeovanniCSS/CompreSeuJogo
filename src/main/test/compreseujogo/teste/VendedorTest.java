@@ -18,7 +18,7 @@ public class VendedorTest {
 				"geea@vnews.com.br", "1234", null, "Praça General Osório 45",
 				"(41) 99108-8676", "80020-930", "293.416.029-76", true, "Curitiba", "Centro", Sexo.Masculino,
 				null, null, Estado.PR);
-		facade.inserirVendedor(vendedor);
+		facade.salvarVendedor(vendedor);
 		boolean teste = false;
 		if (vendedor.getId() > 0) {
 			teste = true;

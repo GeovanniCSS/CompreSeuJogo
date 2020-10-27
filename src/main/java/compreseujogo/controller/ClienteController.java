@@ -49,20 +49,14 @@ public class ClienteController implements Serializable {
 
 	public String salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
-		
-				
-		
-;
 		try {
 			Facade facade = new Facade();
-			facade.inserirCliente(this.cliente);
-				
+			facade.salvarCliente(this.cliente);
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 				e.getMessage(),""));
 			return "vendedor";
 		}	
-		
 		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
 			"Atendimento salvo com sucesso!", "SUCESSO"));		
 		return "sucesso";

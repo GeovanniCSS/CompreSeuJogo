@@ -26,29 +26,34 @@ public class CategoriaController implements Serializable {
 		this.categoria = new Categoria();
 		this.lista = new ArrayList<Categoria>();
 	}
-
-	@PostConstruct
-	public void carregarLista() {
+	
+	public List<Categoria> carregarLista() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		try {
-			lista = facade.listaCategoria(categoria);
+			return facade.listaCategoria(categoria);
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
+		return lista;
 	}
 	public void salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		try {
-			FacesMessage message = new FacesMessage(facade.inserirCategoria(categoria), FacesMessage.FACES_MESSAGES);
-			context.addMessage(null, message);
+			context.addMessage(null, new FacesMessage(facade.salvarCategoria(categoria), FacesMessage.FACES_MESSAGES));
 		} catch (Exception e) {
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null);
 			context.addMessage(null, message);
 		}
 	}
-
+	public String alterar(Categoria c) {
+		this.categoria = c;
+		return "cadastroCategoria.xhtml";
+	}
+	public void excluir(Categoria categoria) {
+		
+	}
 	public Categoria getCategoria() {
 		return categoria;
 	}

@@ -46,7 +46,7 @@ public class MarcaController implements Serializable {
 		Facade facade = new Facade();
 		
 		try {
-			context.addMessage(null, new FacesMessage(facade.inserirMarca(marca),FacesMessage.FACES_MESSAGES));
+			context.addMessage(null, new FacesMessage(facade.salvarMarca(marca),FacesMessage.FACES_MESSAGES));
 			return "";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
