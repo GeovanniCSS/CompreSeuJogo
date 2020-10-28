@@ -17,31 +17,37 @@ import compreseujogo.model.entity.Administrador;
 public class AdministradorController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Administrador administrador;
 	private List<Administrador> lista;
+	private Boolean logado;
 
 	public AdministradorController() {
 		this.administrador = new Administrador();
 		this.lista = new ArrayList<Administrador>();
+		this.logado = false;
 	}
-	
+
 	public String login() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		try {
 			administrador = facade.loginAdminstrador(administrador);
-			context.addMessage(null, new FacesMessage("Olá "+administrador, FacesMessage.FACES_MESSAGES));
+			context.addMessage(null, new FacesMessage("Olá " + administrador, FacesMessage.FACES_MESSAGES));
+			this.logado = true;
 			return "testeLogin.xhtml?faces-redirect=true";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null));
 		}
 		return null;
 	}
+
 	public String logout() {
-        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "/home.xhtml?faces-redirect=true";
-    }
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		this.logado = false;
+		return "/home.xhtml?faces-redirect=true";
+	}
+
 	public Administrador getAdministrador() {
 		return administrador;
 	}
@@ -56,6 +62,14 @@ public class AdministradorController implements Serializable {
 
 	public void setLista(List<Administrador> lista) {
 		this.lista = lista;
+	}
+
+	public Boolean getLogado() {
+		return logado;
+	}
+
+	public void setLogado(Boolean logado) {
+		this.logado = logado;
 	}
 
 }

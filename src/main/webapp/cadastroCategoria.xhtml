@@ -9,16 +9,15 @@
 	<ui:define name="tituloJanela">Cadastro categoria</ui:define>
 	<ui:define name="conteudo">
 		<h:form>
-			<p:growl autoUpdate="true" life="3000" />
 			<div id="main" align="center">
 				<p:panelGrid columns="2" layout="grid"
 					styleClass="showcase-text-align-center">
 					<f:facet name="header">Cadastro de Categoria</f:facet>
 					<f:facet name="footer">
-						<p:commandButton update="@form" value="Cancelar"
-							action="listaCategoria.xhtml" />
+						<p:commandButton update="@form,messages" value="Cancelar"
+							action="listaCategoria.xhtml?faces-redirect=true" />
 						<p:commandButton value="Salvar" action="#{categoriaBean.salvar()}"
-							update="@form" />
+							update="@form,messages" />
 					</f:facet>
 					<p:outputLabel value="Id" for="id" />
 					<p:inputText id="id" value="#{categoriaBean.categoria.id}"
@@ -31,6 +30,7 @@
 						value="#{categoriaBean.categoria.ativo}" itemLabel="Ativo" />
 				</p:panelGrid>
 			</div>
+			<p:growl id="messages" autoUpdate="true" life="3000"/>
 		</h:form>
 	</ui:define>
 </ui:composition>

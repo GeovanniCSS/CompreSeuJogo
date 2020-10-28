@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title><ui:insert name="tituloJanela" /></title>
 	<h:outputStylesheet library="css" name="estilos.css" />
@@ -14,7 +15,12 @@
 </h:head>
 <h:body>
 	<div id="cabecalho">
-		<ui:include src="/WEB-INF/template/MenuAdministrador.xhtml"/>
+		<h:panelGroup rendered="#{administradorBean.logado == true}">
+			<ui:include src="/WEB-INF/template/MenuAdministrador.xhtml" />
+		</h:panelGroup>
+		<h:panelGroup rendered="#{administradorBean.logado == false}">
+			<ui:include src="/WEB-INF/template/menuVendedor.xhtml" />
+		</h:panelGroup>
 	</div>
 	<div id="conteudo">
 		<ui:insert name="conteudo">

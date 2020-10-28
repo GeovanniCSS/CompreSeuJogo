@@ -42,7 +42,7 @@ public class CategoriaController implements Serializable {
 		Facade facade = new Facade();
 		try {
 			context.addMessage(null, new FacesMessage(facade.salvarCategoria(categoria), FacesMessage.FACES_MESSAGES));
-			return "listaCategoria.xhtml";
+			return "listaCategoria.xhtml?faces-redirect=true";
 		} catch (Exception e) {
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null);
 			context.addMessage(null, message);
