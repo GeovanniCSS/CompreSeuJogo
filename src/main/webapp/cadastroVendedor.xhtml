@@ -80,11 +80,19 @@
 								<f:selectItem itemLabel="-------" />
 								<f:selectItems value="#{vendedorBean.sexo}" />
 							</p:selectOneMenu>
+							
+							<p:selectBooleanCheckbox value="#{vendedorBean.vendedor.ativo}" itemLabel="Ativo"/>
+							
+							<p:dialog header="Values" modal="true" resizable="false" showEffect="fade" widgetVar="dlg">
+        						<h:panelGrid columns="1" id="display">
+            						<h:outputText value="Value 1: #{vendedorBean.vendedor.ativo}" />
+        						</h:panelGrid>
+    						</p:dialog>
 
 
 							<p:commandButton value="Salvar" id="salvar"
 								action="#{vendedorBean.salvar}" style="margin-center:20px;"
-								update="form1" />
+								update=":form1:msgs, :form1" />
 
 							<p:commandButton value="Limpar" ajax="true" immediate="true"
 								type="reset" />
