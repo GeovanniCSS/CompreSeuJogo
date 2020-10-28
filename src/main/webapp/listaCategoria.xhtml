@@ -8,9 +8,9 @@
 <h:head>
 </h:head>
 <ui:composition template="/WEB-INF/template/template.xhtml">
-	<ui:define name="tituloJanela">Compre seu jogo | Categoria</ui:define>
+	<ui:define name="tituloJanela">Todas Categorias</ui:define>
 	<ui:define name="conteudo">
-		<p:dataTable var="c" value="#{categoriaBean.carregarLista()}"
+		<p:dataTable var="c" value="#{categoriaBean.lista}"
 			frame="box" rules="all" cellpadding="3">
 			<f:facet name="header">
 				<p:commandButton value="Novo" action="cadastroCategoria.xhtml" />

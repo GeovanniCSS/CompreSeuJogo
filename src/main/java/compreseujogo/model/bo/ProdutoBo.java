@@ -57,7 +57,7 @@ public class ProdutoBo {
 			throw new Exception("O SKU n�o pode ficar em branco!");
 		} else if (produto.getEAN() < 0) {
 			throw new Exception("O EAN n�o pode ser negativo!");
-		} 
+		}
 	}
 
 	public void dimuirQuantidade(List<ItemCarrinho> list) throws Exception {
@@ -91,22 +91,23 @@ public class ProdutoBo {
 		} else {
 			return saveOrUpdate(produto);
 		}
-
 	}
 
 	private String gerarSku(Produto produto) throws Exception {
+		System.out.println("Vazio");
+		int i = list("Plataforma", produto).size();
+		System.out.println("Tamanho lista: " + i);
+		System.out.println("SHOW");
 		int size = list("Plataforma", produto).size();
 		try {
-			return produto.getPlataforma().getCodigoSku() + "-" + gerarNumeroSku(size);
+			return produto.getPlataforma().getCodigoSku() + "-" + gerarNumeroSku(++size);
 		} catch (Exception e) {
 			throw new Exception("Falha ao criar o SKU do produto");
 		}
 	}
 
 	private String gerarNumeroSku(int size) {
-		if (size < 1) {
-			return "0001";
-		} else if (size < 10) {
+		if (size < 10) {
 			return "000" + size;
 		} else if (size < 100) {
 			return "00" + size;

@@ -9,7 +9,6 @@
 	<ui:define name="tituloJanela">Cadastro marca</ui:define>
 	<ui:define name="conteudo">
 		<h:form>
-			<h:form>
 				<p:growl autoUpdate="true" life="3000" />
 				<div id="main" align="center">
 					<p:panelGrid columns="2" layout="grid"
@@ -21,7 +20,6 @@
 					<p:commandButton value="Salvar" action="#{marcaBean.salvar()}"
 						update="@form" />
 				</div>
-			</h:form>
 		</h:form>
 	</ui:define>
 </ui:composition>

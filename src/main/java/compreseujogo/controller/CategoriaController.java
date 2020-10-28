@@ -37,15 +37,17 @@ public class CategoriaController implements Serializable {
 		}
 		return lista;
 	}
-	public void salvar() {
+	public String salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		try {
 			context.addMessage(null, new FacesMessage(facade.salvarCategoria(categoria), FacesMessage.FACES_MESSAGES));
+			return "listaCategoria.xhtml";
 		} catch (Exception e) {
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null);
 			context.addMessage(null, message);
 		}
+		return null;
 	}
 	public String alterar(Categoria c) {
 		this.categoria = c;
@@ -62,7 +64,9 @@ public class CategoriaController implements Serializable {
 		this.categoria = categoria;
 	}
 
-	public List<Categoria> getLista() {
+	public List<Categoria> getLista() throws Exception {
+		Facade facade = new Facade();
+		lista = facade.listaCategoria(categoria);
 		return lista;
 	}
 

@@ -9,6 +9,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.file.UploadedFile;
+
 import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Categoria;
 import compreseujogo.model.entity.Fornecedor;
@@ -29,6 +32,7 @@ public class ProdutoController implements Serializable {
 	private List<Fornecedor> fornecedores;
 	private List<Marca> marcas;
 	private List<Plataforma> plataformas;
+	private UploadedFile file;
 
 	public ProdutoController() {
 		this.produto = new Produto();
@@ -52,6 +56,13 @@ public class ProdutoController implements Serializable {
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
+	}
+
+	public void upload(FileUploadEvent event) {
+		String nome = file.getFileName();
+		System.out.println(file.getFileName());
+		System.out.println(nome);
+		produto.setImagem(nome);
 	}
 
 	public Produto getProduto() {
@@ -128,5 +139,13 @@ public class ProdutoController implements Serializable {
 
 	public void setPlataformas(List<Plataforma> plataformas) {
 		this.plataformas = plataformas;
+	}
+
+	public UploadedFile getFile() {
+		return file;
+	}
+
+	public void setFile(UploadedFile file) {
+		this.file = file;
 	}
 }

@@ -133,9 +133,8 @@ public class Facade {
 	}
 
 	public String salvarProduto(Produto produto) throws Exception {
-		Loja loja = new Loja();
-		loja.setId(3);
-		produto.setLoja(loja);
+		produto.setPlataforma(plataformaBo.encontrar(produto.getPlataforma()));
+		produto.setLoja((Loja) lojaBo.list("organizada", null, Loja.class).get(0));
 		return produtoBo.novo(produto);
 	}
 

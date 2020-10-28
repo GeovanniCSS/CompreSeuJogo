@@ -33,7 +33,6 @@ public class ProdutoDao {
 			q = em.createQuery("SELECT p FROM Produto p WHERE p.EAN = :id");
 			q.setParameter("id", produto.getEAN());
 		}
-
 		return q.getResultList();
 	}
 }

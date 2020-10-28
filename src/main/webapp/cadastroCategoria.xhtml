@@ -9,18 +9,20 @@
 	<ui:define name="tituloJanela">Cadastro categoria</ui:define>
 	<ui:define name="conteudo">
 		<h:form>
-			<p:growl autoUpdate="true" life="3000"/>
+			<p:growl autoUpdate="true" life="3000" />
 			<div id="main" align="center">
 				<p:panelGrid columns="2" layout="grid"
 					styleClass="showcase-text-align-center">
+					<f:facet name="header">Cadastro de Categoria</f:facet>
 					<f:facet name="footer">
-						<p:commandButton value="Cancelar"
+						<p:commandButton update="@form" value="Cancelar"
 							action="listaCategoria.xhtml" />
-						<p:commandButton value="Salvar" action="#{categoriaBean.salvar()}" update="@form" />
+						<p:commandButton value="Salvar" action="#{categoriaBean.salvar()}"
+							update="@form" />
 					</f:facet>
 					<p:outputLabel value="Id" for="id" />
 					<p:inputText id="id" value="#{categoriaBean.categoria.id}"
-						placeholder="Digite o número do id"/>
+						placeholder="Digite o número do id" />
 					<p:outputLabel value="Nome" for="nome" />
 					<p:inputText id="nome" value="#{categoriaBean.categoria.nome}"
 						placeholder="Digite o nome da categoria" />

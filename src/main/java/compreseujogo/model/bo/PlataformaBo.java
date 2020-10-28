@@ -7,8 +7,6 @@ import compreseujogo.model.dao.PlataformaDao;
 import compreseujogo.model.entity.Plataforma;
 import compreseujogo.model.entity.Produto;
 
-
-
 public class PlataformaBo extends TipoBo<Plataforma> {
 
 	public List<Plataforma> listar(String parametro, Plataforma plataforma) throws Exception {
@@ -34,5 +32,9 @@ public class PlataformaBo extends TipoBo<Plataforma> {
 		} else {
 			return remove(plataforma);
 		}
+	}
+	public Plataforma encontrar(Plataforma plataforma) {
+		GenericDao<Plataforma> dao = new GenericDao<Plataforma>();
+		return dao.findById(Plataforma.class, plataforma.getId());
 	}
 }
