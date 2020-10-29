@@ -45,7 +45,7 @@ public class AdministradorController implements Serializable {
 	public String logout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		this.logado = false;
-		return "/home.xhtml?faces-redirect=true";
+		return "testeLogin.xhtml?faces-redirect=true";
 	}
 
 	public Administrador getAdministrador() {

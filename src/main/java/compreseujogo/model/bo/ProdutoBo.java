@@ -93,6 +93,24 @@ public class ProdutoBo {
 		}
 	}
 
+	public String salvar(Produto produto) throws Exception {
+		System.out.println(produto);
+		if (produto.getId() > 0) {
+			return atualizar(produto);
+		} else {
+			return novo(produto);
+		}
+	}
+
+	public String atualizar(Produto produto) throws Exception {
+		try {
+			return saveOrUpdate(produto);
+		} catch (Exception e) {
+			throw new Exception("Erro ao atualizar o produto");
+		}
+
+	}
+
 	private String gerarSku(Produto produto) throws Exception {
 		System.out.println("Vazio");
 		int i = list("Plataforma", produto).size();

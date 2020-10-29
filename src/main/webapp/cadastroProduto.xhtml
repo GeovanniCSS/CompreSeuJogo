@@ -6,13 +6,20 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="/WEB-INF/template/template.xhtml">
-	<ui:define name="tituloJanela">Cadastro produto</ui:define>
+	<ui:define name="tituloJanela">Dados do produto</ui:define>
 	<ui:define name="conteudo">
-
 		<h:form>
 			<p:growl id="messages" autoUpdate="true" life="3000" />
 			<p:panelGrid columns="2" layout="grid">
 				<f:facet name="header">Dados do Produto</f:facet>
+				<f:facet name="footer">
+					<p:panelGrid columns="2" layout="grid">
+						<p:commandButton value="Cancelar" id="btnCancelar"
+							immediate="true" action="listaProduto.xhtml?faces-redirect=true" />
+						<p:commandButton value="Salvar" id="btnSalvar"
+							action="#{produtoBean.salvar()}" update="@form" icon="pi pi-save" />
+					</p:panelGrid>
+				</f:facet>
 				<p:column>
 					<p:panelGrid columns="2" layout="grid">
 						<p:outputLabel for="nome" value="Nome" />
@@ -76,27 +83,21 @@
 					<p:panelGrid columns="2">
 						<p:outputLabel for="descricao" value="Descrição" />
 						<p:inputTextarea id="descricao"
-							value="#{produtoBean.produto.descricao}" rows="4" cols="50"
+							value="#{produtoBean.produto.descricao}" rows="4" cols="45"
 							required="true" />
 						<p:outputLabel value="Ativo" for="ativo" />
 						<p:selectBooleanCheckbox id="ativo"
 							value="#{produtoBean.produto.ativo}" />
-						<p:outputLabel value="Foto(s) advanced" />
-						<p:fileUpload fileUploadListener="#{produtoBean.upload()}"
-							mode="advanced" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-							sizeLimit="100000" multiple="true" dragDropSupport="true"
-							description="Selecione Imagens" update="imagem" />
-						<p:outputLabel value="" />
+						<p:outputLabel value="Capa do jogo" />
+						<p:fileUpload id="up" value="Imagem"
+							fileUploadListener="#{produtoBean.upload()}" mode="simple"
+							allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sizeLimit="100000"
+							skinSimple="true" description="Selecione Imagens" update="imagem" />
 						<h:outputLabel value="Imagem selecionada" />
 						<p:graphicImage value="#{produtoBean.produto.imagem}" id="imagem"
 							style="width:150px;height:150px" cache="false" />
 					</p:panelGrid>
 				</p:column>
-			</p:panelGrid>
-			<p:panelGrid columns="2" layout="grid">
-				<p:commandButton value="Cancelar" id="btnCancelar" icon="pi pi-save" />
-				<p:commandButton value="Salvar" id="btnSalvar"
-					action="#{produtoBean.salvar()}" update="@form" icon="pi pi-save" />
 			</p:panelGrid>
 		</h:form>
 	</ui:define>

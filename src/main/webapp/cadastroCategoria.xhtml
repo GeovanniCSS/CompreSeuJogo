@@ -9,6 +9,8 @@
 	<ui:define name="tituloJanela">Cadastro categoria</ui:define>
 	<ui:define name="conteudo">
 		<h:form>
+		<p:outputLabel value="#(#{categoriaBean.categoria})" />
+			<p:growl id="messages" autoUpdate="true" life="3000" />
 			<div id="main" align="center">
 				<p:panelGrid columns="2" layout="grid"
 					styleClass="showcase-text-align-center">
@@ -30,7 +32,6 @@
 						value="#{categoriaBean.categoria.ativo}" itemLabel="Ativo" />
 				</p:panelGrid>
 			</div>
-			<p:growl id="messages" autoUpdate="true" life="3000"/>
 		</h:form>
 	</ui:define>
 </ui:composition>

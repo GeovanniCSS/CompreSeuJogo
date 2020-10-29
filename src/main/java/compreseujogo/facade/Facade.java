@@ -135,7 +135,7 @@ public class Facade {
 	public String salvarProduto(Produto produto) throws Exception {
 		produto.setPlataforma(plataformaBo.encontrar(produto.getPlataforma()));
 		produto.setLoja((Loja) lojaBo.list("organizada", null, Loja.class).get(0));
-		return produtoBo.novo(produto);
+		return produtoBo.salvar(produto);
 	}
 
 	public String salvarMarca(Marca marca) throws Exception {
@@ -190,4 +190,7 @@ public class Facade {
 		return lista;
 	}
 
+	public List<Produto> listaProduto(String parameter, Produto produto) throws Exception {
+		return produtoBo.list(parameter, produto);
+	}
 }

@@ -8,18 +8,23 @@
 <h:head>
 </h:head>
 <ui:composition template="/WEB-INF/template/template.xhtml">
-	<ui:define name="tituloJanela">Todas Categorias</ui:define>
+	<ui:define name="tituloJanela">Categorias</ui:define>
 	<ui:define name="conteudo">
-		<p:dataTable var="c" value="#{categoriaBean.lista}"
-			frame="box" rules="all" cellpadding="3">
+		<p:dataTable id="table" var="c" value="#{categoriaBean.lista}"
+			widgetVar="table" filteredValue="#{categoriaBean.lista}" frame="box"
+			rules="all" cellpadding="3">
 			<f:facet name="header">
-				<p:commandButton value="Novo" action="cadastroCategoria.xhtml?faces-redirect=true" />
+				<h2>Categorias</h2>
+				<p:commandButton value="Nova"
+					action="cadastroCategoria.xhtml?faces-redirect=true" />
 			</f:facet>
-			<p:column headerText="Id">
+			<p:column filterBy="#{c.id}" filterMatchMode="contains"
+				headerText="Id">
 				<h:outputText value="#{c.id}" />
 			</p:column>
 
-			<p:column headerText="Nome">
+			<p:column filterBy="#{c.nome}" filterMatchMode="contains"
+				headerText="Nome">
 				<h:outputText value="#{c.nome}" />
 			</p:column>
 
@@ -28,7 +33,7 @@
 			</p:column>
 
 			<p:column headerText="Alterar">
-				<p:commandButton action="#{categoriaBean.alterar(c)}"
+				<p:commandLink action="#{categoriaBean.alterar(c)}"
 					value="Alterar" />
 			</p:column>
 			<p:column headerText="Excluir">

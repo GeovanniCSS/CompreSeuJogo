@@ -48,14 +48,31 @@ public class ProdutoController implements Serializable {
 		this.plataformas = new ArrayList<Plataforma>();
 	}
 
-	public void salvar() {
+	public String salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
+		System.out.println(produto);
 		try {
 			context.addMessage(null, new FacesMessage(facade.salvarProduto(produto), FacesMessage.FACES_MESSAGES));
+			return "listaProduto?faces-redirect=true";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
+		return null;
+	}
+
+	public String crud() {
+		return "listaProduto?faces-redirect=true";
+	}
+
+	public String alterar(Produto produto) {
+		System.out.println("Produto"+produto);
+		this.produto = produto;
+		return "cadastroProduto.xhtml";
+	}
+
+	public void excluir(Produto produto) {
+		this.produto = produto;
 	}
 
 	public void upload(FileUploadEvent event) {
@@ -74,6 +91,13 @@ public class ProdutoController implements Serializable {
 	}
 
 	public List<Produto> getLista() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			lista = facade.listaProduto("", produto);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
 		return lista;
 	}
 
