@@ -34,6 +34,7 @@ import compreseujogo.model.entity.Fornecedor;
 import compreseujogo.model.entity.ItemCarrinho;
 import compreseujogo.model.entity.Loja;
 import compreseujogo.model.entity.Marca;
+import compreseujogo.model.entity.Pessoa;
 import compreseujogo.model.entity.Plataforma;
 import compreseujogo.model.entity.Produto;
 import compreseujogo.model.entity.Tipo;
@@ -58,7 +59,6 @@ public class Facade {
 	private ListaDesejoBo listaDesejoBo;
 	private LojaBo lojaBo;
 	private MarcaBo marcaBo;
-	private PessoaBo pessoaBo;
 	private PlataformaBo plataformaBo;
 	private ProdutoBo produtoBo;
 	private TipoBo tipoBo;
@@ -82,7 +82,6 @@ public class Facade {
 		listaDesejoBo = new ListaDesejoBo();
 		lojaBo = new LojaBo();
 		marcaBo = new MarcaBo();
-		pessoaBo = new PessoaBo();
 		plataformaBo = new PlataformaBo();
 		produtoBo = new ProdutoBo();
 		tipoBo = new TipoBo();
@@ -161,6 +160,14 @@ public class Facade {
 		ArrayList<Marca> lista = new ArrayList<Marca>();
 		for (Tipo tipo : marcaBo.list("organizada", marca, Marca.class)) {
 			lista.add((Marca) tipo);
+		}
+		return lista;
+	}
+	
+	public List<Vendedor> listaVendedor(Vendedor vendedor) throws Exception {
+		ArrayList<Vendedor> lista = new ArrayList<Vendedor>();
+		for (Pessoa pessoa : vendedorBo.list("organizada", vendedor, Vendedor.class)) {
+			lista.add((Vendedor) pessoa);
 		}
 		return lista;
 	}

@@ -3,12 +3,10 @@ package compreseujogo.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-
 import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Estado;
 import compreseujogo.model.entity.Sexo;
@@ -23,6 +21,33 @@ public class VendedorController implements Serializable {
 
 	private Vendedor vendedor;
 	private List<Vendedor> lista;
+	
+	public Sexo[] getSexo() {
+		return Sexo.values();
+	}
+
+	public Estado[] getEstado() {
+		return Estado.values();
+	}
+
+	public Vendedor getVendedor() {
+		return vendedor;
+	}
+
+	public void setVendedor(Vendedor vendedor) {
+		this.vendedor = vendedor;
+	}
+
+	public List<Vendedor> getLista() throws Exception {
+		Facade facade = new Facade();
+		lista = facade.listaVendedor(vendedor);
+		
+		return lista;
+	}
+
+	public void setLista(List<Vendedor> lista) {
+		this.lista = lista;
+	}
 
 	public VendedorController() {
 		vendedor = new Vendedor();
@@ -40,6 +65,27 @@ public class VendedorController implements Serializable {
 		System.out.println(w.getCidade());
 	}
 
+	public List<Vendedor> carregarLista() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			return facade.listaVendedor(vendedor);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		System.out.println(lista);
+		return lista;
+	}
+	
+	public String alterar(Vendedor v) {
+		this.vendedor = v;
+		return "cadastroVendedor.xhtml";
+	}
+	
+	public void excluir(Vendedor vendedor) {
+		
+	}
+	
 	public void salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
@@ -52,28 +98,6 @@ public class VendedorController implements Serializable {
 		}
 	}
 
-	public Sexo[] getSexo() {
-		return Sexo.values();
-	}
-
-	public Estado[] getEstado() {
-		return Estado.values();
-	}
-
-	public Vendedor getVendedor() {
-		return vendedor;
-	}
-
-	public void setVendedor(Vendedor vendedor) {
-		this.vendedor = vendedor;
-	}
-
-	public List<Vendedor> getLista() {
-		return lista;
-	}
-
-	public void setLista(List<Vendedor> lista) {
-		this.lista = lista;
-	}
+	
 
 }
