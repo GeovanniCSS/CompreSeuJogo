@@ -27,6 +27,8 @@ public class PessoaDao <T extends Pessoa > {
 					+ "AND t.senha = :senha");
 			q.setParameter("email", pessoa.getEmail());
 			q.setParameter("senha", pessoa.getSenha());
+		} else if (parameter.equals("organizada")) {
+			q = em.createQuery("SELECT t FROM "+ classe.getSimpleName().toString()+" t ORDER BY t.id");
 		}
 		return q.getResultList();
 	}
