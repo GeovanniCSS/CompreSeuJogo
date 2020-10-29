@@ -25,13 +25,16 @@
 						<p:commandButton style="float:center" type="button"
 							value="Pesquisar" icon="pi pi-search" />
 					</f:facet>
+					<p:submenu icon="pi pi-star" label="#{administradorBean.administrador.nome}">
+						<p:menuitem value="Sair" icon="pi pi-sign-out" action="#{administradorBean.logout()}"/>
+					</p:submenu>
 				</p:menubar>
 				<p:menubar>
 					<p:submenu label="Perfil" icon="pi pi-pencil">
 						<p:menuitem value="Editar" url="#" />
 						<p:menuitem value="Redefinir senha" url="#" />
 					</p:submenu>
-					<p:submenu label="Gerência" icon="pi pi-file">
+					<p:submenu label="Gerência" icon="pi pi-cog">
 						<p:menuitem value="Categoria"
 							url="listaCategoria.xhtml?faces-redirect=true" />
 						<p:separator />
@@ -41,11 +44,10 @@
 						<p:menuitem value="Plataforma"
 							url="cadastroPlataforma.xhtml?faces-redirect=true" />
 						<p:separator />
-						<p:menuitem value="Produto"
-							url="cadastroProduto.xhtml?faces-redirect=true" />
+						<p:menuitem value="Produto" action="#{produtoBean.crud()}" />
 						<p:separator />
 					</p:submenu>
-					<p:submenu label="Administrar" icon="pi pi-user">
+					<p:submenu label="Administrar" icon="pi pi-users" >
 						<p:menuitem value="Administrador"
 							url="cadastroAdministrador.xhtml?faces-redirect=true" />
 						<p:separator />
