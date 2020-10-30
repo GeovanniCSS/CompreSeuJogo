@@ -171,6 +171,22 @@ public class Facade {
 		}
 		return lista;
 	}
+	
+	public List<Cliente> listaCliente(Cliente cliente) throws Exception {
+		ArrayList<Cliente> lista = new ArrayList<Cliente>();
+		for (Pessoa pessoa : clienteBo.list("organizada", cliente, Cliente.class)) {
+			lista.add((Cliente) pessoa);
+		}
+		return lista;
+	}
+	
+	public List<Transporte> listaTransporte(Transporte transporte) throws Exception {
+		ArrayList<Transporte> lista = new ArrayList<Transporte>();
+		for (Empresa empresa : transporteBo.list("organizada", transporte, Transporte.class)) {
+			lista.add((Transporte) empresa);
+		}
+		return lista;
+	}
 
 	public List<Plataforma> listaPlataforma(Plataforma plataforma) throws Exception {
 		ArrayList<Plataforma> lista = new ArrayList<Plataforma>();

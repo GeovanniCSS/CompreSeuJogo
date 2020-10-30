@@ -6,11 +6,8 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import compreseujogo.facade.Facade;
-import compreseujogo.model.bo.ClienteBo;
-import compreseujogo.model.bo.VendedorBo;
 import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.Estado;
 import compreseujogo.model.entity.Sexo;
@@ -39,12 +36,23 @@ public class ClienteController implements Serializable {
 		this.cliente = cliente;
 	}
 
-	public List<Cliente> getLista() {
-		return lista;
-	}
-
 	public void setLista(List<Cliente> lista) {
 		this.lista = lista;
+	}
+	
+	public Sexo[] getSexo() {
+		return Sexo.values();
+	}
+
+	public Estado[] getEstado() {
+		return Estado.values();
+	}
+	
+	public List<Cliente> getLista() throws Exception {
+		Facade facade = new Facade();
+		lista = facade.listaCliente(cliente);
+		
+		return lista;
 	}
 
 	public String salvar() {
@@ -62,11 +70,26 @@ public class ClienteController implements Serializable {
 		return "sucesso";
 	}
 	
-	public Sexo[] getSexo() {
-		return Sexo.values();
+	public List<Cliente> carregarLista() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			return facade.listaCliente(cliente);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		return lista;
 	}
-
-	public Estado[] getEstado() {
-		return Estado.values();
+	
+	public String alterar(Cliente c) {
+		this.cliente = c;
+		return "cadastroCliente.xhtml";
 	}
+	
+	public void excluir(Cliente cliente) {
+		
+	}
+	
+	
+	
 }

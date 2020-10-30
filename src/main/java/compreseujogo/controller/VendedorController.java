@@ -21,6 +21,7 @@ public class VendedorController implements Serializable {
 
 	private Vendedor vendedor;
 	private List<Vendedor> lista;
+	private List <Estado> estados;
 	
 	public Sexo[] getSexo() {
 		return Sexo.values();
@@ -36,6 +37,14 @@ public class VendedorController implements Serializable {
 
 	public void setVendedor(Vendedor vendedor) {
 		this.vendedor = vendedor;
+	}
+	
+	public List<Estado> getEstados() {
+		return estados;
+	}
+
+	public void setEstados(List<Estado> estados) {
+		this.estados = estados;
 	}
 
 	public List<Vendedor> getLista() throws Exception {
@@ -73,7 +82,6 @@ public class VendedorController implements Serializable {
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
-		System.out.println(lista);
 		return lista;
 	}
 	
@@ -84,6 +92,10 @@ public class VendedorController implements Serializable {
 	
 	public void excluir(Vendedor vendedor) {
 		
+	}
+	
+	public void limpar() {
+		vendedor = new Vendedor();
 	}
 	
 	public void salvar() {
