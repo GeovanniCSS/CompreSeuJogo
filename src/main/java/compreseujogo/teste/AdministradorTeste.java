@@ -13,7 +13,7 @@ public class AdministradorTeste {
 		Administrador administrador = new Administrador(0, "Geovanni ", " Souza", "geovannis@gmail.com.br", "1234",
 				Date.from(null), "Rua", "842", "852", "2112","hahaha", true, null, null, Sexo.Masculino, null);
 */
-		System.out.println("ahahha");
+		System.out.println("vai gigi");
 		try {
 			// administradorBo.list("email",
 			// administrador,Administrador.class).forEach(System.out::println);
