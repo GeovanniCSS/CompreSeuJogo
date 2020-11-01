@@ -10,6 +10,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.br.CNPJ;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -22,8 +24,10 @@ public abstract class Empresa implements EntityBase, Serializable {
 	@GenericGenerator(name = "inc", strategy = "increment")
 	private int id;
 	private String nome;
+	@CNPJ
 	@Column(name = "cnpj", length = 14, nullable = false, unique = true)
 	private String cnpj;
+	@Email(message = "Digite um e-mail válido")
 	private String email;
 	private String endereco;
 	private String cep;
