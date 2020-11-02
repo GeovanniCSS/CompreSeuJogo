@@ -145,9 +145,8 @@ public class Facade {
 		return fornecedorBo.novaEmpresa(fornecedor, Fornecedor.class);
 	}
 
-	public void salvarTransporte(Transporte transporte) throws Exception {
-		transporteBo = new TransporteBo();
-		transporteBo.saveOrUpdate(transporte);
+	public String salvarTransporte(Transporte transporte) throws Exception {
+		return transporteBo.novaEmpresa(transporte, Transporte.class);
 	}
 
 	public String adicionarItemCarrinho(ItemCarrinho item, Carrinho carrinho) throws Exception {

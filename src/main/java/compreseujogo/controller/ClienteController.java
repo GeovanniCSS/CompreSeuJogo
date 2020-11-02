@@ -11,6 +11,7 @@ import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.Estado;
 import compreseujogo.model.entity.Sexo;
+import compreseujogo.model.entity.Vendedor;
 
 
 @ManagedBean(name = "clienteBean")
@@ -55,19 +56,18 @@ public class ClienteController implements Serializable {
 		return lista;
 	}
 
-	public String salvar() {
+	public void salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
 		try {
-			Facade facade = new Facade();
-			facade.salvarCliente(this.cliente);
+			context.addMessage(null,
+					new FacesMessage(facade.salvarCliente(this.cliente), FacesMessage.FACES_MESSAGES));
+			cliente = new Cliente();
 		} catch (Exception e) {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-				e.getMessage(),""));
-			return "vendedor";
-		}	
-		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-			"Atendimento salvo com sucesso!", "SUCESSO"));		
-		return "sucesso";
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		
+		cliente = new Cliente();
 	}
 	
 	public List<Cliente> carregarLista() {

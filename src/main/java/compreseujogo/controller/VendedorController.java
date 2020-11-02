@@ -87,16 +87,9 @@ public class VendedorController implements Serializable {
 	
 	public String alterar(Vendedor v) {
 		this.vendedor = v;
-		return "cadastroVendedor.xhtml";
+		return "alterarVendedor.xhtml";
 	}
-	
-	public void excluir(Vendedor vendedor) {
 		
-	}
-	
-	public void limpar() {
-		vendedor = new Vendedor();
-	}
 	
 	public void salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -108,6 +101,8 @@ public class VendedorController implements Serializable {
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
+		
+		vendedor = new Vendedor();
 	}
 
 	

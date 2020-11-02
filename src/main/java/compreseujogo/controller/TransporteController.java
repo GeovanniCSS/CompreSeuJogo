@@ -13,6 +13,7 @@ import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.Estado;
 import compreseujogo.model.entity.Transporte;
+import compreseujogo.model.entity.Vendedor;
 
 
 
@@ -51,21 +52,16 @@ public class TransporteController implements Serializable {
 
 	public void salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
-		
+		Facade facade = new Facade();		
 		try {
-
-			Facade facade = new Facade();
-			facade.salvarTransporte(this.transporte);
-				
+			context.addMessage(null,
+					new FacesMessage(facade.salvarTransporte(this.transporte),FacesMessage.FACES_MESSAGES));
+			transporte = new Transporte();
 		} catch (Exception e) {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-				e.getMessage(),""));
-			//return "transporte";
-		}	
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}		
 		
-		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-			"Atendimento salvo com sucesso!", "SUCESSO"));		
-		//return "sucesso";
+		transporte = new Transporte();
 	}
 	
 	public Estado[] getEstado() {

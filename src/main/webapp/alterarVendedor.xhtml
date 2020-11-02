@@ -6,14 +6,14 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <ui:composition template="/WEB-INF/template/template.xhtml">
-	<ui:define name="tituloJanela">Cadastro vendedor</ui:define>
+	<ui:define name="tituloJanela">Alterar vendedor</ui:define>
 	<ui:define name="conteudo">
 		<p:panel header="CADASTRO DE VENDEDORES">
 			<h:form id="form1">
 				<p:growl id="msgs" autoUpdate="true" life="3000" />
 				<div align="center">
 					<p:panel header="Dados Pessoais">
-						<h2 align="center">Novo Vendedor</h2>
+						<h2 align="center">Alterar Vendedor</h2>
 						<h:panelGrid id = "teste" columns="4" cellpadding="8" style="margin:100px">
 
 							<p:outputLabel value="Nome" />
@@ -70,9 +70,6 @@
 							<p:inputText id="email" value="#{vendedorBean.vendedor.email}"
 								required="true" requiredMessage="O campo e-mail é obrigatório" />
 
-							<p:outputLabel for="senha" value="Senha" />
-							<p:password id="senha" value="#{vendedorBean.vendedor.senha}"
-								required="true" requiredMessage="O campo senha é obrigatório" />
 
 							<p:outputLabel value="Sexo" />
 							<p:selectOneMenu id="console"
@@ -94,11 +91,6 @@
 								action="#{vendedorBean.salvar}"
 								update="@form"/>
 
-							
-
-							<p:commandButton value="Limpar" ajax="true" immediate="true"
-								action="#{vendedorBean.limpar}"
-								type="reset" />
 						</h:panelGrid>
 					</p:panel>
 				</div>

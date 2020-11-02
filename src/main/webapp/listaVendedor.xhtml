@@ -15,6 +15,10 @@
 			<f:facet name="header">
 				<p:commandButton value="Novo" action="cadastroVendedor.xhtml?faces-redirect=true" />
 			</f:facet>
+			<p:column headerText="ID">
+				<h:outputText value="#{vendedor.id}" />
+			</p:column>
+			
 			<p:column headerText="CPF">
 				<h:outputText value="#{vendedor.cpf}" />
 			</p:column>
@@ -39,11 +43,7 @@
 				<p:commandButton action="#{vendedorBean.alterar(vendedor)}"
 					value="Alterar" />
 			</p:column>
-			<p:column headerText="Excluir">
-				<p:commandButton action="#{vendedorBean.excluir(vendedor)}"
-					onclick="if (!confirm('Confirma a exclusão do vendedor?')) return false"
-					value="Excluir" />
-			</p:column>
+			
 		</p:dataTable>
 	</ui:define>
 </ui:composition>
