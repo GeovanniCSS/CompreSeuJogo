@@ -7,6 +7,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import compreseujogo.facade.Facade;
@@ -18,7 +19,7 @@ import compreseujogo.model.entity.Vendedor;
 
 
 @ManagedBean(name="transporteBean")
-@RequestScoped
+@SessionScoped
 public class TransporteController implements Serializable {
 	
 	private Transporte transporte;
@@ -81,11 +82,23 @@ public class TransporteController implements Serializable {
 	
 	public String alterar(Transporte t) {
 		this.transporte = t;
-		return "cadastroTransporte.xhtml";
+		return "alterarTransportadora.xhtml";
 	}
 	
-	public void excluir(Transporte transporte) {
+	public void atualizarStatus() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			context.addMessage(null,
+					new FacesMessage(facade.atualizarTransporte(this.transporte), FacesMessage.FACES_MESSAGES));
+			transporte = new Transporte();
+			
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
 		
 	}
+
 
 }

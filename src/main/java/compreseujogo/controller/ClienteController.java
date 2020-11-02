@@ -6,6 +6,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Cliente;
@@ -15,7 +16,7 @@ import compreseujogo.model.entity.Vendedor;
 
 
 @ManagedBean(name = "clienteBean")
-@RequestScoped
+@SessionScoped
 public class ClienteController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -83,10 +84,21 @@ public class ClienteController implements Serializable {
 	
 	public String alterar(Cliente c) {
 		this.cliente = c;
-		return "cadastroCliente.xhtml";
+		return "alterarCliente.xhtml";
 	}
 	
-	public void excluir(Cliente cliente) {
+	public void atualizarStatus() {
+
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			context.addMessage(null,
+					new FacesMessage(facade.atualizarCliente(this.cliente), FacesMessage.FACES_MESSAGES));
+			cliente = new Cliente();
+			
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
 		
 	}
 	

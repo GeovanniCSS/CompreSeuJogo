@@ -51,14 +51,14 @@ public class PessoaBo<T extends Pessoa> {
 
 	public String desativarAtivar(EntityBase obj) throws Exception {
 		Pessoa pessoa = (Pessoa) obj;
-		if (pessoa.isAtivo()) {
-			pessoa.setAtivo(false);
+		if (pessoa.isAtivo() == true) {
+			//pessoa.setAtivo(true);
 			saveOrUpdate(pessoa);
-			return "Foi desativada a conta do e-mail" + pessoa.getEmail();
+			return "Cadastro ativado";
 		} else {
-			pessoa.setAtivo(true);
+			//pessoa.setAtivo(false);
 			saveOrUpdate(pessoa);
-			return "Foi ativada a conta do e-mail" + pessoa.getEmail();
+			return "Cadastro desativado";
 		}
 	}
 

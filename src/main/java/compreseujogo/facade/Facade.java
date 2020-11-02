@@ -117,6 +117,18 @@ public class Facade {
 		vendedorBo.novaPessoa(vendedor, Vendedor.class);
 		return vendedorBo.createDepency(vendedor);
 	}
+	
+	public String atualizarVendedor(Vendedor vendedor) throws Exception {
+		return vendedorBo.desativarAtivar(vendedor);
+	}
+	
+	public String atualizarCliente(Cliente cliente) throws Exception {
+		return clienteBo.desativarAtivar(cliente);
+	}
+	
+	public String atualizarTransporte(Transporte transporte) throws Exception {
+		return transporteBo.desativarAtivar(transporte);
+	}
 
 	public String salvarCliente(Cliente cliente) throws Exception {
 		clienteBo.novaPessoa(cliente, Cliente.class);
@@ -146,7 +158,8 @@ public class Facade {
 	}
 
 	public String salvarTransporte(Transporte transporte) throws Exception {
-		return transporteBo.novaEmpresa(transporte, Transporte.class);
+		  transporteBo.novaEmpresa(transporte, Transporte.class);
+		  return transporteBo.saveOrUpdate(transporte);
 	}
 
 	public String adicionarItemCarrinho(ItemCarrinho item, Carrinho carrinho) throws Exception {
