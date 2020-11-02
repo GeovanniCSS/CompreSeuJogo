@@ -87,7 +87,7 @@ public class ClienteController implements Serializable {
 		return "alterarCliente.xhtml";
 	}
 	
-	public void atualizarStatus() {
+	public String atualizarStatus() {
 
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
@@ -99,6 +99,8 @@ public class ClienteController implements Serializable {
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
+		
+		return "listaCliente.xhtml";
 		
 	}
 	

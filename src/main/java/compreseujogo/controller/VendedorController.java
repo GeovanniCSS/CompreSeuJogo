@@ -105,8 +105,8 @@ public class VendedorController implements Serializable {
 		vendedor = new Vendedor();
 	}
 	
-	public void atualizarStauts() {
-		System.out.println(vendedor);
+	public String atualizarStauts() {
+	
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		try {
@@ -116,6 +116,8 @@ public class VendedorController implements Serializable {
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
+		
+		return "listaVendedor.xhtml";
 		
 	}
 

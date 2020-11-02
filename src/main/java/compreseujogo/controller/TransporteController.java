@@ -85,7 +85,7 @@ public class TransporteController implements Serializable {
 		return "alterarTransportadora.xhtml";
 	}
 	
-	public void atualizarStatus() {
+	public String atualizarStatus() {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
@@ -98,6 +98,7 @@ public class TransporteController implements Serializable {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
 		
+		return "listaTransportadora.xhtml";
 	}
 
 
