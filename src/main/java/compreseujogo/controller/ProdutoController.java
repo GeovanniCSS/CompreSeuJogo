@@ -51,9 +51,9 @@ public class ProdutoController implements Serializable {
 	public String salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
-		System.out.println(produto);
+		System.out.println(this.produto);
 		try {
-			context.addMessage(null, new FacesMessage(facade.salvarProduto(produto), FacesMessage.FACES_MESSAGES));
+			context.addMessage(null, new FacesMessage(facade.salvarProduto(this.produto), FacesMessage.FACES_MESSAGES));
 			return "listaProduto?faces-redirect=true";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
@@ -68,6 +68,7 @@ public class ProdutoController implements Serializable {
 	public String alterar(Produto produto) {
 		System.out.println("Produto"+produto);
 		this.produto = produto;
+		System.out.println("Segundo" +this.produto);
 		return "cadastroProduto.xhtml";
 	}
 

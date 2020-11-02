@@ -94,7 +94,6 @@ public class ProdutoBo {
 	}
 
 	public String salvar(Produto produto) throws Exception {
-		System.out.println(produto);
 		if (produto.getId() > 0) {
 			return atualizar(produto);
 		} else {

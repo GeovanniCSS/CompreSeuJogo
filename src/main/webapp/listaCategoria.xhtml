@@ -10,38 +10,39 @@
 <ui:composition template="/WEB-INF/template/template.xhtml">
 	<ui:define name="tituloJanela">Categorias</ui:define>
 	<ui:define name="conteudo">
-		<p:dataTable id="table" var="c" value="#{categoriaBean.lista}"
-			widgetVar="table" filteredValue="#{categoriaBean.lista}" frame="box"
-			rules="all" cellpadding="3">
-			<f:facet name="header">
-				<h2>Categorias</h2>
-				<p:commandButton value="Nova"
-					action="cadastroCategoria.xhtml?faces-redirect=true" />
-			</f:facet>
-			<p:column filterBy="#{c.id}" filterMatchMode="contains"
-				headerText="Id">
-				<h:outputText value="#{c.id}" />
-			</p:column>
+		<h:form>
+			<p:dataTable id="table" var="c" value="#{categoriaBean.lista}"
+				widgetVar="table" filteredValue="#{categoriaBean.lista}" frame="box"
+				rules="all" cellpadding="3">
+				<f:facet name="header">
+					<h2>Categorias</h2>
+					<p:commandButton value="Nova"
+						action="cadastroCategoria.xhtml?faces-redirect=true" />
+				</f:facet>
+				<p:column filterBy="#{c.id}" filterMatchMode="contains"
+					headerText="Id">
+					<h:outputText value="#{c.id}" />
+				</p:column>
 
-			<p:column filterBy="#{c.nome}" filterMatchMode="contains"
-				headerText="Nome">
-				<h:outputText value="#{c.nome}" />
-			</p:column>
+				<p:column filterBy="#{c.nome}" filterMatchMode="contains"
+					headerText="Nome">
+					<h:outputText value="#{c.nome}" />
+				</p:column>
 
-			<p:column headerText="Ativo">
-				<h:outputText value="#{c.ativo == true ? 'Ativo' : 'Desativado'}" />
-			</p:column>
+				<p:column headerText="Ativo">
+					<h:outputText value="#{c.ativo == true ? 'Ativo' : 'Desativado'}" />
+				</p:column>
 
-			<p:column headerText="Alterar">
-				<p:commandLink action="#{categoriaBean.alterar(c)}"
-					value="Alterar" />
-			</p:column>
-			<p:column headerText="Excluir">
-				<p:commandButton action="#{categoriaBean.excluir(c)}"
-					onclick="if (!confirm('Confirma a exclusão da categoria?')) return false"
-					value="Excluir" />
-			</p:column>
-		</p:dataTable>
+				<p:column headerText="Alterar">
+					<p:commandLink action="#{categoriaBean.alterar(c)}" value="Alterar" />
+				</p:column>
+				<p:column headerText="Excluir">
+					<p:commandButton action="#{categoriaBean.excluir(c)}"
+						onclick="if (!confirm('Confirma a exclusão da categoria?')) return false"
+						value="Excluir" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>
