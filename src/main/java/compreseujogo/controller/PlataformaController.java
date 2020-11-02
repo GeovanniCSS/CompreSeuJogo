@@ -26,16 +26,14 @@ public class PlataformaController implements Serializable{
 		this.plataforma = new Plataforma();
 		this.lista = new ArrayList<Plataforma>();
 	}
-	
-	@PostConstruct
-	public void carregarLista() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		Facade facade = new Facade();
-		try {
-			lista = facade.listaPlataforma(plataforma);
-		} catch (Exception e) {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
-		}
+
+	public String novo() {
+		this.plataforma = new Plataforma();
+		return "cadastroPlataforma.xhtml";
+	}
+	public String atualizar(Plataforma plataforma) {
+		this.plataforma = plataforma;
+		return "cadastroPlataforma.xhtml";
 	}
 	
 	public String salvar() {
@@ -43,7 +41,7 @@ public class PlataformaController implements Serializable{
 		Facade facade = new Facade();
 		try {
 			context.addMessage(null, new FacesMessage(facade.salvarPlataforma(plataforma),FacesMessage.FACES_MESSAGES));
-			return "";
+			return "listaPlataforma.xhtml";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
@@ -59,6 +57,13 @@ public class PlataformaController implements Serializable{
 	}
 
 	public List<Plataforma> getLista() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			lista = facade.listaPlataforma(plataforma);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
 		return lista;
 	}
 

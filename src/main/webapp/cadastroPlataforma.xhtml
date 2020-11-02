@@ -8,11 +8,14 @@
 <ui:composition template="/WEB-INF/template/template.xhtml">
 	<ui:define name="tituloJanela">Cadastro Plataforma</ui:define>
 	<ui:define name="conteudo">
-		<h:form>
-			<p:growl autoUpdate="true" life="3000" />
+		<h:form id="form1">
+			<p:growl id="messages" idautoUpdate="true" life="3000" />
 			<div id="main" align="center">
 				<p:panelGrid columns="2" layout="grid"
 					styleClass="showcase-text-align-center">
+					<p:outputLabel value="Id" for="id" />
+					<p:inputText id="id" value="#{plataformaBean.plataforma.id}"
+						placeholder="Digite o id da plataforma" />
 					<p:outputLabel value="Nome" for="nome" />
 					<p:inputText id="nome" value="#{plataformaBean.plataforma.nome}"
 						placeholder="Digite o nome da plataforma" />
@@ -22,7 +25,7 @@
 						placeholder="Digite a sigla do sku" />
 				</p:panelGrid>
 				<p:commandButton value="Salvar" action="#{plataformaBean.salvar()}"
-					update="@form" />
+					update=":form1:messages, :form1"/>
 			</div>
 		</h:form>
 	</ui:define>
