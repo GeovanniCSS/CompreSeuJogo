@@ -66,7 +66,7 @@ public class TipoBo<T extends Tipo> {
 
 	public String nova(Tipo tipo, Class<T> classe) throws Exception {
 		if (list("novo", tipo, classe).size() >= 1) {
-			throw new Exception("J� est� cadastrado esse nome");
+			throw new Exception("Já está cadastrado esse nome");
 		} else {
 			tipo.setAtivo(true);
 			return saveOrUpdate(tipo);

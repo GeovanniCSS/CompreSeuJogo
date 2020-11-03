@@ -33,8 +33,17 @@ public class PlataformaBo extends TipoBo<Plataforma> {
 			return remove(plataforma);
 		}
 	}
+
 	public Plataforma encontrar(Plataforma plataforma) {
 		GenericDao<Plataforma> dao = new GenericDao<Plataforma>();
 		return dao.findById(Plataforma.class, plataforma.getId());
+	}
+
+	public String salvar(Plataforma plataforma) throws Exception {
+		if (plataforma.getId() > 0) {
+			return atualizar(plataforma, Plataforma.class);
+		} else {
+			return nova(plataforma, Plataforma.class);
+		}
 	}
 }

@@ -140,7 +140,7 @@ public class Facade {
 	}
 
 	public String salvarPlataforma(Plataforma plataforma) throws Exception {
-		return plataformaBo.nova(plataforma, Plataforma.class);
+		return plataformaBo.salvar(plataforma);
 	}
 
 	public String salvarProduto(Produto produto) throws Exception {
@@ -150,7 +150,7 @@ public class Facade {
 	}
 
 	public String salvarMarca(Marca marca) throws Exception {
-		return marcaBo.nova(marca, Marca.class);
+		return marcaBo.salvar(marca);
 	}
 
 	public String salvarFornecedor(Fornecedor fornecedor) throws Exception {

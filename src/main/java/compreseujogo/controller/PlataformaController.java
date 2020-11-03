@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -41,11 +40,12 @@ public class PlataformaController implements Serializable{
 		Facade facade = new Facade();
 		try {
 			context.addMessage(null, new FacesMessage(facade.salvarPlataforma(plataforma),FacesMessage.FACES_MESSAGES));
+			plataforma  = new Plataforma();
 			return "listaPlataforma.xhtml";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
-		return null;
+		return "cadastroPlataforma.xhtml";
 	}
 
 	public Plataforma getPlataforma() {

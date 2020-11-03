@@ -36,4 +36,11 @@ public class MarcaBo extends TipoBo<Marca> {
 		}
 	}
 
+	public String salvar(Marca marca) throws Exception {
+		if (marca.getId() > 0) {
+			return nova(marca, Marca.class);
+		} else {
+			return nova(marca, Marca.class);
+		}
+	}
 }
