@@ -1,13 +1,16 @@
 package compreseujogo.controller;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.Part;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
@@ -33,14 +36,10 @@ public class ProdutoController implements Serializable {
 	private List<Marca> marcas;
 	private List<Plataforma> plataformas;
 	private UploadedFile file;
+	private Part arquivo;
 
 	public ProdutoController() {
 		this.produto = new Produto();
-		this.produto.setCategoria(new Categoria());
-		this.produto.setFornecedor(new Fornecedor());
-		this.produto.setLoja(new Loja());
-		this.produto.setMarca(new Marca());
-		this.produto.setPlataforma(new Plataforma());
 		this.lista = new ArrayList<Produto>();
 		this.categorias = new ArrayList<Categoria>();
 		this.fornecedores = new ArrayList<Fornecedor>();
@@ -51,7 +50,6 @@ public class ProdutoController implements Serializable {
 	public String salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
-		System.out.println(this.produto);
 		try {
 			context.addMessage(null, new FacesMessage(facade.salvarProduto(this.produto), FacesMessage.FACES_MESSAGES));
 			return "listaProduto?faces-redirect=true";
@@ -61,14 +59,22 @@ public class ProdutoController implements Serializable {
 		return null;
 	}
 
+	public void importa() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		try {
+			String conteudo = new Scanner(arquivo.getInputStream()).useDelimiter("\\A").next();
+			context.addMessage(null, new FacesMessage("Salvou a imagem" +conteudo, FacesMessage.FACES_MESSAGES));
+		} catch (IOException e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+	}
+
 	public String crud() {
 		return "listaProduto?faces-redirect=true";
 	}
 
 	public String alterar(Produto produto) {
-		System.out.println("Produto"+produto);
 		this.produto = produto;
-		System.out.println("Segundo" +this.produto);
 		return "cadastroProduto.xhtml";
 	}
 
@@ -172,5 +178,13 @@ public class ProdutoController implements Serializable {
 
 	public void setFile(UploadedFile file) {
 		this.file = file;
+	}
+
+	public Part getArquivo() {
+		return arquivo;
+	}
+
+	public void setArquivo(Part arquivo) {
+		this.arquivo = arquivo;
 	}
 }
