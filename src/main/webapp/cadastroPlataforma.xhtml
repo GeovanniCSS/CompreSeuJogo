@@ -10,9 +10,10 @@
 	<ui:define name="conteudo">
 		<h:form id="form1">
 			<p:growl id="messages" idautoUpdate="true" life="3000" />
+			<h:inputHidden value="#{plataformaBean.plataforma.id}" />
 			<div id="main" align="center">
 				<p:panelGrid columns="2" layout="grid"
-					styleClass="showcase-text-align-center">		
+					styleClass="showcase-text-align-center">
 					<p:outputLabel value="Nome" for="nome" />
 					<p:inputText id="nome" value="#{plataformaBean.plataforma.nome}"
 						placeholder="Digite o nome da plataforma" />
@@ -22,7 +23,7 @@
 						placeholder="Digite a sigla do sku" />
 				</p:panelGrid>
 				<p:commandButton value="Salvar" action="#{plataformaBean.salvar()}"
-					update="@form"/>
+					update="@form" />
 			</div>
 		</h:form>
 	</ui:define>

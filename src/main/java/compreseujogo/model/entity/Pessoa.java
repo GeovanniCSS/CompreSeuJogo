@@ -16,6 +16,7 @@ import javax.persistence.InheritanceType;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
@@ -30,6 +31,7 @@ public abstract class Pessoa implements EntityBase, Serializable {
 	private int id;
 	private String nome;
 	private String sobrenome;
+	@NotBlank
 	@Email(message = "Digite um e-mail válido")
 	private String email;
 	private String senha;
