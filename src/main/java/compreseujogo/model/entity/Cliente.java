@@ -32,8 +32,8 @@ public class Cliente extends Pessoa {
 	public Cliente(int id, String nome, String sobrenome, String email, String senha, Date dataNascimento,
 			LocalDate dataCadastro, String endereco, String telefone, String cep, String cpf, boolean ativo,
 			String cidade, String bairro, Sexo sexo, Carrinho carrinho, ListaDesejos listaDesejos, Estado estado) {
-		super(id, nome, sobrenome, email, senha, dataNascimento, endereco, telefone, cep, cpf, ativo,
-				 cidade, bairro, sexo, estado);
+		super(id, nome, sobrenome, email, senha, dataNascimento, endereco, telefone, cep, cpf, ativo, cidade, bairro,
+				sexo, estado);
 		this.carrinho = carrinho;
 		this.listaDesejos = listaDesejos;
 		this.avaliacao = new ArrayList<Avaliacao>();
@@ -42,6 +42,10 @@ public class Cliente extends Pessoa {
 
 	public Cliente() {
 		super();
+		this.carrinho = new Carrinho();
+		this.listaDesejos = new ListaDesejos();
+		this.avaliacao = new ArrayList<Avaliacao>();
+		this.venda = new ArrayList<Venda>();
 	}
 
 	public List<Avaliacao> getAvaliacao() {
@@ -118,5 +122,5 @@ public class Cliente extends Pessoa {
 				+ ", getBairro()=" + getBairro() + ", getSexo()=" + getSexo() + ", getEstado()=" + getEstado()
 				+ ", toString()=" + super.toString() + ", getClass()=" + getClass() + "]";
 	}
-	
+
 }

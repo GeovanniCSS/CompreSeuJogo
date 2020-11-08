@@ -36,13 +36,14 @@ public class Avaliacao implements EntityBase, Serializable {
 		this.pontos = pontos;
 		this.titulo = titulo;
 		this.descricao = descricao;
-		this.data = LocalDate.now();
 		this.cliente = cliente;
 		this.produto = produto;
 	}
 
 	public Avaliacao() {
 		super();
+		this.cliente = new Cliente();
+		this.produto = new Produto();
 	}
 
 	public int getId() {

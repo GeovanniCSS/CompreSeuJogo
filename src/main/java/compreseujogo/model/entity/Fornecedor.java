@@ -25,6 +25,7 @@ public class Fornecedor extends Empresa {
 
 	public Fornecedor() {
 		super();
+		produto = new ArrayList<Produto>();
 	}
 
 	public List<Produto> getProduto() {

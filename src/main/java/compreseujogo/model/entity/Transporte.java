@@ -24,6 +24,7 @@ public class Transporte extends Empresa {
 
 	public Transporte() {
 		super();
+		venda = new ArrayList<Venda>();
 	}
 
 	public List<Venda> getVenda() {

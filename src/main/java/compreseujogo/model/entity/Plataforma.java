@@ -27,6 +27,7 @@ public class Plataforma extends Tipo {
 
 	public Plataforma() {
 		super();
+		produto = new ArrayList<Produto>();
 	}
 
 	public String getCodigoSku() {

@@ -22,6 +22,7 @@ public class ItemVenda extends Item {
 
 	public ItemVenda() {
 		super();
+		this.venda = new Venda();
 	}
 
 	public Venda getVenda() {

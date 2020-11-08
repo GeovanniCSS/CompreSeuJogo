@@ -38,6 +38,8 @@ public class ListaDesejos implements EntityBase, Serializable {
 
 	public ListaDesejos() {
 		super();
+		this.cliente =  new Cliente();
+		item = new ArrayList<ItemDesejo>();
 	}
 
 	public int getId() {

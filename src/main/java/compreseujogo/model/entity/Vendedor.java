@@ -39,6 +39,9 @@ public class Vendedor extends Pessoa {
 
 	public Vendedor() {
 		super();
+		this.comissao = new Comissao();
+		this.loja = new Loja();
+		this.venda = new ArrayList<Venda>();
 	}
 	public List<Venda> getVenda() {
 		return venda;

@@ -25,6 +25,8 @@ public class ItemCarrinho extends Item {
 
 	public ItemCarrinho() {
 		super();
+		this.carrinho = new Carrinho();
+		this.setValor(getProduto().getValor() * getQuantidade());
 	}
 
 	public Carrinho getCarrinho() {

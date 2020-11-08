@@ -24,6 +24,7 @@ public class ItemDesejo extends Item {
 
 	public ItemDesejo() {
 		super();
+		this.listaDesejos = new ListaDesejos(); 
 	}
 
 	public ListaDesejos getListaDesejos() {
