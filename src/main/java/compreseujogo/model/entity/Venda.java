@@ -55,6 +55,10 @@ public class Venda implements EntityBase, Serializable {
 
 	public Venda() {
 		super();
+		this.vendedor = new Vendedor();
+		this.cliente = new Cliente();
+		this.transporte = new Transporte();
+		item = new ArrayList<ItemVenda>();
 	}
 
 	public int getId() {

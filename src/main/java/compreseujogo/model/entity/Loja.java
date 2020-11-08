@@ -23,8 +23,8 @@ public class Loja extends Empresa {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "loja")
 	private List<Produto> produto;
 
-	public Loja(int id, String nome, String cnpj, String email, String bairro, String cidade,String endereco, String cep, String estado,
-			String telefone, String url, Boolean ativo) {
+	public Loja(int id, String nome, String cnpj, String email, String bairro, String cidade, String endereco,
+			String cep, String estado, String telefone, String url, Boolean ativo) {
 		super(id, nome, cnpj, email, bairro, cidade, endereco, cep, estado, telefone, url, ativo);
 		administrador = new ArrayList<Administrador>();
 		vendedor = new ArrayList<Vendedor>();
@@ -32,7 +32,10 @@ public class Loja extends Empresa {
 	}
 
 	public Loja() {
-
+		super();
+		administrador = new ArrayList<Administrador>();
+		vendedor = new ArrayList<Vendedor>();
+		produto = new ArrayList<Produto>();
 	}
 
 	public List<Administrador> getAdministrador() {

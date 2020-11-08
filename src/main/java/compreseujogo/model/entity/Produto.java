@@ -87,6 +87,13 @@ public class Produto implements EntityBase, Serializable {
 
 	public Produto() {
 		super();
+		this.categoria = new Categoria();
+		this.plataforma = new Plataforma();
+		this.marca = new Marca();
+		this.fornecedor = new Fornecedor();
+		this.loja = new Loja();
+		avaliacao = new ArrayList<Avaliacao>();
+		item = new ArrayList<Item>();
 	}
 
 	public int getId() {

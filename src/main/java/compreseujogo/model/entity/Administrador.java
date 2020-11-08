@@ -24,6 +24,7 @@ public class Administrador extends Pessoa {
 
 	public Administrador() {
 		super();
+		this.loja = new Loja();
 	}
 
 	public Loja getLoja() {

@@ -24,6 +24,7 @@ public class Categoria extends Tipo {
 
 	public Categoria() {
 		super();
+		produto = new ArrayList<Produto>();
 	}
 
 	public List<Produto> getProduto() {

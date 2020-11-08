@@ -24,6 +24,7 @@ public class Marca extends Tipo {
 
 	public Marca() {
 		super();
+		produto = new ArrayList<Produto>();
 	}
 
 	public List<Produto> getProduto() {

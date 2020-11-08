@@ -40,6 +40,7 @@ public class Carrinho implements EntityBase, Serializable {
 
 	public Carrinho() {
 		super();
+		item = new ArrayList<ItemCarrinho>();
 	}
 
 	public int getId() {

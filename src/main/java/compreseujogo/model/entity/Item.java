@@ -41,6 +41,7 @@ public abstract class Item implements EntityBase, Serializable {
 
 	public Item() {
 		super();
+		this.produto = new Produto();
 	}
 
 	public int getId() {
