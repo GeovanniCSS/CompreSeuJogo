@@ -26,7 +26,7 @@ public class AdministradorBo extends PessoaBo<Administrador> {
 
 	public String salvar(Administrador administrador, Loja loja) throws Exception {
 		if (administrador.getId() > 0) {
-			return atualizar(administrador, Administrador.class);
+			return atualizar(administrador, Administrador.class);			
 		} else {
 			administrador.setLoja(loja);
 			return novaPessoa(administrador, Administrador.class);

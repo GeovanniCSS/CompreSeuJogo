@@ -2,20 +2,18 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-</h:head>
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <ui:composition template="/WEB-INF/template/template.xhtml">
-	<ui:define name="tituloJanela">Cadastro administrador</ui:define>
+	<ui:define name="tituloJanela">Alterar administrador</ui:define>
 	<ui:define name="conteudo">
-		<p:panel header="CADASTRO DE ADMINISTRADORES">
+		<p:panel header="ALTERAR ADMINISTRADORES">
 			<h:form id="form1">
 				<p:growl id="msgs" autoUpdate="true" life="3000" />
 				<div align="center">
 					<p:panel header="Dados Pessoais">
-						<h2 align="center">Novo Administrador</h2>
+						<h2 align="center">Alterar Administrador</h2>
 						<h:panelGrid id = "teste" columns="4" cellpadding="8" style="margin:100px">
 
 							<p:outputLabel value="Nome" />
@@ -72,9 +70,6 @@
 							<p:inputText id="email" value="#{administradorBean.administrador.email}"
 								required="true" requiredMessage="O campo e-mail é obrigatório" />
 
-							<p:outputLabel for="senha" value="Senha" />
-							<p:password id="senha" value="#{administradorBean.administrador.senha}"
-								required="true" requiredMessage="O campo senha é obrigatório" />
 
 							<p:outputLabel value="Sexo" />
 							<p:selectOneMenu id="console"
@@ -93,12 +88,9 @@
 
 
 							<p:commandButton value="Salvar" id="salvar"
-								action="#{administradorBean.salvar}"
+								action="#{administradorBean.atualizarStauts}"	
 								update="@form"/>
 
-
-							<p:commandButton value="Limpar" ajax="true" immediate="true"
-								type="reset" />	
 						</h:panelGrid>
 					</p:panel>
 				</div>

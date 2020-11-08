@@ -110,7 +110,7 @@ public class Facade {
 	}
 
 	public String salvarAdministrador(Administrador administrador) throws Exception {
-		return administradorBo.salvar(administrador, (Loja) lojaBo.list("", null, Loja.class).get(0));
+		return administradorBo.salvar(administrador, (Loja) lojaBo.list("organizada", null, Loja.class).get(0));
 	}
 
 	public String salvarVendedor(Vendedor vendedor) throws Exception {
@@ -128,6 +128,10 @@ public class Facade {
 	
 	public String atualizarTransporte(Transporte transporte) throws Exception {
 		return transporteBo.desativarAtivar(transporte);
+	}
+	
+	public String atualizarAdministrador(Administrador administrador) throws Exception {
+		return administradorBo.desativarAtivar(administrador);
 	}
 
 	public String salvarCliente(Cliente cliente) throws Exception {
@@ -180,6 +184,14 @@ public class Facade {
 		ArrayList<Vendedor> lista = new ArrayList<Vendedor>();
 		for (Pessoa pessoa : vendedorBo.list("organizada", vendedor, Vendedor.class)) {
 			lista.add((Vendedor) pessoa);
+		}
+		return lista;
+	}
+	
+	public List<Administrador> listaAdministrador(Administrador administrador) throws Exception {
+		ArrayList<Administrador> lista = new ArrayList<Administrador>();
+		for (Pessoa pessoa : administradorBo.list("organizada", administrador, Administrador.class)) {
+			lista.add((Administrador) pessoa);
 		}
 		return lista;
 	}

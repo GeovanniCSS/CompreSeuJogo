@@ -19,7 +19,7 @@ public class AdministradorTest {
 	public void login() throws Exception {
 		Facade facade = new Facade();
 		Administrador administrador = new Administrador();
-		administrador.setEmail("jjenniferlucianaisabeladuarte@vnews.com.br");
+		administrador.setEmail("teste@gmail.com");
 		administrador.setSenha("1234");
 		System.out.println(facade.loginAdminstrador(administrador));
 		System.out.println(administrador);
