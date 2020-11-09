@@ -9,7 +9,7 @@
 	<ui:define name="tituloJanela">Cadastro categoria</ui:define>
 	<ui:define name="conteudo">
 		<h:form>
-		<p:outputLabel value="#(#{categoriaBean.categoria})" />
+			<h:inputHidden value="#{categoriaBean.categoria.id}" />
 			<p:growl id="messages" autoUpdate="true" life="3000" />
 			<div id="main" align="center">
 				<p:panelGrid columns="2" layout="grid"

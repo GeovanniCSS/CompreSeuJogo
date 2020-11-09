@@ -5,15 +5,12 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-</h:head>
 <ui:composition template="/WEB-INF/template/template.xhtml">
 	<ui:define name="tituloJanela">Categorias</ui:define>
 	<ui:define name="conteudo">
 		<h:form>
 			<p:dataTable id="table" var="c" value="#{categoriaBean.lista}"
-				widgetVar="table" filteredValue="#{categoriaBean.lista}" frame="box"
-				rules="all" cellpadding="3">
+				frame="box" rules="all" widgetVar="categorias" cellpadding="3">
 				<f:facet name="header">
 					<h2>Categorias</h2>
 					<p:commandButton value="Nova"
@@ -29,12 +26,23 @@
 					<h:outputText value="#{c.nome}" />
 				</p:column>
 
-				<p:column headerText="Ativo">
+				<p:column headerText="Ativo" filterBy="#{c.ativo}"
+					filterMatchMode="equals">
+					<f:facet name="filter">
+						<p:selectOneButton onchange="PF('categorias').filter()"
+							styleClass="custom-filter">
+							<f:converter converterId="javax.faces.Boolean" />
+							<f:selectItem itemLabel="Todos" itemValue="" />
+							<f:selectItem itemLabel="Ativo" itemValue="true" />
+							<f:selectItem itemLabel="Desativado" itemValue="false" />
+						</p:selectOneButton>
+					</f:facet>
 					<h:outputText value="#{c.ativo == true ? 'Ativo' : 'Desativado'}" />
 				</p:column>
 
 				<p:column headerText="Alterar">
-					<p:commandLink action="#{categoriaBean.alterar(c)}" value="Alterar" />
+					<p:commandButton action="#{categoriaBean.alterar(c)}"
+						value="Alterar" />
 				</p:column>
 				<p:column headerText="Excluir">
 					<p:commandButton action="#{categoriaBean.excluir(c)}"

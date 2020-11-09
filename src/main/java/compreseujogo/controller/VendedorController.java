@@ -22,6 +22,7 @@ public class VendedorController implements Serializable {
 	private Vendedor vendedor;
 	private List<Vendedor> lista;
 	private List <Estado> estados;
+	private boolean logado;
 	
 	public Sexo[] getSexo() {
 		return Sexo.values();
@@ -119,6 +120,14 @@ public class VendedorController implements Serializable {
 		
 		return "listaVendedor.xhtml";
 		
+	}
+
+	public boolean isLogado() {
+		return logado;
+	}
+
+	public void setLogado(boolean logado) {
+		this.logado = logado;
 	}
 
 	

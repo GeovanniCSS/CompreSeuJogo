@@ -18,7 +18,6 @@ import org.primefaces.model.file.UploadedFile;
 import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Categoria;
 import compreseujogo.model.entity.Fornecedor;
-import compreseujogo.model.entity.Loja;
 import compreseujogo.model.entity.Marca;
 import compreseujogo.model.entity.Plataforma;
 import compreseujogo.model.entity.Produto;
