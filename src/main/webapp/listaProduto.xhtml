@@ -16,7 +16,7 @@
 				<p:outputLabel value="Produtos" />
 				<p:commandButton value="Novo" action="cadastroProduto.xhtml" />
 			</f:facet>
-			<p:column headerText="Nome">
+			<p:column headerText="Nome" filterBy="#{produto.nome}" filterMatchMode="contains">
 				<h:outputText value="#{produto.nome}" />
 			</p:column>
 			<p:column headerText="SKU">
