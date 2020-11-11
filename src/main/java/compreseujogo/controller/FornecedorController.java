@@ -8,10 +8,13 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import compreseujogo.facade.Facade;
+import compreseujogo.model.entity.Estado;
 import compreseujogo.model.entity.Fornecedor;
+import compreseujogo.model.entity.Transporte;
 
 @RequestScoped
 @ManagedBean(name = "fornecedorBean")
@@ -37,6 +40,22 @@ public class FornecedorController implements Serializable {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
 	}
+	
+	public Estado[] getEstado() {
+		return Estado.values();
+	}
+	
+	/*@PostConstruct
+	public List<Fornecedor> carregarLista() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			return facade.listarFornecedorNome(fornecedor);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		return lista;
+	}*/
 
 	public String salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -58,7 +77,9 @@ public class FornecedorController implements Serializable {
 		this.fornecedor = fornecedor;
 	}
 
-	public List<Fornecedor> getLista() {
+	public List<Fornecedor> getLista() throws Exception {
+		Facade facade = new Facade();
+		lista = facade.listarFornecedorNome(fornecedor);
 		return lista;
 	}
 
