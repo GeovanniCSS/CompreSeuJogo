@@ -15,20 +15,27 @@
 
 <body>
 	<ui:composition>
-		<div id="header" style="padding: 200px, 10px">
-			<h:form enctype="multipart/form-data">
+		<div id="hea	der" style="padding: 200px, 10px">
+			<h:form>
 				<p:growl id="messages" />
-				<p:menubar>
-					<f:facet name="options">
+				<p:panelGrid columns="3" layout="grid" styleClass="showcase-text-align-center">
+					<p:column>
+						<p:graphicImage style="width: 50px;height:50px;" library="imagem"
+							name="logoN.png" />
+					</p:column>
+					<p:column>
 						<p:inputText style="margin:1px 10px 1px 1px;"
 							placeholder="digite o nome do produto" />
 						<p:commandButton style="float:center" type="button"
 							value="Pesquisar" icon="pi pi-search" />
-					</f:facet>
-					<p:submenu icon="pi pi-star" label="#{administradorBean.administrador.nome}">
-						<p:menuitem value="Sair" icon="pi pi-sign-out" action="#{administradorBean.logout()}"/>
-					</p:submenu>
-				</p:menubar>
+					</p:column>
+					<p:column style="float:right;">
+						<p:menuButton value="#{administradorBean.administrador.nome}">
+							<p:menuitem value="Sair" icon="pi pi-sign-out"
+								action="#{administradorBean.logout()}" />
+						</p:menuButton>
+					</p:column>
+				</p:panelGrid>
 				<p:menubar>
 					<p:submenu label="Perfil" icon="pi pi-pencil">
 						<p:menuitem value="Editar" url="#" />
@@ -47,7 +54,7 @@
 						<p:menuitem value="Produto" action="#{produtoBean.crud()}" />
 						<p:separator />
 					</p:submenu>
-					<p:submenu label="Administrar" icon="pi pi-users" >
+					<p:submenu label="Administrar" icon="pi pi-users">
 						<p:menuitem value="Administrador"
 							url="listaAdministrador.xhtml?faces-redirect=true" />
 						<p:separator />

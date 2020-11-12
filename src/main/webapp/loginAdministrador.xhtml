@@ -6,33 +6,34 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Login administrador</title>
 </h:head>
-<h:body>
-	<h3 align="center">Fazer login</h3>
-	<h:form>
-		<p:growl autoUpdate="true" life="3000" />
-		<div id="main" align="center">
-			<p:panelGrid columns="2" layout="grid"
-				styleClass="showcase-text-align-center">
-				<p:outputLabel value="E-mail" for="email" />
-				<p:inputText id="email"
-					value="#{administradorBean.administrador.email}"
-					placeholder="Digite seu e-mail" required="true" />
-				<p:outputLabel value="Senha" for="senha" />
-				<p:password id="senha"
-					value="#{administradorBean.administrador.senha}"
-					placeholder="Digite sua senha" required="true" />
-			</p:panelGrid>
-			<p:commandButton value="Entrar" action="#{administradorBean.login()}"
-				update="@form" />
-		</div>
-	</h:form>
-	<div id="footer">
-		<ui:insert name="footer">
-			<ui:include src="/WEB-INF/template/footerPagina.xhtml" />
-		</ui:insert>
-	</div>
-</h:body>
+<ui:composition template="/WEB-INF/template/template.xhtml">
+	<ui:define name="tituloJanela">Compre seu jogo | Login</ui:define>
+	<ui:define name="conteudo">
+		<h:form>
+			<p:growl autoUpdate="true" life="3000" />
+			<div id="main" align="center">
+				<p:panelGrid columns="1" layout="grid" styleClass="loginCorpo">
+					<p:graphicImage style="width: 75px;height:75px;"
+						library="imagem" name="logoN.png" />
+					<h3 align="center">Login</h3>
+					<p:panelGrid columns="2" layout="grid" styleClass="login">
+						<p:outputLabel value="E-mail" for="email" />
+						<p:inputText id="email"
+							value="#{administradorBean.administrador.email}"
+							placeholder="Digite seu e-mail" required="true" />
+						<p:outputLabel value="Senha" for="senha" />
+						<p:password id="senha"
+							value="#{administradorBean.administrador.senha}"
+							placeholder="Digite sua senha" required="true" />
+						<p:commandButton value="Cadastro"
+							action="#{administradorBean.login()}" update="@form" />
+						<p:commandButton value="Entrar"
+							action="#{administradorBean.login()}" update="@form" />
+					</p:panelGrid>
+				</p:panelGrid>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
 </html>

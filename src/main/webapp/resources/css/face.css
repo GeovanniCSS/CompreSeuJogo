@@ -1,21 +1,50 @@
 @charset "UTF-8";
 
-#header{
+#header {
 	padding: 200px, 10px !important
 }
 
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background: white;
+}
+.fonteLogin{
+	text-align: center;
+	color: black
+}
+
+.loginCorpo{
+	width: 625px;
+	height: 400px;
+	text-align: center;
+}
+
+.menu{
+	position: fixed;
+	
+}
+
+
+.login {
+	width: 600px;
+	height: 100px;
+	text-align: center;
+}
 
 h2 {
 	align: center !important;
 	color: black;
 }
-.centro{
+
+.centro {
 	align: center;
+	background: black;
 }
 
 .displayed {
-    display: block;
-    margin-left: auto;
-    margin-right: auto 
+	display: block;
+	margin-left: auto;
+	margin-right: auto
 }
-

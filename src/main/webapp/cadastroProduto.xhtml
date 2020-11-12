@@ -19,7 +19,7 @@
 						<p:commandButton value="Cancelar" id="btnCancelar"
 							immediate="true" action="listaProduto.xhtml?faces-redirect=true" />
 						<p:commandButton value="Salvar" id="btnSalvar"
-							action="#{produtoBean.salvar()}" update="@form" icon="pi pi-save" />
+							action="#{produtoBean.salvar()}" ajax="false" update="@form" icon="pi pi-save" />
 					</p:panelGrid>
 				</f:facet>
 				<p:column>
@@ -92,12 +92,10 @@
 							value="#{produtoBean.produto.ativo}" />
 						<h:outputLabel value="Arquivo" for="arquivo" />
 						<h:inputFile id="arquivo" value="#{produtoBean.arquivo}"
-							required="true" label="Arquivo" />
+							 label="Arquivo" />
 						<p:commandButton value="Importar"
-							update="msg" action="#{produtoBean.importa()}" />
-						<h:outputLabel value="Imagem selecionada" />
-						<p:graphicImage value="#{produtoBean.produto.imagem}" id="imagem"
-							style="width:150px;height:150px" cache="false" />
+							update="msg" ajax="false" action="#{produtoBean.importa()}" />
+						
 					</p:panelGrid>
 				</p:column>
 			</p:panelGrid>
