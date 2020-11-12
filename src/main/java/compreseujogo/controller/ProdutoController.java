@@ -52,6 +52,7 @@ public class ProdutoController implements Serializable {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		try {
+			
 			importa();
 			context.addMessage(null, new FacesMessage(facade.salvarProduto(this.produto), FacesMessage.FACES_MESSAGES));
 			return "listaProduto?faces-redirect=true";
