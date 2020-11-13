@@ -3,16 +3,16 @@ package compreseujogo.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+
 import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.Estado;
 import compreseujogo.model.entity.Sexo;
-import compreseujogo.model.entity.Vendedor;
 
 
 @ManagedBean(name = "clienteBean")
@@ -23,11 +23,13 @@ public class ClienteController implements Serializable {
 	
 	private Cliente cliente;
 	private List<Cliente> lista;
+	private boolean logado;
 
 	public ClienteController() {
 		super();
 		this.cliente = new Cliente();
 		this.lista = new ArrayList<Cliente>();
+		this.logado = false;
 	}
 
 	public Cliente getCliente() {
@@ -102,6 +104,14 @@ public class ClienteController implements Serializable {
 		
 		return "listaCliente.xhtml";
 		
+	}
+
+	public boolean isLogado() {
+		return logado;
+	}
+
+	public void setLogado(boolean logado) {
+		this.logado = logado;
 	}
 	
 	

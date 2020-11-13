@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
@@ -15,7 +16,7 @@ import compreseujogo.model.entity.Estado;
 import compreseujogo.model.entity.Sexo;
 import compreseujogo.model.entity.Vendedor;
 
-@SessionScoped
+@RequestScoped
 @ManagedBean(name = "administradorBean")
 public class AdministradorController implements Serializable {
 
@@ -24,7 +25,6 @@ public class AdministradorController implements Serializable {
 	private Administrador administrador;
 	private List<Administrador> lista;
 	private List <Estado> estados;
-	private Boolean logado;
 
 	public Administrador getAdministrador() {
 		return administrador;
@@ -45,14 +45,6 @@ public class AdministradorController implements Serializable {
 		this.lista = lista;
 	}
 
-	public Boolean getLogado() {
-		return logado;
-	}
-
-	public void setLogado(Boolean logado) {
-		this.logado = logado;
-	}
-	
 	public Estado[] getEstado() {
 		return Estado.values();
 	}
@@ -72,21 +64,6 @@ public class AdministradorController implements Serializable {
 	public AdministradorController() {
 		this.administrador = new Administrador();
 		lista = new ArrayList<Administrador>();
-		this.logado = false;
-	}
-
-	public String login() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		Facade facade = new Facade();
-		try {
-			administrador = facade.loginAdminstrador(administrador);
-			context.addMessage(null, new FacesMessage("Olá " + administrador, FacesMessage.FACES_MESSAGES));
-			this.logado = true;
-			return "testeLogin.xhtml?faces-redirect=true";
-		} catch (Exception e) {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null));
-		}
-		return null;
 	}
 	
 	public String alterar(Administrador a) {
@@ -103,11 +80,6 @@ public class AdministradorController implements Serializable {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
 		return lista;
-	}
-	public String logout() {
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		this.logado = false;
-		return "testeLogin.xhtml?faces-redirect=true";
 	}
 	
 	public void salvar() {
