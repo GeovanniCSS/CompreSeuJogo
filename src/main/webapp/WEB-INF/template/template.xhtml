@@ -11,15 +11,15 @@
 		library="primefaces" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="shortcut icon" type="image/x-icon"
-		href="#{resource['imagem/cogu.png']}" />
+		href="#{resource['imagem/logoN.png']}" />
 </h:head>
 <h:body>
 	<div id="cabecalho">
-		<h:panelGroup rendered="#{administradorBean.logado == true}">
+		<h:panelGroup rendered="#{UseAdmBean.logado == true}">
 			<ui:include src="/WEB-INF/template/MenuAdministrador.xhtml" />
 		</h:panelGroup>
-		<h:panelGroup rendered="#{administradorBean.logado == false}">
-			<ui:include src="/WEB-INF/template/menuVendedor.xhtml" />
+		<h:panelGroup rendered="#{UseAdmBean.logado == false}">
+			<ui:include src="/WEB-INF/template/MenuSite.xhtml" />
 		</h:panelGroup>
 	</div>
 	<div id="conteudo">

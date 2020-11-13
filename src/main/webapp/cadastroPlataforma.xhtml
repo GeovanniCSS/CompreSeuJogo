@@ -6,7 +6,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="/WEB-INF/template/template.xhtml">
-	<ui:define name="tituloJanela">Cadastro Plataforma</ui:define>
+	<ui:define name="tituloJanela">Dados Plataforma</ui:define>
 	<ui:define name="conteudo">
 		<h:form id="form1">
 			<p:growl id="messages" idautoUpdate="true" life="3000" />
@@ -21,6 +21,8 @@
 					<p:inputText id="sku"
 						value="#{plataformaBean.plataforma.codigoSku}"
 						placeholder="Digite a sigla do sku" />
+					<p:outputLabel value="Ativo" for="ativo"/>
+					<p:selectBooleanCheckbox id="ativo" value="#{plataformaBean.plataforma.ativo}" />	
 				</p:panelGrid>
 				<p:commandButton value="Salvar" action="#{plataformaBean.salvar()}"
 					update="@form" />

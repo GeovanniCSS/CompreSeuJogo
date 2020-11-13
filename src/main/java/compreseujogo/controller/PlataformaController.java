@@ -43,10 +43,13 @@ public class PlataformaController implements Serializable {
 		return "cadastroPlataforma.xhtml";
 	}
 
-	public String atualizar(Plataforma plataforma) {
+	public String alterar(Plataforma plataforma) {
 		this.plataforma = plataforma;
 		this.lista = new ArrayList<Plataforma>();
 		return "cadastroPlataforma.xhtml";
+	}
+	public void excluir(Plataforma plataforma) {
+		
 	}
 
 	public String salvar() {

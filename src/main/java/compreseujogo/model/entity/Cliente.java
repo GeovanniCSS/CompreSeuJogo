@@ -30,8 +30,8 @@ public class Cliente extends Pessoa {
 	private List<Venda> venda;
 
 	public Cliente(int id, String nome, String sobrenome, String email, String senha, Date dataNascimento,
-			LocalDate dataCadastro, String endereco, String telefone, String cep, String cpf, boolean ativo,
-			String cidade, String bairro, Sexo sexo, Carrinho carrinho, ListaDesejos listaDesejos, Estado estado) {
+			String endereco, String telefone, String cep, String cpf, boolean ativo, String cidade, String bairro,
+			Sexo sexo, Carrinho carrinho, ListaDesejos listaDesejos, Estado estado) {
 		super(id, nome, sobrenome, email, senha, dataNascimento, endereco, telefone, cep, cpf, ativo, cidade, bairro,
 				sexo, estado);
 		this.carrinho = carrinho;

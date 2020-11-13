@@ -30,9 +30,9 @@
 							value="Pesquisar" icon="pi pi-search" />
 					</p:column>
 					<p:column style="float:right;">
-						<p:menuButton value="#{administradorBean.administrador.nome}">
+						<p:menuButton value="#{UseAdmBean.administrador.nome}">
 							<p:menuitem value="Sair" icon="pi pi-sign-out"
-								action="#{administradorBean.logout()}" />
+								action="#{UseAdmBean.logout()}" />
 						</p:menuButton>
 					</p:column>
 				</p:panelGrid>
@@ -46,7 +46,7 @@
 							url="listaCategoria.xhtml?faces-redirect=true" />
 						<p:separator />
 						<p:menuitem value="Marca"
-							url="cadastroMarca.xhtml?faces-redirect=true" />
+							url="listaMarca.xhtml?faces-redirect=true" />
 						<p:separator />
 						<p:menuitem value="Plataforma"
 							url="listaPlataforma.xhtml?faces-redirect=true" />
@@ -54,7 +54,7 @@
 						<p:menuitem value="Produto" action="#{produtoBean.crud()}" />
 						<p:separator />
 					</p:submenu>
-					<p:submenu label="Administrar" icon="pi pi-users">
+					<p:submenu label="Administração" icon="pi pi-users">
 						<p:menuitem value="Administrador"
 							url="listaAdministrador.xhtml?faces-redirect=true" />
 						<p:separator />
