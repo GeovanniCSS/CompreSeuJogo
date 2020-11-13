@@ -121,7 +121,7 @@ public class ProdutoController implements Serializable {
 
 	public String alterar(Produto produto) {
 		this.produto = produto;
-		return "cadastroProduto.xhtml";
+		return "atualizarProduto.xhtml";
 	}
 
 	public void excluir(Produto produto) {

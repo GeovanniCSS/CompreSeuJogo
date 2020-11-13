@@ -34,14 +34,15 @@
 					filterMatchMode="contains">
 					<h:outputText value="#{produto.valor}" />
 				</p:column>
-				<p:column headerText="Ativo"  filterBy="#{produto.ativo}"
+				<p:column headerText="Ativo" filterBy="#{produto.ativo}"
 					filterMatchMode="equals">
 					<f:facet name="filter">
 						<p:selectOneButton onchange="PF('produtos').filter()"
 							styleClass="custom-filter">
 							<f:converter converterId="javax.faces.Boolean" />
-							<f:selectItem itemLabel="Ativo" itemValue="true" />
+							<f:selectItem itemLabel="+" itemValue="true" />
 							<f:selectItem itemLabel="-" itemValue="false" />
+
 						</p:selectOneButton>
 					</f:facet>
 					<h:outputText
