@@ -10,7 +10,7 @@
 <ui:composition template="/WEB-INF/template/template.xhtml">
 	<ui:define name="tituloJanela">Produtos</ui:define>
 	<ui:define name="conteudo">
-		<h:form>
+		<h:form id="form">
 			<p:breadCrumb>
 				<p:menuitem value="Início" url="#" icon="pi pi-home"/>
 				<p:menuitem value="Produtos" url="#" />
@@ -43,7 +43,6 @@
 							<f:converter converterId="javax.faces.Boolean" />
 							<f:selectItem itemLabel="+" itemValue="true" />
 							<f:selectItem itemLabel="-" itemValue="false" />
-
 						</p:selectOneButton>
 					</f:facet>
 					<h:outputText

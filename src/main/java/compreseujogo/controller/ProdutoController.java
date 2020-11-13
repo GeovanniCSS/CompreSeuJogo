@@ -61,7 +61,15 @@ public class ProdutoController implements Serializable {
 		}
 		return null;
 	}
-
+	public List<String> complete(String busca) {
+		List<String> resultados = new ArrayList<String>();
+		for (Produto produtos : lista) {
+			if (produtos.getNome().toUpperCase().contains(busca.toUpperCase())) {
+				resultados.add(produtos.getNome());
+			}
+		}
+		return resultados;
+	}
 	public void importa() {
 		FacesContext context = FacesContext.getCurrentInstance();
 
