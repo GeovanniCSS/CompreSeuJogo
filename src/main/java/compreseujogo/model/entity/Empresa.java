@@ -24,8 +24,8 @@ public abstract class Empresa implements EntityBase, Serializable {
 	@GenericGenerator(name = "inc", strategy = "increment")
 	private int id;
 	private String nome;
-	@CNPJ
-	@Column(name = "cnpj", length = 14, nullable = false, unique = true)
+	@CNPJ (message = "pegapega")
+	//@Column(name = "cnpj", length = 14, nullable = false, unique = true)
 	private String cnpj;
 	@Email(message = "Digite um e-mail válido")
 	private String email;

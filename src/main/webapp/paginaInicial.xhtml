@@ -23,8 +23,9 @@
 						<h:outputText value="#{produto.nome}" />
 						<p:outputLabel value="#{produto.plataforma.nome}" />
 						<p:outputLabel value=" Valor: #{produto.valor}" />
-						<p:commandLink update=":form" title="Ver Produto">
-							<h:outputText styleClass="pi pi-search" style="margin:0 auto;" />
+						<p:commandLink update=":form" title="Ver Produto"
+									   action="visualizarProduto.xhtml?faces-redirect=true">
+							<h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
 						</p:commandLink>
 					</h:panelGrid>
 				</p:panel>
