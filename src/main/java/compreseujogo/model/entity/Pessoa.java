@@ -41,7 +41,7 @@ public abstract class Pessoa implements EntityBase, Serializable {
 	private String telefone;
 	private String cep;
 	@CPF
-	@Column(name = "cpf", length = 14, nullable = false, unique = true)
+	//@Column(name = "cpf", length = 14, nullable = false, unique = true)
 	private String cpf;
 	private boolean ativo;
 	private String cidade;

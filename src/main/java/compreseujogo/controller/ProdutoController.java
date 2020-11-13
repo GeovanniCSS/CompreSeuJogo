@@ -45,7 +45,8 @@ public class ProdutoController implements Serializable {
 		this.fornecedores = new ArrayList<Fornecedor>();
 		this.marcas = new ArrayList<Marca>();
 		this.plataformas = new ArrayList<Plataforma>();
-		this.destino = "C:\\\\temp\\\\WS-eclipse\\\\compreseujogo_3.0\\\\src\\\\main\\\\webapp\\\\resources\\\\imagem\\\\";
+		//this.destino = "C:\\\\temp\\\\WS-eclipse\\\\compreseujogo_3.0\\\\src\\\\main\\\\webapp\\\\resources\\\\imagem\\\\";
+		this.destino = "C:\\Users\\leona\\git\\compreseujogo_3.0\\src\\main\\webapp\\resources\\imagem\\";
 	}
 
 	public String salvar() {

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+</h:head>
+<ui:composition template="/WEB-INF/template/template.xhtml">
+	<ui:define name="tituloJanela">Compre seu jogo</ui:define>
+	<ui:define name="conteudo">
+		<h:form id="form">  
+    		<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+    		<br></br>
+    			<p:accordionPanel value="#{produtoBean.lista}" var="produto">
+        			<p:tab title="Jogo - #{produto.nome}">
+            			<h:panelGrid columns="2" cellpadding="10">
+                			<f:facet name="header">
+                    			<p:graphicImage style="width: 50px;height: 50px;" library="imagem"
+									 name="#{produto.imagem}" />
+                			</f:facet>                    
+                				<h:outputText value="Preço:" style="font-weight: bold" />
+		                		<h:outputText value="#{produto.valor}" />
+		                		
+		                		<h:outputText value="Descrição:" style="font-weight: bold" />
+		                		<h:outputText value="#{produto.descricao}" />
+		                		
+            			</h:panelGrid>
+            			<div align="right">
+            				<p:commandButton value="Adicionar Carrinho" update="@form" />
+						</div>
+			        </p:tab>
+    			</p:accordionPanel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
