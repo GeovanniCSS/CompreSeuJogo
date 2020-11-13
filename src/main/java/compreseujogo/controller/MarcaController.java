@@ -44,14 +44,22 @@ public class MarcaController implements Serializable {
 	public String salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
-		
+
 		try {
-			context.addMessage(null, new FacesMessage(facade.salvarMarca(marca),FacesMessage.FACES_MESSAGES));
+			context.addMessage(null, new FacesMessage(facade.salvarMarca(marca), FacesMessage.FACES_MESSAGES));
 			return "";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
 		return null;
+	}
+
+	public String alterar(Marca marca) {
+		this.marca = marca;
+		return "cadastroMarca.xhtml";
+	}
+	public void excluir(Marca marca) {
+
 	}
 
 	public Marca getMarca() {

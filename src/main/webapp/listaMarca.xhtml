@@ -6,28 +6,25 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="/WEB-INF/template/template.xhtml">
-	<ui:define name="tituloJanela">Lista plataforma</ui:define>
+	<ui:define name="tituloJanela">Marcas</ui:define>
 	<ui:define name="conteudo">
 		<h:form id="form1">
 			<p:growl id="msgs" showDetail="false" showSummary="true" />
 			<p:breadCrumb>
 				<p:menuitem value="Início" url="#" icon="pi pi-home" />
-				<p:menuitem value="Plataformas" url="#" />
-				<p:menuitem url="cadastroPlataforma.xhtml?faces-redirect=true"
+				<p:menuitem value="Marcas" url="#" />
+				<p:menuitem url="cadastroMarca.xhtml?faces-redirect=true"
 					title="Adicionar" icon="pi pi-plus" />
 			</p:breadCrumb>
-			<p:dataTable var="plataforma" value="#{plataformaBean.lista}"
-				frame="box" rules="all" widgetVar="plataformas" cellpadding="3">
-				<p:column headerText="Nome" filterBy="#{plataforma.nome}" filterMatchMode="contains">
-					<h:outputText value="#{plataforma.nome}" />
+			<p:dataTable var="marca" value="#{marcaBean.lista}"
+				frame="box" rules="all" widgetVar="marcas" cellpadding="3">
+				<p:column headerText="Nome" filterBy="#{marca.nome}" filterMatchMode="contains">
+					<h:outputText value="#{marca.nome}" />
 				</p:column>
-				<p:column headerText="Código SKU" filterBy="#{plataforma.codigoSku}" filterMatchMode="contains">
-					<h:outputText value="#{plataforma.codigoSku}" />
-				</p:column>
-				<p:column headerText="Ativo" filterBy="#{plataforma.ativo}"
+				<p:column headerText="Ativo" filterBy="#{marca.ativo}"
 					filterMatchMode="equals">
 					<f:facet name="filter">
-						<p:selectOneButton onchange="PF('plataformas').filter()"
+						<p:selectOneButton onchange="PF('marcas').filter()"
 							styleClass="custom-filter">
 							<f:converter converterId="javax.faces.Boolean" />
 							<f:selectItem itemLabel="+" itemValue="true" />
@@ -35,14 +32,14 @@
 						</p:selectOneButton>
 					</f:facet>
 					<h:outputText
-						value="#{plataforma.ativo == true ? 'Ativo' : 'Desativado'}" />
+						value="#{marca.ativo == true ? 'Ativo' : 'Desativado'}" />
 				</p:column>
 				<p:column headerText="Alterar">
-					<p:commandButton action="#{plataformaBean.alterar(plataforma)}"
+					<p:commandButton action="#{marcaBean.alterar(marca)}"
 						value="Alterar" />
 				</p:column>
 				<p:column headerText="Excluir">
-					<p:commandButton action="#{plataformaBean.excluir(produto)}"
+					<p:commandButton action="#{marcaBean.excluir(produto)}"
 						onclick="if (!confirm('Confirma a exclusão da categoria?')) return false"
 						value="Excluir" />
 				</p:column>

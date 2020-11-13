@@ -9,17 +9,20 @@
 	<ui:define name="tituloJanela">Cadastro marca</ui:define>
 	<ui:define name="conteudo">
 		<h:form>
-				<p:growl autoUpdate="true" life="3000" />
-				<div id="main" align="center">
-					<p:panelGrid columns="2" layout="grid"
-						styleClass="showcase-text-align-center">
-						<p:outputLabel value="Nome" for="nome" />
-						<p:inputText id="nome" value="#{marcaBean.marca.nome}"
-							placeholder="Digite o nome da marca" />
-					</p:panelGrid>
-					<p:commandButton value="Salvar" action="#{marcaBean.salvar()}"
-						update="@form" />
-				</div>
+			<p:growl autoUpdate="true" life="3000" />
+			<h:inputHidden value="#{marcaBean.marca.id}" />
+			<div id="main" align="center">
+				<p:panelGrid columns="2" layout="grid"
+					styleClass="showcase-text-align-center">
+					<p:outputLabel value="Nome" for="nome" />
+					<p:inputText id="nome" value="#{marcaBean.marca.nome}"
+						placeholder="Digite o nome da marca" />
+					<p:outputLabel value="Ativo" for="ativo"/>
+					<p:selectBooleanCheckbox id="ativo" value="#{marcaBean.marca.ativo}" />	
+				</p:panelGrid>
+				<p:commandButton value="Salvar" action="#{marcaBean.salvar()}"
+					update="@form" />
+			</div>
 		</h:form>
 	</ui:define>
 </ui:composition>

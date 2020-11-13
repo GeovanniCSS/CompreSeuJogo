@@ -43,7 +43,7 @@
 							<p:graphicImage styleClass="image"
 								style="width: 75px;height: 75px;" library="imagem"
 								name="#{produto.imagem}" />
-							<h:outputText value="#{produto.categoria}" />
+							<h:outputText value="#{produto.categoria.nome}" />
 							<h:outputText value="#{produto.valor}" />
 							<p:commandLink update=":form:msg" title="Remover">
 								<h:outputText styleClass="ui-icon pi pi-block"
@@ -63,7 +63,7 @@
 								<h:outputText value="Id:" />
 								<h:outputText value="#{produto.nome}" style="font-weight: bold" />
 								<h:outputText value="Year:" />
-								<h:outputText value="#{produto.categoria}"
+								<h:outputText value="#{produto.categoria.nome}"
 									style="font-weight: bold" />
 								<h:outputText value="Color:" />
 								<h:outputText value="#{produto.valor}" style="font-weight: bold" />
