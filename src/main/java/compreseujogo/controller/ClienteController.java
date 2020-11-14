@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
@@ -64,11 +65,13 @@ public class ClienteController implements Serializable {
 		Facade facade = new Facade();
 		try {
 			context.addMessage(null,
-					new FacesMessage(facade.salvarCliente(this.cliente), FacesMessage.FACES_MESSAGES));
+					new FacesMessage(facade.salvarCliente(cliente), FacesMessage.FACES_MESSAGES));
 			cliente = new Cliente();
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
+		
+		System.out.println(cliente.getId());
 		
 		cliente = new Cliente();
 	}
@@ -86,6 +89,7 @@ public class ClienteController implements Serializable {
 	
 	public String alterar(Cliente c) {
 		this.cliente = c;
+		System.out.println(c.getId());
 		return "alterarCliente.xhtml";
 	}
 	
@@ -102,6 +106,7 @@ public class ClienteController implements Serializable {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
 		
+		System.out.println(cliente.getId());
 		return "listaCliente.xhtml";
 		
 	}

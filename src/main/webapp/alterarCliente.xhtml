@@ -11,6 +11,7 @@
 
 		<p:panel header="LISTA DE CLIENTES">
 			<h:form id="form1">
+			<h:inputHidden value = "#{clienteBean.cliente.id}"/>
 				<p:growl id="msgs" autoUpdate="true" life="3000" />
 				<div align="center">
 					<p:panel header="Dados Pessoais">

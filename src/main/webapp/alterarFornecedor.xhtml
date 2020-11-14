@@ -11,6 +11,7 @@
 	<ui:define name="conteudo">
 		<p:panel header="FORNENEDOR">
 			<h:form id="form1">
+			<h:inputHidden value = "#{fornecedorBean.fornecedor.id}"/>
 				<p:growl id="msgs" autoUpdate="true" life="3000" />
 				<div align="center">
 					<p:panel header="Dados da empresa">
