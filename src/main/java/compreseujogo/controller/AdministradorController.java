@@ -66,11 +66,14 @@ public class AdministradorController implements Serializable {
 		lista = new ArrayList<Administrador>();
 	}
 	
-	public String alterar(Administrador a) {
-		this.administrador = a;
+	public String alterar(Administrador adm) {
+		this.administrador = adm;
 		return "alterarAdministrador.xhtml";
 	}
-
+	
+	public void excluir(Administrador adm) {
+		
+	}
 	public List<Administrador> carregarLista() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();

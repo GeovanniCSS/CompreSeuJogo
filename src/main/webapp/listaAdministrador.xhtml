@@ -13,43 +13,52 @@
 		<h:form id="form">
 			<p:breadCrumb>
 				<p:menuitem value="Início" url="#" icon="pi pi-home" />
-				<p:menuitem value="Administradores" url="#" />
+				<p:menuitem value="Administradores"
+					url="listaAdministrador.xhtml?faces-redirect=true" />
 				<p:menuitem url="cadastroAdministrador.xhtml?faces-redirect=true"
 					title="Adicionar" icon="pi pi-plus" />
 			</p:breadCrumb>
 			<p:dataTable var="administrador" value="#{administradorBean.lista}"
-				frame="box" rules="all" cellpadding="3">
-				<p:column headerText="ID">
-					<h:outputText value="#{administrador.id}" />
-				</p:column>
-
-				<p:column headerText="CPF">
-					<h:outputText value="#{administrador.cpf}" />
-				</p:column>
-
-				<p:column headerText="Nome">
+				frame="box" rules="all" cellpadding="3" widgetVar="admTable">
+				<p:column headerText="Nome" filterBy="#{administrador.nome}"
+					filterMatchMode="contains">
 					<h:outputText value="#{administrador.nome}" />
 				</p:column>
-
-				<p:column headerText="Sobrenome">
+				<p:column headerText="Sobrenome"
+					filterBy="#{administrador.sobrenome}" filterMatchMode="contains">
 					<h:outputText value="#{administrador.sobrenome}" />
 				</p:column>
-
-				<p:column headerText="Estado">
-					<h:outputText value="#{administrador.estado}" />
+				<p:column headerText="CPF" filterBy="#{administrador.cpf}"
+					filterMatchMode="contains">
+					<h:outputText value="#{administrador.cpf}" />
 				</p:column>
-
-				<p:column headerText="Ativo">
+				<p:column headerText="Telefone" filterBy="#{administrador.telefone}"
+					filterMatchMode="contains">
+					<h:outputText value="#{administrador.telefone}" />
+				</p:column>
+				<p:column headerText="Ativo" filterBy="#{administrador.ativo}" filterMatchMode="equals">
+					<f:facet name="filter">
+						<p:selectOneButton onchange="PF('admTable').filter()"
+							styleClass="custom-filter">
+							<f:converter converterId="javax.faces.Boolean" />
+							<f:selectItem itemLabel="+" itemValue="true" />
+							<f:selectItem itemLabel="-" itemValue="false" />
+						</p:selectOneButton>
+					</f:facet>
 					<h:outputText
 						value="#{administrador.ativo == true ? 'Ativo' : 'Desativado'}" />
 				</p:column>
-
 				<p:column headerText="Alterar">
 					<p:commandButton
 						action="#{administradorBean.alterar(administrador)}"
 						value="Alterar" />
 				</p:column>
-
+				<p:column headerText="Excluir">
+					<p:commandButton
+						action="#{administradorBean.excluir(administrador)}"
+						onclick="if (!confirm('Confirma a exclusão do administrador?')) return false"
+						value="Excluir" />
+				</p:column>
 			</p:dataTable>
 		</h:form>
 	</ui:define>
