@@ -12,48 +12,62 @@
 	<ui:define name="conteudo">
 		<h:form id="form">
 			<p:growl id="msg" autoUpdate="true" life="3000" />
-			<p:dataView var="produto" value="#{produtoBean.lista}"
-				gridIcon="pi pi-th-large" listIcon="pi pi-bars">
-				<f:facet name="header"> fwe</f:facet>
-				<p:dataViewGridItem>
-					<p:panel header="#{produto.nome}" style="text-align:center">
-						<h:panelGrid columns="1" style="width:100%">
+			<h:panelGroup
+				rendered="#{clienteBean.cliente.carrinho.item.size() >= 0}">
+				<p:panel>
+					<p:commandButton style="float: right;" value="Finalizar compra" />
+					<p style="font-size: 1.2em;">Total:
+						#{clienteBean.cliente.carrinho.valor}</p>
+					<p style="font-size: 1.2em;">Itens:
+						#{clienteBean.cliente.carrinho.item.size()}</p>
+				</p:panel>
+				<p:dataView var="produto" value="#{produtoBean.lista}"
+					gridIcon="pi pi-th-large" listIcon="pi pi-bars">
+					<p:dataViewGridItem>
+						<p:panel header="#{produto.nome}" style="text-align:center">
+							<h:panelGrid columns="1" style="width:100%">
+								<p:graphicImage styleClass="image"
+									style="width: 75px;height: 75px;" library="imagem"
+									name="#{produto.imagem}" />
+								<h:outputText value="#{produto.categoria.nome}" />
+								<h:outputText value="#{produto.valor}" />
+								<p:commandLink update=":form:msg" title="Remover">
+									<h:outputText styleClass="ui-icon pi pi-block"
+										style="margin:0 auto;" />
+								</p:commandLink>
+							</h:panelGrid>
+						</p:panel>
+					</p:dataViewGridItem>
+					<p:dataViewListItem>
+						<h:panelGrid columns="3" style="width:100%"
+							columnClasses="logo,detail">
 							<p:graphicImage styleClass="image"
 								style="width: 75px;height: 75px;" library="imagem"
 								name="#{produto.imagem}" />
-							<h:outputText value="#{produto.categoria.nome}" />
-							<h:outputText value="#{produto.valor}" />
-							<p:commandLink update=":form:msg" title="Remover">
-								<h:outputText styleClass="ui-icon pi pi-block"
+							<p:outputPanel>
+								<h:panelGrid columns="2" cellpadding="5">
+									<h:outputText value="Id:" />
+									<h:outputText value="#{produto.nome}" style="font-weight: bold" />
+									<h:outputText value="Year:" />
+									<h:outputText value="#{produto.categoria.nome}"
+										style="font-weight: bold" />
+									<h:outputText value="Color:" />
+									<h:outputText value="#{produto.valor}"
+										style="font-weight: bold" />
+								</h:panelGrid>
+							</p:outputPanel>
+							<p:commandLink update=":form:msg" title="View Detail">
+								<h:outputText styleClass="ui-icon pi pi-search"
 									style="margin:0 auto;" />
 							</p:commandLink>
 						</h:panelGrid>
-					</p:panel>
-				</p:dataViewGridItem>
-				<p:dataViewListItem>
-					<h:panelGrid columns="3" style="width:100%"
-						columnClasses="logo,detail">
-						<p:graphicImage styleClass="image"
-							style="width: 75px;height: 75px;" library="imagem"
-							name="#{produto.imagem}" />
-						<p:outputPanel>
-							<h:panelGrid columns="2" cellpadding="5">
-								<h:outputText value="Id:" />
-								<h:outputText value="#{produto.nome}" style="font-weight: bold" />
-								<h:outputText value="Year:" />
-								<h:outputText value="#{produto.categoria.nome}"
-									style="font-weight: bold" />
-								<h:outputText value="Color:" />
-								<h:outputText value="#{produto.valor}" style="font-weight: bold" />
-							</h:panelGrid>
-						</p:outputPanel>
-						<p:commandLink update=":form:msg" title="View Detail">
-							<h:outputText styleClass="ui-icon pi pi-search"
-								style="margin:0 auto;" />
-						</p:commandLink>
-					</h:panelGrid>
-				</p:dataViewListItem>
-			</p:dataView>
+					</p:dataViewListItem>
+				</p:dataView>
+			</h:panelGroup>
+			<h:panelGroup
+				rendered="#{clienteBean.cliente.carrinho.item.size() != 0}">
+				<h2>Desculpe mas seu carrinho está vazio</h2>
+			</h:panelGroup>
 		</h:form>
 	</ui:define>
 </ui:composition>
