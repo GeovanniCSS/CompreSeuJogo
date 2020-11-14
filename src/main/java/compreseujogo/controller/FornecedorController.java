@@ -16,7 +16,7 @@ import compreseujogo.model.entity.Estado;
 import compreseujogo.model.entity.Fornecedor;
 import compreseujogo.model.entity.Transporte;
 
-@SessionScoped
+@RequestScoped
 @ManagedBean(name = "fornecedorBean")
 public class FornecedorController implements Serializable {
 

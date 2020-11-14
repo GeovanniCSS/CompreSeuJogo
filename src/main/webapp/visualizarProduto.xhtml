@@ -13,25 +13,30 @@
 		<h:form id="form">  
     		<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
     		<br></br>
-    			<p:accordionPanel value="#{produtoBean.lista}" var="produto">
-        			<p:tab title="Jogo - #{produto.nome}">
-            			<h:panelGrid columns="2" cellpadding="10">
-                			<f:facet name="header">
-                    			<p:graphicImage style="width: 50px;height: 50px;" library="imagem"
-									 name="#{produto.imagem}" />
-                			</f:facet>                    
-                				<h:outputText value="Preço:" style="font-weight: bold" />
-		                		<h:outputText value="#{produto.valor}" />
-		                		
-		                		<h:outputText value="Descrição:" style="font-weight: bold" />
-		                		<h:outputText value="#{produto.descricao}" />
-		                		
-            			</h:panelGrid>
-            			<div align="right">
-            				<p:commandButton value="Adicionar Carrinho" update="@form"/>
-						</div>
-			        </p:tab>
-    			</p:accordionPanel>
+    			<p:panelGrid columns="2" var="produto" id="produto"> 
+    				<f:facet name="header">
+        				<p:graphicImage name="#{produtoBean.produto.imagem}" />
+    				</f:facet>
+
+    			    <h:outputText value="Jogo" />
+   				    <h:outputText value="#{produtoBean.produto.nome}" />
+     
+    				<h:outputText value="SKU" />
+   					<h:outputText value="#{produtoBean.produto.sku}"/>
+     
+    				<h:outputText value="Quantidade em Estoque" />
+    				<h:outputText value="#{produtoBean.produto.quantEstoque}" />
+     
+    				<h:outputText value="Descrição" />
+    				<h:outputText value="#{produtoBean.produto.descricao}" />
+
+				</p:panelGrid>
+
+		</h:form>
+		<br></br>
+		<h:form>
+			<p:commandButton value="Adicionar ao Carrinho" id="add"
+							  style="margin-center:20px;" />
 		</h:form>
 	</ui:define>
 </ui:composition>
