@@ -11,45 +11,46 @@
 	<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
 	<title>Site de jogos</title>
 </h:head>
-<h:body>
-	<div id="header">
-		<h2 align="center">Seus jogos aqui</h2>
-		<h:form>
-			<div align="center">
-				<p:panelGrid columns="3" layout="grid"
-					styleClass="showcase-text-align-center"
-					columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-4">
-					<p:column>
-						<p:commandButton value="Exemplos"
-							action="exemploTrabalhoWeb.xhtml?faces-redirect=true"
-							update="messages" />
-					</p:column>
-
-					<p:column>
-						<p:commandButton value="Cadastrar"
-							action="produto.xhtml?faces-redirect=true" update="messages" />
-					</p:column>
-					<p:column>
-						<p:commandButton value="Consultar"
-							action="produtoConsulta.xhtml?faces-redirect=true"
-							update="messages" />
-					</p:column>
-				</p:panelGrid>
-				<p:growl id="messages" showDetail="true" />
-			</div>
-		</h:form>
-		<p:confirmDialog global="true">
-			<p:commandButton value="sim" styleClass="ui-confirmdialog-yes"
-				icon="ui-icon-check" />
-			<p:commandButton value="Não" styleClass="ui-confirmdialog-no"
-				icon="ui-icon-close" />
-		</p:confirmDialog>
-	</div>
-	<ui:insert name="corpo" />
-	<div align="center">
-	<footer>
-		<h2>-------------Só produto de qualidade------------------</h2>
-	</footer>
-	</div>
-</h:body>
+<ui:composition>
+		<div id="header" style="padding: 200px, 10px">
+			<h2 align="center">Seus jogos aqui</h2>
+			<h:form>
+			<p:growl id="messages"/>
+ 
+    <p:menubar>
+        <p:submenu label="PLAYSTATION" icon="pi pi-file">
+            <p:menuitem rendered="" value="Categoria" url="cadastroCategoria.xhtml?faces-redirect=true" />
+            <p:separator />
+             <p:menuitem value="PLAYSTATION 5" url="cadastroMarca.xhtml?faces-redirect=true" />
+            <p:separator />
+             <p:menuitem value="PLAYSTATION 4" url="cadastroPlataforma.xhtml?faces-redirect=true" />
+            <p:separator />
+             <p:menuitem value="PLAYSTATION 3" url="cadastroProduto.xhtml?faces-redirect=true" />
+            <p:separator />
+        </p:submenu>
+ 
+        <p:submenu label="XBOX" icon="pi pi-pencil">
+            <p:menuitem value="XBOX SERIES X e S" url="#" icon="pi pi-angle-double-left" />
+            <p:menuitem value="XBOX ONE" url="#" icon="pi pi-angle-double-right" />
+            <p:menuitem value="XBOX 360" url="#" icon="pi pi-angle-double-right" />
+        </p:submenu>
+ 
+        <p:submenu label="NINTENDO" icon="pi pi-question">
+            <p:menuitem value="JOGOS" url="#" icon="pi pi-angle-double-left" />
+            <p:menuitem value="CONSOLES" url="#" icon="pi pi-angle-double-right" />
+        </p:submenu> 
+        
+        <p:commandButton type="button" value="Carrinho" icon="pi pi-shopping-cart"/>
+        
+        <p:commandButton type="button" value="Compras" icon="pi pi-tags"/>
+        
+ 
+        <f:facet name="options">
+            <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Procurar"/>
+            <p:commandButton type="button" value="Login" icon="pi pi-home" />
+        </f:facet>
+    </p:menubar>
+			</h:form>
+		</div>
+	</ui:composition>
 </html>

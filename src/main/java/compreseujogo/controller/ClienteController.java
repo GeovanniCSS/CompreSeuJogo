@@ -65,13 +65,11 @@ public class ClienteController implements Serializable {
 		Facade facade = new Facade();
 		try {
 			context.addMessage(null,
-					new FacesMessage(facade.salvarCliente(cliente), FacesMessage.FACES_MESSAGES));
+					new FacesMessage(facade.salvarCliente(this.cliente), FacesMessage.FACES_MESSAGES));
 			cliente = new Cliente();
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
-		
-		System.out.println(cliente.getId());
 		
 		cliente = new Cliente();
 	}
