@@ -17,8 +17,9 @@
 					<p:outputLabel value="Nome" for="nome" />
 					<p:inputText id="nome" value="#{marcaBean.marca.nome}"
 						placeholder="Digite o nome da marca" />
-					<p:outputLabel value="Ativo" for="ativo"/>
-					<p:selectBooleanCheckbox id="ativo" value="#{marcaBean.marca.ativo}" />	
+					<p:outputLabel value="Ativo" for="ativo" />
+					<p:selectBooleanCheckbox id="ativo"
+						value="#{marcaBean.marca.ativo}" />
 				</p:panelGrid>
 				<p:commandButton value="Salvar" action="#{marcaBean.salvar()}"
 					update="@form" />
