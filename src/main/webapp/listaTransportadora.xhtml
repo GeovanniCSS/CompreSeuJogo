@@ -13,7 +13,7 @@
 		<p:dataTable var="transporte" value="#{transporteBean.lista}"
 			frame="box" rules="all" cellpadding="3">
 			<f:facet name="header">
-				<p:commandButton value="Novo" action="cadastroTransportadora.xhtml?faces-redirect=true" />
+				<p:commandButton value="Novo" action="alterarTransportadora.xhtml?faces-redirect=true" />
 			</f:facet>
 			<p:column headerText="CNPJ">
 				<h:outputText value="#{transporte.cnpj}" />

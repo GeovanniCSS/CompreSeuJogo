@@ -13,7 +13,7 @@
 		<p:dataTable var="fornecedor" value="#{fornecedorBean.lista}"
 			frame="box" rules="all" cellpadding="3">
 			<f:facet name="header">
-				<p:commandButton value="Novo" action="cadastroFornecedor.xhtml?faces-redirect=true" />
+				<p:commandButton value="Novo" action="alterarFornecedor.xhtml?faces-redirect=true" />
 			</f:facet>
 			<p:column headerText="CNPJ">
 				<h:outputText value="#{fornecedor.cnpj}" />

@@ -130,6 +130,10 @@ public class Facade {
 		return transporteBo.desativarAtivar(transporte);
 	}
 	
+	public String atualizarFornecedor(Fornecedor fornecedor) throws Exception {
+		return fornecedorBo.desativarAtivar(fornecedor);
+	}
+	
 	public String atualizarAdministrador(Administrador administrador) throws Exception {
 		return administradorBo.desativarAtivar(administrador);
 	}

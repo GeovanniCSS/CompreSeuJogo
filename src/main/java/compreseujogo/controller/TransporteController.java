@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -69,7 +70,7 @@ public class TransporteController implements Serializable {
 		return Estado.values();
 	}
 	
-	public List<Transporte> carregarLista() {
+	/*public List<Transporte> carregarLista() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		try {
@@ -78,6 +79,17 @@ public class TransporteController implements Serializable {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
 		return lista;
+	}*/
+	
+	@PostConstruct
+	public void carregarLista() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			lista = facade.listaTransporte(transporte);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
 	}
 	
 	public String alterar(Transporte t) {

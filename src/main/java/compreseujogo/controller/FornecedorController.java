@@ -16,7 +16,7 @@ import compreseujogo.model.entity.Estado;
 import compreseujogo.model.entity.Fornecedor;
 import compreseujogo.model.entity.Transporte;
 
-@RequestScoped
+@SessionScoped
 @ManagedBean(name = "fornecedorBean")
 public class FornecedorController implements Serializable {
 
@@ -85,5 +85,26 @@ public class FornecedorController implements Serializable {
 
 	public void setLista(List<Fornecedor> lista) {
 		this.lista = lista;
+	}
+	
+	public String alterar(Fornecedor f) {
+		this.fornecedor = f;
+		return "alterarFornecedor.xhtml";
+	}
+	
+	public String atualizarStatus() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			context.addMessage(null,
+					new FacesMessage(facade.atualizarFornecedor(this.fornecedor), FacesMessage.FACES_MESSAGES));
+			fornecedor = new Fornecedor();
+			
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		
+		return "listaFornecedor.xhtml";
 	}
 }

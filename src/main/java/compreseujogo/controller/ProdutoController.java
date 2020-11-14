@@ -22,6 +22,7 @@ import compreseujogo.model.entity.Fornecedor;
 import compreseujogo.model.entity.Marca;
 import compreseujogo.model.entity.Plataforma;
 import compreseujogo.model.entity.Produto;
+import compreseujogo.model.entity.Transporte;
 
 @RequestScoped
 @ManagedBean(name = "produtoBean")
@@ -227,4 +228,10 @@ public class ProdutoController implements Serializable {
 	public void setArquivo(Part arquivo) {
 		this.arquivo = arquivo;
 	}
+	
+	public String selecionar(Produto p) {
+		this.produto = p;
+		return "visualizarProduto.xhtml";
+	}
+	
 }

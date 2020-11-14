@@ -24,7 +24,7 @@
 						<p:outputLabel value="#{produto.plataforma.nome}" />
 						<p:outputLabel value=" Valor: #{produto.valor}" />
 						<p:commandLink update=":form" title="Ver Produto"
-									   action="visualizarProduto.xhtml?faces-redirect=true">
+									   action= "#{produtoBean.selecionar(produto)}">
 							<h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
 						</p:commandLink>
 					</h:panelGrid>
