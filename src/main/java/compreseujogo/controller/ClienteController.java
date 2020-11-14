@@ -24,7 +24,7 @@ public class ClienteController implements Serializable {
 	
 	private Cliente cliente;
 	private List<Cliente> lista;
-	private boolean logado;
+	private boolean logado; ("teste")
 
 	public ClienteController() {
 		super();
