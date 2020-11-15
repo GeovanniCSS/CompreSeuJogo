@@ -10,39 +10,43 @@
 <ui:composition template="/WEB-INF/template/template.xhtml">
 	<ui:define name="tituloJanela">Compre seu jogo</ui:define>
 	<ui:define name="conteudo">
-		<h:form id="form">  
-    		<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
-    		<br></br>
-    			<p:panelGrid columns="2" var="produto" id="produto"> 
-    				<f:facet name="header">
-        				<p:graphicImage name="#{produtoBean.produto.imagem}" />
-    				</f:facet>
-
-    			    <h:outputText value="Jogo" />
-   				    <h:outputText value="#{produtoBean.produto.nome}" />
-     
-    				<h:outputText value="SKU" />
-   					<h:outputText value="#{produtoBean.produto.sku}"/>
-     
-    				<h:outputText value="Quantidade em Estoque" />
-    				<h:outputText value="#{produtoBean.produto.quantEstoque}" />
-     
-    				<h:outputText value="Descrição" />
-    				<h:outputText value="#{produtoBean.produto.descricao}" />
-    				
-    				<h:outputLabel value="Quantidade" />
-        			<p:spinner id="basic" value="#{produtoBean.produto.quantConsulta}" />
-
-				</p:panelGrid>
-
+		<h:form id="form">
+			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+			<p:panel>
+				<div class="ui-g">
+					<div class="ui-g-3">
+						<p:graphicImage styleClass="dimensao" library="imagem"
+							name="#{produtoBean.produto.imagem}" />
+					</div>
+					<div style="float: center" class="ui-g-6">
+						<div style="text-align: center">
+							<p:panel>
+								<h1>#{produtoBean.produto.nome}</h1>
+								<ul>
+									<li class="textoProduto">Preço:
+										#{produtoBean.produto.valor}</li>
+										
+									<li class="textoProduto">Descrição:
+										#{produtoBean.produto.descricao}</li>
+								</ul>
+							</p:panel>
+						</div>
+					</div>
+					<div style="float: right;" class="ui-g-3">
+						<p:panel>
+							<h:outputLabel value="Quantidade " for="spi" />
+							<p:spinner id="spi" size="1"
+								value="#{produtoBean.produto.quantConsulta}" />
+							<br />
+							<br />
+							<p:commandButton value="Adicionar ao Carrinho" id="add"
+								style="margin-center:20px;"
+								action="#{produtoBean.carregar(produto)}" />
+						</p:panel>
+					</div>
+				</div>
+			</p:panel>
 		</h:form>
-		<br></br>
-		<h:form>
-			<p:commandButton value="Adicionar ao Carrinho" id="add"
-							  style="margin-center:20px;"
-							  action="#{produtoBean.carregar(produto)}" />
-		</h:form>
-		<br></br>
 	</ui:define>
 </ui:composition>
 </html>
