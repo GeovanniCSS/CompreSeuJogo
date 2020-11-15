@@ -41,7 +41,8 @@ html, body {
 	height: 100%;
 	background: white;
 }
-.textoProduto{
+
+.textoProduto {
 	font-size: 1.2em;
 	text-align: left;
 }
@@ -56,18 +57,23 @@ html, body {
 .fonteLogin {
 	padding: 20px;
 	font-size: 1.6em;
-	
 }
-.inputLogin{
+
+.inputLogin {
 	size: 1000px;
 }
 
-
 .loginCorpo {
-	width: 100%;
+	width: 1340px;
 	height: 450px;
 	text-align: center;
-	
+}
+
+.lBotao {
+	padding: 10px 10px;
+	border: 10px;
+	color: red;
+	background-color: gray;
 }
 
 .menu {

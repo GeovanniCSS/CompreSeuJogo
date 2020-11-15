@@ -8,35 +8,38 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<h:outputStylesheet library="css" name="face.css" />
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{resource['imagem/logoN.png']}" />
+	<h:outputStylesheet library="webapp" />
 	<title>Login cliente</title>
 </h:head>
 <h:body>
-	<h:form id="form">
-		<p:growl id="msg" autoUpdate="true" life="3000" />
-		<p:panel styleClass="loginCorpo">
-			<p:graphicImage style="float:center ;width: 200px;height:200px;"
-				library="imagem" name="logoN.png" />
-			<br />
-			<p:outputLabel styleClass="fonteLogin" value="E-mail " for="email" />
-			<p:inputText styleClass="inputLogin" id="email"
-				value="#{UseClienteBean.cliente.email}" />
-			<br />
-			<br />
-			<p:outputLabel styleClass="fonteLogin" value="Senha " for="senha" />
-			<p:password styleClass="inputLogin" id="senha"
-				value="#{UseClienteBean.cliente.senha}"/>
-			<br />
-			<br />
-			<p:commandButton style="padding: 0px 15px;" supdate="@form" value="Cadastro"
-				action="#{UseClienteBean.login()}" />
-			<p:commandButton style="padding: 0px 15px;" update="@form" value="Entrar"
-				action="#{UseClienteBean.login()}" />
-		</p:panel>
-	</h:form>
-	<div id="footer">
-		<ui:insert name="footer">
-			<ui:include src="/WEB-INF/template/footerPagina.xhtml" />
-		</ui:insert>
+	<div style="background: black">
+		<h:form id="form">
+			<p:growl id="msg" autoUpdate="true" life="3000" />
+			<p:panel styleClass="loginCorpo">
+				<p:graphicImage style="float:center ;width: 200px;height:200px;"
+					library="imagem" name="logoN.png" />
+				<br />
+				<p:outputLabel styleClass="fonteLogin" value="E-mail:" />
+				<p:inputText styleClass="inputLogin" style="margin: 10px 0px 5px;"
+					id="email" value="#{UseClienteBean.cliente.email}" />
+				<br />
+				<p:outputLabel styleClass="fonteLogin" value="Senha:" />
+				<p:password styleClass="inputLogin" id="senha"
+					value="#{UseClienteBean.cliente.senha}" />
+				<br />
+				<br />
+				<p:commandButton action=""/>
+				<p:commandButton style="padding: 5px 5px;border: 20px;margin:5px;"
+					update="@form"  value="Entrar" action="#{UseClienteBean.login()}" />
+			</p:panel>
+		</h:form>
+		<div id="footer">
+			<ui:insert name="footer">
+				<ui:include src="/WEB-INF/template/footerPagina.xhtml" />
+			</ui:insert>
+		</div>
 	</div>
 </h:body>
 </html>
