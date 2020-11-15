@@ -349,11 +349,7 @@ public class Produto implements EntityBase, Serializable {
 
 	@Override
 	public String toString() {
-		return "Produto id=" + id + ", nome=" + nome + ", valor=" + valor + ", quantEstoque=" + quantEstoque + ", EAN="
-				+ EAN + ", sku=" + sku + ", ativo=" + ativo + ", quantConsulta=" + quantConsulta + ", dataCadastro="
-				+ dataCadastro + ", dataLancamento=" + dataLancamento + ", categoria=" + categoria.getNome()
-				+ ", plataforma=" + plataforma.getNome() + ", marca=" + marca.getNome() + ", fornecedor= "
-				+ fornecedor.getNome() + ", Loja=" + loja;
+		return nome;
 	}
 
 }

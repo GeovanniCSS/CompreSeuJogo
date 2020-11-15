@@ -17,23 +17,13 @@
 		<div id="header" style="padding: 200px, 10px">
 			<h:form>
 				<p:growl id="messages" />
-				<p:panelGrid columns="3" layout="grid"
-					styleClass="showcase-text-align-center">
+				<p:panelGrid columns="2" layout="grid">
 					<p:column>
 						<p:graphicImage style="width: 50px;height:50px;" library="imagem"
 							name="logoN.png" />
 					</p:column>
-					<p:column>
-						<p:inputText style="margin:1px 10px 1px 1px;"
-							placeholder="digite o nome do produto" />
-						<p:autoComplete id="acDelay" queryDelay="300"
-							value="#{produtoBean.produto}"
-							completeMethod="#{produtoBean.complete12()}" effect="blind" />
-						<p:commandButton style="float:center" type="button"
-							value="Pesquisar" icon="pi pi-search" />
-					</p:column>
-					<p:column style="float:right;">
-						<p:menuButton value="#{UseAdmBean.administrador.nome}">
+					<p:column >
+						<p:menuButton icon="pi pi-user" style="float:right;" value="#{UseAdmBean.administrador.nome}">
 							<p:menuitem value="Sair" icon="pi pi-sign-out"
 								action="#{UseAdmBean.logout()}" />
 						</p:menuButton>
@@ -67,6 +57,8 @@
 						<p:menuitem value="Cliente"
 							url="listaCliente.xhtml?faces-redirect=true" />
 						<p:separator />
+					</p:submenu>
+					<p:submenu label="Parceiros" icon="pi pi-briefcase">
 						<p:menuitem value="Transportadora"
 							url="listaTransportadora.xhtml?faces-redirect=true" />
 						<p:separator />

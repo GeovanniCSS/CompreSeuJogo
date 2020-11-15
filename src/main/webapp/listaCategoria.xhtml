@@ -11,17 +11,20 @@
 		<h:form id="form">
 			<p:breadCrumb>
 				<p:menuitem value="Início" url="#" icon="pi pi-home" />
-				<p:menuitem value="Categorias" url="#" />
+				<p:menuitem value="Categorias" url="listaCategoria.xhtml?faces-redirect=true" />
 				<p:menuitem url="cadastroCategoria.xhtml?faces-redirect=true"
 					title="Adicionar" icon="pi pi-plus" />
 			</p:breadCrumb>
 			<p:dataTable id="table" var="c" value="#{categoriaBean.lista}"
-				frame="box" rules="all" widgetVar="categorias" cellpadding="3">
+				frame="box" rules="all" widgetVar="categorias" cellpadding="3"
+				paginator="true"
+				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} 
+				{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="2,4,15">
 				<p:column filterBy="#{c.nome}" filterMatchMode="contains"
 					headerText="Nome">
 					<h:outputText value="#{c.nome}" />
 				</p:column>
-
 				<p:column headerText="Ativo" filterBy="#{c.ativo}"
 					filterMatchMode="equals">
 					<f:facet name="filter">
@@ -34,7 +37,6 @@
 					</f:facet>
 					<h:outputText value="#{c.ativo == true ? 'Ativo' : 'Desativado'}" />
 				</p:column>
-
 				<p:column headerText="Alterar">
 					<p:commandButton action="#{categoriaBean.alterar(c)}"
 						value="Alterar" />
