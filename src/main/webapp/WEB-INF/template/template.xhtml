@@ -16,7 +16,7 @@
 <h:body>
 	<div id="cabecalho">
 		<h:panelGroup rendered="#{UseAdmBean.logado == true}">
-			<ui:include src="/WEB-INF/template/MenuAdministrador.xhtml" />
+			<ui:include src="/WEB-INF/template/MenuCliente.xhtml" />
 		</h:panelGroup>
 		<h:panelGroup rendered="#{UseAdmBean.logado == false}">
 			<ui:include src="/WEB-INF/template/MenuSite.xhtml" />

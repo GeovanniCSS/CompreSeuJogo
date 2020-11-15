@@ -6,6 +6,8 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
+	<link rel="shortcut icon" type="image/x-icon"
+          href="#{resource['imagem/logoN.png']}" />
 </h:head>
 <ui:composition template="/WEB-INF/template/template.xhtml">
 	<ui:define name="tituloJanela">Compre seu jogo | Login</ui:define>
@@ -27,7 +29,7 @@
 							value="#{UseAdmBean.administrador.senha}"
 							placeholder="Digite sua senha" required="true" />
 						<p:commandButton value="Cadastro"
-							action="#{UseAdmBean.login()}" update="@form" />
+							url="cadastroClienteSite.xhtml?faces-redirect=true" update ="@form" immediate="true"/>
 						<p:commandButton value="Entrar"
 							action="#{UseAdmBean.login()}" update="@form" />
 					</p:panelGrid>
