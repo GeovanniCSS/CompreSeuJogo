@@ -41,6 +41,9 @@ public class FornecedorController implements Serializable {
 		}
 	}
 	
+	public void excluir(Fornecedor fornecedor) {
+		
+	}
 	public Estado[] getEstado() {
 		return Estado.values();
 	}
