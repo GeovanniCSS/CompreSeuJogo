@@ -30,9 +30,11 @@
 					value="#{UseClienteBean.cliente.senha}" />
 				<br />
 				<br />
-				<p:commandButton action=""/>
-				<p:commandButton style="padding: 5px 5px;border: 20px;margin:5px;"
-					update="@form"  value="Entrar" action="#{UseClienteBean.login()}" />
+				<p:commandButton style="padding: 5px 5px;border: 10px;margin:5px;" value="Cadastro"
+					action="cadastroClienteSite.xhtml?faces-redirect=true"
+					immediate="true" update="@form"/>
+				<p:commandButton style="padding: 5px 5px;border: 10px;margin:5px;"
+					update="@form" value="Entrar" action="#{UseClienteBean.login()}"/>
 			</p:panel>
 		</h:form>
 		<div id="footer">
