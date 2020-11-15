@@ -40,9 +40,14 @@
             <p:menuitem value="CONSOLES" url="#" icon="pi pi-angle-double-right" />
         </p:submenu> 
         
-        <p:commandButton type="button" value="Carrinho" icon="pi pi-shopping-cart"/>
+        <f:facet name="options">
+        	<p:commandButton action="alterarFornecedor.xhtml?faces-redirect=true" type="button" value="Carrinho" icon="pi pi-shopping-cart"/>
+        </f:facet>
         
-        <p:commandButton type="button" value="Compras" icon="pi pi-tags"/>
+        <f:facet name="options">
+        	<p:commandButton type="button" value="Compras" icon="pi pi-tag"/>
+        </f:facet>
+       
         
  
         <f:facet name="options">

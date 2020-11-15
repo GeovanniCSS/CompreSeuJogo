@@ -151,6 +151,11 @@ public class ProdutoController implements Serializable {
 		this.produto = produto;
 		return "atualizarProduto.xhtml";
 	}
+	
+	public String carregar(Produto produto) {
+		this.produto = produto;
+		return "carrinhoCliente.xhtml";
+	}
 
 	public void excluir(Produto produto) {
 		this.produto = produto;

@@ -29,6 +29,9 @@
      
     				<h:outputText value="Descrição" />
     				<h:outputText value="#{produtoBean.produto.descricao}" />
+    				
+    				<h:outputLabel value="Quantidade" />
+        			<p:spinner id="basic" value="#{produtoBean.produto.quantConsulta}" />
 
 				</p:panelGrid>
 
@@ -36,8 +39,10 @@
 		<br></br>
 		<h:form>
 			<p:commandButton value="Adicionar ao Carrinho" id="add"
-							  style="margin-center:20px;" />
+							  style="margin-center:20px;"
+							  action="#{produtoBean.carregar(produto)}" />
 		</h:form>
+		<br></br>
 	</ui:define>
 </ui:composition>
 </html>
