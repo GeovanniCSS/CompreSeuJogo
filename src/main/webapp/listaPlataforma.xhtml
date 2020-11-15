@@ -17,11 +17,17 @@
 					title="Adicionar" icon="pi pi-plus" />
 			</p:breadCrumb>
 			<p:dataTable var="plataforma" value="#{plataformaBean.lista}"
-				frame="box" rules="all" widgetVar="plataformas" cellpadding="3">
-				<p:column headerText="Nome" filterBy="#{plataforma.nome}" filterMatchMode="contains">
+				frame="box" rules="all" widgetVar="plataformas" cellpadding="3"
+				paginator="true"
+				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} 
+				{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="10,15,25">>
+				<p:column headerText="Nome" filterBy="#{plataforma.nome}"
+					filterMatchMode="contains">
 					<h:outputText value="#{plataforma.nome}" />
 				</p:column>
-				<p:column headerText="Código SKU" filterBy="#{plataforma.codigoSku}" filterMatchMode="contains">
+				<p:column headerText="Código SKU" filterBy="#{plataforma.codigoSku}"
+					filterMatchMode="contains">
 					<h:outputText value="#{plataforma.codigoSku}" />
 				</p:column>
 				<p:column headerText="Ativo" filterBy="#{plataforma.ativo}"

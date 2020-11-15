@@ -24,6 +24,10 @@ public class VendedorController implements Serializable {
 	private List <Estado> estados;
 	private boolean logado;
 	
+	public void excluir(Vendedor vendedor) {
+		
+	}
+	
 	public Sexo[] getSexo() {
 		return Sexo.values();
 	}
