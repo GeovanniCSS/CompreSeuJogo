@@ -13,12 +13,16 @@
 		<h:form id="form">
 			<p:breadCrumb>
 				<p:menuitem value="Início" url="#" icon="pi pi-home" />
-				<p:menuitem value="Clientes" url="listaCliente.xhtml?faces-redirect=true" />
+				<p:menuitem value="Clientes"
+					url="listaCliente.xhtml?faces-redirect=true" />
 				<p:menuitem url="cadastroCliente.xhtml?faces-redirect=true"
 					title="Adicionar" icon="pi pi-plus" />
 			</p:breadCrumb>
 			<p:dataTable var="cliente" value="#{clienteBean.lista}" frame="box"
-				rules="all" cellpadding="3">
+				rules="all" cellpadding="3" paginator="true"
+				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} 
+				{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="15,30,45">
 				<p:column headerText="ID">
 					<h:outputText value="#{cliente.id}" />
 				</p:column>

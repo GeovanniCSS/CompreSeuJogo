@@ -12,13 +12,18 @@
 			<p:growl id="msgs" showDetail="false" showSummary="true" />
 			<p:breadCrumb>
 				<p:menuitem value="Início" url="#" icon="pi pi-home" />
-				<p:menuitem value="Marcas" url="#" />
+				<p:menuitem value="Marcas" url="listaMarca.xhtml?faces-redirect=true" />
 				<p:menuitem url="cadastroMarca.xhtml?faces-redirect=true"
 					title="Adicionar" icon="pi pi-plus" />
 			</p:breadCrumb>
-			<p:dataTable var="marca" value="#{marcaBean.lista}"
-				frame="box" rules="all" widgetVar="marcas" cellpadding="3">
-				<p:column headerText="Nome" filterBy="#{marca.nome}" filterMatchMode="contains">
+			<p:dataTable var="marca" value="#{marcaBean.lista}" frame="box"
+				rules="all" widgetVar="marcas" cellpadding="3"
+				paginator="true"
+				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} 
+				{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="10,15,25">
+				<p:column headerText="Nome" filterBy="#{marca.nome}"
+					filterMatchMode="contains">
 					<h:outputText value="#{marca.nome}" />
 				</p:column>
 				<p:column headerText="Ativo" filterBy="#{marca.ativo}"

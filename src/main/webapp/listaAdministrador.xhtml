@@ -19,7 +19,11 @@
 					title="Adicionar" icon="pi pi-plus" />
 			</p:breadCrumb>
 			<p:dataTable var="administrador" value="#{administradorBean.lista}"
-				frame="box" rules="all" cellpadding="3" widgetVar="admTable">
+				frame="box" rules="all" cellpadding="3" widgetVar="admTable"
+				paginator="true"
+				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} 
+				{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="15,30,45">
 				<p:column headerText="Nome" filterBy="#{administrador.nome}"
 					filterMatchMode="contains">
 					<h:outputText value="#{administrador.nome}" />
@@ -36,7 +40,8 @@
 					filterMatchMode="contains">
 					<h:outputText value="#{administrador.telefone}" />
 				</p:column>
-				<p:column headerText="Ativo" filterBy="#{administrador.ativo}" filterMatchMode="equals">
+				<p:column headerText="Ativo" filterBy="#{administrador.ativo}"
+					filterMatchMode="equals">
 					<f:facet name="filter">
 						<p:selectOneButton onchange="PF('admTable').filter()"
 							styleClass="custom-filter">

@@ -8,12 +8,16 @@
 <h:head>
 </h:head>
 <ui:composition template="/WEB-INF/template/template.xhtml">
-	<ui:define name="tituloJanela">Todas Transportadoras</ui:define>
+	<ui:define name="tituloJanela">Transportadoras</ui:define>
 	<ui:define name="conteudo">
 		<p:dataTable var="transporte" value="#{transporteBean.lista}"
-			frame="box" rules="all" cellpadding="3">
+			frame="box" rules="all" cellpadding="3" paginator="true"
+			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} 
+				{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="15,30,45">
 			<f:facet name="header">
-				<p:commandButton value="Novo" action="alterarTransportadora.xhtml?faces-redirect=true" />
+				<p:commandButton value="Novo"
+					action="alterarTransportadora.xhtml?faces-redirect=true" />
 			</f:facet>
 			<p:column headerText="CNPJ">
 				<h:outputText value="#{transporte.cnpj}" />
@@ -22,20 +26,21 @@
 			<p:column headerText="Nome">
 				<h:outputText value="#{transporte.nome}" />
 			</p:column>
-			
+
 			<p:column headerText="Estado">
 				<h:outputText value="#{transporte.estado}" />
 			</p:column>
 
 			<p:column headerText="Ativo">
-				<h:outputText value="#{transporte.ativo == true ? 'Ativo' : 'Desativado'}" />
+				<h:outputText
+					value="#{transporte.ativo == true ? 'Ativo' : 'Desativado'}" />
 			</p:column>
 
 			<p:column headerText="Alterar">
 				<p:commandButton action="#{transporteBean.alterar(transporte)}"
 					value="Alterar" />
 			</p:column>
-	
+
 		</p:dataTable>
 	</ui:define>
 </ui:composition>
