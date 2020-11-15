@@ -7,7 +7,7 @@
     background: gray;
     font-size: 20px;
     border-top: 0.3rem solid black;
-   
+    width: 100%; 
   }
   .blog-footer p:last-child {
     margin-bottom: 500;

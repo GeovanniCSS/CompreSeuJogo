@@ -31,9 +31,10 @@ public abstract class Pessoa implements EntityBase, Serializable {
 	private int id;
 	private String nome;
 	private String sobrenome;
-	@NotBlank
+	@NotBlank(message = "Digite um e-mail")
 	@Email(message = "Digite um e-mail válido")
 	private String email;
+	@NotBlank(message = "Digite uma senha")
 	private String senha;
 	private Date dataNascimento;
 	private LocalDate dataCadastro;

@@ -18,7 +18,6 @@ import compreseujogo.model.bo.ItemVendaBo;
 import compreseujogo.model.bo.ListaDesejoBo;
 import compreseujogo.model.bo.LojaBo;
 import compreseujogo.model.bo.MarcaBo;
-import compreseujogo.model.bo.PessoaBo;
 import compreseujogo.model.bo.PlataformaBo;
 import compreseujogo.model.bo.ProdutoBo;
 import compreseujogo.model.bo.TipoBo;
@@ -109,6 +108,10 @@ public class Facade {
 
 	}
 
+	public Cliente loginCliente(Cliente cliente) throws Exception {
+		return (Cliente) clienteBo.login(cliente, Cliente.class);
+	}
+
 	public String salvarAdministrador(Administrador administrador) throws Exception {
 		return administradorBo.salvar(administrador, (Loja) lojaBo.list("organizada", null, Loja.class).get(0));
 	}
@@ -117,23 +120,23 @@ public class Facade {
 		vendedorBo.novaPessoa(vendedor, Vendedor.class);
 		return vendedorBo.createDepency(vendedor);
 	}
-	
+
 	public String atualizarVendedor(Vendedor vendedor) throws Exception {
 		return vendedorBo.desativarAtivar(vendedor);
 	}
-	
+
 	public String atualizarCliente(Cliente cliente) throws Exception {
 		return clienteBo.desativarAtivar(cliente);
 	}
-	
+
 	public String atualizarTransporte(Transporte transporte) throws Exception {
 		return transporteBo.desativarAtivar(transporte);
 	}
-	
+
 	public String atualizarFornecedor(Fornecedor fornecedor) throws Exception {
 		return fornecedorBo.desativarAtivar(fornecedor);
 	}
-	
+
 	public String atualizarAdministrador(Administrador administrador) throws Exception {
 		return administradorBo.desativarAtivar(administrador);
 	}
@@ -166,8 +169,8 @@ public class Facade {
 	}
 
 	public String salvarTransporte(Transporte transporte) throws Exception {
-		  transporteBo.novaEmpresa(transporte, Transporte.class);
-		  return transporteBo.saveOrUpdate(transporte);
+		transporteBo.novaEmpresa(transporte, Transporte.class);
+		return transporteBo.saveOrUpdate(transporte);
 	}
 
 	public String adicionarItemCarrinho(ItemCarrinho item, Carrinho carrinho) throws Exception {
@@ -183,7 +186,7 @@ public class Facade {
 		}
 		return lista;
 	}
-	
+
 	public List<Vendedor> listaVendedor(Vendedor vendedor) throws Exception {
 		ArrayList<Vendedor> lista = new ArrayList<Vendedor>();
 		for (Pessoa pessoa : vendedorBo.list("organizada", vendedor, Vendedor.class)) {
@@ -191,7 +194,7 @@ public class Facade {
 		}
 		return lista;
 	}
-	
+
 	public List<Administrador> listaAdministrador(Administrador administrador) throws Exception {
 		ArrayList<Administrador> lista = new ArrayList<Administrador>();
 		for (Pessoa pessoa : administradorBo.list("organizada", administrador, Administrador.class)) {
@@ -199,7 +202,7 @@ public class Facade {
 		}
 		return lista;
 	}
-	
+
 	public List<Cliente> listaCliente(Cliente cliente) throws Exception {
 		ArrayList<Cliente> lista = new ArrayList<Cliente>();
 		for (Pessoa pessoa : clienteBo.list("organizada", cliente, Cliente.class)) {
@@ -207,7 +210,7 @@ public class Facade {
 		}
 		return lista;
 	}
-	
+
 	public List<Transporte> listaTransporte(Transporte transporte) throws Exception {
 		ArrayList<Transporte> lista = new ArrayList<Transporte>();
 		for (Empresa empresa : transporteBo.list("organizada", transporte, Transporte.class)) {

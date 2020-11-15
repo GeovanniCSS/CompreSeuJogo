@@ -1,5 +1,6 @@
 package compreseujogo.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,9 @@ import compreseujogo.model.entity.Estado;
 
 @SessionScoped
 @ManagedBean(name = "UseAdmBean")
-public class UseAdmBean {
+public class UseAdmBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private Administrador administrador;
 	private List<Administrador> lista;
