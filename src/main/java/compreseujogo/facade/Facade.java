@@ -173,8 +173,8 @@ public class Facade {
 		return transporteBo.saveOrUpdate(transporte);
 	}
 
-	public String adicionarItemCarrinho(ItemCarrinho item, Carrinho carrinho) throws Exception {
-		return carrinhoBo.aumentorValor(itemCarrinhoBo.novo(item), carrinho);
+	public String adicionarItemCarrinho(ItemCarrinho item) throws Exception {
+		return carrinhoBo.aumentorValor(itemCarrinhoBo.novo(item), item.getCarrinho());
 	}
 
 	public List<Marca> listaMarca(Marca marca) throws Exception {

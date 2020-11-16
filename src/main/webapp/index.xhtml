@@ -22,7 +22,7 @@
 						<p:outputLabel value="#{produto.nome}" />
 						<p:outputLabel value="#{produto.plataforma.nome}" />
 						<p:outputLabel value="#{produto.categoria.nome}" />
-						<p:rating value="#{produto.quantConsulta}" readonly="true" />
+						<p:rating value="#{produto.nota}" readonly="true" />
 						<p:outputLabel value=" Preço: R$#{produto.valor}" />
 						<p:commandLink update=":form" title="Ver Produto"
 							action="#{produtoBean.selecionar(produto)}">

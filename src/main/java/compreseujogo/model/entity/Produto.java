@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "tb_produto")
@@ -31,6 +32,9 @@ public class Produto implements EntityBase, Serializable {
 	private String descricao;
 	private String imagem;
 	private double valor;
+	@Size(min = 1, max = 5)
+	@Column(name = "nota", nullable = true)
+	private int nota;
 	@Column(name = "quantidadeEstoque")
 	private int quantEstoque;
 	private int EAN;
@@ -96,12 +100,21 @@ public class Produto implements EntityBase, Serializable {
 		item = new ArrayList<Item>();
 	}
 
+	
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getNota() {
+		return nota;
+	}
+
+	public void setNota(int nota) {
+		this.nota = nota;
 	}
 
 	public String getNome() {

@@ -81,6 +81,7 @@ public class ProdutoBo {
 
 	public String novo(Produto produto) throws Exception {
 		produto.setSku(gerarSku(produto));
+		produto.setNota(5);
 		produto.setDataCadastro(LocalDate.now());
 		if (list("nome", produto).size() > 0) {
 			throw new Exception("Já existe um produto cadastrado com esse nome!");

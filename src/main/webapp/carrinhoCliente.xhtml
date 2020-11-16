@@ -30,7 +30,7 @@
 								<p:graphicImage styleClass="image"
 									style="width: 200px;height: 250px;" library="imagem"
 									name="#{item.produto.imagem}" />
-								<p:rating value="#{item.quantidade}" readonly="true" />
+								<p:rating value="#{item.produto.nota}" readonly="true" />
 								<h:outputText style="text-align: left;"
 									value="Categoria: #{item.produto.categoria.nome}" />
 								<h:outputText style="text-align: left;"
@@ -54,7 +54,7 @@
 										style="width: 200px;height: 250px;padding: 20px;"
 										library="imagem" name="#{item.produto.imagem}" />
 
-									<p:rating value="#{item.quantidade}" style="text-align:center;"
+									<p:rating value="#{item.produto.nota}" style="text-align:center;"
 										readonly="true" />
 								</div>
 								<div style="float: center" class="ui-g-6">
