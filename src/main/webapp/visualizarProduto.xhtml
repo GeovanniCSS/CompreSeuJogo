@@ -23,10 +23,10 @@
 							<p:panel>
 								<h1>#{produtoBean.produto.nome}</h1>
 								<ul>
-									<li class="textoProduto">Preço:
+									<li style="font-size: 1.2em; text-align: left;">Preço:
 										#{produtoBean.produto.valor}</li>
-										
-									<li class="textoProduto">Descrição:
+
+									<li style="font-size: 1.2em; text-align: left;">Descrição:
 										#{produtoBean.produto.descricao}</li>
 								</ul>
 							</p:panel>
@@ -35,7 +35,7 @@
 					<div style="float: right;" class="ui-g-3">
 						<p:panel>
 							<h:outputLabel value="Quantidade " for="spi" />
-							<p:spinner id="spi" size="1"
+							<p:spinner id="spi" size="1" min="0" max="#{produtoBean.produto.quantEstoque}"
 								value="#{produtoBean.produto.quantConsulta}" />
 							<br />
 							<br />

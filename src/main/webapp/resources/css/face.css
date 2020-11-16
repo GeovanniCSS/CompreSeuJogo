@@ -35,17 +35,7 @@
 	padding-bottom: 1em;
 }
 
-html, body {
-	margin: 0;
-	padding: 0;
-	height: 100%;
-	background: white;
-}
 
-.textoProduto {
-	font-size: 1.2em;
-	text-align: left;
-}
 
 .dimensao {
 	width: 200px;
@@ -57,23 +47,6 @@ html, body {
 .fonteLogin {
 	padding: 20px;
 	font-size: 1.6em;
-}
-
-.inputLogin {
-	size: 1000px;
-}
-
-.loginCorpo {
-	width: 1340px;
-	height: 450px;
-	text-align: center;
-}
-
-.lBotao {
-	padding: 10px 10px;
-	border: 10px;
-	color: red;
-	background-color: gray;
 }
 
 .menu {

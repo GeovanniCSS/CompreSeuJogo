@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import compreseujogo.facade.Facade;
@@ -15,20 +15,21 @@ import compreseujogo.model.entity.Sexo;
 import compreseujogo.model.entity.Vendedor;
 import compreseujogo.viacep.WebServiceCep;
 
-@ManagedBean(name = "vendedorBean")
-@RequestScoped
-public class VendedorController implements Serializable {
+@ManagedBean(name = "UseVendedorBean")
+@SessionScoped
+public class UseVendedorBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Vendedor vendedor;
 	private List<Vendedor> lista;
-	private List <Estado> estados;
-	
+	private List<Estado> estados;
+	private boolean logado;
+
 	public void excluir(Vendedor vendedor) {
-		
+
 	}
-	
+
 	public Sexo[] getSexo() {
 		return Sexo.values();
 	}
@@ -44,7 +45,7 @@ public class VendedorController implements Serializable {
 	public void setVendedor(Vendedor vendedor) {
 		this.vendedor = vendedor;
 	}
-	
+
 	public List<Estado> getEstados() {
 		return estados;
 	}
@@ -56,7 +57,7 @@ public class VendedorController implements Serializable {
 	public List<Vendedor> getLista() throws Exception {
 		Facade facade = new Facade();
 		lista = facade.listaVendedor(vendedor);
-		
+
 		return lista;
 	}
 
@@ -64,7 +65,7 @@ public class VendedorController implements Serializable {
 		this.lista = lista;
 	}
 
-	public VendedorController() {
+	public UseVendedorBean() {
 		vendedor = new Vendedor();
 		lista = new ArrayList<Vendedor>();
 	}
@@ -90,13 +91,12 @@ public class VendedorController implements Serializable {
 		}
 		return lista;
 	}
-	
+
 	public String alterar(Vendedor v) {
 		this.vendedor = v;
 		return "alterarVendedor.xhtml";
 	}
-		
-	
+
 	public void salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
@@ -107,12 +107,12 @@ public class VendedorController implements Serializable {
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
-		
+
 		vendedor = new Vendedor();
 	}
-	
+
 	public String atualizarStauts() {
-	
+
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		try {
@@ -122,8 +122,17 @@ public class VendedorController implements Serializable {
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
-		
+
 		return "listaVendedor.xhtml";
-		
+
 	}
+
+	public boolean isLogado() {
+		return logado;
+	}
+
+	public void setLogado(boolean logado) {
+		this.logado = logado;
+	}
+
 }
