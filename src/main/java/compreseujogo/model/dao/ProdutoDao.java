@@ -32,7 +32,10 @@ public class ProdutoDao {
 		} else if (parametro.equals("EAN")) {
 			q = em.createQuery("SELECT p FROM Produto p WHERE p.EAN = :id");
 			q.setParameter("id", produto.getEAN());
-		}
+		} else if (parametro.equals("listaIndex")) {
+			q = em.createQuery("SELECT p FROM Produto p WHERE p.categoria.ativo = true AND p.plataforma.ativo = true AND "+
+					   "p.marca.ativo = true AND p.imagem != null AND p.ativo = true AND p.quantEstoque > 0");
+		} 
 		return q.getResultList();
 	}
 }
