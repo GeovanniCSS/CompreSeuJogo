@@ -37,6 +37,7 @@ public class ProdutoController implements Serializable {
 	private List<Marca> marcas;
 	private List<Plataforma> plataformas;
 	private Part arquivo;
+	private String filtro;
 	private String destino;
 
 	public ProdutoController() {
@@ -63,7 +64,18 @@ public class ProdutoController implements Serializable {
 		}
 		return null;
 	}
-
+	
+	public String buscar(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			lista = facade.listaProduto(filtro, null);
+			return "index.xhtml?faces-redirect=true";
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		return null;
+	}	
 	public List<String> complete12(String busca) {
 		List<String> resultados = new ArrayList<String>();
 		for (Produto produtos : lista) {
