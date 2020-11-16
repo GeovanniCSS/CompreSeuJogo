@@ -6,36 +6,49 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="face.css" />
 	<link rel="shortcut icon" type="image/x-icon"
-          href="#{resource['imagem/logoN.png']}" />
+		href="#{resource['imagem/logoN.png']}" />
+	<style>
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background: black;
+}
+</style>
+	<h:outputStylesheet library="webapp" />
+	<title>Login administrador</title>
 </h:head>
-<ui:composition template="/WEB-INF/template/template.xhtml">
-	<ui:define name="tituloJanela">Compre seu jogo | Login</ui:define>
-	<ui:define name="conteudo">
-		<h:form>
-			<p:growl autoUpdate="true" life="3000" />
-			<div id="main" align="center">
-				<p:panelGrid columns="1" layout="grid" styleClass="loginCorpo">
-					<p:graphicImage style="width: 75px;height:75px;"
-						library="imagem" name="logoN.png" />
-					<h3 align="center">Login</h3>
-					<p:panelGrid columns="2" layout="grid" styleClass="login">
-						<p:outputLabel value="E-mail" for="email" />
-						<p:inputText id="email"
-							value="#{UseAdmBean.administrador.email}"
-							placeholder="Digite seu e-mail" required="true" />
-						<p:outputLabel value="Senha" for="senha" />
-						<p:password id="senha"
-							value="#{UseAdmBean.administrador.senha}"
-							placeholder="Digite sua senha" required="true" />
-						<p:commandButton value="Cadastro"
-							url="cadastroClienteSite.xhtml?faces-redirect=true" update ="@form" immediate="true"/>
-						<p:commandButton value="Entrar"
-							action="#{UseAdmBean.login()}" update="@form" />
-					</p:panelGrid>
-				</p:panelGrid>
-			</div>
+<h:body>
+	<div style="background: black">
+		<h:form id="form">
+			<p:growl id="msg" autoUpdate="true" life="3000" />
+			<p:panel style="width: 1340px;height: 450px;text-align: center;">
+			<p:commandLink action="index.xhtml?faces-redirec=true">  
+				<p:graphicImage style="float:center ;width: 200px;height:200px;"
+					library="imagem" name="logoN.png" />
+				</p:commandLink>	
+				<br />
+				<p:outputLabel styleClass="fonteLogin" value="E-mail:" />
+				<p:inputText styleClass="inputLogin" style="margin: 10px 0px 5px;"
+					id="email" value="#{UseAdmBean.administrador.email}" />
+				<br />
+				<p:outputLabel styleClass="fonteLogin" value="Senha:" />
+				<p:password styleClass="inputLogin" id="senha"
+					value="#{UseAdmBean.administrador.senha}" />
+				<br />
+				<br />
+				<p:commandButton style="padding: 5px 5px;border: 10px;margin:5px;"
+					update="@form" value="Entrar" action="#{UseAdmBean.login()}" />
+			</p:panel>
 		</h:form>
-	</ui:define>
-</ui:composition>
+		<div id="footer">
+			<ui:insert name="footer">
+				<ui:include src="/WEB-INF/template/footerPagina.xhtml" />
+			</ui:insert>
+		</div>
+	</div>
+</h:body>
 </html>
