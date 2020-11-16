@@ -243,6 +243,10 @@ public class Facade {
 	}
 
 	public List<Produto> listaProduto(String parameter, Produto produto) throws Exception {
+		if(produto.equals(null)){
+		return produtoBo.listSearch(parameter);
+		} else {
 		return produtoBo.list(parameter, produto);
+		}
 	}
 }
