@@ -92,7 +92,7 @@ public class ProdutoController implements Serializable {
 	public void importa() {
 		FacesContext context = FacesContext.getCurrentInstance();
 
-		String conteudo = getFileName(arquivo.getName() + ".jpg");
+		String conteudo = getFileName(arquivo.getName() + ".png");
 		produto.setImagem(conteudo);
 		context.addMessage(null, new FacesMessage("Salvou a imagem" + conteudo, FacesMessage.FACES_MESSAGES));
 		try {

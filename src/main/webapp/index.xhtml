@@ -14,16 +14,16 @@
 			<p:dataGrid var="produto" value="#{produtoBean.lista}" columns="4"
 				layout="grid" rows="12" paginator="true" id="produto"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				currentPageReportTemplate="" rowsPerPageTemplate="6,12,16">
+				currentPageReportTemplate=" " rowsPerPageTemplate="8,16,32">
 				<p:panel style="text-align:center">
 					<h:panelGrid columns="1" style="width:100%">
-						<p:graphicImage style="width: 150px;height: 150px;"
+						<p:graphicImage style="width: 200px;height: 250px;"
 							library="imagem" name="#{produto.imagem}" />
 						<p:outputLabel value="#{produto.nome}" />
 						<p:outputLabel value="#{produto.plataforma.nome}" />
 						<p:outputLabel value="#{produto.categoria.nome}" />
 						<p:rating value="#{produto.quantConsulta}" readonly="true" />
-						<p:outputLabel value=" Valor: #{produto.valor}" />
+						<p:outputLabel value=" Preço: R$#{produto.valor}" />
 						<p:commandLink update=":form" title="Ver Produto"
 							action="#{produtoBean.selecionar(produto)}">
 							<h:outputText styleClass="pi pi-search" style="margin:0 auto;" />

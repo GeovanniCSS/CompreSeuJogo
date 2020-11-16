@@ -14,7 +14,6 @@
 			<h:inputHidden value="#{produtoBean.produto.sku}" />
 			<h:inputHidden value="#{produtoBean.produto.dataCadastro}" />
 			<h:inputHidden value="#{produtoBean.produto.imagem}" />
-			<h:inputHidden value="#{produtoBean.produto.nota}" />
 			<p:panelGrid columns="2" layout="grid">
 				<f:facet name="header">Dados do Produto</f:facet>
 				<f:facet name="footer">
@@ -47,8 +46,7 @@
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 						</p:inputText>
 						<p:message for="date" />
-						<h:outputText value="#{produtoBean.produto.dataLancamento}">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
+						<h:outputText value=" ">
 						</h:outputText>
 						<p:outputLabel for="categoria" value="Categoria" />
 						<p:selectOneMenu id="categoria"

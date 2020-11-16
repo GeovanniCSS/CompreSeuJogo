@@ -25,11 +25,13 @@ public class ItemCarrinhoBo extends ItemBo {
 		}
 	}
 
-	public String novo(ItemCarrinho item) throws Exception {
+	public ItemCarrinho novo(ItemCarrinho item) throws Exception {
 		if (item.getProduto().getQuantEstoque() < item.getQuantidade()) {
 			throw new Exception("No momento não temos essa quantidade do produto em estoque");
 		}
-		return saveOrUpdate(item);
+		item.setValor(item.getProduto().getValor()*item.getQuantidade());
+		saveOrUpdate(item);
+		return item;
 	}
 	
 	public void validarQuantidade(List<ItemCarrinho> lista) throws Exception {

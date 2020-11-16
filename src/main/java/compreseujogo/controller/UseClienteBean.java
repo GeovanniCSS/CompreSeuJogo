@@ -44,6 +44,12 @@ public class UseClienteBean implements Serializable {
 		return null;
 	}
 
+	public String logout() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		this.logado = false;
+		return "index.xhtml?faces-redirect=true";
+	}
+
 	public void salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();

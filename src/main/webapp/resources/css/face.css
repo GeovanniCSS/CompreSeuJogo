@@ -18,6 +18,7 @@
 
 .sample-layout {
 	margin: 0;
+	text-align: left;
 }
 
 .sample-layout>div {

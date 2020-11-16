@@ -30,6 +30,75 @@ public class UseVendedorBean implements Serializable {
 
 	}
 
+	public String login() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			vendedor = facade.loginVendedor(vendedor);
+			context.addMessage(null, new FacesMessage("Olá " + vendedor, FacesMessage.FACES_MESSAGES));
+			this.logado = true;
+			return "index.xhtml?faces-redirect=true";
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null));
+		}
+		return null;
+	}
+
+	public String logout() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		this.logado = false;
+		return "index.xhtml?faces-redirect=true";
+	}
+
+	public UseVendedorBean() {
+		vendedor = new Vendedor();
+		lista = new ArrayList<Vendedor>();
+	}
+
+	public void buscaCep() {
+		WebServiceCep w = WebServiceCep.searchCep(vendedor.getCep());
+
+		vendedor.setCidade(w.getCidade());
+		vendedor.setEndereco(w.getLogradouro());
+		// vendedor.setEstado(w.getUf());
+		vendedor.setBairro(w.getBairro());
+
+		System.out.println(w.getCidade());
+	}
+
+	public List<Vendedor> carregarLista() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			return facade.listaVendedor(vendedor);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		return lista;
+	}
+
+	public void salvar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			context.addMessage(null,
+					new FacesMessage(facade.salvarVendedor(this.vendedor), FacesMessage.FACES_MESSAGES));
+			vendedor = new Vendedor();
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+
+		vendedor = new Vendedor();
+	}
+
+	public boolean isLogado() {
+		return logado;
+	}
+
+	public void setLogado(boolean logado) {
+		this.logado = logado;
+	}
+
 	public Sexo[] getSexo() {
 		return Sexo.values();
 	}
@@ -64,75 +133,4 @@ public class UseVendedorBean implements Serializable {
 	public void setLista(List<Vendedor> lista) {
 		this.lista = lista;
 	}
-
-	public UseVendedorBean() {
-		vendedor = new Vendedor();
-		lista = new ArrayList<Vendedor>();
-	}
-
-	public void buscaCep() {
-		WebServiceCep w = WebServiceCep.searchCep(vendedor.getCep());
-
-		vendedor.setCidade(w.getCidade());
-		vendedor.setEndereco(w.getLogradouro());
-		// vendedor.setEstado(w.getUf());
-		vendedor.setBairro(w.getBairro());
-
-		System.out.println(w.getCidade());
-	}
-
-	public List<Vendedor> carregarLista() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		Facade facade = new Facade();
-		try {
-			return facade.listaVendedor(vendedor);
-		} catch (Exception e) {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
-		}
-		return lista;
-	}
-
-	public String alterar(Vendedor v) {
-		this.vendedor = v;
-		return "alterarVendedor.xhtml";
-	}
-
-	public void salvar() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		Facade facade = new Facade();
-		try {
-			context.addMessage(null,
-					new FacesMessage(facade.salvarVendedor(this.vendedor), FacesMessage.FACES_MESSAGES));
-			vendedor = new Vendedor();
-		} catch (Exception e) {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
-		}
-
-		vendedor = new Vendedor();
-	}
-
-	public String atualizarStauts() {
-
-		FacesContext context = FacesContext.getCurrentInstance();
-		Facade facade = new Facade();
-		try {
-			context.addMessage(null,
-					new FacesMessage(facade.atualizarVendedor(this.vendedor), FacesMessage.FACES_MESSAGES));
-			vendedor = new Vendedor();
-		} catch (Exception e) {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
-		}
-
-		return "listaVendedor.xhtml";
-
-	}
-
-	public boolean isLogado() {
-		return logado;
-	}
-
-	public void setLogado(boolean logado) {
-		this.logado = logado;
-	}
-
 }

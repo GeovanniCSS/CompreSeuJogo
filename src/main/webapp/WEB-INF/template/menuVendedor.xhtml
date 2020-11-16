@@ -23,10 +23,11 @@
 							name="logoN.png" />
 					</p:column>
 					<p:column>
-						<p:menuButton icon="pi pi-user" style="float:right;"
+						<p:menuButton icon="pi pi-user"
+							style="float:right;padding: 10px 5px;"
 							value="#{UseVendedorBean.vendedor.nome}">
 							<p:menuitem value="Sair" icon="pi pi-sign-out"
-								 />
+								action="#{UseVendedorBean.logout()}" />
 						</p:menuButton>
 					</p:column>
 				</p:panelGrid>

@@ -8,7 +8,7 @@
 <h:head>
 </h:head>
 <ui:composition template="/WEB-INF/template/template.xhtml">
-	<ui:define name="tituloJanela">Cadastro administrador</ui:define>
+	<ui:define name="tituloJanela">Carrinho</ui:define>
 	<ui:define name="conteudo">
 		<h:form id="form">
 			<p:growl id="msg" autoUpdate="true" life="3000" />
@@ -21,51 +21,82 @@
 					<p style="font-size: 1.2em;">Itens:
 						#{UseClienteBean.cliente.carrinho.item.size()}</p>
 				</p:panel>
-				<p:dataView var="item" value="#{UseClienteBean.cliente.carrinho.item}"
+				<p:dataView var="item"
+					value="#{UseClienteBean.cliente.carrinho.item}"
 					gridIcon="pi pi-th-large" listIcon="pi pi-bars">
-					<p:dataViewGridItem>
+					<p:dataViewGridItem columns="4">
 						<p:panel header="#{item.produto.nome}" style="text-align:center">
-							<h:panelGrid columns="1" style="width:100%">
+							<h:panelGrid columns="1" style="width:100%;text-align:center;">
 								<p:graphicImage styleClass="image"
-									style="width: 75px;height: 75px;" library="imagem"
+									style="width: 200px;height: 250px;" library="imagem"
 									name="#{item.produto.imagem}" />
-								<h:outputText value="#{item.produto.categoria.nome}" />
-								<h:outputText value="#{item.produto.valor}" />
-								<p:commandLink update=":form:msg" title="Remover">
-									<h:outputText styleClass="ui-icon pi pi-block"
-										style="margin:0 auto;" />
-								</p:commandLink>
+								<p:rating value="#{item.quantidade}" readonly="true" />
+								<h:outputText style="text-align: left;"
+									value="Categoria: #{item.produto.categoria.nome}" />
+								<h:outputText style="text-align: left;"
+									value="Plataforma: #{item.produto.plataforma.nome}" />
+								<h:outputText rendered="#{item.quantidade == 1}"
+									value="Subtotal
+													(#{item.quantidade} item): R$#{item.valor}" />
+								<h:outputText rendered="#{item.quantidade > 1}"
+									value="Subtotal
+													(#{item.quantidade} itens): R$#{item.valor}" />
+								<p:commandButton value="Remover do Carrinho" id="ex"
+									style="margin-center:20px;" update=":form" />
 							</h:panelGrid>
 						</p:panel>
 					</p:dataViewGridItem>
 					<p:dataViewListItem>
-						<h:panelGrid columns="3" style="width:100%"
-							columnClasses="logo,detail">
-							<p:graphicImage styleClass="image"
-								style="width: 75px;height: 75px;" library="imagem"
-								name="#{item.produto.imagem}" />
-							<p:outputPanel>
-								<h:panelGrid columns="2" cellpadding="5">
-									<h:outputText value="Id:" />
-									<h:outputText value="#{item.produto.nome}" style="font-weight: bold" />
-									<h:outputText value="Year:" />
-									<h:outputText value="#{item.produto.categoria.nome}"
-										style="font-weight: bold" />
-									<h:outputText value="Color:" />
-									<h:outputText value="#{item.produto.valor}"
-										style="font-weight: bold" />
-								</h:panelGrid>
-							</p:outputPanel>
-							<p:commandLink update=":form:msg" title="View Detail">
-								<h:outputText styleClass="ui-icon pi pi-search"
-									style="margin:0 auto;" />
-							</p:commandLink>
-						</h:panelGrid>
+						<p:panel>
+							<div class="ui-g">
+								<div class="ui-g-3">
+									<p:graphicImage
+										style="width: 200px;height: 250px;padding: 20px;"
+										library="imagem" name="#{item.produto.imagem}" />
+
+									<p:rating value="#{item.quantidade}" style="text-align:center;"
+										readonly="true" />
+								</div>
+								<div style="float: center" class="ui-g-6">
+									<div style="text-align: center">
+										<p:panel>
+											<h1>#{item.produto.nome}</h1>
+											<ul>
+												<li style="font-size: 1.2em; text-align: left;">Preço
+													unitário: R$#{item.produto.valor}</li>
+												<li style="font-size: 1.2em; text-align: left;">Categoria:
+													#{item.produto.categoria.nome}</li>
+												<li style="font-size: 1.2em; text-align: left;">Plataforma:
+													#{item.produto.plataforma.nome}</li>
+												<li style="font-size: 1.2em; text-align: left;">Marca:
+													#{item.produto.marca.nome}</li>
+												<li style="font-size: 1.2em; text-align: left;">Descrição:
+													#{item.produto.descricao}</li>
+												<li style="font-size: 1.2em; text-align: left;"><h:outputText
+														rendered="#{item.quantidade == 1}"
+														value="Subtotal
+													(#{item.quantidade} item): R$#{item.valor}" />
+													<h:outputText rendered="#{item.quantidade > 1}"
+														value="Subtotal
+													(#{item.quantidade} itens): R$#{item.valor}" /></li>
+											</ul>
+										</p:panel>
+									</div>
+								</div>
+								<div style="float: right;" class="ui-g-3">
+									<p:commandButton value="Remover do Carrinho" id="add"
+										style="margin-center:20px;" update=":form" />
+									<br /> <br />
+									<p:commandButton value="Ver produto"
+										style="margin-center:20px;" update=":form" />
+								</div>
+							</div>
+						</p:panel>
 					</p:dataViewListItem>
 				</p:dataView>
 			</h:panelGroup>
 			<h:panelGroup
-				rendered="#{clienteBean.cliente.carrinho.item.size() != 0}">
+				rendered="#{UseClienteBean.cliente.carrinho.item.size() == 0}">
 				<h2>Desculpe mas seu carrinho está vazio</h2>
 			</h:panelGroup>
 		</h:form>

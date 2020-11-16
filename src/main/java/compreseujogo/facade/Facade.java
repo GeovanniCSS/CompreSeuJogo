@@ -120,9 +120,7 @@ public class Facade {
 		vendedorBo.novaPessoa(vendedor, Vendedor.class);
 		return vendedorBo.createDepency(vendedor);
 	}
-	public String salvarItemCarrinho(ItemCarrinho item) throws Exception {
-		return itemCarrinhoBo.novo(item);
-	}
+	
 	public String atualizarVendedor(Vendedor vendedor) throws Exception {
 		return vendedorBo.desativarAtivar(vendedor);
 	}
@@ -176,9 +174,7 @@ public class Facade {
 	}
 
 	public String adicionarItemCarrinho(ItemCarrinho item, Carrinho carrinho) throws Exception {
-		itemCarrinhoBo.novo(item);
-		carrinhoBo.aumentorValor(item, carrinho);
-		return "";
+		return carrinhoBo.aumentorValor(itemCarrinhoBo.novo(item), carrinho);
 	}
 
 	public List<Marca> listaMarca(Marca marca) throws Exception {

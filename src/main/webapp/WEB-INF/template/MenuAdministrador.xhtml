@@ -22,8 +22,10 @@
 						<p:graphicImage style="width: 50px;height:50px;" library="imagem"
 							name="logoN.png" />
 					</p:column>
-					<p:column >
-						<p:menuButton icon="pi pi-user" style="float:right;" value="#{UseAdmBean.administrador.nome}">
+					<p:column>
+						<p:menuButton icon="pi pi-user"
+							style="float:right;padding: 10px 5px;"
+							value="#{UseAdmBean.administrador.nome}">
 							<p:menuitem value="Sair" icon="pi pi-sign-out"
 								action="#{UseAdmBean.logout()}" />
 						</p:menuButton>

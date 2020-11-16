@@ -58,9 +58,9 @@ public class CarrinhoBo {
 		saveOrUpdate(carrinho);
 		return carrinho;
 	}
-	public void aumentorValor(Item item, Carrinho carrinho) throws Exception {
+	public String aumentorValor(Item item, Carrinho carrinho) throws Exception {
 		carrinho.setValor(+item.getValor());
-		saveOrUpdate(carrinho);
+		return saveOrUpdate(carrinho);
 	}
 
 	public void zerar(Carrinho carrinho) throws Exception {

@@ -48,7 +48,7 @@ public class UseAdmBean implements Serializable {
 	public String logout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		this.logado = false;
-		return "testeLogin.xhtml?faces-redirect=true";
+		return "index.xhtml?faces-redirect=true";
 	}
 
 	public Administrador getAdministrador() {
