@@ -11,55 +11,62 @@
 	<h:outputStylesheet library="css" name="face.css" />
 	<h:outputStylesheet name="primeicons/primeicons.css"
 		library="primefaces" />
-	<title>Site de jogos</title>
 </h:head>
-
 <body>
 	<ui:composition>
 		<div id="header" style="padding: 200px, 10px">
-			<h2 align="center">Seus jogos aqui</h2>
 			<h:form>
-			<p:growl id="messages"/>
- 
-    <p:menubar>
-        <p:submenu label="Adicionar" icon="pi pi-file">
-            <p:menuitem rendered="" value="Categoria" url="cadastroCategoria.xhtml?faces-redirect=true" />
-            <p:separator />
-             <p:menuitem value="Marca" url="cadastroMarca.xhtml?faces-redirect=true" />
-            <p:separator />
-             <p:menuitem value="Plataforma" url="cadastroPlataforma.xhtml?faces-redirect=true" />
-            <p:separator />
-             <p:menuitem value="Produto" url="cadastroProduto.xhtml?faces-redirect=true" />
-            <p:separator />
-        </p:submenu>
- 
-        <p:submenu label="Edit" icon="pi pi-pencil">
-            <p:menuitem value="Undo" url="#" icon="pi pi-angle-double-left" />
-            <p:menuitem value="Redo" url="#" icon="pi pi-angle-double-right" />
-        </p:submenu>
- 
-        <p:submenu label="Help" icon="pi pi-question">
-            <p:menuitem value="Contents" url="#" />
-            <p:submenu label="Search" icon="pi pi-search">
-                <p:submenu label="Text">
-                    <p:menuitem value="Workspace" url="#" />
-                </p:submenu>
-                <p:menuitem value="File" url="#" />
-            </p:submenu>
-        </p:submenu> 
-        <p:menuitem value="Quit" url="http://www.primefaces.org" icon="pi pi-times" />
-
-     	<f:facet name="options">
-        	<p:commandButton type="button" value="Vendas" icon="pi pi-tag"
-        					 action="vendasVendedor.xhtml?faces-redirect=true"/>
-        </f:facet>
- 
-        <f:facet name="options">
-            <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
-            <p:commandButton type="button" value="Logout" icon="pi pi-home" />
-        </f:facet>
-      
-    </p:menubar>
+				<p:growl id="messages" />
+				<p:panelGrid columns="2" layout="grid">
+					<p:column>
+						<p:graphicImage style="width: 50px;height:50px;" library="imagem"
+							name="logoN.png" />
+					</p:column>
+					<p:column>
+						<p:menuButton icon="pi pi-user" style="float:right;"
+							value="#{UseVendedorBean.vendedor.nome}">
+							<p:menuitem value="Sair" icon="pi pi-sign-out"
+								 />
+						</p:menuButton>
+					</p:column>
+				</p:panelGrid>
+				<p:menubar>
+					<p:submenu label="Perfil" icon="pi pi-pencil">
+						<p:menuitem value="Editar" url="#" />
+						<p:menuitem value="Redefinir senha" url="#" />
+					</p:submenu>
+					<p:submenu label="Gerência" icon="pi pi-cog">
+						<p:menuitem value="Categoria"
+							url="listaCategoria.xhtml?faces-redirect=true" />
+						<p:separator />
+						<p:menuitem value="Marca"
+							url="listaMarca.xhtml?faces-redirect=true" />
+						<p:separator />
+						<p:menuitem value="Plataforma"
+							url="listaPlataforma.xhtml?faces-redirect=true" />
+						<p:separator />
+						<p:menuitem value="Produto" action="#{produtoBean.crud()}" />
+						<p:separator />
+					</p:submenu>
+					<p:submenu label="Administração" icon="pi pi-users">
+						<p:menuitem value="Administrador"
+							url="listaAdministrador.xhtml?faces-redirect=true" />
+						<p:separator />
+						<p:menuitem value="Vendedor"
+							url="listaVendedor.xhtml?faces-redirect=true" />
+						<p:separator />
+						<p:menuitem value="Cliente"
+							url="listaCliente.xhtml?faces-redirect=true" />
+						<p:separator />
+					</p:submenu>
+					<p:submenu label="Parceiros" icon="pi pi-briefcase">
+						<p:menuitem value="Transportadora"
+							url="listaTransportadora.xhtml?faces-redirect=true" />
+						<p:separator />
+						<p:menuitem value="Fornecedor"
+							url="listaFornecedor.xhtml?faces-redirect=true" />
+					</p:submenu>
+				</p:menubar>
 			</h:form>
 		</div>
 	</ui:composition>

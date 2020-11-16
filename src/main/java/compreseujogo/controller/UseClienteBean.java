@@ -37,7 +37,7 @@ public class UseClienteBean implements Serializable {
 			cliente = facade.loginCliente(cliente);
 			context.addMessage(null, new FacesMessage("Olá " + cliente, FacesMessage.FACES_MESSAGES));
 			this.logado = true;
-			return "testeLogin.xhtml?faces-redirect=true";
+			return "index.xhtml?faces-redirect=true";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null));
 		}

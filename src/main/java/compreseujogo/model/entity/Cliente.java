@@ -113,14 +113,7 @@ public class Cliente extends Pessoa {
 
 	@Override
 	public String toString() {
-		return "Cliente [carrinho=" + carrinho + ", listaDesejos=" + listaDesejos + ", avaliacao=" + avaliacao
-				+ ", venda=" + venda + ", getId()=" + getId() + ", getNome()=" + getNome() + ", getSobrenome()="
-				+ getSobrenome() + ", getEmail()=" + getEmail() + ", getSenha()=" + getSenha()
-				+ ", getDataNascimento()=" + getDataNascimento() + ", getDataCadastro()=" + getDataCadastro()
-				+ ", getEndereco()=" + getEndereco() + ", getTelefone()=" + getTelefone() + ", getCep()=" + getCep()
-				+ ", getCpf()=" + getCpf() + ", isAtivo()=" + isAtivo() + ", getCidade()=" + getCidade()
-				+ ", getBairro()=" + getBairro() + ", getSexo()=" + getSexo() + ", getEstado()=" + getEstado()
-				+ ", toString()=" + super.toString() + ", getClass()=" + getClass() + "]";
+		return getNome();
 	}
 
 }

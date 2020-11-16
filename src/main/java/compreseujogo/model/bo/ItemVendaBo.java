@@ -1,5 +1,6 @@
 package compreseujogo.model.bo;
 
+import compreseujogo.model.dao.ItemVendaDao;
 import compreseujogo.model.entity.ItemCarrinho;
 import compreseujogo.model.entity.ItemVenda;
 import compreseujogo.model.entity.Venda;

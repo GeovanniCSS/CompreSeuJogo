@@ -8,15 +8,16 @@
 <h:head>
 </h:head>
 <ui:composition template="/WEB-INF/template/template.xhtml">
-	<ui:define name="tituloJanela">Compre seu jogo</ui:define>
+	<ui:define name="tituloJanela">#{produtoBean.produto.nome}</ui:define>
 	<ui:define name="conteudo">
 		<h:form id="form">
-			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+			<p:growl id="msg" showDetail="true" life="3000" />
 			<p:panel>
 				<div class="ui-g">
 					<div class="ui-g-3">
-						<p:graphicImage styleClass="dimensao" library="imagem"
-							name="#{produtoBean.produto.imagem}" />
+						<p:graphicImage
+							style="width: 200px;height: 200px;padding: 20px;float: left;"
+							library="imagem" name="#{produtoBean.produto.imagem}" />
 					</div>
 					<div style="float: center" class="ui-g-6">
 						<div style="text-align: center">
@@ -35,13 +36,14 @@
 					<div style="float: right;" class="ui-g-3">
 						<p:panel>
 							<h:outputLabel value="Quantidade " for="spi" />
-							<p:spinner id="spi" size="1" min="0" max="#{produtoBean.produto.quantEstoque}"
-								value="#{produtoBean.produto.quantConsulta}" />
+							<p:spinner id="spi" size="1" min="0"
+								max="#{produtoBean.produto.quantEstoque}"
+								value="#{itemCarrinhoBean.item.quantidade}" />
 							<br />
 							<br />
 							<p:commandButton value="Adicionar ao Carrinho" id="add"
-								style="margin-center:20px;"
-								action="#{produtoBean.carregar(produto)}" />
+								style="margin-center:20px;" update=":form"
+								action="#{itemCarrinhoBean.salvar(produtoBean.produto, UseClienteBean.cliente)}" />
 						</p:panel>
 					</div>
 				</div>

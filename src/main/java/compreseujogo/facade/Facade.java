@@ -120,7 +120,9 @@ public class Facade {
 		vendedorBo.novaPessoa(vendedor, Vendedor.class);
 		return vendedorBo.createDepency(vendedor);
 	}
-
+	public String salvarItemCarrinho(ItemCarrinho item) throws Exception {
+		return itemCarrinhoBo.novo(item);
+	}
 	public String atualizarVendedor(Vendedor vendedor) throws Exception {
 		return vendedorBo.desativarAtivar(vendedor);
 	}
@@ -143,7 +145,7 @@ public class Facade {
 
 	public String salvarCliente(Cliente cliente) throws Exception {
 		clienteBo.novaPessoa(cliente, Cliente.class);
-		return clienteBo.saveOrUpdate(cliente);
+		return clienteBo.createDepency(cliente);
 	}
 
 	public String salvarCategoria(Categoria categoria) throws Exception {

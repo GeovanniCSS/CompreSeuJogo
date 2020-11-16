@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
 
@@ -24,7 +24,7 @@ import compreseujogo.model.entity.Marca;
 import compreseujogo.model.entity.Plataforma;
 import compreseujogo.model.entity.Produto;
 
-@RequestScoped
+@SessionScoped
 @ManagedBean(name = "produtoBean")
 public class ProdutoController implements Serializable {
 
@@ -92,7 +92,7 @@ public class ProdutoController implements Serializable {
 	public void importa() {
 		FacesContext context = FacesContext.getCurrentInstance();
 
-		String conteudo = getFileName(arquivo.getName() + ".png");
+		String conteudo = getFileName(arquivo.getName() + ".jpg");
 		produto.setImagem(conteudo);
 		context.addMessage(null, new FacesMessage("Salvou a imagem" + conteudo, FacesMessage.FACES_MESSAGES));
 		try {

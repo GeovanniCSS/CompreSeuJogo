@@ -15,9 +15,9 @@ public class ClienteTest {
 	@Test
 	public void novoCliente() throws Exception {
 		Facade facade = new Facade();
-		Cliente cliente = new Cliente(0, "Jennifer", "Luciana Isabela Duarte", "geea@vnews.com.br", "1234", null,
-				"Praça General Osório 45", "(41) 99108-8676", "80020-930", "293.416.029-76", true, "Curitiba", "Centro",
-				Sexo.Masculino, null, null, Estado.PR);
+		Cliente cliente = new Cliente(0, "Jennifer", "Luciana Isabela Duarte", "gea@vnews.com.br", "1234", null,
+				"Praça General Osório 45", "(41) 99108-8676", "80020-930", "094.920.590-70", true, "Curitiba", "Centro",
+				Sexo.Feminino, null, null, Estado.PR);
 		facade.salvarCliente(cliente);
 		boolean teste = false;
 		if (cliente.getId() > 0) {

@@ -31,13 +31,10 @@ public class ClienteBo extends PessoaBo<Cliente> {
 		cliente.setCarrinho(carrinhoBo.novo(cliente));
 		cliente.setListaDesejos(listaDesejosBo.novo(cliente));
 		try {
-			return saveOrUpdate(cliente) + "_cliente";
+			return saveOrUpdate(cliente);
 		} catch (Exception e) {
 			remove(cliente);
 			throw new Exception("Erro ao executar o cadastro" + cliente.getNome());
 		}
 	}
-	
-	
-
 }
