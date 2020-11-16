@@ -43,6 +43,15 @@ public class ProdutoBo {
 			throw new Exception(e.getMessage());
 		}
 	}
+	
+	public List<Produto> listSearch(String filter) throws Exception {
+		try {
+			ProdutoDao produtoDao = new ProdutoDao();
+			return produtoDao.listSearch(filter, filter);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
 
 	private void validarDados(Produto produto) throws Exception {
 		if (produto.getId() < 0) {
