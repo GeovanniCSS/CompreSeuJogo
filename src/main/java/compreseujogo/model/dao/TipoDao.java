@@ -20,6 +20,8 @@ public class TipoDao<T extends Tipo> {
 		} else if (parameter.equals("novo")) {
 			q = em.createQuery("SELECT t FROM  "+ classe.getSimpleName().toString()+" t WHERE t.nome = :nome");
 			q.setParameter("nome", tipo.getNome());
+		} else if (parameter.equals("combo")) {
+			q = em.createQuery("SELECT t FROM "+ classe.getSimpleName().toString()+" t WHERE t.ativo = true ORDER BY t.nome");
 		}
 		return q.getResultList();
 	}
