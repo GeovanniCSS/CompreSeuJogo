@@ -47,7 +47,7 @@ public class ProdutoBo {
 	public List<Produto> listSearch(String filter) throws Exception {
 		try {
 			ProdutoDao produtoDao = new ProdutoDao();
-			return produtoDao.listSearch(filter, filter);
+			return produtoDao.listSearch(filter);
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
