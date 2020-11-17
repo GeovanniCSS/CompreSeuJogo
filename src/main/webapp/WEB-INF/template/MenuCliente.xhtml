@@ -16,12 +16,20 @@
 	<div id="header" style="padding: 200px, 10px">
 		<h:form>
 			<p:growl id="messages" />
-			<p:panelGrid columns="2" layout="grid">
+			<p:panelGrid columns="3" layout="grid">
 				<p:column>
 					<h:commandLink action="index.xhtml?faces-redirect=true">
 						<p:graphicImage style="width: 50px;height:50px;" library="imagem"
 							name="logoN.png" />
 					</h:commandLink>
+				</p:column>
+				<p:column>
+					<p:inputText style="margin:1px 10px 1px 1px;"
+						value="#{produtoBean.filtro}" placeholder="Procurar" />
+					<p:commandButton action="#{produtoBean.telaPesquisa()}"
+						icon="pi pi-search">
+						<f:ajax execute="@this" render="@all" />
+					</p:commandButton>
 				</p:column>
 				<p:column>
 					<p:menuButton icon="pi pi-user"
@@ -70,12 +78,6 @@
 					url="comprasCliente.xhtml?faces-redirect=true">
 					<f:param name="i" value="3" />
 				</p:menuitem>
-
-				<f:facet name="options">
-					<p:inputText style="margin:1px 10px 1px 1px;"
-						placeholder="Procurar" />
-					<p:commandButton type="button" icon="pi pi-search" />
-				</f:facet>
 			</p:menubar>
 		</h:form>
 	</div>

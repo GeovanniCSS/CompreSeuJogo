@@ -25,7 +25,6 @@ import compreseujogo.model.bo.TransporteBo;
 import compreseujogo.model.bo.VendaBo;
 import compreseujogo.model.bo.VendedorBo;
 import compreseujogo.model.entity.Administrador;
-import compreseujogo.model.entity.Carrinho;
 import compreseujogo.model.entity.Categoria;
 import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.Empresa;
@@ -120,7 +119,7 @@ public class Facade {
 		vendedorBo.novaPessoa(vendedor, Vendedor.class);
 		return vendedorBo.createDepency(vendedor);
 	}
-	
+
 	public String atualizarVendedor(Vendedor vendedor) throws Exception {
 		return vendedorBo.desativarAtivar(vendedor);
 	}
@@ -174,6 +173,7 @@ public class Facade {
 	}
 
 	public String adicionarItemCarrinho(ItemCarrinho item) throws Exception {
+		item.setProduto(encontrarProduto(item.getProduto().getId()));
 		return carrinhoBo.aumentorValor(itemCarrinhoBo.novo(item), item.getCarrinho());
 	}
 
@@ -242,11 +242,15 @@ public class Facade {
 		return lista;
 	}
 
-	public List<Produto> listaProduto(String parameter, Produto produto) throws Exception {
-		if(produto.equals(null)){
-		return produtoBo.listSearch(parameter);
+	public List<Produto> listaProduto(String direcao, String parameter, Produto produto) throws Exception {
+		if (direcao.equals("")) {
+			return produtoBo.list(parameter, produto);
 		} else {
-		return produtoBo.list(parameter, produto);
+			return produtoBo.listSearch(parameter);
 		}
+	}
+
+	public Produto encontrarProduto(int id) {
+		return produtoBo.encontrar(id);
 	}
 }

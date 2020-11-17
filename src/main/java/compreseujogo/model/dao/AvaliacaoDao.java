@@ -17,8 +17,18 @@ public class AvaliacaoDao {
 		if (parameter.equals("Produto")) {
 			q = em.createQuery("SELECT a FROM Avaliacao a WHERE a.produto.id = :produto");
 			q.setParameter("produto", avaliacao.getProduto().getId());
+		} else if (parameter.equals("nota")) {
+			q = em.createQuery("SELECT a FROM Avaliacao a WHERE a.produto.id = :produto AND a.cliente.id = :cliente");
+			q.setParameter("produto", avaliacao.getProduto().getId());
+			q.setParameter("cliente", avaliacao.getCliente().getId());
 		}
 		return q.getResultList();
 	}
-
+	
+	public List<Avaliacao> nota(Avaliacao avaliacao) {
+		Query q = null;
+			q = em.createQuery("SELECT AVG(a.pontos) FROM Avaliacao a WHERE a.produto.id = :produto");
+			q.setParameter("produto", avaliacao.getProduto().getId());
+		return q.getResultList();
+	}
 }
