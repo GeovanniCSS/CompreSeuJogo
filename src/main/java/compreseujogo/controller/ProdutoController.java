@@ -98,6 +98,17 @@ public class ProdutoController implements Serializable {
 		return null;
 	}
 	
+	public List<Produto> carouselVP() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			return facade.listaProduto("pesquisa", this.produto.getPlataforma().getNome(), null);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		return null;
+	}
+	
 	public void encontrar() {
 		Facade facade = new Facade();
 		 this.produto = facade.encontrarProduto(this.produto.getId());
