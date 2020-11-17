@@ -78,9 +78,15 @@ public class ProdutoController implements Serializable {
 		}
 		return null;
 	}
+
 	public String telaPesquisa() {
-		return "pesquisaProduto.xhtml?p="+filtro+"&faces-redirect=true";
+		return "pesquisaProduto.xhtml?p=" + filtro + "&faces-redirect=true";
 	}
+
+	public String selecionar(Produto produto) {
+		return "visualizarProduto.xhtml?id=" + produto.getId() + "&faces-redirect=true";
+	}
+
 	public List<Produto> buscar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
@@ -90,6 +96,11 @@ public class ProdutoController implements Serializable {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
 		return null;
+	}
+	
+	public void encontrar() {
+		Facade facade = new Facade();
+		 this.produto = facade.encontrarProduto(this.produto.getId());
 	}
 
 	public List<String> complete12(String busca) {
@@ -270,11 +281,6 @@ public class ProdutoController implements Serializable {
 
 	public void setArquivo(Part arquivo) {
 		this.arquivo = arquivo;
-	}
-
-	public String selecionar(Produto p) {
-		this.produto = p;
-		return "visualizarProduto.xhtml";
 	}
 
 	public String getFiltro() {

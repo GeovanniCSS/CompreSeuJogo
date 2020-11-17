@@ -45,7 +45,7 @@ public class ItemCarrinhoController implements Serializable {
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
-		return null;
+		return "visualizarProduto.xhtml?id=" + produto.getId() + "&faces-redirect=true";
 	}
 
 	private String retornoIndex(Cliente cliente) {
