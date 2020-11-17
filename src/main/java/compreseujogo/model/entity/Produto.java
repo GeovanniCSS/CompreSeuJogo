@@ -32,7 +32,6 @@ public class Produto implements EntityBase, Serializable {
 	private String descricao;
 	private String imagem;
 	private double valor;
-	@Size(min = 1, max = 5)
 	@Column(name = "nota", nullable = true)
 	private int nota;
 	@Column(name = "quantidadeEstoque")

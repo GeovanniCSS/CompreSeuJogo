@@ -59,7 +59,7 @@ public class CarrinhoBo {
 		return carrinho;
 	}
 	public String aumentorValor(Item item, Carrinho carrinho) throws Exception {
-		carrinho.setValor(+item.getValor());
+		carrinho.setValor(carrinho.getValor()+item.getValor());
 		return saveOrUpdate(carrinho);
 	}
 

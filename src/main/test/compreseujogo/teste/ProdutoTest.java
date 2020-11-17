@@ -27,18 +27,18 @@ public class ProdutoTest {
 	 * produto).forEach(System.out::println); int i = bo.list("Plataforma",
 	 * produto).size(); System.out.println("Tamanho: "+i); }
 	 */
+	/*
+	 * @Test public void lista() throws Exception { Facade facade = new Facade();
+	 * ArrayList<Produto> prd = new ArrayList<Produto>(); prd = (ArrayList<Produto>)
+	 * facade.listaProduto("pesquisa", "Fall", null);
+	 * 
+	 * boolean teste = false; if (prd.size() > 0) { teste = true; }
+	 * prd.forEach(System.out::println); assertEquals(true, teste); }
+	 */
 	@Test
-	public void lista() throws Exception {
+	public void encontrar() {
 		Facade facade = new Facade();
-		ArrayList<Produto> prd = new ArrayList<Produto>();
-		prd = (ArrayList<Produto>) facade.listaProduto("pesquisa", "Fall", null);
-
-		boolean teste = false;
-		if (prd.size() > 0) {
-			teste = true;
-		}
-		prd.forEach(System.out::println);
-		assertEquals(true, teste);
+		Produto produto = facade.encontrarProduto(2);
+		System.out.println(produto);
 	}
-
 }

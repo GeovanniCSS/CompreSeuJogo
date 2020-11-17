@@ -29,27 +29,27 @@ public class ItemCarrinhoBo extends ItemBo {
 		if (item.getProduto().getQuantEstoque() < item.getQuantidade()) {
 			throw new Exception("No momento não temos essa quantidade do produto em estoque");
 		}
-		item.setValor(item.getProduto().getValor()*item.getQuantidade());
+		item.setValor(item.getProduto().getValor() * item.getQuantidade());
 		saveOrUpdate(item);
 		return item;
 	}
-	
+
 	public void validarQuantidade(List<ItemCarrinho> lista) throws Exception {
-		for(ItemCarrinho item: lista) {
-			if(item.getProduto().getQuantEstoque()<item.getQuantidade()){
-				throw new Exception("No momento não temos essa quantidade do produto: "+ item.getProduto().getNome()+" em estoque");
+		for (ItemCarrinho item : lista) {
+			if (item.getProduto().getQuantEstoque() < item.getQuantidade()) {
+				throw new Exception("No momento não temos essa quantidade do produto: " + item.getProduto().getNome()
+						+ " em estoque");
 			}
 		}
 	}
 
 	public void apagarItems(List<ItemCarrinho> item) throws Exception {
-		for(ItemCarrinho items : item) {
+		for (ItemCarrinho items : item) {
 			try {
 				remove(items);
 			} catch (Exception e) {
 				throw new Exception("Falha ao apagar os item do carrinho");
 			}
 		}
-		
 	}
 }

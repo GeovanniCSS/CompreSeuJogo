@@ -10,6 +10,16 @@ import compreseujogo.model.entity.Plataforma;
 import compreseujogo.model.entity.Produto;
 
 public class ProdutoBo {
+	
+	private ProdutoDao dao;
+	private GenericDao<Produto> gDao;
+	
+	
+	public ProdutoBo() {
+		super();
+		this.dao = new ProdutoDao();
+		this.gDao = new GenericDao<Produto>();
+	}
 
 	public String saveOrUpdate(Produto produto) throws Exception {
 		validarDados(produto);
@@ -143,5 +153,8 @@ public class ProdutoBo {
 		} else {
 			return "falha";
 		}
+	}
+	public Produto encontrar(int id) {
+		return gDao.findById(Produto.class, id);
 	}
 }
