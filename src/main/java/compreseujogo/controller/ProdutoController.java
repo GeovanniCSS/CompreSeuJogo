@@ -11,9 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
 
@@ -24,7 +25,7 @@ import compreseujogo.model.entity.Marca;
 import compreseujogo.model.entity.Plataforma;
 import compreseujogo.model.entity.Produto;
 
-@SessionScoped
+@RequestScoped
 @ManagedBean(name = "produtoBean")
 public class ProdutoController implements Serializable {
 
@@ -47,8 +48,21 @@ public class ProdutoController implements Serializable {
 		this.fornecedores = new ArrayList<Fornecedor>();
 		this.marcas = new ArrayList<Marca>();
 		this.plataformas = new ArrayList<Plataforma>();
-		this.destino ="C:\\\\temp\\\\WS-eclipse\\\\compreseujogo_3.0\\\\src\\\\main\\\\webapp\\\\resources\\\\imagem\\\\";
-		//this.destino = "C:\\Users\\leona\\git\\compreseujogo_3.0\\src\\main\\webapp\\resources\\imagem\\";
+		this.filtro = "";
+		this.destino = "C:\\\\temp\\\\WS-eclipse\\\\compreseujogo_3.0\\\\src\\\\main\\\\webapp\\\\resources\\\\imagem\\\\";
+		// this.destino =
+		// "C:\\Users\\leona\\git\\compreseujogo_3.0\\src\\main\\webapp\\resources\\imagem\\";
+	}
+
+	@PostConstruct
+	public void carregar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			lista = facade.listaProduto("", "", produto);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
 	}
 
 	public String salvar() {
@@ -64,18 +78,20 @@ public class ProdutoController implements Serializable {
 		}
 		return null;
 	}
-	
-	public String buscar(){
+	public String telaPesquisa() {
+		return "pesquisaProduto.xhtml?p="+filtro+"&faces-redirect=true";
+	}
+	public List<Produto> buscar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		try {
-			lista = facade.listaProduto(filtro, null);
-			return "index.xhtml?faces-redirect=true";
+			return facade.listaProduto("pesquisa", filtro, null);
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
 		return null;
-	}	
+	}
+
 	public List<String> complete12(String busca) {
 		List<String> resultados = new ArrayList<String>();
 		for (Produto produtos : lista) {
@@ -92,8 +108,8 @@ public class ProdutoController implements Serializable {
 		String queryLowerCase = query.toLowerCase();
 		List<Produto> allThemes = null;
 		try {
-			 produto.setNome(queryLowerCase);
-			allThemes = facade.listaProduto("", produto);
+			produto.setNome(queryLowerCase);
+			allThemes = facade.listaProduto("", "", produto);
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
@@ -104,7 +120,7 @@ public class ProdutoController implements Serializable {
 	public void importa() {
 		FacesContext context = FacesContext.getCurrentInstance();
 
-		String conteudo = getFileName(arquivo.getName() + ".png");
+		String conteudo = getFileName(arquivo.getName() + ".jpg");
 		produto.setImagem(conteudo);
 		context.addMessage(null, new FacesMessage("Salvou a imagem" + conteudo, FacesMessage.FACES_MESSAGES));
 		try {
@@ -162,7 +178,7 @@ public class ProdutoController implements Serializable {
 		this.produto = produto;
 		return "atualizarProduto.xhtml";
 	}
-	
+
 	public String carregar(Produto produto) {
 		this.produto = produto;
 		return "carrinhoCliente.xhtml";
@@ -181,13 +197,6 @@ public class ProdutoController implements Serializable {
 	}
 
 	public List<Produto> getLista() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		Facade facade = new Facade();
-		try {
-			lista = facade.listaProduto("", produto);
-		} catch (Exception e) {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
-		}
 		return lista;
 	}
 
@@ -266,6 +275,14 @@ public class ProdutoController implements Serializable {
 	public String selecionar(Produto p) {
 		this.produto = p;
 		return "visualizarProduto.xhtml";
+	}
+
+	public String getFiltro() {
+		return filtro;
+	}
+
+	public void setFiltro(String filtro) {
+		this.filtro = filtro;
 	}
 
 }
