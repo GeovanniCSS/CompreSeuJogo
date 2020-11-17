@@ -17,6 +17,10 @@ public class AvaliacaoDao {
 		if (parameter.equals("Produto")) {
 			q = em.createQuery("SELECT a FROM Avaliacao a WHERE a.produto.id = :produto");
 			q.setParameter("produto", avaliacao.getProduto().getId());
+		} else if (parameter.equals("nota")) {
+			q = em.createQuery("SELECT a FROM Avaliacao a WHERE a.produto.id = :produto AND a.cliente.id = :cliente");
+			q.setParameter("produto", avaliacao.getProduto().getId());
+			q.setParameter("cliente", avaliacao.getCliente().getId());
 		}
 		return q.getResultList();
 	}
