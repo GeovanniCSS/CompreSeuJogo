@@ -38,7 +38,7 @@ public class UseAdmBean implements Serializable {
 			administrador = facade.loginAdminstrador(administrador);
 			context.addMessage(null, new FacesMessage("Olá " + administrador, FacesMessage.FACES_MESSAGES));
 			this.logado = true;
-			return "testeLogin.xhtml?faces-redirect=true";
+			return "listaVendedor.xhtml?faces-redirect=true";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null));
 		}
