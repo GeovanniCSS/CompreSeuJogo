@@ -38,7 +38,7 @@ public class ProdutoDao {
 		} 
 		return q.getResultList();
 	}
-	public List<Produto> listSearch(String parameter, String filter) throws Exception {
+	public List<Produto> listSearch(String filter) throws Exception {
 		Query q = null;
 		if (filter.equals("")) {
 			q = em.createQuery("SELECT p FROM Produto p WHERE p.categoria.ativo = true AND p.plataforma.ativo = true AND "+
@@ -46,8 +46,8 @@ public class ProdutoDao {
 		} else if (!filter.equals("")) {
 			q = em.createQuery("SELECT p FROM Produto p WHERE p.categoria.ativo = true AND p.plataforma.ativo = true AND "+
 					   "p.marca.ativo = true AND p.imagem != null AND p.ativo = true AND p.quantEstoque > 0 AND "+
-					  "(produto.categoria.nome LIKE :filtro OR produto.plataforma.nome LIKE :filtro OR produto.marca.nome LIKE :filtro "+
-					   "OR p.nome LIKE :filtro OR p.fornecedor.nome LIKE)");
+					  " (p.nome LIKE :filtro OR p.categoria.nome LIKE :filtro OR p.plataforma.nome LIKE :filtro OR "+
+					   "p.marca.nome LIKE :filtro OR p.fornecedor.nome LIKE :filtro)");
 			q.setParameter("filtro","%"+filter+"%");
 		}   
 		return q.getResultList();

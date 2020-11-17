@@ -120,7 +120,7 @@ public class Facade {
 		vendedorBo.novaPessoa(vendedor, Vendedor.class);
 		return vendedorBo.createDepency(vendedor);
 	}
-	
+
 	public String atualizarVendedor(Vendedor vendedor) throws Exception {
 		return vendedorBo.desativarAtivar(vendedor);
 	}
@@ -242,11 +242,11 @@ public class Facade {
 		return lista;
 	}
 
-	public List<Produto> listaProduto(String parameter, Produto produto) throws Exception {
-		if(produto.equals(null)){
-		return produtoBo.listSearch(parameter);
+	public List<Produto> listaProduto(String direcao, String parameter, Produto produto) throws Exception {
+		if (direcao.equals("")) {
+			return produtoBo.list(parameter, produto);
 		} else {
-		return produtoBo.list(parameter, produto);
+			return produtoBo.listSearch(parameter);
 		}
 	}
 }

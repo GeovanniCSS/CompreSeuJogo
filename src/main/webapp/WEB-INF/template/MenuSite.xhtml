@@ -17,9 +17,8 @@
 		<div id="header" style="padding: 200px, 10px">
 			<h:form>
 				<p:growl id="messages" />
-
 				<p:menubar>
-					<p:submenu label="PLAYSTATION" icon="pi pi-file">
+					<p:submenu label="PLAYSTATION">
 						<p:menuitem rendered="" value="Categoria"
 							url="cadastroCategoria.xhtml?faces-redirect=true" />
 						<p:separator />
@@ -34,32 +33,29 @@
 						<p:separator />
 					</p:submenu>
 
-					<p:submenu label="XBOX" icon="pi pi-pencil">
-						<p:menuitem value="XBOX SERIES X e S" url="#"
-							icon="pi pi-angle-double-left" />
-						<p:menuitem value="XBOX ONE" url="#"
-							icon="pi pi-angle-double-right" />
-						<p:menuitem value="XBOX 360" url="#"
-							icon="pi pi-angle-double-right" />
+					<p:submenu label="XBOX">
+						<p:menuitem value="XBOX SERIES X e S" url="#" />
+						<p:menuitem value="XBOX ONE" url="#" />
+						<p:menuitem value="XBOX 360" url="#" />
 					</p:submenu>
 
-					<p:submenu label="NINTENDO" icon="pi pi-question">
-						<p:menuitem value="JOGOS" url="#" icon="pi pi-angle-double-left" />
-						<p:menuitem value="CONSOLES" url="#"
-							icon="pi pi-angle-double-right" />
+					<p:submenu label="NINTENDO">
+						<p:menuitem value="JOGOS" url="#" />
+						<p:menuitem value="CONSOLES" url="#" />
 					</p:submenu>
-					<p:submenu label="Login" icon="pi pi-question">
+					<p:submenu label="Login">
 						<p:menuitem value="Administrador"
 							url="loginAdministrador.xhtml?faces-redirect=true" />
-						<p:menuitem value="Vendedor" url="loginVendedor.xhtml?faces-redirect=true" />
-						<p:menuitem value="Cliente" url="clienteLogin.xhtml?faces-redirect=true" />
+						<p:menuitem value="Vendedor"
+							url="loginVendedor.xhtml?faces-redirect=true" />
+						<p:menuitem value="Cliente"
+							url="clienteLogin.xhtml?faces-redirect=true" />
 					</p:submenu>
-
-
 					<f:facet name="options">
 						<p:inputText style="margin:1px 10px 1px 1px;"
-							placeholder="Procurar" />
-						<p:commandButton type="button" icon="pi pi-search" />
+							value="#{produtoBean.filtro}" placeholder="Procurar" />
+						<p:commandButton action="#{produtoBean.telaPesquisa()}"
+							icon="pi pi-search" />
 					</f:facet>
 				</p:menubar>
 			</h:form>
