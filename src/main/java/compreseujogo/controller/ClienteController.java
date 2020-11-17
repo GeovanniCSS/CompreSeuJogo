@@ -69,6 +69,7 @@ public class ClienteController implements Serializable {
 			cliente = new Cliente();
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+			e.printStackTrace();
 		}
 		
 		cliente = new Cliente();
