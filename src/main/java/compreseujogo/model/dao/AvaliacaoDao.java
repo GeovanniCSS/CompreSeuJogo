@@ -20,5 +20,11 @@ public class AvaliacaoDao {
 		}
 		return q.getResultList();
 	}
-
+	
+	public List<Avaliacao> nota(Avaliacao avaliacao) {
+		Query q = null;
+			q = em.createQuery("SELECT AVG(a.pontos) FROM Avaliacao a WHERE a.produto.id = :produto");
+			q.setParameter("produto", avaliacao.getProduto().getId());
+		return q.getResultList();
+	}
 }
