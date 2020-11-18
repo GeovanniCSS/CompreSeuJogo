@@ -33,23 +33,34 @@ public class ProdutoDao {
 			q = em.createQuery("SELECT p FROM Produto p WHERE p.EAN = :id");
 			q.setParameter("id", produto.getEAN());
 		} else if (parametro.equals("listaIndex")) {
-			q = em.createQuery("SELECT p FROM Produto p WHERE p.categoria.ativo = true AND p.plataforma.ativo = true AND "+
-					   "p.marca.ativo = true AND p.imagem != null AND p.ativo = true AND p.quantEstoque > 0");
-		} 
+			q = em.createQuery(
+					"SELECT p FROM Produto p WHERE p.categoria.ativo = true AND p.plataforma.ativo = true AND "
+							+ "p.marca.ativo = true AND p.imagem != null AND p.ativo = true AND p.quantEstoque > 0");
+		} else if (parametro.equals("carousel")) {
+			q = em.createQuery(
+					"SELECT p FROM Produto p WHERE p.categoria.ativo = true AND p.plataforma.ativo = true AND "
+							+ "p.marca.ativo = true AND p.imagem != null AND p.ativo = true AND p.quantEstoque > 0"
+							+ "AND p.id != :id AND p.plataforma.id = :plataforma ORDER BY p.quantConsulta");
+			q.setParameter("id", produto.getId());
+			q.setParameter("plataforma", produto.getPlataforma().getId());
+		}
 		return q.getResultList();
 	}
+
 	public List<Produto> listSearch(String filter) throws Exception {
 		Query q = null;
 		if (filter.equals("")) {
-			q = em.createQuery("SELECT p FROM Produto p WHERE p.categoria.ativo = true AND p.plataforma.ativo = true AND "+
-					   "p.marca.ativo = true AND p.imagem != null AND p.ativo = true AND p.quantEstoque > 0");
+			q = em.createQuery(
+					"SELECT p FROM Produto p WHERE p.categoria.ativo = true AND p.plataforma.ativo = true AND "
+							+ "p.marca.ativo = true AND p.imagem != null AND p.ativo = true AND p.quantEstoque > 0");
 		} else if (!filter.equals("")) {
-			q = em.createQuery("SELECT p FROM Produto p WHERE p.categoria.ativo = true AND p.plataforma.ativo = true AND "+
-					   "p.marca.ativo = true AND p.imagem != null AND p.ativo = true AND p.quantEstoque > 0 AND "+
-					  " (p.nome LIKE :filtro OR p.categoria.nome LIKE :filtro OR p.plataforma.nome LIKE :filtro OR "+
-					   "p.marca.nome LIKE :filtro OR p.fornecedor.nome LIKE :filtro)");
-			q.setParameter("filtro","%"+filter+"%");
-		}   
+			q = em.createQuery(
+					"SELECT p FROM Produto p WHERE p.categoria.ativo = true AND p.plataforma.ativo = true AND "
+							+ "p.marca.ativo = true AND p.imagem != null AND p.ativo = true AND p.quantEstoque > 0 AND "
+							+ " (p.nome LIKE :filtro OR p.categoria.nome LIKE :filtro OR p.plataforma.nome LIKE :filtro OR "
+							+ "p.marca.nome LIKE :filtro OR p.fornecedor.nome LIKE :filtro)");
+			q.setParameter("filtro", "%" + filter + "%");
+		}
 		return q.getResultList();
 	}
 }
