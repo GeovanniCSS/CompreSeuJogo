@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<f:metadata>
+		<f:viewParam name="id" value="#{transporteBean.transporte.id}" />
+	</f:metadata>
+</h:head>
+<ui:composition template="/WEB-INF/template/template.xhtml">
+	<ui:define name="tituloJanela">Finalizar Compra - Compre Seu Jogo</ui:define>
+	<ui:define name="conteudo">
+		<h:form id="form">
+			<p:panel>
+				<div class="ui-g">
+					<div class="ui-g-3">
+					
+					</div>
+					<div style="float: center" class="ui-g-6">
+						<div style="text-align: center">
+							
+						</div>
+					</div>
+					<div style="float: right;" class="ui-g-3">
+						<p:panel>
+							<h:outputLabel value="Transportadora " for="spi" />
+								<p:selectOneMenu id="transporte"
+									value="#{vendaBean.venda.transporte.id}">
+								<f:selectItem itemLabel="Selecione uma opção" itemValue=""
+									noSelectionOption="true" />
+								<f:selectItems var="transporte" value="#{vendaBean.transporte}"
+									itemLabel="#{transporte.nome}" itemValue="#{transporte.id}" />
+								</p:selectOneMenu>
+							<br></br>
+							<br></br>
+							<p:commandButton value="Finalizar Pedido" id="add"
+								style="margin-center:20px;" update=":msgs"
+								action="#{itemCarrinhoBean.salvar(produtoBean.produto, UseClienteBean.cliente)}" />
+						</p:panel>
+					</div>
+				</div>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

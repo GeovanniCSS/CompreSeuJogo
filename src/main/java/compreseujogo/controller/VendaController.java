@@ -4,9 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
+import compreseujogo.facade.Facade;
+import compreseujogo.model.entity.Transporte;
 import compreseujogo.model.entity.Venda;
 
 @RequestScoped
@@ -17,11 +22,13 @@ public class VendaController implements Serializable{
 	
 	private Venda venda;
 	private List<Venda> lista;
-
+	private List<Transporte> transporte;
+	
 	public VendaController() {
 		super();
 		this.venda = new Venda();
 		this.lista = new ArrayList<Venda>();
+		this.transporte = new ArrayList<Transporte>();
 	}
 
 	public Venda getVenda() {
@@ -38,5 +45,24 @@ public class VendaController implements Serializable{
 
 	public void setLista(List<Venda> lista) {
 		this.lista = lista;
+	}
+		
+	public List<Transporte> getTransporte() {
+		return transporte;
+	}
+
+	public void setTransporte(List<Transporte> transporte) {
+		this.transporte = transporte;
+	}
+
+	@PostConstruct
+	public void carregarLista() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			transporte = facade.listaTransporte(null);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
 	}
 }
