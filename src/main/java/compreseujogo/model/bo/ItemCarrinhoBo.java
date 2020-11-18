@@ -43,7 +43,7 @@ public class ItemCarrinhoBo extends ItemBo {
 		}
 	}
 
-	public void apagarItems(List<ItemCarrinho> item) throws Exception {
+	public void apagarItens(List<ItemCarrinho> item) throws Exception {
 		for (ItemCarrinho items : item) {
 			try {
 				remove(items);

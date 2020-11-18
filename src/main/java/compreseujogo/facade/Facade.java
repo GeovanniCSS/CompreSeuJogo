@@ -95,7 +95,7 @@ public class Facade {
 		itemVendaBo.novaVenda(venda);
 		carrinhoBo.zerar(venda.getCliente().getCarrinho());
 		produtoBo.dimuirQuantidade(venda.getCliente().getCarrinho().getItem());
-		itemCarrinhoBo.apagarItems(venda.getCliente().getCarrinho().getItem());
+		itemCarrinhoBo.apagarItens(venda.getCliente().getCarrinho().getItem());
 		return "vendido";
 	}
 
@@ -177,7 +177,12 @@ public class Facade {
 		item.setProduto(encontrarProduto(item.getProduto().getId()));
 		return carrinhoBo.aumentorValor(itemCarrinhoBo.novo(item), item.getCarrinho());
 	}
-
+	
+	public String removerItemCarrinho(ItemCarrinho item) throws Exception {
+		carrinhoBo.diminuirValor(item, item.getCarrinho());
+		return itemCarrinhoBo.remove(item);
+	}
+	
 	public List<Avaliacao> listaAvaliacao(String parameter, Avaliacao avaliacao) throws Exception {
 		return avaliacaoBo.list(parameter, avaliacao);
 	}

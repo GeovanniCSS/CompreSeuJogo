@@ -57,13 +57,14 @@ public class ItemCarrinhoController implements Serializable {
 
 	}
 
-	private String retornoIndex(Cliente cliente) {
-		if (cliente.equals(null)) {
-			return "index.xhtml?faces-redirect=true";
-		} else {
-			return null;
+	public void removerItem(ItemCarrinho item) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			context.addMessage(null, new FacesMessage(facade.removerItemCarrinho(item), FacesMessage.FACES_MESSAGES));
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
-
 	}
 
 	public ItemCarrinho getItem() {

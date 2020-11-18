@@ -62,6 +62,10 @@ public class CarrinhoBo {
 		carrinho.setValor(carrinho.getValor()+item.getValor());
 		return saveOrUpdate(carrinho);
 	}
+	public String diminuirValor(Item item, Carrinho carrinho) throws Exception {
+		carrinho.setValor(carrinho.getValor()-item.getValor());
+		return saveOrUpdate(carrinho);
+	}
 
 	public void zerar(Carrinho carrinho) throws Exception {
 		try {

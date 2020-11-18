@@ -42,7 +42,12 @@
 									value="Subtotal
 													(#{item.quantidade} itens): R$#{item.valor}" />
 								<p:commandButton value="Remover do Carrinho" id="ex"
-									style="margin-center:20px;" update=":form" />
+									style="margin-center:20px;" update="@form"
+									action="#{itemCarrinhoBean.removerItem(item)}">
+									<p:collector value="#{item}"
+										removeFrom="#{UseClienteBean.cliente.carrinho.item}"
+										unique="true" />
+								</p:commandButton>
 							</h:panelGrid>
 						</p:panel>
 					</p:dataViewGridItem>
@@ -54,8 +59,8 @@
 										style="width: 200px;height: 250px;padding: 20px;"
 										library="imagem" name="#{item.produto.imagem}" />
 
-									<p:rating value="#{item.produto.nota}" style="text-align:center;"
-										readonly="true" />
+									<p:rating value="#{item.produto.nota}"
+										style="text-align:center;" readonly="true" />
 								</div>
 								<div style="float: center" class="ui-g-6">
 									<div style="text-align: center">
@@ -84,11 +89,18 @@
 									</div>
 								</div>
 								<div style="float: right;" class="ui-g-3">
-									<p:commandButton value="Remover do Carrinho" id="add"
-										style="margin-center:20px;" update=":form" />
+									<p:commandButton value="Remover do Carrinho"
+										style="margin-center:20px;" update="@form"
+										action="#{itemCarrinhoBean.removerItem(item)}">
+										<p:collector value="#{item}"
+											removeFrom="#{UseClienteBean.cliente.carrinho.item}"
+											unique="true" />
+									</p:commandButton>
 									<br /> <br />
 									<p:commandButton value="Ver produto"
-										style="margin-center:20px;" update=":form" />
+										style="margin-center:20px;"
+										action="#{produtoBean.selecionar(item.produto)}"
+										update=":form" />
 								</div>
 							</div>
 						</p:panel>
