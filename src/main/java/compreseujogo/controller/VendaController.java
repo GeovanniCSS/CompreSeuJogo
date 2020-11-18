@@ -11,6 +11,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import compreseujogo.facade.Facade;
+import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.Transporte;
 import compreseujogo.model.entity.Venda;
 
@@ -29,6 +30,17 @@ public class VendaController implements Serializable{
 		this.venda = new Venda();
 		this.lista = new ArrayList<Venda>();
 		this.transporte = new ArrayList<Transporte>();
+	}
+	
+	public void salvar(Cliente cliente) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		venda.setCliente(cliente);
+		try {
+			facade.novaVenda(venda);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
 	}
 
 	public Venda getVenda() {

@@ -61,7 +61,7 @@
 			</p:panel>
 		</h:form>
 		<h:form id="form2">
-			<p:dataList
+			<p:dataList rendered="#{avaliacaoBean.listaAvaliacao(produtoBean.produto).size() > 0}"
 				value="#{avaliacaoBean.listaAvaliacao(produtoBean.produto)}"
 				var="ava">
 				<p:accordionPanel dynamic="false" multiple="true">
