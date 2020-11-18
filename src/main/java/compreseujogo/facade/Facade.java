@@ -25,6 +25,7 @@ import compreseujogo.model.bo.TransporteBo;
 import compreseujogo.model.bo.VendaBo;
 import compreseujogo.model.bo.VendedorBo;
 import compreseujogo.model.entity.Administrador;
+import compreseujogo.model.entity.Avaliacao;
 import compreseujogo.model.entity.Categoria;
 import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.Empresa;
@@ -175,6 +176,10 @@ public class Facade {
 	public String adicionarItemCarrinho(ItemCarrinho item) throws Exception {
 		item.setProduto(encontrarProduto(item.getProduto().getId()));
 		return carrinhoBo.aumentorValor(itemCarrinhoBo.novo(item), item.getCarrinho());
+	}
+
+	public List<Avaliacao> listaAvaliacao(String parameter, Avaliacao avaliacao) throws Exception {
+		return avaliacaoBo.list(parameter, avaliacao);
 	}
 
 	public List<Marca> listaMarca(Marca marca) throws Exception {
