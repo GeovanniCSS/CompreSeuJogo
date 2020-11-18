@@ -102,7 +102,7 @@ public class ProdutoController implements Serializable {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		try {
-			return facade.listaProduto("pesquisa", this.produto.getPlataforma().getNome(), null);
+			return facade.listaProduto("", "carousel", this.produto);
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}

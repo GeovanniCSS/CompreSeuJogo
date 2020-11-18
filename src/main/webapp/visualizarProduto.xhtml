@@ -15,12 +15,14 @@
 	<ui:define name="tituloJanela">#{produtoBean.produto.nome}</ui:define>
 	<ui:define name="conteudo">
 		<h:form id="form">
+			<p:growl id="growl" showDetail="true" sticky="true" life="300" />
 			<p:panel>
 				<div class="ui-g">
 					<div class="ui-g-3">
-						<p:graphicImage
-							style="width: 200px;height: 250px;padding: 20px;float: left;"
+						<p:graphicImage style="width: 200px;height: 250px;padding: 20px;"
 							library="imagem" name="#{produtoBean.produto.imagem}" />
+						<p:rating style="padding-left:78px;"
+							value="#{produtoBean.produto.nota}" readonly="true" />
 					</div>
 					<div style="float: center" class="ui-g-6">
 						<div style="text-align: center">
@@ -29,7 +31,12 @@
 								<ul>
 									<li style="font-size: 1.2em; text-align: left;">Preço: R$
 										#{produtoBean.produto.valor}</li>
-
+									<li style="font-size: 1.2em; text-align: left;">Plataforma:
+										#{produtoBean.produto.plataforma.nome}</li>
+									<li style="font-size: 1.2em; text-align: left;">Categoria:
+										#{produtoBean.produto.categoria.nome}</li>
+									<li style="font-size: 1.2em; text-align: left;">Marca:
+										#{produtoBean.produto.marca.nome}</li>
 									<li style="font-size: 1.2em; text-align: left;">Descrição:
 										#{produtoBean.produto.descricao}</li>
 								</ul>
@@ -44,13 +51,33 @@
 								value="#{itemCarrinhoBean.item.quantidade}" />
 							<br />
 							<br />
-							<p:commandButton value="Adicionar ao Carrinho" id="add"
-								style="margin-center:20px;" update=":msgs"
-								action="#{itemCarrinhoBean.salvar(produtoBean.produto, UseClienteBean.cliente)}" />
+							<p:commandButton
+								value="Adicionar ao Carrinho" style="margin-center:20px;"
+								action="#{itemCarrinhoBean.adicionarItem(produto, UseClienteBean)}"		
+								update="@form:growl"/>
 						</p:panel>
 					</div>
 				</div>
 			</p:panel>
+		</h:form>
+		<h:form id="form2">
+			<p:carousel value="#{produtoBean.carouselVP()}"
+				headerText="Talvez você também goste"
+				rendered="#{produtoBean.carouselVP().size() > 0}" var="produto"
+				itemStyle="text-align:center" responsive="true">
+				<p:panelGrid columns="1" style="width:100%;margin:10px 0px"
+					columnClasses="label,value" layout="grid"
+					styleClass="ui-panelgrid-blank">
+					<f:facet name="header">
+						<h:commandLink action="#{produtoBean.selecionar(produto)}"
+							update=":form">
+							<p:graphicImage style="widht:200px;height:200px;"
+								library="imagem" name="#{produto.imagem}" />
+						</h:commandLink>
+					</f:facet>
+					<h:outputText value="Preço: R$#{produto.valor}" />
+				</p:panelGrid>
+			</p:carousel>
 		</h:form>
 	</ui:define>
 </ui:composition>

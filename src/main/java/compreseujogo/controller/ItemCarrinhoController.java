@@ -30,22 +30,31 @@ public class ItemCarrinhoController implements Serializable {
 		this.lista = new ArrayList<ItemCarrinho>();
 	}
 
-	public String salvar(Produto produto, Cliente cliente) {
+	public void salvar(Produto produto, Cliente cliente) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
-		if (cliente.equals(null)) {
-			return "index.xhtml?faces-redirect=true";
-		}
 		try {
 			item.setCarrinho(cliente.getCarrinho());
 			item.setProduto(produto);
 			item.getProduto();
 			context.addMessage(null, new FacesMessage(facade.adicionarItemCarrinho(item), FacesMessage.FACES_MESSAGES));
-			return "index.xhtml?faces-redirect=true";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
-		return "visualizarProduto.xhtml?id=" + produto.getId() + "&faces-redirect=true";
+	}
+
+	public String adicionarItem(Produto produto, UseClienteBean cliente) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		if (!cliente.isLogado()) {
+			context.addMessage(null,
+					new FacesMessage("Olá, você deve logar no sistema para adicionar um produto ao seu carrinho",
+							FacesMessage.FACES_MESSAGES));
+			return null;
+		} else {
+			salvar(produto, cliente.getCliente());
+			return null;
+		}
+
 	}
 
 	private String retornoIndex(Cliente cliente) {
