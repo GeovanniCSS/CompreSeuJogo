@@ -6,12 +6,15 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
+	<f:metadata>
+		<f:viewParam name="id" value="#{produtoBean.produto.id}" />
+		<f:viewAction action="#{produtoBean.encontrar()}" />
+	</f:metadata>
 </h:head>
 <ui:composition template="/WEB-INF/template/template.xhtml">
 	<ui:define name="tituloJanela">#{produtoBean.produto.nome}</ui:define>
 	<ui:define name="conteudo">
 		<h:form id="form">
-			<p:growl id="msg" showDetail="true" life="3000" />
 			<p:panel>
 				<div class="ui-g">
 					<div class="ui-g-3">
@@ -42,7 +45,7 @@
 							<br />
 							<br />
 							<p:commandButton value="Adicionar ao Carrinho" id="add"
-								style="margin-center:20px;" update=":form"
+								style="margin-center:20px;" update=":msgs"
 								action="#{itemCarrinhoBean.salvar(produtoBean.produto, UseClienteBean.cliente)}" />
 						</p:panel>
 					</div>
