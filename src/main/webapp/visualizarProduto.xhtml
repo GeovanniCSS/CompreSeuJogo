@@ -51,16 +51,31 @@
 								value="#{itemCarrinhoBean.item.quantidade}" />
 							<br />
 							<br />
-							<p:commandButton
-								value="Adicionar ao Carrinho" style="margin-center:20px;"
-								action="#{itemCarrinhoBean.adicionarItem(produto, UseClienteBean)}"		
-								update="@form:growl"/>
+							<p:commandButton value="Adicionar ao Carrinho"
+								style="margin-center:20px;"
+								action="#{itemCarrinhoBean.adicionarItem(produto, UseClienteBean)}"
+								update="@form:growl" />
 						</p:panel>
 					</div>
 				</div>
 			</p:panel>
 		</h:form>
 		<h:form id="form2">
+			<p:dataList
+				value="#{avaliacaoBean.listaAvaliacao(produtoBean.produto)}"
+				var="ava">
+				<p:accordionPanel dynamic="false" multiple="true">
+					<p:tab title="#{ava.cliente.nome} #{ava.cliente.sobrenome} - #{ava.titulo}">
+						<h:panelGrid columns="1">
+							<p:rating style="padding-bottom:0px;" value="#{ava.pontos}"
+								readonly="true" />
+							<h:outputText value="#{ava.descricao}" />
+						</h:panelGrid>
+					</p:tab>
+				</p:accordionPanel>
+			</p:dataList>
+		</h:form>
+		<h:form id="form3">
 			<p:carousel value="#{produtoBean.carouselVP()}"
 				headerText="Talvez você também goste"
 				rendered="#{produtoBean.carouselVP().size() > 0}" var="produto"
