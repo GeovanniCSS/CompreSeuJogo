@@ -47,8 +47,7 @@ public class ItemBo<T extends Item> {
 		}
 	}
 
-	public String remove(EntityBase obj) throws Exception {
-		Item item = (Item) obj;
+	public String remove(Item item) throws Exception {
 		GenericDao<Item> tcDao = new GenericDao<Item>();
 		try {
 			return tcDao.remove(Item.class, item.getId());
