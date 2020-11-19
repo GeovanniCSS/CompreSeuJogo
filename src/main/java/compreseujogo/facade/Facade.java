@@ -117,8 +117,7 @@ public class Facade {
 	}
 
 	public String salvarVendedor(Vendedor vendedor) throws Exception {
-		vendedorBo.novaPessoa(vendedor, Vendedor.class);
-		return vendedorBo.createDepency(vendedor);
+		return vendedorBo.salvar(vendedor);
 	}
 
 	public String atualizarVendedor(Vendedor vendedor) throws Exception {
@@ -142,8 +141,7 @@ public class Facade {
 	}
 
 	public String salvarCliente(Cliente cliente) throws Exception {
-		clienteBo.novaPessoa(cliente, Cliente.class);
-		return clienteBo.createDepency(cliente);
+		return clienteBo.salvar(cliente);
 	}
 
 	public String salvarCategoria(Categoria categoria) throws Exception {
