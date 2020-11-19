@@ -83,6 +83,11 @@
 										value="Value 1: #{transporteBean.transporte.ativo}" />
 								</h:panelGrid>
 							</p:dialog>
+							
+							<p:outputLabel for="dias" value="Entrega (Dias Úteis)"/>
+							<p:inputText id="dias"
+								value="#{transporteBean.transporte.dataEntrega}"
+								requiredMessage="O campo data é obrigatório" />
 
 
 							<p:commandButton value="Salvar" id="salvar"

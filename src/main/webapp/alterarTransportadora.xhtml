@@ -71,6 +71,11 @@
 							<p:inputText id="email"
 								value="#{transporteBean.transporte.email}"
 								requiredMessage="O campo e-mail é obrigatório" />
+								
+							<p:outputLabel for="dias" value="Entrega (Dias Úteis)" />
+							<p:inputText id="dias"
+								value="#{transporteBean.transporte.dataEntrega}"
+								requiredMessage="O campo data é obrigatório" />	
 
 							<p:selectBooleanCheckbox
 								value="#{transporteBean.transporte.ativo}" itemLabel="Ativo" />

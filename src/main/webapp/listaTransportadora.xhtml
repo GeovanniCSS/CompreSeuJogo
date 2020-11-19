@@ -40,6 +40,10 @@
 					filterMatchMode="contains">
 					<h:outputText value="#{transporte.telefone}" />
 				</p:column>
+				<p:column headerText="Entrega" filterBy="#{transporte.dataEntrega}"
+					filterMatchMode="contains">
+					<h:outputText value="#{transporte.dataEntrega}" />
+				</p:column>
 				<p:column headerText="Ativo" filterBy="#{transporte.ativo}"
 					filterMatchMode="equals">
 					<f:facet name="filter">
