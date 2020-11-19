@@ -8,27 +8,53 @@
 <h:head>
 </h:head>
 <ui:composition template="/WEB-INF/template/template.xhtml">
-	<ui:define name="tituloJanela">Histório de Compras</ui:define>
+	<ui:define name="tituloJanela">Pedidos</ui:define>
 	<ui:define name="conteudo">
 		<h:form id="form">
 			<p:growl id="msg" autoUpdate="true" life="3000" />
-    <p:tabView value="#{produtoBean.lista}" var="produto">
-        <p:tab title="Pedido - #{produto.id}" >
-            <h:panelGrid columns="2" cellpadding="5">
-                <f:facet name="header">
-                    <p:graphicImage name="demo/images/car/#{car.brand}-big.gif"/>
-                </f:facet>
-                <h:outputText value="Produto:" style="font-weight: bold"/>
-                <h:outputText value="#{produto.nome}" />
- 
-                <h:outputText value="Valor:" style="font-weight: bold"/>
-                <h:outputText value="#{produto.valor}" />
- 
-                <h:outputText value="Data:" style="font-weight: bold"/>
-                <h:outputText value="#{produto.dataLancamento}" />
-            </h:panelGrid>
-        </p:tab>
-    </p:tabView>
+			<p:panel>
+				<p>#{UseClienteBean.cliente.nome}, aqui você encontra todos seus
+					pedidos, use os filtros para poder encontrar o pedido que deseja ver</p>
+			</p:panel>
+			<p:dataTable id="tableProduto" var="venda" value="#{vendaBean.lista}"
+				frame="box" rules="all" widgetVar="vendas" cellpadding="3"
+				paginator="true"
+				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} 
+				{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="15,30,45">
+				<p:column headerText="Número do pedido" filterBy="#{venda.id}"
+					filterMatchMode="contains">
+					<h:outputText value="#{venda.id}" />
+				</p:column>
+				<p:column headerText="Data" filterBy="#{venda.dataCadastro}"
+					filterMatchMode="contains">
+					<h:outputText value="#{venda.dataCadastro}" />
+				</p:column>
+				<p:column headerText="Transporte" filterBy="#{venda.transporte.nome}"
+					filterMatchMode="contains">
+					<h:outputText value="#{venda.transporte.nome}" />
+				</p:column>
+				<p:column headerText="Valor" filterBy="#{venda.valor}"
+					filterMatchMode="contains">
+					<h:outputText value="#{venda.valor}" />
+				</p:column>
+				<p:column headerText="Entregue" filterBy="#{venda.entrega}"
+					filterMatchMode="equals">
+					<f:facet name="filter">
+						<p:selectOneButton onchange="PF('vendas').filter()"
+							styleClass="custom-filter">
+							<f:converter converterId="javax.faces.Boolean" />
+							<f:selectItem itemLabel="Sim" itemValue="true" />
+							<f:selectItem itemLabel="Não" itemValue="false" />
+						</p:selectOneButton>
+					</f:facet>
+					<h:outputText value="#{venda.entrega== true ? 'Sim' : 'Não'}" />
+				</p:column>
+				<p:column headerText="Pedido">
+					<p:commandButton action="#{vendaBean.selecionar(venda)}"
+						value="Ver" />
+				</p:column>
+			</p:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>

@@ -46,10 +46,7 @@ public class Transporte extends Empresa {
 
 	@Override
 	public String toString() {
-		return "Transporte [getId()=" + getId() + ", getNome()=" + getNome() + ", getCnpj()=" + getCnpj()
-				+ ", getEmail()=" + getEmail() + ", getEndereco()=" + getEndereco() + ", getCep()=" + getCep()
-				+ ", getEstado()=" + getEstado() + ", getTelefone()=" + getTelefone() + ", getUrl()=" + getUrl()
-				+ ", getAtivo()=" + getAtivo() + "]";
+		return "Id=" + getId() + ", Nome=" + getNome();
 	}
 
 }

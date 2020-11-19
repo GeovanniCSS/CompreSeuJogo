@@ -15,7 +15,9 @@
 			<h:panelGroup
 				rendered="#{UseClienteBean.cliente.carrinho.item.size() >= 0}">
 				<p:panel>
-					<p:commandButton style="float: right;" value="Finalizar compra" />
+					<p:commandButton style="float: right;"
+						action="#{vendaBean.salvar(UseClienteBean.cliente)}"
+						value="Finalizar compra" />
 					<p style="font-size: 1.2em;">Total:
 						#{UseClienteBean.cliente.carrinho.valor}</p>
 					<p style="font-size: 1.2em;">Itens:
