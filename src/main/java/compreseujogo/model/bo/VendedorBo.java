@@ -26,7 +26,18 @@ public class VendedorBo extends PessoaBo<Vendedor> {
 
 		}
 	}
-
+	
+	public String salvar(Vendedor vendedor) throws Exception {
+		if (vendedor.getId() > 0) {
+			return atualizar(vendedor, Vendedor.class);			
+		} else {
+			vendedor.setComissao(null);
+			vendedor.setLoja(null);
+			novaPessoa(vendedor, Vendedor.class);
+			return createDepency(vendedor);
+		}
+	}
+	
 	public String createDepency(Vendedor vendedor) throws Exception {
 		LojaBo bo = new LojaBo();
 		ComissaoBo cBo = new ComissaoBo();
