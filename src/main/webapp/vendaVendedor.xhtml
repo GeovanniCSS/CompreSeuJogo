@@ -12,8 +12,44 @@
 	<ui:define name="conteudo">
 		<h:form>
 			<p:growl autoUpdate="true" life="3000" />
-			<div id="main" align="center">
-
+			<div id="main" align="left">
+				<p:panelGrid columns="1" layout="grid">
+					<p>FENNGREGONRIEGNRIOGNO</p>
+					<p>Valor total: R$20.00</p>
+					<p:dataTable id="tableProduto" var="produto"
+						value="#{produtoBean.lista}" frame="box" rules="all"
+						widgetVar="produtos" cellpadding="3" paginator="true"
+						paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} 
+				{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="15,30,45">
+						<p:column headerText="Nome" filterBy="#{produto.nome}"
+							filterMatchMode="contains">
+							<h:outputText value="#{produto.nome}" />
+						</p:column>
+						<p:column headerText="SKU" filterBy="#{produto.sku}"
+							filterMatchMode="contains">
+							<h:outputText value="#{produto.sku}" />
+						</p:column>
+						<p:column headerText="Preço" filterBy="#{produto.valor}"
+							filterMatchMode="contains">
+							<h:outputText value="#{produto.valor}" />
+						</p:column>
+						<p:column headerText="Adicionar">
+							<p:commandButton value="Adicionar" />
+						</p:column>
+					</p:dataTable>
+					<p:carousel value="#{produtoBean.lista}" var="produto"
+						numVisible="1" effect="easeInStrong" style="margin-bottom:0">
+						<p:tab title="#{produto.nome}">
+							<h:panelGrid columns="2" cellpadding="10">
+								<h:graphicImage style="widht:250px;height:250px;"
+									library="imagem" name="#{produto.imagem}" />
+								<h:outputText value=" #{produto.descricao}" />
+								<h:outputText value=" #{produto.descricao} fepogjeorjgpoerjg  " />
+							</h:panelGrid>
+						</p:tab>
+					</p:carousel>
+				</p:panelGrid>
 			</div>
 		</h:form>
 	</ui:define>
