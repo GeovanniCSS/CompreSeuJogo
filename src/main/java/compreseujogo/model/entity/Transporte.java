@@ -12,12 +12,13 @@ import javax.persistence.Table;
 public class Transporte extends Empresa {
 
 	private static final long serialVersionUID = 1L;
+	private int dataEntrega;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "transporte")
 	List<Venda> venda;
 
 	public Transporte(int id, String nome, String cnpj, String email, String bairro, String cidade, String endereco, String cep, String estado,
-			String telefone, String url, Boolean ativo) {
+			String telefone, String url, Boolean ativo, int dataEntrega) {
 		super(id, nome, cnpj, email, bairro, cidade, endereco, cep, estado, telefone, url, ativo);
 		venda = new ArrayList<Venda>();
 	}
@@ -33,6 +34,14 @@ public class Transporte extends Empresa {
 
 	public void setVenda(Venda venda) {
 		this.venda.add(venda);
+	}
+	
+	public int getDataEntrega() {
+		return dataEntrega;
+	}
+
+	public void setDataEntrega(int dataEntrega) {
+		this.dataEntrega = dataEntrega;
 	}
 
 	@Override
