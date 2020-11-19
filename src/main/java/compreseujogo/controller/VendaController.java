@@ -37,12 +37,15 @@ public class VendaController implements Serializable{
 		Facade facade = new Facade();
 		venda.setCliente(cliente);
 		try {
-			facade.novaVenda(venda);
+			context.addMessage(null, new FacesMessage(facade.novaVenda(venda), FacesMessage.FACES_MESSAGES));
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
 	}
-
+	
+	public String selecionar(Venda venda){
+		return "";
+	}
 	public Venda getVenda() {
 		return venda;
 	}
