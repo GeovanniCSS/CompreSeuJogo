@@ -24,7 +24,18 @@ public class ClienteBo extends PessoaBo<Cliente> {
 
 		}
 	}
-
+	
+	public String salvar(Cliente cliente) throws Exception {
+		if (cliente.getId() > 0) {
+			return atualizar(cliente, Cliente.class);			
+		} else {
+			cliente.setListaDesejos(null);
+			cliente.setCarrinho(null);
+			novaPessoa(cliente, Cliente.class);
+			return createDepency(cliente);
+		}
+	}
+	
 	public String createDepency(Cliente cliente) throws Exception {
 		CarrinhoBo carrinhoBo = new CarrinhoBo();
 		ListaDesejoBo listaDesejosBo = new ListaDesejoBo();
