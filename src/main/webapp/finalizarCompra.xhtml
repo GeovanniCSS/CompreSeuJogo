@@ -16,15 +16,28 @@
 		<h:form id="form">
 			<p:panel>
 				<div class="ui-g">
+					
+					<div style="float: center" class="ui-g-6">
+						
+						<div style="text-align: center">
+							<p:dataTable var="transporte" value="#{transporteBean.lista}">
+    							<p:column headerText="Nome">
+        							<h:outputText value="#{transporte.nome}" />
+    						    </p:column>
+ 
+ 							   <p:column headerText="Entrega">
+        						   <h:outputText value="#{transporte.id} dias uteis" />
+        						   
+    						   </p:column>
+
+                            </p:dataTable>
+						</div>
+					
+					</div>
 					<div class="ui-g-3">
 					
 					</div>
-					<div style="float: center" class="ui-g-6">
-						<div style="text-align: center">
-							
-						</div>
-					</div>
-					<div style="float: right;" class="ui-g-3">
+					<div style="float: rigt;" class="ui-g-3">
 						<p:panel>
 							<h:outputLabel value="Transportadora " for="spi" />
 								<p:selectOneMenu id="transporte"
@@ -37,7 +50,7 @@
 							<br></br>
 							<br></br>
 							<p:commandButton value="Finalizar Pedido" id="add"
-								style="margin-center:20px;" update=":msgs"
+								style="margin-center:20px;"
 								action="#{itemCarrinhoBean.salvar(produtoBean.produto, UseClienteBean.cliente)}" />
 						</p:panel>
 					</div>
