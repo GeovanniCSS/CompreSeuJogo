@@ -16,7 +16,7 @@
 				<p>#{UseClienteBean.cliente.nome}, aqui você encontra todos seus
 					pedidos, use os filtros para poder encontrar o pedido que deseja ver</p>
 			</p:panel>
-			<p:dataTable id="tableProduto" var="venda" value="#{vendaBean.lista}"
+			<p:dataTable id="tableProduto" var="venda" value="#{vendaBean.listaCliente(UseClienteBean.cliente)}"
 				frame="box" rules="all" widgetVar="vendas" cellpadding="3"
 				paginator="true"
 				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} 

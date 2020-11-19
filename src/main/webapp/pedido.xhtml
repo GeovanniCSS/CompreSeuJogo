@@ -6,6 +6,10 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
+	<f:metadata>
+		<f:viewParam name="id" value="#{vendaBean.venda.id}" />
+		<f:viewAction action="#{vendaBean.encontrar()}" />
+	</f:metadata>
 </h:head>
 <ui:composition template="/WEB-INF/template/template.xhtml">
 	<ui:define name="tituloJanela">Pedidos</ui:define>
@@ -16,25 +20,25 @@
 				columnClasses="logo,detail">
 				<p:outputPanel>
 					<h:panelGrid columns="2" cellpadding="5">
-						<h:graphicImage style="widht:150px;height:150px;" library="imagem"
-							name="#{produto.imagem}" />
-						<h:outputText value="Id:" />
-						<p:outputLabel value="#{produto.id}" style="color:white" />
+						<h:outputText value="Número do pedido:" />
+						<p:outputLabel value="#{vendaBean.venda.id}" style="color:white" />
 
-						<h:outputText value="Year:" />
-						<p:outputLabel value="#{produto.descricao}" />
+						<h:outputText value="Valor total da venda: R$" />
+						<p:outputLabel value="#{vendaBean.venda.valor}" />
 
-						<h:outputText value="Color:" />
-						<p:outputLabel value="#{produto.nome}" />
+						<h:outputText value="Itens:" />
+						<p:outputLabel value="#{vendaBean.venda.item.size()}" />
 					</h:panelGrid>
 				</p:outputPanel>
 			</p:panelGrid>
-			<p:carousel value="#{vendaBean.venda.item}" var="item" numVisible="1" effect="easeInStrong"
-				style="margin-bottom:0">
+			<p:carousel value="#{vendaBean.venda.item}" var="item" numVisible="1"
+				effect="easeInStrong" style="margin-bottom:0">
 				<p:tab title="#{item.produto.nome}">
 					<h:panelGrid columns="2" cellpadding="10">
-						<h:graphicImage style="widht:150px;height:150px;" library="imagem"
+						<h:graphicImage style="widht:250px;height:250px;" library="imagem"
 							name="#{item.produto.imagem}" />
+						<h:outputText
+							value=" #{item.produto.descricao}" />
 						<h:outputText
 							value=" #{item.produto.descricao} fepogjeorjgpoerjg  " />
 					</h:panelGrid>

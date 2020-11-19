@@ -91,7 +91,7 @@ public class Facade {
 
 	public String novaVenda(Venda venda) throws Exception {
 		itemCarrinhoBo.validarQuantidade(venda.getCliente().getCarrinho().getItem());
-		vendaBo.novaVenda(venda);
+		vendaBo.salvarVenda("online",venda);
 		itemVendaBo.novaVenda(venda);
 		carrinhoBo.zerar(venda.getCliente().getCarrinho());
 		produtoBo.dimuirQuantidade(venda.getCliente().getCarrinho().getItem());
@@ -259,8 +259,16 @@ public class Facade {
 			return produtoBo.listSearch(parameter);
 		}
 	}
+	
+	public List<Venda> listaVenda(String parameter, Venda venda){
+		return vendaBo.listVenda(parameter, venda);
+	}
 
 	public Produto encontrarProduto(int id) {
 		return produtoBo.encontrar(id);
+	}
+
+	public Venda encontrarVenda(int id) {
+		return vendaBo.encontrar(id);
 	}
 }

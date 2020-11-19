@@ -17,21 +17,21 @@ import compreseujogo.model.entity.Venda;
 
 @RequestScoped
 @ManagedBean(name = "vendaBean")
-public class VendaController implements Serializable{
+public class VendaController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Venda venda;
 	private List<Venda> lista;
 	private List<Transporte> transporte;
-	
+
 	public VendaController() {
 		super();
 		this.venda = new Venda();
 		this.lista = new ArrayList<Venda>();
 		this.transporte = new ArrayList<Transporte>();
 	}
-	
+
 	public void salvar(Cliente cliente) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
@@ -42,10 +42,27 @@ public class VendaController implements Serializable{
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
 	}
-	
-	public String selecionar(Venda venda){
-		return "";
+
+	public List<Venda> listaCliente(Cliente cliente) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			venda.setCliente(cliente);
+			return facade.listaVenda("Cliente", venda);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+			return null;
+		}
 	}
+	public void encontrar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		venda = facade.encontrarVenda(venda.getId());
+	}
+	public String selecionar(Venda venda) {
+		return "pedido.xhtml?id="+venda.getId()+"&faces-redirect=true";
+	}
+
 	public Venda getVenda() {
 		return venda;
 	}
@@ -61,7 +78,7 @@ public class VendaController implements Serializable{
 	public void setLista(List<Venda> lista) {
 		this.lista = lista;
 	}
-		
+
 	public List<Transporte> getTransporte() {
 		return transporte;
 	}

@@ -81,7 +81,7 @@ public class ProdutoBo {
 
 	public void dimuirQuantidade(List<ItemCarrinho> list) throws Exception {
 		for (ItemCarrinho item : list) {
-			item.getProduto().setQuantEstoque(-item.getQuantidade());
+			item.getProduto().setQuantEstoque(item.getProduto().getQuantEstoque()-item.getQuantidade());
 			saveOrUpdate(item.getProduto());
 		}
 	}
