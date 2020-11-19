@@ -13,8 +13,9 @@ import javax.persistence.Table;
 public class Transporte extends Empresa {
 
 	private static final long serialVersionUID = 1L;
-	@Column(nullable = true)
-	private int dataEntrega;
+	
+	@Column(name ="dataEntrega",nullable = false)
+	private Integer dataEntrega;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "transporte")
 	List<Venda> venda;

@@ -13,6 +13,7 @@ import org.primefaces.model.charts.pie.PieChartDataSet;
 import org.primefaces.model.charts.pie.PieChartModel;
 
 import compreseujogo.facade.Facade;
+import compreseujogo.model.entity.Venda;
 
 @RequestScoped
 @ManagedBean(name = "graficoBean")
@@ -31,11 +32,11 @@ public class GraficoController implements Serializable {
 		pieModel = new PieChartModel();
 		ChartData data = new ChartData();
 		Facade facade = new Facade();
-
+		List<Venda> venda = new Facade().listaVenda("", null);
 		PieChartDataSet dataSet = new PieChartDataSet();
 		List<Number> values = new ArrayList<>();
-		values.add(300);
-		values.add(50);
+		values.add(venda.stream().filter(V -> V.getVendedor().equals(null)).count());
+		values.add(venda.stream().filter(V -> !V.getVendedor().equals(null)).count());
 		//values.add(100);
 		dataSet.setData(values);
 
