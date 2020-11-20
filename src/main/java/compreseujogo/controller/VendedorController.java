@@ -13,7 +13,7 @@ import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Estado;
 import compreseujogo.model.entity.Sexo;
 import compreseujogo.model.entity.Vendedor;
-import compreseujogo.viacep.WebServiceCep;
+import compreseujogo.util.WebServiceCep;
 
 @ManagedBean(name = "vendedorBean")
 @RequestScoped
