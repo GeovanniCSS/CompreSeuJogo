@@ -7,6 +7,7 @@ import java.util.List;
 import compreseujogo.model.dao.GenericDao;
 import compreseujogo.model.dao.VendaDao;
 import compreseujogo.model.entity.Venda;
+import compreseujogo.model.bo.ComissaoBo;
 
 public class VendaBo {
 	
@@ -65,6 +66,7 @@ public class VendaBo {
 		} else {
 			venda.setTransporte(null);
 			novaVenda(venda);
+			new ComissaoBo.adicionarVenda(venda);
 		}
 	}
 
