@@ -31,7 +31,7 @@ html, body {
 			<ui:include src="/WEB-INF/template/MenuCliente.xhtml" />
 		</h:panelGroup>
 		<h:panelGroup rendered="#{UseVendedorBean.logado == true}">
-			<ui:include src="/WEB-INF/template/MenuCliente.xhtml" />
+			<ui:include src="/WEB-INF/template/menuVendedor.xhtml" />
 		</h:panelGroup>
 		<h:panelGroup
 			rendered="#{UseAdmBean.logado == false and UseClienteBean.logado == false and UseVendedorBean.logado == false}">

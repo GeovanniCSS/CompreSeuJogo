@@ -18,14 +18,14 @@
 				styleClass="showcase-text-align-center">
 				<p:outputLabel value="E-mail" for="email" />
 				<p:inputText id="email"
-					value="#{administradorBean.administrador.email}"
+					value="#{UseVendedorBean.vendedor.email}"
 					placeholder="Digite seu e-mail" required="true" />
 				<p:outputLabel value="Senha" for="senha" />
 				<p:password id="senha"
-					value="#{administradorBean.administrador.senha}"
+					value="#{UseVendedorBean.vendedor.senha}"
 					placeholder="Digite sua senha" required="true" />
 			</p:panelGrid>
-			<p:commandButton value="Entrar" action="#{UseAdmBean.login()}"
+			<p:commandButton value="Entrar" action="#{UseVendedorBean.login()}"
 				update="@form" />
 		</div>
 	</h:form>
