@@ -6,7 +6,6 @@ import compreseujogo.model.dao.ComissaoDao;
 import compreseujogo.model.dao.GenericDao;
 import compreseujogo.model.entity.Comissao;
 import compreseujogo.model.entity.Venda;
-import compreseujogo.model.entity.Vendedor;
 
 public class ComissaoBo {
 
@@ -27,7 +26,7 @@ public class ComissaoBo {
 			throw new Exception("O dinheiro da comiss�o n�o pode ficar negativo");
 		} else if (comissao.getPorcentagem() < 0) {
 			throw new Exception("A porcentagem da comiss�o n�o pode ser negativo");
-		} 
+		}
 	}
 
 	public String remove(Comissao comissao) throws Exception {
@@ -52,10 +51,14 @@ public class ComissaoBo {
 			throw new Exception(e.getMessage());
 		}
 	}
-	
-	public void adicionarVenda(Venda venda){
-		venda.getVendedor().getComissao().setDinheiro(venda.getVendedor().getComissao().getDinheiro()+
-							      venda.getVendedor().getComissao().getPorcentagem * venda.getValor());
-		saveOrUpdate(venda.getVendedor().getComissao());
+
+	public void adicionarVenda(Venda venda) throws Exception {
+		venda.getVendedor().getComissao().setDinheiro(venda.getVendedor().getComissao().getDinheiro()
+				+ venda.getVendedor().getComissao().getPorcentagem() * venda.getValor());
+		try {
+			saveOrUpdate(venda.getVendedor().getComissao());
+		} catch (Exception e) {
+			throw new Exception("Falha ao adicionar a comissão");
+		}
 	}
 }
