@@ -84,11 +84,11 @@
 								</h:panelGrid>
 							</p:dialog>
 							
-							<p:outputLabel for="dias" value="Entrega (Dias Úteis)"/>
-							<p:inputText id="dias"
+															
+							<h:outputLabel value="Entrega (Dias Úteis)" for="spi" />
+							<p:spinner id="dias" size="1" min="1"
 								value="#{transporteBean.transporte.dataEntrega}"
-								requiredMessage="O campo data é obrigatório" />
-
+								requiredMessage="O campo data é obrigatório" />	
 
 							<p:commandButton value="Salvar" id="salvar"
 								action="#{transporteBean.salvar}" style="margin-center:20px;"

@@ -9,6 +9,7 @@
 	<ui:define name="tituloJanela">Todas transportadoras</ui:define>
 	<ui:define name="conteudo">
 		<h:form id="form1">
+			<h:inputHidden value="#{transporteBean.transporte.id}" />
 			<p:growl id="msgs" autoUpdate="true" life="3000" />
 			<p:breadCrumb>
 				<p:menuitem value="Início" url="#" icon="pi pi-home" />
@@ -72,8 +73,8 @@
 								value="#{transporteBean.transporte.email}"
 								requiredMessage="O campo e-mail é obrigatório" />
 								
-							<p:outputLabel for="dias" value="Entrega (Dias Úteis)" />
-							<p:inputText id="dias"
+							<h:outputLabel value="Entrega (Dias Úteis)" for="spi" />
+							<p:spinner id="dias" size="1" min="1"
 								value="#{transporteBean.transporte.dataEntrega}"
 								requiredMessage="O campo data é obrigatório" />	
 
