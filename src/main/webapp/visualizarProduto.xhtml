@@ -53,7 +53,7 @@
 							<br />
 							<p:commandButton value="Adicionar ao Carrinho"
 								style="margin-center:20px;"
-								action="#{itemCarrinhoBean.adicionarItem(produto, UseClienteBean)}"
+								action="#{itemCarrinhoBean.salvar(produtoBean.produto, UseClienteBean.cliente)}"
 								update="@form:growl" />
 						</p:panel>
 					</div>

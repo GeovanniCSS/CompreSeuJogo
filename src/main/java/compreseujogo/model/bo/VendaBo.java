@@ -61,9 +61,9 @@ public class VendaBo {
 	public void salvarVenda(String parameter, Venda venda) throws Exception {
 		if (parameter.equals("online")) {
 			venda.setVendedor(null);
-			venda.setTransporte(null);
 			novaVenda(venda);
 		} else {
+			venda.setTransporte(null);
 			novaVenda(venda);
 		}
 	}

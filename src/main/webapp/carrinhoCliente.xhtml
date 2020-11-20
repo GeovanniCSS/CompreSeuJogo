@@ -16,7 +16,7 @@
 				rendered="#{UseClienteBean.cliente.carrinho.item.size() >= 0}">
 				<p:panel>
 					<p:commandButton style="float: right;"
-						action="#{vendaBean.salvar(UseClienteBean.cliente)}"
+						action="finalizarCompra.xhtml?faces-redirect=true"
 						value="Finalizar compra" update="@form"/>
 					<p style="font-size: 1.2em;">Total:
 						#{UseClienteBean.cliente.carrinho.valor}</p>

@@ -16,30 +16,24 @@
 		<h:form id="form">
 			<p:panel>
 				<div class="ui-g">
-					
 					<div style="float: center" class="ui-g-6">
-						
 						<div style="text-align: center">
 							<p:dataTable var="transporte" value="#{transporteBean.lista}">
-    							<p:column headerText="Nome">
-        							<h:outputText value="#{transporte.nome}" />
-    						    </p:column>
- 
- 							   <p:column headerText="Entrega">
-        						   <h:outputText value="#{transporte.dataEntrega} dias uteis" />
-        						   
-    						   </p:column>
-
-                            </p:dataTable>
+								<p:column headerText="Nome">
+									<h:outputText value="#{transporte.nome}" />
+								</p:column>
+								<p:column headerText="Entrega">
+									<h:outputText value="#{transporte.dataEntrega} dias uteis" />
+								</p:column>
+							</p:dataTable>
 						</div>
-					
 					</div>
 					<div class="ui-g-3">
 						<div style="text-align: center">
 							<p:panel>
 								<ul>
-									<li style="font-size: 1.2em; text-align: left;">TOTAL DA VENDA: R$
-										#{vendaBean.venda.valor}</li>									
+									<li style="font-size: 1.2em; text-align: left;">TOTAL DA
+										VENDA: R$#{UseClienteBean.cliente.carrinho.valor}</li>
 								</ul>
 							</p:panel>
 						</div>
@@ -47,18 +41,18 @@
 					<div style="float: rigt;" class="ui-g-3">
 						<p:panel>
 							<h:outputLabel value="Transportadora " for="spi" />
-								<p:selectOneMenu id="transporte"
-									value="#{vendaBean.venda.transporte.id}">
+							<p:selectOneMenu id="transporte"
+								value="#{vendaBean.venda.transporte.id}">
 								<f:selectItem itemLabel="Selecione uma opção" itemValue=""
 									noSelectionOption="true" />
 								<f:selectItems var="transporte" value="#{vendaBean.transporte}"
 									itemLabel="#{transporte.nome}" itemValue="#{transporte.id}" />
-								</p:selectOneMenu>
+							</p:selectOneMenu>
 							<br></br>
 							<br></br>
 							<p:commandButton value="Finalizar Pedido" id="add"
-								style="margin-center:20px;"
-								action="#{itemCarrinhoBean.salvar(produtoBean.produto, UseClienteBean.cliente)}" />
+								style="margin-center:20px;" update="@form"
+								action="#{vendaBean.salvar(UseClienteBean.cliente)}" />
 						</p:panel>
 					</div>
 				</div>
