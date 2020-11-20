@@ -6,11 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import compreseujogo.model.entity.Produto;
-import compreseujogo.util.Fabrica;
+import compreseujogo.util.EntityManagerUtil;
 
 public class ProdutoDao {
 
-	private static EntityManager em = Fabrica.getEntityManager();
+	private static EntityManager em = EntityManagerUtil.getEntityManager();
 
 	public List<Produto> list(String parametro, Produto produto) throws Exception {
 		Query q = null;

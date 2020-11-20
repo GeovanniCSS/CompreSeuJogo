@@ -6,9 +6,9 @@ import javax.persistence.Persistence;
 
 import org.junit.jupiter.api.Test;
 
-import compreseujogo.util.Fabrica;
+import compreseujogo.util.EntityManagerUtil;
 
-public class FabricaTest {
+public class EntityManagerUtilTest {
 	
 	@Test
 	public void testeConexao() {
@@ -19,6 +19,6 @@ public class FabricaTest {
 	
 	@Test
 	public void testeFabrica() {
-		EntityManager em = Fabrica.getEntityManager();
+		EntityManager em = EntityManagerUtil.getEntityManager();
 	}
 }

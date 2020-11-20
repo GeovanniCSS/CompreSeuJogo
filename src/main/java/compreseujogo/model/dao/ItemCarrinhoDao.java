@@ -7,10 +7,10 @@ import javax.persistence.Query;
 
 import compreseujogo.model.entity.Item;
 import compreseujogo.model.entity.ItemCarrinho;
-import compreseujogo.util.Fabrica;
+import compreseujogo.util.EntityManagerUtil;
 
 public class ItemCarrinhoDao {
-	private static EntityManager em = Fabrica.getEntityManager();
+	private static EntityManager em = EntityManagerUtil.getEntityManager();
 
 	public List<ItemCarrinho> listar(String parametro, ItemCarrinho item) throws Exception {
 

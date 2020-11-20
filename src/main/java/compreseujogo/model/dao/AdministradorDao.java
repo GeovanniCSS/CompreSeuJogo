@@ -6,12 +6,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import compreseujogo.model.entity.Administrador;
-import compreseujogo.util.Fabrica;
+import compreseujogo.util.EntityManagerUtil;
 
 public class AdministradorDao {
 
 	public List<Administrador> list(String parameter, Administrador cliente) throws Exception {
-		EntityManager em = Fabrica.getEntityManager();
+		EntityManager em = EntityManagerUtil.getEntityManager();
 		Query q = null;
 
 		return q.getResultList();

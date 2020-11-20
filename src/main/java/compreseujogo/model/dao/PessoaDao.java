@@ -7,11 +7,11 @@ import javax.persistence.Query;
 
 import compreseujogo.model.entity.EntityBase;
 import compreseujogo.model.entity.Pessoa;
-import compreseujogo.util.Fabrica;
+import compreseujogo.util.EntityManagerUtil;
 
 public class PessoaDao <T extends Pessoa > {
 	
-	private static EntityManager em = Fabrica.getEntityManager();
+	private static EntityManager em = EntityManagerUtil.getEntityManager();
 	
 	public List<T> list(String parameter,Pessoa pessoa ,Class<T> classe) {
 		Query q = null;

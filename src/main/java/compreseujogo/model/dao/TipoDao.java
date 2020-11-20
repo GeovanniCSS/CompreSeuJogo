@@ -6,11 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import compreseujogo.model.entity.Tipo;
-import compreseujogo.util.Fabrica;
+import compreseujogo.util.EntityManagerUtil;
 
 public class TipoDao<T extends Tipo> {
 
-	private static EntityManager em = Fabrica.getEntityManager();
+	private static EntityManager em = EntityManagerUtil.getEntityManager();
 
 	public List<Tipo> list(String parameter, Tipo tipo, Class<T> classe) {
 

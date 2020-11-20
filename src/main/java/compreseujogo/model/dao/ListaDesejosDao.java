@@ -6,11 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import compreseujogo.model.entity.ListaDesejos;
-import compreseujogo.util.Fabrica;
+import compreseujogo.util.EntityManagerUtil;
 
 public class ListaDesejosDao {
 
-	private static EntityManager em = Fabrica.getEntityManager();
+	private static EntityManager em = EntityManagerUtil.getEntityManager();
 
 	public List<ListaDesejos> list(String parameter, ListaDesejos lista) {
 
