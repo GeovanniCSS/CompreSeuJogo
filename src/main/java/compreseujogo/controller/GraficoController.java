@@ -35,8 +35,8 @@ public class GraficoController implements Serializable {
 		List<Venda> venda = new Facade().listaVenda("", null);
 		PieChartDataSet dataSet = new PieChartDataSet();
 		List<Number> values = new ArrayList<>();
-		values.add(venda.stream().filter(V -> V.getVendedor().equals(null)).count());
-		values.add(venda.stream().filter(V -> !V.getVendedor().equals(null)).count());
+		values.add(venda.stream().filter(Venda -> Venda.getVendedor() == null).count());
+		values.add(venda.stream().filter(Venda -> Venda.getVendedor() != null).count());
 		//values.add(100);
 		dataSet.setData(values);
 

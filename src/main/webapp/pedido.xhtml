@@ -34,14 +34,40 @@
 			<p:carousel value="#{vendaBean.venda.item}" var="item" numVisible="1"
 				effect="easeInStrong" style="margin-bottom:0">
 				<p:tab title="#{item.produto.nome}">
-					<h:panelGrid columns="2" cellpadding="10">
-						<h:graphicImage style="widht:250px;height:250px;" library="imagem"
-							name="#{item.produto.imagem}" />
-						<h:outputText
-							value=" #{item.produto.descricao}" />
-						<h:outputText
-							value=" #{item.produto.descricao} fepogjeorjgpoerjg  " />
-					</h:panelGrid>
+					<div class="ui-g">
+						<div class="ui-g-3">
+							<p:graphicImage style="width: 200px;height: 250px;padding: 20px;"
+								library="imagem" name="#{item.produto.imagem}" />
+							<p:rating style="padding-left:78px;" value="#{item.produto.nota}"
+								readonly="true" />
+						</div>
+						<div style="float: center" class="ui-g-6">
+							<div style="text-align: center">
+								<p:panel>
+									<h1>#{item.produto.nome}</h1>
+									<ul>
+										<li style="font-size: 1.2em; text-align: left;">Preço: R$
+											#{item.produto.valor}</li>
+										<li style="font-size: 1.2em; text-align: left;">Plataforma:
+											#{item.produto.plataforma.nome}</li>
+										<li style="font-size: 1.2em; text-align: left;">Categoria:
+											#{item.produto.categoria.nome}</li>
+										<li style="font-size: 1.2em; text-align: left;">Marca:
+											#{item.produto.marca.nome}</li>
+										<li style="font-size: 1.2em; text-align: left;">Descrição:
+											#{item.produto.descricao}</li>
+									</ul>
+								</p:panel>
+							</div>
+						</div>
+						<div style="float: right;" class="ui-g-3">
+							<p:panel>
+								<p:commandButton value="Dar nota"
+									style="margin-center:20px;"
+									update="@form" />
+							</p:panel>
+						</div>
+					</div>
 				</p:tab>
 			</p:carousel>
 			<hr />

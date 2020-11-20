@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.Venda;
+import compreseujogo.model.entity.Vendedor;
 
 public class VendaTest {
 
@@ -37,10 +38,12 @@ public class VendaTest {
 		cliente.setId(1);
 		venda.setCliente(cliente);
 		List<Venda> vendas = new Facade().listaVenda("", null);
-
+		Vendedor v = new Vendedor();
+		v.setId(1);
 		try {
-			Long i = vendas.stream().peek(Venda -> Venda.getVendedor().equals(null)).count();
-			System.out.println(i);
+			//Long i = vendas.stream().peek(Venda -> Venda.getVendedor().equals(v)).count();
+			Long a = vendas.stream().filter(Venda -> Venda.getVendedor() != null).count();
+			System.out.println(" a:"+a);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
