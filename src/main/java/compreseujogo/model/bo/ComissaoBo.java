@@ -5,7 +5,8 @@ import java.util.List;
 import compreseujogo.model.dao.ComissaoDao;
 import compreseujogo.model.dao.GenericDao;
 import compreseujogo.model.entity.Comissao;
-
+import compreseujogo.model.entity.Venda;
+import compreseujogo.model.entity.Vendedor;
 
 public class ComissaoBo {
 
@@ -51,5 +52,10 @@ public class ComissaoBo {
 			throw new Exception(e.getMessage());
 		}
 	}
-
+	
+	public void adicionarVenda(Venda venda){
+		venda.getVendedor().getComissao().setDinheiro(venda.getVendedor().getComissao().getDinheiro()+
+							      venda.getVendedor().getComissao().getPorcentagem * venda.getValor());
+		saveOrUpdate(venda.getVendedor().getComissao());
+	}
 }
