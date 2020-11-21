@@ -64,7 +64,38 @@
 							<p:panel>
 								<p:commandButton value="Dar nota"
 									style="margin-center:20px;"
-									update="@form" />
+									update="@form"
+									onclick="PF('wdialog').show();"/>
+									
+									<p:dialog id="dialog" widgetVar="wdialog" header="Avaliação - #{item.produto.nome}" modal="true" appendTo="@(body)" hideEffect="explode">
+									 	<p:panelGrid columns="2" layout="grid">
+											<f:facet name="footer">
+												<p:panelGrid columns="2" layout="grid">
+													<p:commandButton value="Salvar" icon="ui-icon-check" onclick="PF('wdialog').hide();"
+															         action="#{avaliacaoBean.salvar}" ajax="true" update="@form"/>
+										     	</p:panelGrid>
+											</f:facet>
+											<p:outputLabel value="Título"/>
+												<p:inputText id="titulo" rows="1"
+													         value="#{avaliacaoBean.avaliacao.titulo}"
+													 	     required="true" requiredMessage="O campo é obrigatório" />
+													
+										    <p:outputLabel value="Data"/>
+												<p:inputMask id="data" rows="1"
+														     value="#{avaliacaoBean.avaliacao.data}"
+														     mask="99/99/9999"
+														     required="true" requiredMessage="O campo é obrigatório" />	
+														
+										    <p:outputLabel value="Descrição"/>
+												<p:inputTextarea id="descricao"
+							                                     value="#{avaliacaoBean.avaliacao.descricao}" rows="4" cols="45"
+							                                     required="true" />
+
+				                             <p:outputLabel value="Pontos"/>
+										     <p:rating style="padding-left:80px;"/>
+											<br></br>
+										</p:panelGrid>									
+									</p:dialog>
 							</p:panel>
 						</div>
 					</div>

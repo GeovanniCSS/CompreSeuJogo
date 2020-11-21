@@ -62,9 +62,15 @@
 						value="Alterar" />
 				</p:column>
 				<p:column headerText="Excluir">
-					<p:commandButton action="#{transporteBean.excluir(transporte)}"
-						onclick="if (!confirm('Confirma a exclusão do transporte?')) return false"
+					<p:commandButton
+						onclick="PF('wdialog').show();"
 						value="Excluir" />
+					<p:dialog id="dialog" widgetVar="wdialog" header="Aviso" modal="true" appendTo="@(body)" hideEffect="explode">
+						<p:rating style="padding-left:78px;"
+							value="#{produtoBean.produto.nota}"/>
+						<p:commandButton value="Ok" icon="ui-icon-check" onclick="PF('wdialog').hide();"/>
+					</p:dialog>
+					
 				</p:column>
 			</p:dataTable>
 		</h:form>

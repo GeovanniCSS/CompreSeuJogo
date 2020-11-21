@@ -119,6 +119,10 @@ public class Facade {
 	public String salvarVendedor(Vendedor vendedor) throws Exception {
 		return vendedorBo.salvar(vendedor);
 	}
+	
+	public String salvarAvaliacao(Avaliacao avaliacao) throws Exception {
+		return avaliacaoBo.saveOrUpdate(avaliacao);
+	}
 
 	public String atualizarVendedor(Vendedor vendedor) throws Exception {
 		return vendedorBo.desativarAtivar(vendedor);
