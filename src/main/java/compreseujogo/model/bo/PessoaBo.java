@@ -52,11 +52,11 @@ public class PessoaBo<T extends Pessoa> {
 	public String desativarAtivar(EntityBase obj) throws Exception {
 		Pessoa pessoa = (Pessoa) obj;
 		if (pessoa.isAtivo() == true) {
-			//pessoa.setAtivo(true);
+			// pessoa.setAtivo(true);
 			saveOrUpdate(pessoa);
 			return "Cadastro ativado";
 		} else {
-			//pessoa.setAtivo(false);
+			// pessoa.setAtivo(false);
 			saveOrUpdate(pessoa);
 			return "Cadastro desativado";
 		}
@@ -101,10 +101,10 @@ public class PessoaBo<T extends Pessoa> {
 		return saveOrUpdate(pessoa);
 	}
 
-	public Pessoa login(Pessoa pessoa, Class<T> classe) throws Exception {
-		if (list("login", pessoa, classe).size() == 1) {
-			return list("login", pessoa, classe).get(0);
-		} else {
+	public Pessoa login(Pessoa pessoa) throws Exception {
+		try {
+			return new PessoaDao<Pessoa>().login(pessoa);
+		} catch (Exception e) {
 			throw new Exception("E-mail ou senha está incorreto");
 		}
 	}

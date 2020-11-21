@@ -18,6 +18,7 @@ import compreseujogo.model.bo.ItemVendaBo;
 import compreseujogo.model.bo.ListaDesejoBo;
 import compreseujogo.model.bo.LojaBo;
 import compreseujogo.model.bo.MarcaBo;
+import compreseujogo.model.bo.PessoaBo;
 import compreseujogo.model.bo.PlataformaBo;
 import compreseujogo.model.bo.ProdutoBo;
 import compreseujogo.model.bo.TipoBo;
@@ -59,6 +60,7 @@ public class Facade {
 	private LojaBo lojaBo;
 	private MarcaBo marcaBo;
 	private PlataformaBo plataformaBo;
+	private PessoaBo pessoaBo;
 	private ProdutoBo produtoBo;
 	private TipoBo tipoBo;
 	private TransporteBo transporteBo;
@@ -81,6 +83,7 @@ public class Facade {
 		listaDesejoBo = new ListaDesejoBo();
 		lojaBo = new LojaBo();
 		marcaBo = new MarcaBo();
+		pessoaBo = new PessoaBo();
 		plataformaBo = new PlataformaBo();
 		produtoBo = new ProdutoBo();
 		tipoBo = new TipoBo();
@@ -99,17 +102,8 @@ public class Facade {
 		return "vendido";
 	}
 
-	public Administrador loginAdminstrador(Administrador administrador) throws Exception {
-		return (Administrador) administradorBo.login(administrador, Administrador.class);
-	}
-
-	public Vendedor loginVendedor(Vendedor vendedor) throws Exception {
-		return (Vendedor) vendedorBo.login(vendedor, Vendedor.class);
-
-	}
-
-	public Cliente loginCliente(Cliente cliente) throws Exception {
-		return (Cliente) clienteBo.login(cliente, Cliente.class);
+	public Pessoa login(Pessoa pessoa) throws Exception {
+		return pessoaBo.login(pessoa);
 	}
 
 	public String salvarAdministrador(Administrador administrador) throws Exception {
