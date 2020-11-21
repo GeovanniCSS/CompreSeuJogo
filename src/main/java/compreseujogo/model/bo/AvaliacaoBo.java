@@ -41,6 +41,17 @@ public class AvaliacaoBo {
 		}
 	}
 
+	public int calcularNota(Avaliacao avaliacao) throws Exception {
+		try {
+			double total = list("", null).stream().filter(a -> a.getProduto().equals(avaliacao.getProduto()))
+					.mapToInt(Avaliacao::getPontos).average().getAsDouble();
+			return ((total > 4) ? 5 : (total > 3) ? 4 : (total > 2) ? 3 : (total > 1) ? 2 : 1);
+		} catch (Exception e) {
+			throw new Exception("Erro ao calcular a nota do produto");
+		}
+
+	}
+
 	private void validarDados(Avaliacao avaliacao) throws Exception {
 		if (avaliacao.getId() < 0) {
 			throw new Exception("Id n�o pode ser negativo!");

@@ -66,7 +66,7 @@ public class VendaBo {
 		} else {
 			venda.setTransporte(null);
 			novaVenda(venda);
-			new ComissaoBo.adicionarVenda(venda);
+			new ComissaoBo().adicionarVenda(venda);
 		}
 	}
 
