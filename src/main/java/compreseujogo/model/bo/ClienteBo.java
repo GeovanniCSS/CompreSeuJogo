@@ -48,4 +48,11 @@ public class ClienteBo extends PessoaBo<Cliente> {
 			throw new Exception("Erro ao executar o cadastro" + cliente.getNome());
 		}
 	}
+	public Cliente accesCpf(Cliente cliente) throws Exception{
+		try {
+			return new ClienteDao().acessCpf(cliente);
+		} catch (Exception e) {
+			throw new Exception("Não foi possível localizar o cliente");
+		}
+	}
 }
