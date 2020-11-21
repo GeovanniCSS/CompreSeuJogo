@@ -35,7 +35,8 @@
 						</div>
 					</p:column>
 					<p:column>
-						<p:commandLink style="float:right;padding: 20px 25px;"  value="Login" />
+						<p:commandLink style="float:right;padding: 20px 25px;"
+							action="login.xhtml?faces-redirect=true" value="Login" />
 					</p:column>
 				</p:panelGrid>
 				<p:menubar>
@@ -63,14 +64,6 @@
 					<p:submenu label="NINTENDO">
 						<p:menuitem value="JOGOS" url="#" />
 						<p:menuitem value="CONSOLES" url="#" />
-					</p:submenu>
-					<p:submenu label="Login">
-						<p:menuitem value="Administrador"
-							url="loginAdministrador.xhtml?faces-redirect=true" />
-						<p:menuitem value="Vendedor"
-							url="loginVendedor.xhtml?faces-redirect=true" />
-						<p:menuitem value="Cliente"
-							url="clienteLogin.xhtml?faces-redirect=true" />
 					</p:submenu>
 				</p:menubar>
 			</h:form>

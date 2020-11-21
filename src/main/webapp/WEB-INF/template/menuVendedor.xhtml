@@ -25,9 +25,9 @@
 					<p:column>
 						<p:menuButton icon="pi pi-user"
 							style="float:right;padding: 10px 5px;"
-							value="#{UseVendedorBean.vendedor.nome}">
-							<p:menuitem value="Sair" icon="pi pi-sign-out"
-								action="#{UseVendedorBean.logout()}" />
+							value="#{UsePessoaBean.vendedor.nome}">
+							<p:menuitem value="Finalizar sessão" icon="pi pi-sign-out"
+								action="#{UsePessoaBean.logout()}" immediate="true" />
 						</p:menuButton>
 					</p:column>
 				</p:panelGrid>
@@ -63,12 +63,12 @@
 				</p:menubar>
 				<p:dialog header="Nova venda" widgetVar="dlg" resizable="false">
 					<h:panelGrid columns="1" cellpadding="5">
-					<p:outputLabel value="Digite o CPF do cliente para iniciar venda" />
-						<p:inputMask id="username" value="#{UseClienteBean.cliente.cpf}"
-								mask="999.999.999-99"/>	
+						<p:outputLabel value="Digite o CPF do cliente para iniciar venda" />
+						<p:inputMask id="username" value="#{UsePessoaBean.cliente.cpf}"
+							mask="999.999.999-99" />
 						<f:facet name="footer">
 							<p:commandButton value="Acessar" update="@this"
-								action="#{UseClienteBean.acessoVendedor()}"/>
+								action="#{UsePessoaBean.acessoVendedor()}" />
 						</f:facet>
 					</h:panelGrid>
 				</p:dialog>
