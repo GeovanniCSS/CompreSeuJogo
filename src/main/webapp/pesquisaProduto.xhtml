@@ -18,7 +18,7 @@
 			<p:dataGrid var="produto" value="#{produtoBean.buscar()}" columns="4"
 				layout="grid" rows="12" paginator="true" id="produto"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				currentPageReportTemplate=" " rowsPerPageTemplate="8,16,32">
+				currentPageReportTemplate=" " paginatorPosition="bottom" rowsPerPageTemplate="8,16,32">
 				<p:panel style="text-align:center">
 					<h:panelGrid columns="1" style="width:100%">
 						<p:graphicImage style="width: 200px;height: 250px;"

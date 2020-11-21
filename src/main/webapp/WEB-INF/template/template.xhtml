@@ -4,16 +4,16 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<f:view>	
-<h:head>
-	<title><ui:insert name="tituloJanela" /></title>
-	<h:outputStylesheet library="resources/css" name="face.css" />
-	<h:outputStylesheet name="primeicons/primeicons.css"
-		library="primefaces" />
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="shortcut icon" type="image/x-icon"
-		href="#{resource['imagem/logoI.png']}" />
-	<style>
+<f:view>
+	<h:head>
+		<title><ui:insert name="tituloJanela" /></title>
+		<h:outputStylesheet library="resources/css" name="face.css" />
+		<h:outputStylesheet name="primeicons/primeicons.css"
+			library="primefaces" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="shortcut icon" type="image/x-icon"
+			href="#{resource['imagem/logoI.png']}" />
+		<style>
 html, body {
 	margin: 0;
 	padding: 0;
@@ -21,30 +21,36 @@ html, body {
 	background: black;
 }
 </style>
-</h:head>
-<h:body>
-	<div id="cabecalho">
-		<h:panelGroup rendered="#{UseAdmBean.logado == true}">
-			<ui:include src="/WEB-INF/template/MenuAdministrador.xhtml" />
-		</h:panelGroup>
-		<h:panelGroup rendered="#{UseClienteBean.logado == true}">
-			<ui:include src="/WEB-INF/template/MenuCliente.xhtml" />
-		</h:panelGroup>
-		<h:panelGroup rendered="#{UseVendedorBean.logado == true}">
-			<ui:include src="/WEB-INF/template/menuVendedor.xhtml" />
-		</h:panelGroup>
-		<h:panelGroup
-			rendered="#{UseAdmBean.logado == false and UseClienteBean.logado == false and UseVendedorBean.logado == false}">
-			<ui:include src="/WEB-INF/template/MenuSite.xhtml" />
-		</h:panelGroup>
-	</div>
-	<div id="conteudo">
-		<ui:insert name="conteudo">
-		</ui:insert>
-	</div>
-	<div id="footer">
-		<ui:include src="/WEB-INF/template/footerPagina.xhtml" />
-	</div>
-</h:body>
+	</h:head>
+	<h:body>
+		<div id="cabecalho">
+			<h:panelGroup rendered="#{UseAdmBean.logado == true}">
+				<ui:include src="/WEB-INF/template/menuAdministrador.xhtml" />
+			</h:panelGroup>
+			<h:panelGroup
+				rendered="#{UseClienteBean.logado == true and UseVendedorBean.logado == true}">
+				<ui:include src="/WEB-INF/template/menuVenda.xhtml" />
+			</h:panelGroup>
+			<h:panelGroup
+				rendered="#{UseClienteBean.logado == true and UseVendedorBean.logado == false}">
+				<ui:include src="/WEB-INF/template/menuCliente.xhtml" />
+			</h:panelGroup>
+			<h:panelGroup
+				rendered="#{UseVendedorBean.logado == true and UseClienteBean.logado == false}">
+				<ui:include src="/WEB-INF/template/menuVendedor.xhtml" />
+			</h:panelGroup>
+			<h:panelGroup
+				rendered="#{UseAdmBean.logado == false and UseClienteBean.logado == false and UseVendedorBean.logado == false}">
+				<ui:include src="/WEB-INF/template/menuSite.xhtml" />
+			</h:panelGroup>
+		</div>
+		<div id="conteudo">
+			<ui:insert name="conteudo">
+			</ui:insert>
+		</div>
+		<div id="footer">
+			<ui:include src="/WEB-INF/template/footerPagina.xhtml" />
+		</div>
+	</h:body>
 </f:view>
 </html>

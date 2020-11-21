@@ -16,7 +16,7 @@
 	<ui:composition>
 		<div id="header" style="padding: 200px, 10px">
 			<h:form>
-				<p:growl id="messages" />
+				<p:growl id="msg" />
 				<p:panelGrid columns="2" layout="grid">
 					<p:column>
 						<p:graphicImage style="width: 50px;height:50px;" library="imagem"
@@ -50,8 +50,7 @@
 						<p:separator />
 					</p:submenu>
 					<p:submenu label="Venda" icon="pi pi-users">
-						<p:menuitem value="Venda"
-							url="vendaVendedor.xhtml?faces-redirect=true" />
+						<p:menuitem onclick="PF('dlg').show();" value="Venda" />
 						<p:separator />
 					</p:submenu>
 					<p:submenu label="Parceiros" icon="pi pi-briefcase">
@@ -62,6 +61,17 @@
 							url="listaFornecedor.xhtml?faces-redirect=true" />
 					</p:submenu>
 				</p:menubar>
+				<p:dialog header="Nova venda" widgetVar="dlg" resizable="false">
+					<h:panelGrid columns="1" cellpadding="5">
+					<p:outputLabel value="Digite o CPF do cliente para iniciar venda" />
+						<p:inputMask id="username" value="#{UseClienteBean.cliente.cpf}"
+								mask="999.999.999-99"/>	
+						<f:facet name="footer">
+							<p:commandButton value="Acessar" update="@this"
+								action="#{UseClienteBean.acessoVendedor()}"/>
+						</f:facet>
+					</h:panelGrid>
+				</p:dialog>
 			</h:form>
 		</div>
 	</ui:composition>

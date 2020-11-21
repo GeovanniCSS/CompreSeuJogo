@@ -65,6 +65,7 @@ public class VendaBo {
 			novaVenda(venda);
 		} else {
 			venda.setTransporte(null);
+			venda.setEntrega(true);
 			novaVenda(venda);
 			new ComissaoBo().adicionarVenda(venda);
 		}

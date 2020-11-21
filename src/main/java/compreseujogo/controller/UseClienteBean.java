@@ -9,6 +9,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.PrimeFaces;
+
 import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.Estado;
@@ -30,11 +32,24 @@ public class UseClienteBean implements Serializable {
 		this.logado = false;
 	}
 
+	public String acessoVendedor() {
+		FacesMessage message = null;
+		try {
+			cliente = new Facade().clienteAcessoCpf(cliente);
+			message = new FacesMessage(FacesMessage.SEVERITY_INFO, "", cliente.getNome());
+			this.logado = true;
+			return "index.xhtml?faces-redirect=true";
+		} catch (Exception e) {
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", e.getMessage());
+		}
+		FacesContext.getCurrentInstance().addMessage(null, message);
+		return null;
+	}
+
 	public String login() {
 		FacesContext context = FacesContext.getCurrentInstance();
-		Facade facade = new Facade();
 		try {
-			cliente = facade.loginCliente(cliente);
+			cliente = new Facade().loginCliente(cliente);
 			context.addMessage(null, new FacesMessage("Olá " + cliente, FacesMessage.FACES_MESSAGES));
 			this.logado = true;
 			return "index.xhtml?faces-redirect=true";
