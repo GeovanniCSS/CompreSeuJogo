@@ -14,6 +14,7 @@ import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.Transporte;
 import compreseujogo.model.entity.Venda;
+import compreseujogo.model.entity.Vendedor;
 
 @RequestScoped
 @ManagedBean(name = "vendaBean")
@@ -37,7 +38,19 @@ public class VendaController implements Serializable {
 		Facade facade = new Facade();
 		venda.setCliente(cliente);
 		try {
-			context.addMessage(null, new FacesMessage(facade.novaVenda(venda), FacesMessage.FACES_MESSAGES));
+			context.addMessage(null, new FacesMessage(facade.novaVenda("online",venda), FacesMessage.FACES_MESSAGES));
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+	}
+	
+	public void salvarVendedor(UseClienteBean cliente, Vendedor vendedor) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		venda.setVendedor(vendedor);
+		venda.setCliente(cliente.getCliente());
+		try {
+			context.addMessage(null, new FacesMessage(new Facade().novaVenda("fisica",venda), FacesMessage.FACES_MESSAGES));
+			cliente.setLogado(false);
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}

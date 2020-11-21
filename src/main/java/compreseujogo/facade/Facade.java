@@ -89,9 +89,9 @@ public class Facade {
 		vendedorBo = new VendedorBo();
 	}
 
-	public String novaVenda(Venda venda) throws Exception {
+	public String novaVenda(String parameter, Venda venda) throws Exception {
 		itemCarrinhoBo.validarQuantidade(venda.getCliente().getCarrinho().getItem());
-		vendaBo.salvarVenda("online",venda);
+		vendaBo.salvarVenda(parameter, venda);
 		itemVendaBo.novaVenda(venda);
 		carrinhoBo.zerar(venda.getCliente().getCarrinho());
 		produtoBo.dimuirQuantidade(venda.getCliente().getCarrinho().getItem());
@@ -175,12 +175,12 @@ public class Facade {
 		item.setProduto(encontrarProduto(item.getProduto().getId()));
 		return carrinhoBo.aumentorValor(itemCarrinhoBo.novo(item), item.getCarrinho());
 	}
-	
+
 	public String removerItemCarrinho(ItemCarrinho item) throws Exception {
 		carrinhoBo.diminuirValor(item, item.getCarrinho());
 		return itemCarrinhoBo.remove(item);
 	}
-	
+
 	public List<Avaliacao> listaAvaliacao(String parameter, Avaliacao avaliacao) throws Exception {
 		return avaliacaoBo.list(parameter, avaliacao);
 	}
@@ -257,8 +257,8 @@ public class Facade {
 			return produtoBo.listSearch(parameter);
 		}
 	}
-	
-	public List<Venda> listaVenda(String parameter, Venda venda){
+
+	public List<Venda> listaVenda(String parameter, Venda venda) {
 		return vendaBo.listVenda(parameter, venda);
 	}
 
@@ -269,6 +269,7 @@ public class Facade {
 	public Venda encontrarVenda(int id) {
 		return vendaBo.encontrar(id);
 	}
+
 	public Cliente clienteAcessoCpf(Cliente cliente) throws Exception {
 		return clienteBo.accesCpf(cliente);
 	}
