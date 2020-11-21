@@ -20,11 +20,10 @@ public class VendaTest {
 		Venda venda = new Venda();
 		venda.setCliente(new GenericDao<Cliente>().findById(Cliente.class, 1));
 		venda.setTransporte(new GenericDao<Transporte>().findById(Transporte.class, 3));
-		venda.setVendedor(null);
 		venda.setDataEntrega(LocalDate.now());
 
 		try {
-			assertEquals("vendido", new Facade().novaVenda(venda));
+			assertEquals("vendido", new Facade().novaVenda("online",venda));
 			venda.getItem().forEach(item -> System.out.println(item.getProduto()));
 		} catch (Exception e) {
 			e.printStackTrace();

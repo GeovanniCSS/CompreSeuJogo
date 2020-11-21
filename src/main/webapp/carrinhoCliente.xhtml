@@ -13,18 +13,18 @@
 		<h:form id="form">
 			<p:growl id="msg" autoUpdate="true" life="3000" />
 			<h:panelGroup
-				rendered="#{UseClienteBean.cliente.carrinho.item.size() >= 0}">
+				rendered="#{UsePessoaBean.cliente.carrinho.item.size() >= 0}">
 				<p:panel>
 					<p:commandButton style="float: right;"
 						action="finalizarCompra.xhtml?faces-redirect=true"
 						value="Finalizar compra" update="@form"/>
 					<p style="font-size: 1.2em;">Total:
-						#{UseClienteBean.cliente.carrinho.valor}</p>
+						#{UsePessoaBean.cliente.carrinho.valor}</p>
 					<p style="font-size: 1.2em;">Itens:
-						#{UseClienteBean.cliente.carrinho.item.size()}</p>
+						#{UsePessoaBean.cliente.carrinho.item.size()}</p>
 				</p:panel>
 				<p:dataView var="item"
-					value="#{UseClienteBean.cliente.carrinho.item}"
+					value="#{UsePessoaBean.cliente.carrinho.item}"
 					gridIcon="pi pi-th-large" listIcon="pi pi-bars">
 					<p:dataViewGridItem columns="4">
 						<p:panel header="#{item.produto.nome}" style="text-align:center">
@@ -47,7 +47,7 @@
 									style="margin-center:20px;" update="@form"
 									action="#{itemCarrinhoBean.removerItem(item)}">
 									<p:collector value="#{item}"
-										removeFrom="#{UseClienteBean.cliente.carrinho.item}"
+										removeFrom="#{UsePessoaBean.cliente.carrinho.item}"
 										unique="true" />
 								</p:commandButton>
 							</h:panelGrid>
@@ -95,7 +95,7 @@
 										style="margin-center:20px;" update="@form"
 										action="#{itemCarrinhoBean.removerItem(item)}">
 										<p:collector value="#{item}"
-											removeFrom="#{UseClienteBean.cliente.carrinho.item}"
+											removeFrom="#{UsePessoaBean.cliente.carrinho.item}"
 											unique="true" />
 									</p:commandButton>
 									<br /> <br />
@@ -110,7 +110,7 @@
 				</p:dataView>
 			</h:panelGroup>
 			<h:panelGroup
-				rendered="#{UseClienteBean.cliente.carrinho.item.size() == 0}">
+				rendered="#{UsePessoaBean.cliente.carrinho.item.size() == 0}">
 				<h2>Desculpe mas seu carrinho está vazio</h2>
 			</h:panelGroup>
 		</h:form>

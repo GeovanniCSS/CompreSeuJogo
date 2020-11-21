@@ -33,7 +33,7 @@
 							<p:panel>
 								<ul>
 									<li style="font-size: 1.2em; text-align: left;">TOTAL DA
-										VENDA: R$#{UseClienteBean.cliente.carrinho.valor}</li>
+										VENDA: R$#{UsePessoaBean.cliente.carrinho.valor}</li>
 								</ul>
 							</p:panel>
 						</div>
@@ -52,7 +52,7 @@
 							<br></br>
 							<p:commandButton value="Finalizar Pedido" id="add"
 								style="margin-center:20px;" update="@form"
-								action="#{vendaBean.salvar(UseClienteBean.cliente)}" />
+								action="#{vendaBean.salvar(UsePessoaBean.cliente)}" />
 						</p:panel>
 					</div>
 				</div>

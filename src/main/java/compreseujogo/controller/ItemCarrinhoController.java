@@ -43,9 +43,9 @@ public class ItemCarrinhoController implements Serializable {
 		}
 	}
 
-	public String adicionarItem(Produto produto, UseClienteBean cliente) {
+	public String adicionarItem(Produto produto, UsePessoaBean cliente) {
 		FacesContext context = FacesContext.getCurrentInstance();
-		if (!cliente.isLogado()) {
+		if (!cliente.isLogadoCliente()) {
 			context.addMessage(null,
 					new FacesMessage("Olá, você deve logar no sistema para adicionar um produto ao seu carrinho",
 							FacesMessage.FACES_MESSAGES));

@@ -44,13 +44,13 @@ public class VendaController implements Serializable {
 		}
 	}
 	
-	public void salvarVendedor(UseClienteBean cliente, Vendedor vendedor) {
+	public void salvarVendedor(UsePessoaBean cliente, Vendedor vendedor) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		venda.setVendedor(vendedor);
 		venda.setCliente(cliente.getCliente());
 		try {
 			context.addMessage(null, new FacesMessage(new Facade().novaVenda("fisica",venda), FacesMessage.FACES_MESSAGES));
-			cliente.setLogado(false);
+			cliente.setLogadoCliente(false);
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
