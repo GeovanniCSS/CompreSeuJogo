@@ -115,7 +115,9 @@ public class Facade {
 	}
 	
 	public String salvarAvaliacao(Avaliacao avaliacao) throws Exception {
-		return avaliacaoBo.saveOrUpdate(avaliacao);
+		avaliacaoBo.saveOrUpdate(avaliacao);
+		avaliacao.getProduto().setNota(avaliacaoBo.calcularNota(avaliacao));
+		return salvarProduto(avaliacao.getProduto());
 	}
 
 	public String atualizarVendedor(Vendedor vendedor) throws Exception {
