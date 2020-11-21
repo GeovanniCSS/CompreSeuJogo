@@ -269,4 +269,7 @@ public class Facade {
 	public Venda encontrarVenda(int id) {
 		return vendaBo.encontrar(id);
 	}
+	public Cliente clienteAcessoCpf(Cliente cliente) throws Exception {
+		return clienteBo.accesCpf(cliente);
+	}
 }
