@@ -65,16 +65,15 @@
 								<p:commandButton value="Dar nota"
 									style="margin-center:20px;"
 									onclick="PF('wdialog').show();"/>
-									
-									<p:dialog id="dialog" widgetVar="wdialog" header="Avaliação - #{item.produto.nome}" modal="true" appendTo="@(body)" hideEffect="explode">
-									 	<h:form  id="avaliacao">
+									<h:form  id="avaliacao">
+									<p:dialog id="dialog" widgetVar="wdialog" header="Avaliação - #{item.produto.nome}">
+									 	
 									 	<p:panelGrid columns="1" layout="grid">
 											<p:outputLabel value="Título"/>
 												<p:inputText id="titulo" rows="1"
 													         value="#{avaliacaoBean.avaliacao.titulo}"
 													 	     required="true" requiredMessage="O campo é obrigatório" />
-													 	     
-													
+
 										    <p:outputLabel value="Data"/>
 												<p:inputMask id="data" rows="1"
 														     value="#{avaliacaoBean.avaliacao.data}"
@@ -90,12 +89,13 @@
 										     <p:rating style="padding-left:80px;"/>
 											<br></br>
 											<p:commandButton value="Salvar" icon="ui-icon-check" id="salvar"
-															 action="#{avaliacaoBean.salvar}" process="@this"
-															 update="@form" onsucess="PF('wdialog').hide();">
-											</p:commandButton>										
-										</p:panelGrid>	
-										</h:form>								
-									</p:dialog>
+															 action="#{avaliacaoBean.salvar(UsePessoaBean.cliente,item.produto)}" 
+															 process="@this"
+															 update="avaliacao" onsucess="PF('wdialog').hide();">
+											</p:commandButton>																				
+										</p:panelGrid>																		
+									</p:dialog>									
+									</h:form>		
 							</p:panel>
 						</div>
 					</div>
