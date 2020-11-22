@@ -13,10 +13,10 @@
 		<h:form id="form">
 			<p:growl id="msg" autoUpdate="true" life="3000" />
 			<p:panel>
-				<p>#{UseClienteBean.cliente.nome}, aqui você encontra todos seus
+				<p>#{UsePessoaBean.cliente.nome}, aqui você encontra todos seus
 					pedidos, use os filtros para poder encontrar o pedido que deseja ver</p>
 			</p:panel>
-			<p:dataTable id="tableProduto" var="venda" value="#{vendaBean.listaCliente(UseClienteBean.cliente)}"
+			<p:dataTable id="tableProduto" var="venda" value="#{vendaBean.listaCliente(UsePessoaBean.cliente)}"
 				frame="box" rules="all" widgetVar="vendas" cellpadding="3"
 				paginator="true"
 				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} 

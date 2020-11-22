@@ -25,7 +25,7 @@ html, body {
 	<h:body>
 		<div id="cabecalho">
 			<h:panelGroup rendered="#{UsePessoaBean.logadoAdm == true}">
-				<ui:include src="/WEB-INF/template/menuAdministrador.xhtml" />
+				<ui:include src="/WEB-INF/template/MenuAdministrador.xhtml" />
 			</h:panelGroup>
 			<h:panelGroup
 				rendered="#{UsePessoaBean.logadoCliente == true and UsePessoaBean.logadoVendedor == true}">
@@ -33,7 +33,7 @@ html, body {
 			</h:panelGroup>
 			<h:panelGroup
 				rendered="#{UsePessoaBean.logadoCliente == true and UsePessoaBean.logadoVendedor == false}">
-				<ui:include src="/WEB-INF/template/menuCliente.xhtml" />
+				<ui:include src="/WEB-INF/template/MenuCliente.xhtml" />
 			</h:panelGroup>
 			<h:panelGroup
 				rendered="#{UsePessoaBean.logadoVendedor == true and UsePessoaBean.logadoCliente == false}">
@@ -41,7 +41,7 @@ html, body {
 			</h:panelGroup>
 			<h:panelGroup
 				rendered="#{UsePessoaBean.logadoAdm == false and UsePessoaBean.logadoCliente == false and UsePessoaBean.logadoVendedor == false}">
-				<ui:include src="/WEB-INF/template/menuSite.xhtml" />
+				<ui:include src="/WEB-INF/template/MenuSite.xhtml" />
 			</h:panelGroup>
 		</div>
 		<div id="conteudo">

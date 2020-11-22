@@ -7,12 +7,14 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Avaliacao;
 import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.Produto;
+import compreseujogo.model.entity.Transporte;
 
 @RequestScoped
 @ManagedBean(name = "avaliacaoBean")
@@ -57,16 +59,21 @@ public class AvaliacaoController implements Serializable {
 		this.lista = lista;
 	}
 	
-	public void salvar() {
+	public void salvar(Cliente cliente, Produto produto) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
+		avaliacao.setCliente(cliente);
+		avaliacao.setProduto(produto);
 		try {
 			context.addMessage(null,
 					new FacesMessage(facade.salvarAvaliacao(this.avaliacao), FacesMessage.FACES_MESSAGES));
 			avaliacao = new Avaliacao();
+			System.out.println("entrou "+ avaliacao.getId());
+			
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 			e.printStackTrace();
+			System.out.println("erro "+ avaliacao.getId());
 		}
 	}
 }

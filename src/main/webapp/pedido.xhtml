@@ -64,21 +64,16 @@
 							<p:panel>
 								<p:commandButton value="Dar nota"
 									style="margin-center:20px;"
-									update="@form"
 									onclick="PF('wdialog').show();"/>
 									
 									<p:dialog id="dialog" widgetVar="wdialog" header="Avaliação - #{item.produto.nome}" modal="true" appendTo="@(body)" hideEffect="explode">
-									 	<p:panelGrid columns="2" layout="grid">
-											<f:facet name="footer">
-												<p:panelGrid columns="2" layout="grid">
-													<p:commandButton value="Salvar" icon="ui-icon-check" onclick="PF('wdialog').hide();"
-															         action="#{avaliacaoBean.salvar}" ajax="true" update="@form"/>
-										     	</p:panelGrid>
-											</f:facet>
+									 	<h:form  id="avaliacao">
+									 	<p:panelGrid columns="1" layout="grid">
 											<p:outputLabel value="Título"/>
 												<p:inputText id="titulo" rows="1"
 													         value="#{avaliacaoBean.avaliacao.titulo}"
 													 	     required="true" requiredMessage="O campo é obrigatório" />
+													 	     
 													
 										    <p:outputLabel value="Data"/>
 												<p:inputMask id="data" rows="1"
@@ -94,7 +89,12 @@
 				                             <p:outputLabel value="Pontos"/>
 										     <p:rating style="padding-left:80px;"/>
 											<br></br>
-										</p:panelGrid>									
+											<p:commandButton value="Salvar" icon="ui-icon-check" id="salvar"
+															 action="#{avaliacaoBean.salvar}" process="@this"
+															 update="@form" onsucess="PF('wdialog').hide();">
+											</p:commandButton>										
+										</p:panelGrid>	
+										</h:form>								
 									</p:dialog>
 							</p:panel>
 						</div>
