@@ -6,17 +6,34 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
+	<script type="text/javascript">
+    function skinRadarChart() {
+        Chart.defaults.global.startAngle = 36;
+        Chart.defaults.global.tooltips.cornerRadius = 3;
+        Chart.defaults.global.tooltips.enabled = true;
+        Chart.defaults.global.tooltips.mode = 'point';
+        Chart.defaults.global.tooltips.position = 'nearest';
+    }
+</script>
 </h:head>
 <ui:composition template="/WEB-INF/template/template.xhtml">
 	<ui:define name="tituloJanela">Início</ui:define>
 	<ui:define name="conteudo">
 		<h:form id="form">
 			<p:panel>
-				<p:panel style="float:right;">
-					<p:pieChart model="#{graficoBean.pieModel}" legendPosition="e"
-						sliceMargin="10" showDataLabels="true" fill="false" diameter="300"
-						title="Total das vendas" style="width:300px;height:300px;" />
-				</p:panel>
+				<div class="ui-g">
+					<div class="ui-g-6"></div>
+
+					<div class="ui-g-2"></div>
+
+					<div class="ui-g-4">
+						<p:pieChart model="#{graficoBean.pieModel}" legendPosition="e"
+							sliceMargin="10" showDataLabels="true" fill="false"
+							diameter="300" title="Total das vendas"
+							style="width:300px;height:300px;" />
+						<p:radarChart model="#{graficoBean.radarModel}" />
+					</div>
+				</div>
 			</p:panel>
 		</h:form>
 	</ui:define>

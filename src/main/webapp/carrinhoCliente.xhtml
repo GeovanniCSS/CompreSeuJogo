@@ -13,11 +13,18 @@
 		<h:form id="form">
 			<p:growl id="msg" autoUpdate="true" life="3000" />
 			<h:panelGroup
-				rendered="#{UsePessoaBean.cliente.carrinho.item.size() >= 0}">
+				rendered="#{UsePessoaBean.cliente.carrinho.item.size() > 0}">
 				<p:panel>
-					<p:commandButton style="float: right;"
-						action="finalizarCompra.xhtml?faces-redirect=true"
-						value="Finalizar compra" update="@form"/>
+					<h:panelGroup rendered="#{UsePessoaBean.logadoVendedor == false}">
+						<p:commandButton style="float: right;"
+							action="finalizarCompra.xhtml?faces-redirect=true"
+							value="Finalizar compra" update="@form" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{UsePessoaBean.logadoVendedor == true}">
+						<p:commandButton style="float: right;"
+							action="#{vendaBean.salvarVendedor(UsePessoaBean.cliente, UsePessoaBean.vendedor)}"
+							value="Finalizar compra" update="@form" />
+					</h:panelGroup>
 					<p style="font-size: 1.2em;">Total:
 						#{UsePessoaBean.cliente.carrinho.valor}</p>
 					<p style="font-size: 1.2em;">Itens:
