@@ -86,7 +86,18 @@ public class ProdutoController implements Serializable {
 	public String selecionar(Produto produto) {
 		return "visualizarProduto.xhtml?id=" + produto.getId() + "&faces-redirect=true";
 	}
-
+	
+	public List<Produto> buscarMenu(String filtro) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			return facade.listaProduto("pesquisa", filtro, null);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		return null;
+	}
+	
 	public List<Produto> buscar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
