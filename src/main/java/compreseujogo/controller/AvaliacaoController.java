@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Avaliacao;
@@ -59,7 +60,7 @@ public class AvaliacaoController implements Serializable {
 		this.lista = lista;
 	}
 	
-	public void salvar(Cliente cliente, Produto produto) {
+	public void salvar(Cliente cliente, Produto produto, ActionEvent ActionListener) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		avaliacao.setCliente(cliente);

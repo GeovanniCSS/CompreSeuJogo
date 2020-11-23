@@ -61,13 +61,12 @@
 							</div>
 						</div>
 						<div style="float: right;" class="ui-g-3">
-							<p:panel>
-								
+							<p:panel>	
 								<p:commandButton value="Dar nota"
 									style="margin-center:20px;"
 									onclick="PF('wdialog').show();" />
 									<h:form  id="avaliacao">
-										<p:dialog  widgetVar="wdialog" header="Avaliação - #{item.produto.nome}">
+										<p:dialog  id = "pega" widgetVar="wdialog" header="Avaliação - #{item.produto.nome}">
 									 		<h:panelGrid columns="2" cellpadding="5">
 												<h:outputText value="Título"/>
 													<p:inputText id="titulo" rows="1"
@@ -90,14 +89,13 @@
 											   <br></br>
 												<p:commandButton value="Salvar" id="salvar"
 																 actionListener="#{avaliacaoBean.salvar(UsePessoaBean.cliente,item.produto)}" 
-																 process="@form"
-																 update="@form" onsucess="PF('wdialog').hide();">
+																 immediate="true"
+																 update="@this" > <f:ajax render=":pega" execute=":pega"></f:ajax>
 												</p:commandButton>																				
 											</h:panelGrid>																		
 										</p:dialog>									
 									</h:form>	
-							</p:panel>
-							
+							</p:panel>	
 						</div>
 					</div>
 				</p:tab>
