@@ -13,6 +13,7 @@ import org.mockito.junit.MockitoRule;
 import compreseujogo.facade.Facade;
 import compreseujogo.model.bo.ItemCarrinhoBo;
 import compreseujogo.model.dao.GenericDao;
+import compreseujogo.model.entity.Carrinho;
 import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.ItemCarrinho;
 import compreseujogo.model.entity.Produto;
@@ -52,15 +53,14 @@ public class ItemCarrinhoTest {
 	@Test
 	public void removerV() throws Exception {
 		List<ItemCarrinho> itens = new ArrayList<ItemCarrinho>();
-		for (int i = 11; i == 13; i++) {
-			itens.add(new GenericDao<ItemCarrinho>().findById(ItemCarrinho.class, 11));
-			itens.forEach(item -> System.out.println(item.getProduto().getNome()));
-		}
+		ItemCarrinho itemC = new ItemCarrinho();
+		itemC.setCarrinho(new GenericDao<Carrinho>().findById(Carrinho.class, 1));
+		itens = new ItemCarrinhoBo().listar("", item);
 		itens.forEach(item -> System.out.println(item.getProduto().getNome()));
 		new ItemCarrinhoBo().apagarItens(itens);
 		assertEquals(0, itens.size());
 		itens.forEach(item -> System.out.println(item.getProduto().getNome()));
-		System.out.println("oi");
+		
 	}
 	@Test
 	public void remove() {
