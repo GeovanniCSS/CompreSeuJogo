@@ -108,5 +108,8 @@ public class PessoaBo<T extends Pessoa> {
 			throw new Exception("E-mail ou senha está incorreto");
 		}
 	}
-
+	
+	public Pessoa encontrar(int id) {
+		return new GenericDao<Pessoa>().findById(Pessoa.class, id);
+	}
 }
