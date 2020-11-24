@@ -22,15 +22,43 @@
 		<h:form id="form">
 			<p:panel>
 				<div class="ui-g">
-					<div class="ui-g-6"></div>
+					<div class="ui-g-7">
+						<p:dataTable id="tableVenda" var="venda"
+							value="#{vendaBean.lista}" frame="box" rules="all"
+							widgetVar="vendas" cellpadding="3" paginator="true"
+							paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} 
+				{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							rowsPerPageTemplate="15,30,45" paginatorPosition="bottom">
+							<p:column headerText="ID" filterBy="#{venda.id}"
+								filterMatchMode="contains">
+								<h:outputText value="#{venda.id}" />
+							</p:column>
+							<p:column headerText="Cliente" filterBy="#{venda.cliente.nome}"
+								filterMatchMode="contains">
+								<h:outputText value="#{venda.cliente.nome}" />
+							</p:column>
+							<p:column headerText="Data entrega" filterBy="#{venda.dataEntrega}"
+								filterMatchMode="contains">
+								<h:outputText value="#{venda.dataEntrega}" />
+							</p:column>
+							<p:column headerText="Total" filterBy="#{venda.valor}"
+								filterMatchMode="contains">
+								<h:outputText value="#{venda.valor}" />
+							</p:column>
+							<p:column headerText="Pedido">
+								<p:commandButton 
+									value="Ver" />
+							</p:column>
+						</p:dataTable>
+					</div>
 
-					<div class="ui-g-2"></div>
+					<div class="ui-g-1"></div>
 
 					<div class="ui-g-4">
 						<p:pieChart model="#{graficoBean.pieModel}" legendPosition="e"
-							sliceMargin="10" showDataLabels="true" fill="false"
-							diameter="300" title="Total das vendas"
-							style="width:300px;height:300px;" />
+							sliceMargin="5" showDataLabels="true" fill="false"
+							diameter="150px" title="Total das vendas"
+							style="width:150px;height:150px;" />
 						<p:radarChart model="#{graficoBean.radarModel}" />
 					</div>
 				</div>
