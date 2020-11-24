@@ -22,7 +22,7 @@
 					</h:panelGroup>
 					<h:panelGroup rendered="#{UsePessoaBean.logadoVendedor == true}">
 						<p:commandButton style="float: right;"
-							action="#{vendaBean.salvarVendedor(UsePessoaBean.cliente, UsePessoaBean.vendedor)}"
+							action="#{vendaBean.salvarVendedor(UsePessoaBean)}"
 							value="Finalizar compra" update="@form" />
 					</h:panelGroup>
 					<p style="font-size: 1.2em;">Total:
@@ -118,7 +118,9 @@
 			</h:panelGroup>
 			<h:panelGroup
 				rendered="#{UsePessoaBean.cliente.carrinho.item.size() == 0}">
-				<h2>Desculpe mas seu carrinho está vazio</h2>
+				<p:panel>
+					<h2>Desculpe mas seu carrinho está vazio</h2>
+				</p:panel>
 			</h:panelGroup>
 		</h:form>
 	</ui:define>

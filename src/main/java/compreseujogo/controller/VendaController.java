@@ -39,18 +39,24 @@ public class VendaController implements Serializable {
 		venda.setCliente(cliente);
 		try {
 			context.addMessage(null, new FacesMessage(facade.novaVenda("online",venda), FacesMessage.FACES_MESSAGES));
+			cliente = (Cliente) new Facade().encontrarPessoa(cliente);
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
 	}
 	
-	public void salvarVendedor(UsePessoaBean cliente, Vendedor vendedor) {
+	public void salvarVendedor(UsePessoaBean use) {
 		FacesContext context = FacesContext.getCurrentInstance();
-		venda.setVendedor(vendedor);
-		venda.setCliente(cliente.getCliente());
+		venda.setVendedor(use.getVendedor());
+		venda.setCliente(use.getCliente());
 		try {
 			context.addMessage(null, new FacesMessage(new Facade().novaVenda("fisica",venda), FacesMessage.FACES_MESSAGES));
+			use.setCliente((Cliente) new Facade().encontrarPessoa(use.getCliente()));
+			use.setVendedor((Vendedor) new Facade().encontrarPessoa(use.getVendedor()));
+			/*
 			cliente.setLogadoCliente(false);
+			cliente.setCliente(new Cliente());
+			*/
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
