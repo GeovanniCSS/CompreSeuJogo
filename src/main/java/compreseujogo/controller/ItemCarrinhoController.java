@@ -38,7 +38,7 @@ public class ItemCarrinhoController implements Serializable {
 			item.setProduto(produto);
 			item.getProduto();
 			context.addMessage(null, new FacesMessage(facade.adicionarItemCarrinho(item), FacesMessage.FACES_MESSAGES));
-			cliente = new Facade().clienteAcessoCpf(cliente);
+			//cliente = new Facade().clienteAcessoCpf(cliente);
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}

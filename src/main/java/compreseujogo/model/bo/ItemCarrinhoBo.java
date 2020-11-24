@@ -43,10 +43,13 @@ public class ItemCarrinhoBo extends ItemBo {
 		}
 	}
 
-	public void apagarItens(List<ItemCarrinho> item) throws Exception {
-		for (ItemCarrinho items : item) {
+	public void apagarItens(List<ItemCarrinho> itens) throws Exception {
+		for (ItemCarrinho item : itens) {
 			try {
-				remove(items);
+				item.setProduto(null);
+				item.setCarrinho(null);
+				saveOrUpdate(item);
+				remove(item);
 			} catch (Exception e) {
 				throw new Exception("Falha ao apagar os item do carrinho");
 			}
