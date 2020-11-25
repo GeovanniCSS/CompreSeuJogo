@@ -1,5 +1,6 @@
 package compreseujogo.model.bo;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import compreseujogo.model.dao.AvaliacaoDao;
@@ -11,8 +12,10 @@ public class AvaliacaoBo {
 	public String saveOrUpdate(Avaliacao avaliacao) throws Exception {
 		validarDados(avaliacao);
 		GenericDao<Avaliacao> tcDao = new GenericDao<Avaliacao>();
+		avaliacao.setData(LocalDate.now());
 		try {
 			return tcDao.saveOrUpdate(avaliacao);
+			
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}

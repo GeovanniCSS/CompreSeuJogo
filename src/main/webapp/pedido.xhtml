@@ -28,6 +28,7 @@
 
 						<h:outputText value="Itens:" />
 						<p:outputLabel value="#{vendaBean.venda.item.size()}" />
+						
 					</h:panelGrid>
 				</p:outputPanel>
 			</p:panelGrid>
@@ -41,6 +42,7 @@
 							<p:rating style="padding-left:78px;" value="#{item.produto.nota}"
 								readonly="true" />
 						</div>
+						
 						<div style="float: center" class="ui-g-6">
 							<div style="text-align: center">
 								<p:panel>
@@ -59,44 +61,6 @@
 									</ul>
 								</p:panel>
 							</div>
-						</div>
-						<div style="float: right;" class="ui-g-3">
-							<p:panel>	
-								<p:commandButton value="Dar nota"
-								
-									style="margin-center:20px;"
-									onclick="PF('wdialog').show();" />
-									<h:form  id="avaliacao">
-										<p:dialog  id = "pega" widgetVar="wdialog" header="Avaliação - #{item.produto.nome}">
-									 		<h:panelGrid columns="2" cellpadding="5">
-												<h:outputText value="Título"/>
-													<p:inputText id="titulo" rows="1"
-														         value="#{avaliacaoBean.avaliacao.titulo}"
-													 		     required="true" requiredMessage="O campo é obrigatório" />
-
-										    	<h:outputText value="Data"/>
-													<p:inputMask id="data" rows="1"
-															     value="#{avaliacaoBean.avaliacao.data}"
-															     mask="99/99/9999"
-														    	 required="true" requiredMessage="O campo é obrigatório" />	
-														
-										    	<h:outputText value="Descrição"/>
-													<p:inputTextarea id="descricao"
-							                        	             value="#{avaliacaoBean.avaliacao.descricao}" rows="4" cols="45"
-							                            	         required="true" />
-
-				                          	   <h:outputText value="Pontos"/>
-										       <p:rating/>
-											   <br></br>
-												<p:commandButton value="Salvar" id="salvar"
-																 actionListener="#{avaliacaoBean.salvar(UsePessoaBean.cliente,item.produto)}" 
-																 immediate="true"
-																 update="@this" > <f:ajax render=":pega" execute=":pega"></f:ajax>
-												</p:commandButton>																				
-											</h:panelGrid>																		
-										</p:dialog>									
-									</h:form>	
-							</p:panel>	
 						</div>
 					</div>
 				</p:tab>

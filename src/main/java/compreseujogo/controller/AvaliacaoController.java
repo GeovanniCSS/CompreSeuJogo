@@ -16,6 +16,7 @@ import compreseujogo.model.entity.Avaliacao;
 import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.Produto;
 import compreseujogo.model.entity.Transporte;
+import compreseujogo.model.entity.Venda;
 
 @RequestScoped
 @ManagedBean(name = "avaliacaoBean")
@@ -60,7 +61,7 @@ public class AvaliacaoController implements Serializable {
 		this.lista = lista;
 	}
 	
-	public void salvar(Cliente cliente, Produto produto, ActionEvent ActionListener) {
+	public void salvar(Cliente cliente, Produto produto) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		avaliacao.setCliente(cliente);
@@ -74,7 +75,12 @@ public class AvaliacaoController implements Serializable {
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 			e.printStackTrace();
-			System.out.println("erro "+ avaliacao.getId());
+			System.out.println("erro "+ avaliacao.getProduto().getId());
 		}
+	}
+	
+	public String avaliar(Produto p) {
+		this.avaliacao.setProduto(p);
+		return "avaliacaoCliente.xhtml?id=" + p.getId() + "&faces-redirect=true";
 	}
 }

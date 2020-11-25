@@ -105,6 +105,7 @@ public class VendaController implements Serializable {
 	public void setTransporte(List<Transporte> transporte) {
 		this.transporte = transporte;
 	}
+	
 
 	@PostConstruct
 	public void carregarLista() {
@@ -116,4 +117,6 @@ public class VendaController implements Serializable {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
 	}
+	
+	
 }
