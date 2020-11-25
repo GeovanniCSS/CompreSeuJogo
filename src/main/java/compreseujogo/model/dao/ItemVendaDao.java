@@ -15,9 +15,11 @@ public class ItemVendaDao {
 	public List<ItemVenda> list(String parameter, ItemVenda item) {
      Query q = null;
 		 if (parameter.equals("Nota")) {
-			    q = em.createQuery("SELECT item FROM ItemVenda item WHERE item.venda.cliente.id = :cliente AND item.produto.id = :produto");
-			    q.setParameter("cliente", item.getVenda().getCliente().getId());
-          q.setParameter("produto", item.getProduto().getId());
+			 q = em.createQuery("SELECT item FROM ItemVenda item WHERE item.venda.cliente.id = :cliente AND item.produto.id = :produto");
+			 q.setParameter("cliente", item.getVenda().getCliente().getId());
+			 q.setParameter("produto", item.getProduto().getId());
+          } else if (parameter.equals("Vendidos")) {
+			 q = em.createQuery("SELECT item FROM ItemVenda item INNER JOIN item.p");
           }
 		return q.getResultList();
     }
