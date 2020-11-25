@@ -11,7 +11,7 @@
 	<ui:define name="tituloJanela">Carrinho</ui:define>
 	<ui:define name="conteudo">
 		<h:form id="form">
-			<p:growl id="msg" autoUpdate="true" life="3000" />
+			<p:growl id="msg" autoUpdate="true"  life="500" />
 			<h:panelGroup
 				rendered="#{UsePessoaBean.cliente.carrinho.item.size() > 0}">
 				<p:panel>

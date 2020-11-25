@@ -38,27 +38,28 @@ public class VendaController implements Serializable {
 		Facade facade = new Facade();
 		venda.setCliente(cliente);
 		try {
-			context.addMessage(null, new FacesMessage(facade.novaVenda("online",venda), FacesMessage.FACES_MESSAGES));
+			context.addMessage(null, new FacesMessage(facade.novaVenda("online", venda), FacesMessage.FACES_MESSAGES));
 			cliente = (Cliente) new Facade().encontrarPessoa(cliente);
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
 	}
-	
-	public void salvarVendedor(UsePessoaBean use) {
+
+	public String salvarVendedor(UsePessoaBean use) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		venda.setVendedor(use.getVendedor());
 		venda.setCliente(use.getCliente());
 		try {
-			context.addMessage(null, new FacesMessage(new Facade().novaVenda("fisica",venda), FacesMessage.FACES_MESSAGES));
+			context.addMessage(null,
+					new FacesMessage(new Facade().novaVenda("fisica", venda), FacesMessage.FACES_MESSAGES));
 			use.setCliente((Cliente) new Facade().encontrarPessoa(use.getCliente()));
 			use.setVendedor((Vendedor) new Facade().encontrarPessoa(use.getVendedor()));
-			/*
-			cliente.setLogadoCliente(false);
-			cliente.setCliente(new Cliente());
-			*/
+			use.setLogadoCliente(false);
+			use.setCliente(new Cliente());
+			return "homeAdm.xhtml?faces-redirect=true";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+			return null;
 		}
 	}
 
@@ -73,13 +74,15 @@ public class VendaController implements Serializable {
 			return null;
 		}
 	}
+
 	public void encontrar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		venda = facade.encontrarVenda(venda.getId());
 	}
+
 	public String selecionar(Venda venda) {
-		return "pedido.xhtml?id="+venda.getId()+"&faces-redirect=true";
+		return "pedido.xhtml?id=" + venda.getId() + "&faces-redirect=true";
 	}
 
 	public Venda getVenda() {
