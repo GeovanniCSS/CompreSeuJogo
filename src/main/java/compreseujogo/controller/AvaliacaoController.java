@@ -70,12 +70,9 @@ public class AvaliacaoController implements Serializable {
 			context.addMessage(null,
 					new FacesMessage(facade.salvarAvaliacao(this.avaliacao), FacesMessage.FACES_MESSAGES));
 			avaliacao = new Avaliacao();
-			System.out.println("entrou "+ avaliacao.getId());
-			
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 			e.printStackTrace();
-			System.out.println("erro "+ avaliacao.getProduto().getId());
 		}
 	}
 	
