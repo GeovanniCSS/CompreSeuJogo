@@ -15,7 +15,7 @@
 	<ui:define name="tituloJanela">#{produtoBean.produto.nome}</ui:define>
 	<ui:define name="conteudo">
 		<h:form id="form">
-			<p:growl id="growl" showDetail="true" sticky="true" life="300" />
+			<p:growl id="growl" showDetail="true" life="1000" />
 			<p:panel>
 				<div class="ui-g">
 					<div class="ui-g-3">
@@ -53,26 +53,27 @@
 							<br />
 							<p:commandButton value="Adicionar ao Carrinho"
 								style="margin-center:20px;"
-								action="#{itemCarrinhoBean.salvar(produtoBean.produto, UsePessoaBean.cliente)}"
-								update="@form:growl" />
-							<br />
-							<br />
-						    <p:commandButton value="Avaliação"
-									         style="margin-center:20px;"
-									         action="#{avaliacaoBean.avaliar(produtoBean.produto)}"
-									         update="@form:growl" />
+								action="#{itemCarrinhoBean.salvar(produtoBean.produto, UsePessoaBean)}"
+								update="@form:growl">
+								<br />
+								<br />
+								<p:commandButton value="Avaliação" style="margin-center:20px;"
+									action="#{avaliacaoBean.avaliar(produtoBean.produto)}"
+									update="@form:growl" />
 						</p:panel>
 					</div>
-					
+
 				</div>
 			</p:panel>
 		</h:form>
 		<h:form id="form2">
-			<p:dataList rendered="#{avaliacaoBean.listaAvaliacao(produtoBean.produto).size() > 0}"
+			<p:dataList
+				rendered="#{avaliacaoBean.listaAvaliacao(produtoBean.produto).size() > 0}"
 				value="#{avaliacaoBean.listaAvaliacao(produtoBean.produto)}"
 				var="ava">
 				<p:accordionPanel dynamic="false" multiple="true">
-					<p:tab title="#{ava.cliente.nome} #{ava.cliente.sobrenome} - #{ava.titulo}">
+					<p:tab
+						title="#{ava.cliente.nome} #{ava.cliente.sobrenome} - #{ava.titulo}">
 						<h:panelGrid columns="1">
 							<p:rating style="padding-bottom:0px;" value="#{ava.pontos}"
 								readonly="true" />
