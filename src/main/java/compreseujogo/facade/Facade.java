@@ -179,7 +179,10 @@ public class Facade {
 
 	public String removerItemCarrinho(ItemCarrinho item) throws Exception {
 		carrinhoBo.diminuirValor(item, item.getCarrinho());
-		return itemCarrinhoBo.remove(item);
+		List<ItemCarrinho> itens = new ArrayList<ItemCarrinho>();
+		itens.add(item);
+		itemCarrinhoBo.apagarItens(itens);
+		return "Item removido com sucesso";
 	}
 
 	public List<Avaliacao> listaAvaliacao(String parameter, Avaliacao avaliacao) throws Exception {
