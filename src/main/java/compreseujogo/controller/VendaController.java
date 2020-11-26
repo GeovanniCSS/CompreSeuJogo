@@ -34,16 +34,18 @@ public class VendaController implements Serializable {
 		this.transporte = new ArrayList<Transporte>();
 	}
 
-	public void salvar(UsePessoaBean use) {
+	public String salvar(UsePessoaBean use) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		venda.setCliente(use.getCliente());
 		try {
 			context.addMessage(null, new FacesMessage(facade.novaVenda("online", venda), FacesMessage.FACES_MESSAGES));
 			use.getCliente().getCarrinho().setItem(new ArrayList<ItemCarrinho>());
+			selecionar(venda);
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
+		return null;
 	}
 
 	public String salvarVendedor(UsePessoaBean use) {
