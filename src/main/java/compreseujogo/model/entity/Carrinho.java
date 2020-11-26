@@ -71,8 +71,8 @@ public class Carrinho implements EntityBase, Serializable {
 		return item;
 	}
 
-	public void setItem(ItemCarrinho item) {
-		this.item.add(item);
+	public void setItem(ArrayList<ItemCarrinho> arrayList) {
+		this.item = arrayList;
 	}
 
 	@Override
