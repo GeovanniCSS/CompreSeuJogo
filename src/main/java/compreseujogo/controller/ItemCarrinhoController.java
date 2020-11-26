@@ -30,29 +30,29 @@ public class ItemCarrinhoController implements Serializable {
 		this.lista = new ArrayList<ItemCarrinho>();
 	}
 
-	public void salvar(Produto produto, Cliente cliente) {
+	public void salvar(Produto produto, UsePessoaBean use) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		try {
-			item.setCarrinho(cliente.getCarrinho());
+			item.setCarrinho(use.getCliente().getCarrinho());
 			item.setProduto(produto);
 			item.getProduto();
 			context.addMessage(null, new FacesMessage(facade.adicionarItemCarrinho(item), FacesMessage.FACES_MESSAGES));
-			//cliente = new Facade().clienteAcessoCpf(cliente);
+			use.getCliente().getCarrinho().getItem().add(item);
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
 	}
 
-	public String adicionarItem(Produto produto, UsePessoaBean cliente) {
+	public String adicionarItem(Produto produto, UsePessoaBean use) {
 		FacesContext context = FacesContext.getCurrentInstance();
-		if (!cliente.isLogadoCliente()) {
+		if (!use.isLogadoCliente()) {
 			context.addMessage(null,
 					new FacesMessage("Olá, você deve logar no sistema para adicionar um produto ao seu carrinho",
 							FacesMessage.FACES_MESSAGES));
 			return null;
 		} else {
-			salvar(produto, cliente.getCliente());
+			salvar(produto, use);
 			return null;
 		}
 
