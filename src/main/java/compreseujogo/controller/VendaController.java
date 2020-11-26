@@ -41,7 +41,7 @@ public class VendaController implements Serializable {
 		try {
 			context.addMessage(null, new FacesMessage(facade.novaVenda("online", venda), FacesMessage.FACES_MESSAGES));
 			use.getCliente().getCarrinho().setItem(new ArrayList<ItemCarrinho>());
-			selecionar(venda);
+			return selecionar(venda);
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}

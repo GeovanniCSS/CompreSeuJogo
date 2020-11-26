@@ -37,6 +37,6 @@ public class PessoaDao<T extends Pessoa> {
 		Query q = em.createQuery("SELECT p FROM Pessoa p WHERE p.email = :email AND p.senha = :senha");
 		q.setParameter("email", pessoa.getEmail());
 		q.setParameter("senha", pessoa.getSenha());
-		return (Pessoa) q.getResultList().get(0);
+		return (Pessoa) q.getSingleResult();
 	}
 }
