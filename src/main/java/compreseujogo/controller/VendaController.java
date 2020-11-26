@@ -12,6 +12,7 @@ import javax.faces.context.FacesContext;
 
 import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Cliente;
+import compreseujogo.model.entity.ItemCarrinho;
 import compreseujogo.model.entity.Transporte;
 import compreseujogo.model.entity.Venda;
 import compreseujogo.model.entity.Vendedor;
@@ -33,13 +34,13 @@ public class VendaController implements Serializable {
 		this.transporte = new ArrayList<Transporte>();
 	}
 
-	public void salvar(Cliente cliente) {
+	public void salvar(UsePessoaBean use) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
-		venda.setCliente(cliente);
+		venda.setCliente(use.getCliente());
 		try {
 			context.addMessage(null, new FacesMessage(facade.novaVenda("online", venda), FacesMessage.FACES_MESSAGES));
-			cliente = (Cliente) new Facade().encontrarPessoa(cliente);
+			use.getCliente().getCarrinho().setItem(new ArrayList<ItemCarrinho>());
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
@@ -55,6 +56,7 @@ public class VendaController implements Serializable {
 			use.setCliente((Cliente) new Facade().encontrarPessoa(use.getCliente()));
 			use.setVendedor((Vendedor) new Facade().encontrarPessoa(use.getVendedor()));
 			use.setLogadoCliente(false);
+			use.getCliente().getCarrinho().setItem(new ArrayList<ItemCarrinho>());
 			use.setCliente(new Cliente());
 			return "homeAdm.xhtml?faces-redirect=true";
 		} catch (Exception e) {
