@@ -78,7 +78,7 @@ public class VendaController implements Serializable {
 			return null;
 		}
 	}
-
+	
 	public void encontrar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
@@ -123,6 +123,18 @@ public class VendaController implements Serializable {
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
+	}
+	
+	@PostConstruct
+	public List<Venda> carregarVendas() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Facade facade = new Facade();
+		try {
+			return facade.listaVenda("", venda);
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		return lista;
 	}
 	
 	

@@ -266,6 +266,7 @@ public class Facade {
 		return vendaBo.listVenda(parameter, venda);
 	}
 
+
 	public Produto encontrarProduto(int id) {
 		return produtoBo.encontrar(id);
 	}
