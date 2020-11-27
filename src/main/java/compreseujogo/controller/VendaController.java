@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 import compreseujogo.facade.Facade;
 import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.ItemCarrinho;
+import compreseujogo.model.entity.ItemVenda;
 import compreseujogo.model.entity.Transporte;
 import compreseujogo.model.entity.Venda;
 import compreseujogo.model.entity.Vendedor;
@@ -41,6 +42,9 @@ public class VendaController implements Serializable {
 		try {
 			context.addMessage(null, new FacesMessage(facade.novaVenda("online", venda), FacesMessage.FACES_MESSAGES));
 			use.getCliente().getCarrinho().setItem(new ArrayList<ItemCarrinho>());
+			ItemVenda item = new ItemVenda();
+			item.setVenda(venda);
+			venda.setItem(new Facade().listaItemVenda(item));
 			return selecionar(venda);
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
@@ -60,6 +64,9 @@ public class VendaController implements Serializable {
 			use.setLogadoCliente(false);
 			use.getCliente().getCarrinho().setItem(new ArrayList<ItemCarrinho>());
 			use.setCliente(new Cliente());
+			ItemVenda item = new ItemVenda();
+			item.setVenda(venda);
+			venda.setItem(new Facade().listaItemVenda(item));
 			return "homeAdm.xhtml?faces-redirect=true";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
@@ -80,9 +87,7 @@ public class VendaController implements Serializable {
 	}
 	
 	public void encontrar() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		Facade facade = new Facade();
-		venda = facade.encontrarVenda(venda.getId());
+		venda = new Facade().encontrarVenda(venda.getId());
 	}
 
 	public String selecionar(Venda venda) {
