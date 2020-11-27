@@ -32,6 +32,7 @@ import compreseujogo.model.entity.Cliente;
 import compreseujogo.model.entity.Empresa;
 import compreseujogo.model.entity.Fornecedor;
 import compreseujogo.model.entity.ItemCarrinho;
+import compreseujogo.model.entity.ItemVenda;
 import compreseujogo.model.entity.Loja;
 import compreseujogo.model.entity.Marca;
 import compreseujogo.model.entity.Pessoa;
@@ -113,7 +114,7 @@ public class Facade {
 	public String salvarVendedor(Vendedor vendedor) throws Exception {
 		return vendedorBo.salvar(vendedor);
 	}
-	
+
 	public String salvarAvaliacao(Avaliacao avaliacao) throws Exception {
 		avaliacaoBo.saveOrUpdate(avaliacao);
 		avaliacao.setProduto(encontrarProduto(avaliacao.getProduto().getId()));
@@ -220,7 +221,11 @@ public class Facade {
 		}
 		return lista;
 	}
-
+	
+	public List<ItemVenda> listaItemVenda(ItemVenda item) throws Exception{
+		return itemVendaBo.listar("", item);
+	}
+	
 	public List<Transporte> listaTransporte(Transporte transporte) throws Exception {
 		ArrayList<Transporte> lista = new ArrayList<Transporte>();
 		for (Empresa empresa : transporteBo.list("organizada", transporte, Transporte.class)) {
@@ -266,7 +271,6 @@ public class Facade {
 		return vendaBo.listVenda(parameter, venda);
 	}
 
-
 	public Produto encontrarProduto(int id) {
 		return produtoBo.encontrar(id);
 	}
@@ -278,6 +282,7 @@ public class Facade {
 	public Cliente clienteAcessoCpf(Cliente cliente) throws Exception {
 		return clienteBo.accesCpf(cliente);
 	}
+
 	public Pessoa encontrarPessoa(Pessoa pessoa) {
 		return pessoaBo.encontrar(pessoa.getId());
 	}
