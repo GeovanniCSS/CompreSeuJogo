@@ -5,6 +5,7 @@ import java.util.List;
 import compreseujogo.model.dao.EmpresaDao;
 import compreseujogo.model.dao.GenericDao;
 import compreseujogo.model.entity.Empresa;
+import compreseujogo.model.entity.EntityBase;
 
 public class EmpresaBo<T extends Empresa> {
 
@@ -66,11 +67,11 @@ public class EmpresaBo<T extends Empresa> {
 
 	public String desativarAtivar(Empresa empresa) throws Exception {
 		if (empresa.getAtivo() == true) {
-			//empresa.setAtivo(false);
+			// empresa.setAtivo(false);
 			saveOrUpdate(empresa);
 			return "Cadastro ativado";
 		} else {
-			//empresa.setAtivo(true);
+			// empresa.setAtivo(true);
 			saveOrUpdate(empresa);
 			return "Cadastro desativado";
 		}
@@ -84,5 +85,9 @@ public class EmpresaBo<T extends Empresa> {
 		} else {
 			return saveOrUpdate(empresa);
 		}
+	}
+
+	public Empresa encontrar(Empresa empresa) {
+		return new GenericDao<Empresa>().findById(Empresa.class, empresa.getId());
 	}
 }
