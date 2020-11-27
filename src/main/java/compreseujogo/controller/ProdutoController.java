@@ -49,9 +49,9 @@ public class ProdutoController implements Serializable {
 		this.marcas = new ArrayList<Marca>();
 		this.plataformas = new ArrayList<Plataforma>();
 		this.filtro = "";
-		//this.destino = "C:\\\\temp\\\\WS-eclipse\\\\compreseujogo_3.0\\\\src\\\\main\\\\webapp\\\\resources\\\\imagem\\\\";
-		this.destino =
-		"C:\\Users\\leona\\git\\compreseujogo_3.0\\src\\main\\webapp\\resources\\imagem\\";
+		// this.destino =
+		// "C:\\\\temp\\\\WS-eclipse\\\\compreseujogo_3.0\\\\src\\\\main\\\\webapp\\\\resources\\\\imagem\\\\";
+		this.destino = "C:\\Users\\leona\\git\\compreseujogo_3.0\\src\\main\\webapp\\resources\\imagem\\";
 	}
 
 	@PostConstruct
@@ -65,18 +65,19 @@ public class ProdutoController implements Serializable {
 		}
 	}
 
-	public String salvar() {
+	public void salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
 		try {
 
 			importa();
-			context.addMessage(null, new FacesMessage(facade.salvarProduto(this.produto), FacesMessage.FACES_MESSAGES));
-			return "listaProduto?faces-redirect=true";
+			facade.salvarProduto(this.produto);
+			context.addMessage(null,
+					new FacesMessage("O " + produto.getNome() + " foi salvo com sucesso", FacesMessage.FACES_MESSAGES));
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
-		return null;
+
 	}
 
 	public String telaPesquisa() {
@@ -86,7 +87,7 @@ public class ProdutoController implements Serializable {
 	public String selecionar(Produto produto) {
 		return "visualizarProduto.xhtml?id=" + produto.getId() + "&faces-redirect=true";
 	}
-	
+
 	public List<Produto> buscarMenu(String filtro) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
@@ -97,7 +98,7 @@ public class ProdutoController implements Serializable {
 		}
 		return null;
 	}
-	
+
 	public List<Produto> buscar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
@@ -108,7 +109,7 @@ public class ProdutoController implements Serializable {
 		}
 		return null;
 	}
-	
+
 	public List<Produto> carouselVP() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
@@ -119,10 +120,10 @@ public class ProdutoController implements Serializable {
 		}
 		return null;
 	}
-	
+
 	public void encontrar() {
 		Facade facade = new Facade();
-		 this.produto = facade.encontrarProduto(this.produto.getId());
+		this.produto = facade.encontrarProduto(this.produto.getId());
 	}
 
 	public List<String> complete12(String busca) {
