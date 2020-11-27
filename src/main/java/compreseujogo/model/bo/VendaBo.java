@@ -6,6 +6,8 @@ import java.util.List;
 
 import compreseujogo.model.dao.GenericDao;
 import compreseujogo.model.dao.VendaDao;
+import compreseujogo.model.entity.Empresa;
+import compreseujogo.model.entity.Transporte;
 import compreseujogo.model.entity.Venda;
 import compreseujogo.model.bo.ComissaoBo;
 
@@ -62,7 +64,9 @@ public class VendaBo {
 	public void salvarVenda(String parameter, Venda venda) throws Exception {
 		if (parameter.equals("online")) {
 			venda.setVendedor(null);
-			novaVenda(venda);
+			venda.setTransporte((Transporte) new EmpresaBo<Empresa>().encontrar(venda.getTransporte()));
+			venda.setDataEntrega(LocalDate.now().plusDays(venda.getTransporte().getDataEntrega()));
+			novaVenda(venda);	
 		} else {
 			venda.setTransporte(null);
 			venda.setEntrega(true);
