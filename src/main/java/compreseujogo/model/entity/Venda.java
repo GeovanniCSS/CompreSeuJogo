@@ -121,8 +121,8 @@ public class Venda implements EntityBase, Serializable {
 		return item;
 	}
 
-	public void setItem(ItemVenda item) {
-		this.item.add(item);
+	public void setItem(List<ItemVenda> list) {
+		this.item = list;
 	}
 
 	public Cliente getCliente() {
