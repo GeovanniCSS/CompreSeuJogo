@@ -223,7 +223,7 @@ public class Facade {
 	}
 	
 	public List<ItemVenda> listaItemVenda(ItemVenda item) throws Exception{
-		return itemVendaBo.listar("", item);
+		return itemVendaBo.listar("Venda", item);
 	}
 	
 	public List<Transporte> listaTransporte(Transporte transporte) throws Exception {
