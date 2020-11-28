@@ -15,7 +15,7 @@
 	<ui:define name="tituloJanela">#{produtoBean.produto.nome}</ui:define>
 	<ui:define name="conteudo">
 		<h:form id="form">
-			<p:growl id="growl" showDetail="true" life="1000" />
+			<p:growl id="growl"  life="2000" />
 			<p:panel>
 				<div class="ui-g">
 					<div class="ui-g-3">
@@ -53,7 +53,7 @@
 							<br />
 							<p:commandButton value="Adicionar ao Carrinho"
 								style="margin-center:20px;"
-								action="#{itemCarrinhoBean.salvar(produtoBean.produto, UsePessoaBean)}"
+								action="#{itemCarrinhoBean.adicionarItem(produtoBean.produto, UsePessoaBean)}"
 								update="@form:growl" />
 							<br />
 							<br />
@@ -93,7 +93,7 @@
 					styleClass="ui-panelgrid-blank">
 					<f:facet name="header">
 						<h:commandLink action="#{produtoBean.selecionar(produto)}"
-							update=":form">
+							update="@form">
 							<p:graphicImage style="widht:200px;height:200px;"
 								library="imagem" name="#{produto.imagem}" />
 						</h:commandLink>
