@@ -157,7 +157,6 @@ public class ProdutoController implements Serializable {
 
 		String conteudo = getFileName(arquivo.getName() + ".jpg");
 		produto.setImagem(conteudo);
-		context.addMessage(null, new FacesMessage("Salvou a imagem" + conteudo, FacesMessage.FACES_MESSAGES));
 		try {
 			copyFile(conteudo, arquivo.getInputStream());
 		} catch (IOException e) {
