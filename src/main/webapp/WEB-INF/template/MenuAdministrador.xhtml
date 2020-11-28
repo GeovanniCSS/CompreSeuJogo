@@ -32,10 +32,6 @@
 					</p:column>
 				</p:panelGrid>
 				<p:menubar>
-					<p:submenu label="Perfil" icon="pi pi-pencil">
-						<p:menuitem value="Editar" url="#" />
-						<p:menuitem value="Redefinir senha" url="#" />
-					</p:submenu>
 					<p:submenu label="Gerência" icon="pi pi-cog">
 						<p:menuitem value="Categoria"
 							url="listaCategoria.xhtml?faces-redirect=true" />
@@ -66,6 +62,11 @@
 						<p:separator />
 						<p:menuitem value="Fornecedor"
 							url="listaFornecedor.xhtml?faces-redirect=true" />
+					</p:submenu>
+					<p:submenu label="Vendas" icon="pi pi-shopping-cart">
+						<p:menuitem value="Todas"
+							 />
+						<p:separator />
 					</p:submenu>
 				</p:menubar>
 			</h:form>

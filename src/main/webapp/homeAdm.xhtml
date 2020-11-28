@@ -24,7 +24,7 @@
 				<div class="ui-g">
 					<div class="ui-g-7">
 						<p:dataTable id="tableVenda" var="venda"
-							value="#{vendaBean.lista}" frame="box" rules="all"
+							value="#{vendaBean.proximasVenda()}" frame="box" rules="all"
 							widgetVar="vendas" cellpadding="3" paginator="true"
 							paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} 
 				{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -37,8 +37,8 @@
 								filterMatchMode="contains">
 								<h:outputText value="#{venda.cliente.nome}" />
 							</p:column>
-							<p:column headerText="Data entrega" filterBy="#{venda.dataEntrega}"
-								filterMatchMode="contains">
+							<p:column headerText="Data entrega"
+								filterBy="#{venda.dataEntrega}" filterMatchMode="contains">
 								<h:outputText value="#{venda.dataEntrega}" />
 							</p:column>
 							<p:column headerText="Total" filterBy="#{venda.valor}"
@@ -46,20 +46,16 @@
 								<h:outputText value="#{venda.valor}" />
 							</p:column>
 							<p:column headerText="Pedido">
-								<p:commandButton 
-									value="Ver" />
+								<p:commandButton action="#{vendaBean.selecionar(venda)}" value="Ver" />
 							</p:column>
 						</p:dataTable>
 					</div>
-
 					<div class="ui-g-1"></div>
-
 					<div class="ui-g-4">
 						<p:pieChart model="#{graficoBean.pieModel}" legendPosition="e"
 							sliceMargin="5" showDataLabels="true" fill="false"
 							diameter="150px" title="Total das vendas"
 							style="width:150px;height:150px;" />
-						<p:radarChart model="#{graficoBean.radarModel}" />
 					</div>
 				</div>
 			</p:panel>

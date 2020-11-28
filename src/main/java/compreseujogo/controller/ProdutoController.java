@@ -74,6 +74,7 @@ public class ProdutoController implements Serializable {
 			facade.salvarProduto(this.produto);
 			context.addMessage(null,
 					new FacesMessage("O " + produto.getNome() + " foi salvo com sucesso", FacesMessage.FACES_MESSAGES));
+			produto = new Produto();
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}

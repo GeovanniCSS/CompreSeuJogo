@@ -73,7 +73,10 @@ public class VendaController implements Serializable {
 			return null;
 		}
 	}
-
+	
+	public List<Venda> proximasVenda(){
+		return new Facade().listaVenda("PVendas", venda);
+	}
 	public List<Venda> listaCliente(Cliente cliente) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Facade facade = new Facade();
