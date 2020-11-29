@@ -20,7 +20,7 @@ public class EmailBo {
 
 	public String novaVenda(String assunto, String mensagem, String loja, String cliente) throws Exception {
 		try {
-			email.addTo(loja, cliente);
+			email.addTo(cliente);
 			email.setSubject(assunto);
 			email.setMsg(mensagem);
 			email.setDebug(false);
