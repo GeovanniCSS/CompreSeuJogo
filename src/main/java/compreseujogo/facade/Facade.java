@@ -9,6 +9,7 @@ import compreseujogo.model.bo.CarrinhoBo;
 import compreseujogo.model.bo.CategoriaBo;
 import compreseujogo.model.bo.ClienteBo;
 import compreseujogo.model.bo.ComissaoBo;
+import compreseujogo.model.bo.EmailBo;
 import compreseujogo.model.bo.EmpresaBo;
 import compreseujogo.model.bo.FornecedorBo;
 import compreseujogo.model.bo.ItemBo;
@@ -100,6 +101,8 @@ public class Facade {
 		carrinhoBo.zerar(venda.getCliente().getCarrinho());
 		produtoBo.dimuirQuantidade(venda.getCliente().getCarrinho().getItem());
 		itemCarrinhoBo.apagarItens(venda.getCliente().getCarrinho().getItem());
+		new EmailBo().novaVenda(vendaBo.mensagemVenda(venda).get(0), vendaBo.mensagemVenda(venda).get(1),
+				lojaBo.list("", null).get(0).getEmail(), venda.getCliente().getEmail());
 		return "vendido";
 	}
 
@@ -221,11 +224,11 @@ public class Facade {
 		}
 		return lista;
 	}
-	
-	public List<ItemVenda> listaItemVenda(ItemVenda item) throws Exception{
+
+	public List<ItemVenda> listaItemVenda(ItemVenda item) throws Exception {
 		return itemVendaBo.listar("Venda", item);
 	}
-	
+
 	public List<Transporte> listaTransporte(Transporte transporte) throws Exception {
 		ArrayList<Transporte> lista = new ArrayList<Transporte>();
 		for (Empresa empresa : transporteBo.list("organizada", transporte, Transporte.class)) {
