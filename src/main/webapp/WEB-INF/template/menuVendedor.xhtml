@@ -42,11 +42,8 @@
 						<p:menuitem value="Plataforma"
 							url="listaPlataforma.xhtml?faces-redirect=true" />
 						<p:separator />
-						<p:menuitem value="Produto" immediate="true" action="#{produtoBean.crud()}" />
-						<p:separator />
-					</p:submenu>
-					<p:submenu label="Venda" icon="pi pi-users">
-						<p:menuitem onclick="PF('dlg').show();" value="Venda" />
+						<p:menuitem value="Produto" immediate="true"
+							action="#{produtoBean.crud()}" />
 						<p:separator />
 					</p:submenu>
 					<p:submenu label="Parceiros" icon="pi pi-briefcase">
@@ -56,8 +53,10 @@
 						<p:menuitem value="Fornecedor"
 							url="listaFornecedor.xhtml?faces-redirect=true" />
 					</p:submenu>
-					<p:submenu label="Vendas" icon="pi pi-shopping-cart">
-						<p:menuitem value="Todas" />
+					<p:submenu label="Venda" icon="pi pi-shopping-cart">
+						<p:menuitem onclick="PF('dlg').show();" value="Nova" />
+						<p:separator />
+						<p:menuitem immediate="true" value="Todas" />
 						<p:separator />
 					</p:submenu>
 				</p:menubar>

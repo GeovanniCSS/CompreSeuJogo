@@ -67,7 +67,7 @@ public class VendaController implements Serializable {
 			ItemVenda item = new ItemVenda();
 			item.setVenda(venda);
 			venda.setItem(new Facade().listaItemVenda(item));
-			return "homeAdm.xhtml?faces-redirect=true";
+			return selecionar(venda);
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 			return null;

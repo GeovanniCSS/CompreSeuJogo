@@ -12,7 +12,7 @@
 	<ui:define name="conteudo">
 		<h:form id="form">
 			<p:growl id="msg" autoUpdate="true" life="3000" />
-			<h:panelGroup
+			<h:panelGroup style="min-height: 500px"
 				rendered="#{vendaBean.listaCliente(UsePessoaBean.cliente).size() > 0}">
 				<p:panel>
 					<p>#{UsePessoaBean.cliente.nome}, aqui você encontra todos seus
