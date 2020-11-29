@@ -84,6 +84,21 @@ public class ProdutoController implements Serializable {
 	public String telaPesquisa() {
 		return "pesquisaProduto.xhtml?p=" + filtro + "&faces-redirect=true";
 	}
+	
+	public String telaPesquisaPlay() {
+		this.filtro = "PLAYSTATION";
+		return "pesquisaProduto.xhtml?p=" + this.filtro + "&faces-redirect=true";
+	}
+	
+	public String telaPesquisaXBox() {
+		this.filtro = "XBOX";
+		return "pesquisaProduto.xhtml?p=" + this.filtro + "&faces-redirect=true";
+	}
+	
+	public String telaPesquisaNintendo() {
+		this.filtro = "NINTENDO";
+		return "pesquisaProduto.xhtml?p=" + this.filtro + "&faces-redirect=true";
+	}
 
 	public String selecionar(Produto produto) {
 		return "visualizarProduto.xhtml?id=" + produto.getId() + "&faces-redirect=true";
