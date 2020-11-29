@@ -11,7 +11,7 @@
 	<ui:define name="tituloJanela">Compre seu jogo</ui:define>
 	<ui:define name="conteudo">
 		<h:form id="form">
-			<p:dataGrid var="produto" value="#{produtoBean.lista}" columns="4"
+			<p:dataGrid var="produto" value="#{produtoBean.buscar()}" columns="4"
 				layout="grid" rows="12" paginator="true" id="produto"
 				paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				currentPageReportTemplate=" "  paginatorPosition="bottom"

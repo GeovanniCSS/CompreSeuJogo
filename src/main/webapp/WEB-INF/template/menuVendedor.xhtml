@@ -19,8 +19,12 @@
 				<p:growl id="msg" />
 				<p:panelGrid columns="2" layout="grid">
 					<p:column>
-						<p:graphicImage style="width: 50px;height:50px;" library="imagem"
-							name="logoN.png" />
+						<h:commandLink immediate="true" action="homeAdm.xhtml?faces-redirect=true">
+							<p:graphicImage style="width: 75px;height:75px;" library="imagem"
+								name="logoTe.png" />
+							<p:outputLabel style="padding: 20px 25px;font-size:1.6em;"
+								value="COMPRE SEU JOGO" />
+						</h:commandLink>
 					</p:column>
 					<p:column>
 						<p:menuButton icon="pi pi-user"

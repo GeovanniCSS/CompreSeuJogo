@@ -19,7 +19,9 @@
 				<p:column>
 					<h:commandLink action="index.xhtml?faces-redirect=true">
 						<p:graphicImage style="width: 75px;height:75px;" library="imagem"
-							name="logoB.png" />
+							name="logoTe.png" />
+						<p:outputLabel style="padding: 20px 25px;font-size:1.6em;"
+							value="COMPRE SEU JOGO" />
 					</h:commandLink>
 				</p:column>
 				<p:column>
@@ -43,29 +45,28 @@
 			</p:panelGrid>
 			<p:menubar>
 				<p:submenu label="PLAYSTATION">
-					<p:menuitem rendered="" value="Categoria"
-						url="cadastroCategoria.xhtml?faces-redirect=true" />
+					<p:menuitem rendered="" value="Categoria" />
 					<p:separator />
-					<p:menuitem value="PLAYSTATION 5"
-						url="cadastroMarca.xhtml?faces-redirect=true" />
+					<p:menuitem value="PLAYSTATION 5" immediate="true"
+						action="#{produtoBean.telaPesquisaPlay()}" />
 					<p:separator />
-					<p:menuitem value="PLAYSTATION 4"
-						url="cadastroPlataforma.xhtml?faces-redirect=true" />
+					<p:menuitem value="PLAYSTATION 4" immediate="true"
+						action="#{produtoBean.telaPesquisaPlay()}" />
 					<p:separator />
-					<p:menuitem value="PLAYSTATION 3"
-						url="cadastroProduto.xhtml?faces-redirect=true" />
+					<p:menuitem value="PLAYSTATION 3" immediate="true"
+						action="#{produtoBean.telaPesquisaPlay()}" />
 					<p:separator />
 				</p:submenu>
 				<p:submenu label="XBOX">
-					<p:menuitem value="XBOX SERIES X e S" url="#" />
+					<p:menuitem value="XBOX ONE" immediate="true"
+						action="#{produtoBean.telaPesquisaXBox()}" />
 					<p:separator />
-					<p:menuitem value="XBOX ONE" url="#" />
-					<p:separator />
-					<p:menuitem value="XBOX 360" url="#" />
+					<p:menuitem value="XBOX 360" immediate="true"
+						action="#{produtoBean.telaPesquisaXBox()}" />
 				</p:submenu>
 				<p:submenu label="NINTENDO">
-					<p:menuitem value="JOGOS" url="#" />
-					<p:menuitem value="CONSOLES" url="#" />
+					<p:menuitem value="JOGOS" immediate="true"
+						action="#{produtoBean.telaPesquisaNintendo()}" />
 				</p:submenu>
 				<p:menuitem value="CARRINHO" icon="pi pi-shopping-cart"
 					url="carrinhoCliente.xhtml?faces-redirect=true">
