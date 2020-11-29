@@ -91,6 +91,7 @@ public class PessoaBo<T extends Pessoa> {
 		} else if (list("cpf", pessoa, classe).size() >= 1) {
 			throw new Exception("Esse cpf já está registrado!");
 		} else {
+			pessoa.setAtivo(true);
 			pessoa.setDataCadastro(LocalDate.now());
 			return saveOrUpdate(pessoa);
 		}
