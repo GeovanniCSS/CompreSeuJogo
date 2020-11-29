@@ -7,16 +7,16 @@ import java.util.List;
 import compreseujogo.model.dao.GenericDao;
 import compreseujogo.model.dao.VendaDao;
 import compreseujogo.model.entity.Empresa;
+import compreseujogo.model.entity.ItemVenda;
 import compreseujogo.model.entity.Transporte;
 import compreseujogo.model.entity.Venda;
 import compreseujogo.model.bo.ComissaoBo;
 
 public class VendaBo {
-	
+
 	private VendaDao dao;
 	private GenericDao<Venda> gDao;
-	
-	
+
 	public VendaBo() {
 		super();
 		this.dao = new VendaDao();
@@ -66,7 +66,7 @@ public class VendaBo {
 			venda.setVendedor(null);
 			venda.setTransporte((Transporte) new EmpresaBo<Empresa>().encontrar(venda.getTransporte()));
 			venda.setDataEntrega(LocalDate.now().plusDays(venda.getTransporte().getDataEntrega()));
-			novaVenda(venda);	
+			novaVenda(venda);
 		} else {
 			venda.setTransporte(null);
 			venda.setEntrega(true);
@@ -78,15 +78,19 @@ public class VendaBo {
 
 	public List<String> mensagemVenda(Venda venda) {
 		ArrayList<String> email = new ArrayList<String>();
-		String tituto = "Nova venda - " + venda.getCliente();
-		String mensagem = "<h3>Detalhes da venda</h3> <br>";
+		String tituto = "Seu pedido na Compre Seu Jogo - Número do pedido: " + venda.getId();
+		String mensagem = "Olá " + venda.getCliente().getNome() + ",\n"
+				+ "Muito obrigado por nos escolher, o total da sua compra foi: R$" + venda.getValor()
+				+ "\nData de entrega " + venda.getDataEntrega() + "\nLink do pedido:"
+				+ "http://localhost:8080/compreseujogo_3.0/faces/pedido.xhtml?id=" + venda.getId() + "\n"
+				+ "Qualquer dúvida é só entrar em contato conosco.";
 		email.add(tituto);
 		email.add(mensagem);
 		return email;
 	}
 
 	public List<Venda> listVenda(String parameter, Venda venda) {
-		if(parameter.equals("")) {
+		if (parameter.equals("")) {
 			return gDao.list(Venda.class);
 		} else {
 			return dao.list(parameter, venda);
